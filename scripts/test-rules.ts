@@ -6,6 +6,7 @@ import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, gearBalance, gearCatalog, gearLedger, grantEquipment, itemsNamedIn, startingMoney, xpForLevel } from "../src/lib/creation";
 import { unfilledLineageChoices } from "../src/lib/traits";
 import { fillNclWorkbook } from "../src/lib/gsheet";
+import { sheetAttackName } from "../src/lib/grants";
 import * as XLSX from "xlsx";
 import { readFileSync } from "node:fs";
 import type { Character, Rules } from "../src/lib/types";
@@ -532,6 +533,128 @@ check("the strength base score is written", mainSheet.C16?.v, 16);
 check("athletics is marked proficient", mainSheet.H28?.v, 1);
 check("the sheet keeps every template tab", filled.book.SheetNames.join(","), template.SheetNames.join(","));
 check("age has no runner field", filled.unmapped.some((line) => line.startsWith("Age")), true);
+
+const stalker = derive(runner({ classId: "auditor", subclassId: "auditor:dark-stalker", level: 3, baseScores: scores }), rules);
+check("dark stalker adds wisdom to initiative", stalker.initiative, 3);
+const buckler = derive(runner({ classId: "outlaw", subclassId: "outlaw:swashbuckler", level: 3, baseScores: scores }), rules);
+check("swashbuckler adds charisma to initiative", buckler.initiative, 4);
+const bulwark = derive(runner({ classId: "techwizard", subclassId: "techwizard:bulwark", level: 2, baseScores: scores }), rules);
+check("bulwark adds intelligence to initiative", bulwark.initiative, 5);
+const dullBulwark = derive(runner({ classId: "techwizard", subclassId: "techwizard:bulwark", level: 2, baseScores: { ...scores, int: 8 } }), rules);
+check("bulwark intelligence cannot lower initiative", dullBulwark.initiative, 2);
+const nexus = derive(runner({ classId: "techwizard", subclassId: "techwizard:nexus-modder", level: 2, baseScores: scores }), rules);
+check("nexus modder does not add intelligence to initiative", nexus.initiative, 2);
+const stasis = derive(runner({ classId: "techwizard", subclassId: "techwizard:stasis-technician", level: 2, baseScores: scores }), rules);
+check("stasis technician adds intelligence to initiative", stasis.initiative, 5);
+
+const fast = derive(runner({ classId: "renegade", level: 5, baseScores: scores }), rules);
+check("renegade fast movement adds 10 feet", fast.speed, 40);
+const heavyRenegade = derive(runner({ classId: "renegade", level: 5, armorId: "armor:ceramiron", baseScores: scores }), rules);
+check("renegade fast movement stops in heavy armor", heavyRenegade.speed, 30);
+const feral = derive(runner({ classId: "renegade", level: 7, baseScores: scores }), rules);
+check("renegade gains advantage on initiative at 7th", feral.initiativeNotes.some((note) => note.startsWith("Advantage")), true);
+const armoredBrawler = derive(runner({ classId: "brawler", level: 6, armorId: "armor:nanofilm", baseScores: scores }), rules);
+check("brawler unarmored movement needs an empty armor slot", armoredBrawler.speed, 30);
+const scout = derive(runner({ classId: "outlaw", subclassId: "outlaw:scout", level: 9, baseScores: scores }), rules);
+check("scout superior mobility adds 10 feet at 9th", scout.speed, 40);
+check("scout gains nature", scout.skills.find((skill) => skill.name === "Nature")?.proficient, true);
+check("scout expertise is on survival", scout.skills.find((skill) => skill.name === "Survival")?.expertise, true);
+
+const surge = derive(runner({ classId: "sourcecoder", subclassId: "sourcecoder:surge-splicer", level: 1, baseScores: scores }), rules);
+const plainCoder = derive(runner({ classId: "sourcecoder", level: 1, baseScores: scores }), rules);
+check("surge splicer unarmored ac is 13 + dex", surge.ac, 15);
+check("surge splicer gains 1 hp at 1st level", surge.hp, plainCoder.hp + 1);
+const aqueous = derive(runner({
+  classId: "sourcecoder",
+  subclassId: "sourcecoder:surge-splicer",
+  level: 14,
+  baseScores: scores,
+  grantPicks: { "affinity:sourcecoder:surge-splicer": ["Aqueous"] },
+}), rules);
+check("aqueous surge movement is a swim speed", aqueous.movement.includes("swim"), true);
+const streetElf = derive(runner({ lineageId: "race:elf", sublineage: "Street", baseScores: scores }), rules);
+check("street elf speedy is 35 feet", streetElf.speed, 35);
+const jerboanSpeed = derive(runner({ lineageId: "race:jerboan", sublineage: "Punk Rock Jerboan", baseScores: scores }), rules);
+check("jerboan base speed stays 25", jerboanSpeed.speed, 25);
+const wukong = derive(runner({ lineageId: "race:wukong", sublineage: "Melon Munchers", baseScores: scores }), rules);
+check("wukong climbs at 25 feet", wukong.movement.includes("25 ft. climb"), true);
+const stacker = derive(runner({ classId: "ronin", level: 4, lineageId: "race:artificiate", sublineage: "Stackerbot", baseScores: scores }), rules);
+const plainRonin = derive(runner({ classId: "ronin", level: 4, baseScores: scores }), rules);
+check("stackerbot gains 1 hp per level", stacker.hp, plainRonin.hp + 4);
+const researcher = derive(runner({
+  lineageId: "race:artificiate",
+  sublineage: "Researchbot",
+  baseScores: scores,
+  grantPicks: { "skill:race:artificiate|Researchbot": ["History", "Medicine"] },
+}), rules);
+check("researchbot skills are proficient", researcher.skills.filter((skill) => skill.proficient).map((skill) => skill.name).sort(), ["History", "Medicine"]);
+const ronin2 = derive(runner({ classId: "ronin", level: 2, baseScores: scores }), rules);
+const gojira = derive(runner({ classId: "ronin", level: 2, lineageId: "race:kaijuborn", sublineage: "Gojira", baseScores: scores }), rules);
+check("gojira swims 30 feet", gojira.movement.includes("30 ft. swim"), true);
+check("gojira gains 1 hp per level", gojira.hp, ronin2.hp + 2);
+const loader = derive(runner({ lineageId: "race:remake", sublineage: "Heavy Loader", baseScores: scores }), rules);
+check("heavy loader chassis ac is 18", loader.ac, 18);
+const nimble = derive(runner({ lineageId: "race:remake", sublineage: "Nimble 36", baseScores: { ...scores, dex: 18 } }), rules);
+check("nimble 36 ac caps dex at 2 and walks 35", nimble.ac === 15 && nimble.speed === 35, true);
+const engineer = derive(runner({ classId: "mechanist", subclassId: "mechanist:engineer", level: 3, baseScores: scores }), rules);
+check("engineer grants electrician's tools", engineer.proficiencyText.includes("Electrician's Tools (Engineer)"), true);
+const pilot = derive(runner({
+  classId: "mechanist",
+  subclassId: "mechanist:mech-pilot",
+  level: 3,
+  baseScores: scores,
+  grantPicks: { "vehicle:mechanist:mech-pilot": ["Motorcycle", "Van"] },
+}), rules);
+check("mech pilot names two land vehicles", pilot.proficiencyText.includes("Motorcycle (Mech Pilot)") && pilot.proficiencyText.includes("Van (Mech Pilot)"), true);
+const generalist = derive(runner({ classId: "techwizard", subclassId: "techwizard:it-generalist", level: 2, baseScores: scores }), rules);
+check("it generalist grants both kits", generalist.proficiencyText.includes("Hacker's Kit (IT Generalist)") && generalist.proficiencyText.includes("Programmer's Kit (IT Generalist)"), true);
+const vlogger = derive(runner({
+  classId: "influencer",
+  subclassId: "influencer:vlogger",
+  level: 3,
+  baseScores: scores,
+  grantPicks: { "skill:influencer:vlogger": ["Deception", "Insight", "Persuasion"] },
+}), rules);
+check("vlogger chooses three skills", ["Deception", "Insight", "Persuasion"].every((name) => vlogger.skills.find((skill) => skill.name === name)?.proficient), true);
+
+const katana = rules.weapons.find((weapon) => weapon.id === "weapon:katana");
+check("two-handed katana matches the attack tab", katana ? sheetAttackName(katana, { id: katana.id, grip: "two" }) : "", "Two-handed katana");
+const knuckles = rules.weapons.find((weapon) => weapon.id === "weapon:brass-knuckles");
+check("brass knuckles name the damage type", knuckles ? sheetAttackName(knuckles, { id: knuckles.id, damageType: "piercing" }) : "", "Brass Knuckles (piercing)");
+const swung = derive(runner({ classId: "ronin", level: 1, baseScores: scores, weapons: [{ id: "weapon:katana", grip: "two" }] }), rules);
+check("a two-handed katana deals 1d10", swung.attacks[0]?.damage.startsWith("1d10"), true);
+const typed = derive(runner({ classId: "ronin", level: 1, baseScores: scores, weapons: [{ id: "weapon:brass-knuckles", damageType: "slashing" }] }), rules);
+check("brass knuckles can deal slashing", typed.attacks[0]?.damage.includes("slashing"), true);
+const gloves = derive(runner({ classId: "mechanist", subclassId: "mechanist:armorer", level: 3, baseScores: scores, weapons: [{ id: "weapon:concussion-gloves" }] }), rules);
+check("concussion gloves use intelligence for an armorer", gloves.attacks[0]?.toHit, 5);
+check("concussion gloves deal thunder", gloves.attacks[0]?.damage.includes("thunder"), true);
+const launcher = rules.weapons.find((weapon) => weapon.id === "weapon:arc-launcher");
+check("arc launcher is in the weapon table", Boolean(launcher), true);
+const dipped = derive(runner({
+  level: 2,
+  classLevels: [{ id: "ronin", level: 1, subclassId: null }, { id: "influencer", level: 1, subclassId: null }],
+  baseScores: scores,
+}), rules);
+check("influencer multiclass can be a streaming tool or an instrument", dipped.proficiencyText.includes("one instrument of your choice"), true);
+
+const workbook = XLSX.read(readFileSync("public/data/ncl-gsheet-v2.1.xlsx"), { cellFormula: true });
+const classInfo = workbook.Sheets["Class Info"];
+const lineageInfo = workbook.Sheets["Lineage Info"];
+const cellValue = (sheet: XLSX.WorkSheet, addr: string) => sheet[addr]?.f ? `=${sheet[addr].f}` : sheet[addr]?.v;
+check("influencer skills on the sheet choose 3", String(cellValue(classInfo, "Q39")).includes("Choose 3"), true);
+check("outlaw skills on the sheet choose 4", String(cellValue(classInfo, "Q69")).includes("Choose 4"), true);
+check("outlaw weapons on the sheet name the revolver", String(cellValue(classInfo, "X69")).includes("Revolver"), true);
+check("mechanist multiclass tools are locksmith and a basic toolkit", cellValue(classInfo, "AB48"), "Light Armor, Medium Armor, Shields, 2 Tools (Locksmith's Tools, Basic Toolkit)");
+check("auditor multiclass grants no skill", cellValue(classInfo, "AB7"), "Light Armor, Medium Armor, Shields, Civilian Weapons, Military Weapons");
+check("nexus initiative cell is a dash", cellValue(classInfo, "M149"), "-");
+check("singularity initiative cell is a dash", cellValue(classInfo, "M151"), "-");
+check("bulwark initiative formula stays", cellValue(classInfo, "M142"), "=intMod");
+check("techwizard weapons on the sheet name the heavy pistol", String(cellValue(classInfo, "X141")).includes("Heavy Pistol"), true);
+check("rave grants an electronic instrument", cellValue(classInfo, "AB23"), "1 Tool (Electronic Musical Instrument)");
+check("sentai savior grants performance", cellValue(classInfo, "Q150"), "Performance");
+check("scout grants nature and survival", cellValue(classInfo, "Q75"), "Choose 2, Nature, Survival");
+check("new human increase is one +2 or two +1s", cellValue(lineageInfo, "F7"), "Increase one score by 2, or two different scores by 1 (str, dex, con, int, wis, cha)");
+check("new human language is an old world language", cellValue(lineageInfo, "X7"), "Common, 1 Language (Old World)");
 
 if (failed) {
   console.error(`${failed} failed`);

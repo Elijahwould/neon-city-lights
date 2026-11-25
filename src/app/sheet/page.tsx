@@ -12,6 +12,7 @@ import { gearBalance, gearLedger, startingMoney } from "@/lib/creation";
 import { GOOGLE_SHEET_LABEL, GOOGLE_SHEET_URL } from "@/lib/config";
 import { ABILITIES, ABILITY_NAME, type Ability, type Character, type Rules } from "@/lib/types";
 import { loadRules } from "@/lib/data";
+import { weaponDamageTypes, weaponIsVersatile } from "@/lib/grants";
 import { decodeShare, downloadCharacter, encodeShare, getCharacter, upsertCharacter } from "@/lib/storage";
 import {
   SOURCE_SLOT_COST,
@@ -222,6 +223,7 @@ function SheetInner() {
               <div><b>{derived.speed}</b><span>Speed</span></div>
             </div>
             {derived.acNotes.length > 0 && <p className="fine">{derived.acNotes.join(" · ")}</p>}
+            {derived.initiativeNotes.length > 0 && <p className="fine">Initiative {derived.initiativeNotes.join(" · ")}</p>}
             <p className="fine">{derived.movement}</p>
             {derived.styleNotes.map((note) => <p key={note} className="fine">{note}</p>)}
             {derived.traitNotes.map((note) => <p key={note} className="fine">{note}</p>)}
@@ -245,6 +247,33 @@ function SheetInner() {
               <label>Failure {[0, 1, 2].map((n) => <input key={n} type="checkbox" checked={character.deathFail > n} onChange={() => save({ ...character, deathFail: character.deathFail > n ? n : n + 1 })} />)}</label>
             </div>
             <h3>Attacks & notes · {derived.attackCount} per Attack action</h3>
+            {character.weapons.map((weapon, index) => {
+              const item = rules.weapons.find((row) => row.id === weapon.id);
+              if (!item) return null;
+              const types = weaponDamageTypes(item);
+              const versatile = weaponIsVersatile(item);
+              if (!types.length && !versatile) return null;
+              return (
+                <div key={`${weapon.id}-${index}`} className="no-print mb-2 flex flex-wrap gap-2 text-xs">
+                  <span>{item.name}</span>
+                  {versatile && (
+                    <select className="min-h-11 bg-black" value={weapon.grip ?? "one"} onChange={(event) => {
+                      const weapons = character.weapons.map((row, rowIndex) => rowIndex === index ? { ...row, grip: event.target.value as "one" | "two" } : row);
+                      save({ ...character, weapons });
+                    }}>
+                      <option value="one">One hand</option>
+                      <option value="two">Two hands</option>
+                    </select>
+                  )}
+                  {types.map((type) => (
+                    <button key={type} type="button" className={`min-h-11 px-2 ${weapon.damageType === type ? "text-pink" : "text-cyan"}`} onClick={() => {
+                      const weapons = character.weapons.map((row, rowIndex) => rowIndex === index ? { ...row, damageType: type } : row);
+                      save({ ...character, weapons });
+                    }}>{type}</button>
+                  ))}
+                </div>
+              );
+            })}
             <table>
               <thead><tr><th>Name</th><th>Atk bonus</th><th>Damage / type</th></tr></thead>
               <tbody>
