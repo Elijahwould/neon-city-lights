@@ -131,7 +131,7 @@ function SheetInner() {
 
   if (error) return <p className="text-pink">{error}</p>;
   if (!rules) return <p className="text-muted">Loading rules…</p>;
-  if (!character || !derived) return <p className="text-muted">No runner loaded. <Link className="text-cyan" href="/characters/">Pick one</Link> or <Link className="text-cyan" href="/builder/">build one</Link>.</p>;
+  if (!character || !derived) return <p className="text-muted">No runner loaded. <Link className="text-cyan" href="/characters/">Pick one</Link> or <Link className="text-cyan" href="/builder/?new=1">build one</Link>.</p>;
 
   const entries = classEntries(character);
   const target = gainClass || entries[0]?.id || "";

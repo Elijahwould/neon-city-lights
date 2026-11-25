@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { Button, Chip, Field, Select, TextInput } from "@/components/ui";
 import { AsiPicker } from "@/components/asi-picker";
@@ -33,6 +33,7 @@ import {
 } from "@/lib/character";
 import { TechPicker } from "@/components/tech-picker";
 import { pickLineage, traitGroups, unfilledLineageChoices } from "@/lib/traits";
+import { builderIntent, draftHasWork } from "@/lib/draft";
 import {
   SKILL_BLURB,
   carryCapacity,
@@ -115,7 +116,9 @@ type IdeaBook = Record<string, { traits: string[]; ideals: { text: string; tag?:
 
 function BuilderInner() {
   const router = useRouter();
-  const editId = useSearchParams().get("id");
+  const params = useSearchParams();
+  const editId = params.get("id");
+  const fresh = params.get("new") === "1";
   const [rules, setRules] = useState<Rules | null>(null);
   const [catalog, setCatalog] = useState<CatalogEntry[]>([]);
   const [feats, setFeats] = useState<{ id: string; prerequisite: string | null }[]>([]);
@@ -135,6 +138,8 @@ function BuilderInner() {
   const [kitPicks, setKitPicks] = useState<Record<string, string>>({});
   const [flavor, setFlavor] = useState<FlavorFile | null>(null);
   const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
+  const [pendingDraft, setPendingDraft] = useState<Character | null>(null);
+  const skipDraftReload = useRef(false);
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
@@ -145,26 +150,67 @@ function BuilderInner() {
     fetch("/data/feat-asi.json").then((res) => res.json()).then(setFeatAsi).catch(() => undefined);
     loadFlavor().then(setFlavor).catch(() => undefined);
     fetch("/data/tech-text.json").then((res) => res.json()).then(setTechText).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
     if (editId) {
       const found = getCharacter(editId);
-      if (found) {
-        setCharacter(normalizeCharacter(found));
-        return;
-      }
+      setPendingDraft(null);
+      setStep(0);
+      setCharacter(found ? normalizeCharacter(found) : blankCharacter());
+      return;
     }
-    const draft = sessionStorage.getItem("ncl.draft");
-    if (draft) {
-      try { setCharacter(normalizeCharacter(JSON.parse(draft) as Character)); return; } catch { /* fresh */ }
+    if (fresh) {
+      skipDraftReload.current = true;
+      sessionStorage.removeItem("ncl.draft");
+      setPendingDraft(null);
+      setStep(0);
+      setCharacter(blankCharacter());
+      router.replace("/builder/");
+      return;
     }
+    if (skipDraftReload.current) {
+      skipDraftReload.current = false;
+      return;
+    }
+    const raw = sessionStorage.getItem("ncl.draft");
+    if (raw) {
+      try {
+        const parsed = normalizeCharacter(JSON.parse(raw) as Character);
+        if (builderIntent({ id: null, fresh: false, draftHasWork: draftHasWork(parsed) }) === "ask") {
+          setCharacter(null);
+          setPendingDraft(parsed);
+          return;
+        }
+      } catch { /* start blank */ }
+    }
+    setPendingDraft(null);
+    setStep(0);
     setCharacter(blankCharacter());
-  }, [editId]);
-  useEffect(() => { if (character) sessionStorage.setItem("ncl.draft", JSON.stringify(character)); }, [character]);
+  }, [editId, fresh, router]);
+  useEffect(() => {
+    if (!character || editId) return;
+    sessionStorage.setItem("ncl.draft", JSON.stringify(character));
+  }, [character, editId]);
   useEffect(() => { window.scrollTo(0, 0); }, [step]);
 
   const setCache = (id: string, md: string) => setCacheState((prev) => ({ ...prev, [id]: md }));
   const derived = useMemo(() => (rules && character ? derive(character, rules) : null), [rules, character]);
   if (error) return <p className="text-pink">{error}</p>;
-  if (!rules || !character || !derived) return <p className="text-muted">Warming up the builder…</p>;
+  if (!rules) return <p className="text-muted">Warming up the builder…</p>;
+  if (pendingDraft && !character) {
+    return (
+      <div className="neon-card space-y-3 p-4">
+        <h1 className="brand text-3xl text-pink">Character builder</h1>
+        <p>An unfinished draft is still in this browser{pendingDraft.name.trim() ? `: ${pendingDraft.name}` : ""}.</p>
+        <div className="flex flex-wrap gap-2">
+          <Button onClick={() => { setCharacter(pendingDraft); setPendingDraft(null); setStep(0); }}>Continue draft</Button>
+          <Button variant="ghost" onClick={() => { sessionStorage.removeItem("ncl.draft"); setPendingDraft(null); setStep(0); setCharacter(blankCharacter()); }}>Start new</Button>
+        </div>
+      </div>
+    );
+  }
+  if (!character || !derived) return <p className="text-muted">Warming up the builder…</p>;
 
   const patch = (partial: Partial<Character>) => setCharacter({ ...character, ...partial });
   const summary = (id: string) => catalog.find((entry) => entry.id === id)?.summary ?? "";

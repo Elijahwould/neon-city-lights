@@ -1,6 +1,7 @@
 import rulesJson from "../public/data/rules.json";
 import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, classLevelAccess, classTechBudget, collectGrantedTechs, cyberdeckSize, derive, findClass, findSubclass, fitClassLevels, lineageAsiMode, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, techPickCounts, trickAllowance } from "../src/lib/character";
 import { HIDDEN_LINEAGES } from "../src/lib/data";
+import { builderIntent, draftHasWork } from "../src/lib/draft";
 import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, gearBalance, gearCatalog, gearLedger, grantEquipment, itemsNamedIn, startingMoney, xpForLevel } from "../src/lib/creation";
 import { unfilledLineageChoices } from "../src/lib/traits";
@@ -403,6 +404,13 @@ check("the phb human is hidden from the picker", HIDDEN_LINEAGES.has("race:human
 check("the playtest core is hidden from the picker", HIDDEN_LINEAGES.has("race:core"), true);
 check("new human stays in the picker", HIDDEN_LINEAGES.has("race:new-human"), false);
 check("hardlight core stays in the picker", HIDDEN_LINEAGES.has("race:hardlight-core"), false);
+const worked = runner({ name: "Vex", classId: "enforcer", lineageId: "race:new-human" });
+check("a named draft is unfinished work", draftHasWork(worked), true);
+check("a blank draft is not worth continuing", draftHasWork(blankCharacter()), false);
+check("build a runner starts fresh even when a draft exists", builderIntent({ id: null, fresh: true, draftHasWork: true }), "fresh");
+check("opening the builder with a draft asks first", builderIntent({ id: null, fresh: false, draftHasWork: true }), "ask");
+check("an empty visit starts fresh", builderIntent({ id: null, fresh: false, draftHasWork: false }), "fresh");
+check("editing a saved runner loads that runner", builderIntent({ id: "abc", fresh: true, draftHasWork: true }), "edit");
 check("splicer portrait is stored locally", flavorBook.lineages["race:splicer"]?.image, "/art/race-splicer.jpg");
 
 const allowance = trickAllowance(["Ordained Warrior"], 4, [

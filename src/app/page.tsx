@@ -11,14 +11,14 @@ export default function HomePage() {
           then build a runner and keep the sheet in your browser. No account. No server. Nothing to pay for.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/builder/" className="rounded-sm bg-pink px-4 py-2 font-semibold text-black">Build a runner</Link>
+          <Link href="/builder/?new=1" className="rounded-sm bg-pink px-4 py-2 font-semibold text-black">Build a runner</Link>
           <Link href="/compendium/" className="rounded-sm border border-cyan/60 px-4 py-2 text-cyan">Open the compendium</Link>
         </div>
       </section>
       <section className="grid gap-4 sm:grid-cols-3">
         {[
           ["Compendium", "Search classes, techs, weapons, cybernetics, foes, rules, and the city itself. Every wiki page is still there when a number could not be lifted out of the prose.", "/compendium/"],
-          ["Builder", "Lineage, upbringing, class, scores, skills, techs, and gear. Level a character from 1 through the class table, including the server's level-5 start.", "/builder/"],
+          ["Builder", "Lineage, upbringing, class, scores, skills, techs, and gear. Level a character from 1 through the class table, including the server's level-5 start.", "/builder/?new=1"],
           ["Sheet", "Modifiers, saves, AC, attacks, tech slots, and inventory. Print to PDF, or export the runner as a JSON file you can pass around the Discord.", "/characters/"],
         ].map(([title, copy, href]) => (
           <Link key={title} href={href} className="neon-card block p-4 hover:border-cyan">
