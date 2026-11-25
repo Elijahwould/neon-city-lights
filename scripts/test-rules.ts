@@ -1,6 +1,6 @@
 import rulesJson from "../public/data/rules.json";
 import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, cyberdeckSize, derive, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest } from "../src/lib/character";
-import { startingMoney, xpForLevel } from "../src/lib/creation";
+import { chosenEquipment, equipmentLines, startingMoney, xpForLevel } from "../src/lib/creation";
 import type { Character, Rules } from "../src/lib/types";
 
 const rules = rulesJson as Rules;
@@ -301,6 +301,83 @@ check("splicer accepts two +2s", asiAssignmentOk("splicer", { str: 2, dex: 2 }),
 check("splicer rejects a lone +2", asiAssignmentOk("splicer", { str: 2 }), false);
 const swapped = assignPooledScore({ str: 15, dex: 14, con: 13, int: 12, wis: 10, cha: 8 }, "cha", 15);
 check("standard array swaps instead of duplicating", swapped, { str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15 });
+
+const enforcer = rules.classes.find((item) => item.id === "enforcer");
+const lines = equipmentLines(enforcer!, rules);
+const packLine = lines.find((line) => line.options.some((option) => option.label.toLowerCase().includes("hobo")));
+check("enforcer pack line is a choice", packLine?.choice, true);
+check("option a is not hobo's pack", (packLine?.options.find((option) => option.key === "a")?.items ?? []).some((item) => item.id === "gear:hobos-pack"), false);
+check("option b is hobo's pack", (packLine?.options.find((option) => option.key === "b")?.items ?? []).some((item) => item.id === "gear:hobos-pack"), true);
+const defaults = chosenEquipment(lines, {});
+check("default kit keeps ceramiron", defaults.some((item) => item.id === "armor:ceramiron"), true);
+check("default kit does not take hobo's pack", defaults.some((item) => item.id === "gear:hobos-pack"), false);
+const hobos = chosenEquipment(lines, { [packLine!.id]: "b" });
+check("choosing b adds hobo's pack", hobos.some((item) => item.id === "gear:hobos-pack"), true);
+
+const gunFu = derive(runner({
+  classId: "ronin",
+  level: 1,
+  baseScores: scores,
+  fightingStyles: ["Gun-Fu"],
+  weapons: [{ id: "weapon:light-pistol" }],
+}), rules);
+check("gun-fu adds 1 to a one-handed ranged attack", gunFu.attacks[0]?.toHit, 5);
+
+const thrown = derive(runner({
+  classId: "ronin",
+  level: 1,
+  baseScores: { ...scores, str: 16 },
+  fightingStyles: ["Thrown Weapon Fighting"],
+  weapons: [{ id: "weapon:knife" }],
+}), rules);
+check("thrown style adds a second attack row", thrown.attacks.map((attack) => attack.name), ["Knife", "Knife (thrown)"]);
+check("thrown row gets the ronin +2", thrown.attacks[1]?.damage.includes("+5"), true);
+check("melee knife does not get the thrown bonus", thrown.attacks[0]?.damage.includes("+3"), true);
+
+const off = derive(runner({
+  classId: "ronin",
+  level: 1,
+  baseScores: { ...scores, str: 16 },
+  weapons: [{ id: "weapon:machete" }, { id: "weapon:knife" }],
+}), rules);
+check("off-hand drops the ability modifier", off.attacks[1]?.damage.includes("+0"), true);
+const twf = derive(runner({
+  classId: "ronin",
+  level: 1,
+  baseScores: { ...scores, str: 16 },
+  fightingStyles: ["Two-Weapon Fighting"],
+  weapons: [{ id: "weapon:machete" }, { id: "weapon:knife" }],
+}), rules);
+check("two-weapon fighting puts the modifier back", twf.attacks[1]?.damage.includes("+3"), true);
+
+const fists = derive(runner({
+  classId: "enforcer",
+  level: 1,
+  baseScores: scores,
+  fightingStyles: ["Unarmed Fighting"],
+}), rules);
+check("unarmed fighting with free hands is 1d8", fists.attacks.some((attack) => attack.damage.startsWith("1d8")), true);
+
+const natural = derive(runner({
+  classId: "ronin",
+  level: 1,
+  lineageId: "race:splicer",
+  lineagePicks: ["major:natural-armor", "minor:digitigrade", "minor:adorable-tail"],
+  baseScores: { ...scores, dex: 14 },
+}), rules);
+check("natural armor is 13 + dex", natural.ac, 15);
+check("digitigrade adds 5 feet", natural.speed, 35);
+check("adorable tail grants persuasion", natural.skills.find((skill) => skill.name === "Persuasion")?.proficient, true);
+
+const hare = derive(runner({
+  classId: "ronin",
+  level: 1,
+  lineageId: "race:splicer",
+  lineagePicks: ["major:leporine"],
+  baseScores: { ...scores, dex: 14 },
+}), rules);
+check("leporine adds proficiency to initiative", hare.initiative, 4);
+check("powerful build doubles carry", derive(runner({ lineagePicks: ["major:powerful-build"], baseScores: scores }), rules).carryMultiplier, 2);
 
 if (failed) {
   console.error(`${failed} failed`);

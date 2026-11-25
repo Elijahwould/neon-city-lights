@@ -246,6 +246,7 @@ export interface Character {
   baseScores: Record<Ability, number>;
   classLevels: ClassLevel[];
   lineageOption: string | null;
+  lineagePicks: string[];
   asiPicks: AsiPick[];
   playerName: string;
   alignment: string;
