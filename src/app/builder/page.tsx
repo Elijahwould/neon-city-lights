@@ -4,18 +4,28 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { Button, Chip, Field, Select, TextInput } from "@/components/ui";
+import { AsiPicker } from "@/components/asi-picker";
 import { ChoiceCard, FactList, HeritageField } from "@/components/choice";
 import { ABILITIES, ABILITY_NAME, type Ability, type CatalogEntry, type Character, type ClassDef, type Rules } from "@/lib/types";
 import { loadCatalog, loadEntry, loadRules } from "@/lib/data";
 import { getCharacter, upsertCharacter } from "@/lib/storage";
 import {
+  addClassLevel,
+  asiAssignmentOk,
   asiLevels,
+  assignPooledScore,
   blankCharacter,
   classEntries,
+  classNeedsFightingStyle,
   creditsLabel,
+  cyberNeedsSkill,
+  cyberStatOptions,
   derive,
+  FIGHTING_STYLES,
   findClass,
   findSubclass,
+  fitClassLevels,
+  lineageAsiMode,
   lineageGrantsFeat,
   normalizeCharacter,
   pointBuySpent,
@@ -96,6 +106,8 @@ function BuilderInner() {
   const [ideas, setIdeas] = useState<IdeaBook>({});
   const [itemStats, setItemStats] = useState<Record<string, ItemStat>>({});
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
+  const [hint, setHint] = useState<string | null>(null);
+  const [techQuery, setTechQuery] = useState("");
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
@@ -137,6 +149,18 @@ function BuilderInner() {
     return true;
   });
   const current = visible[Math.min(step, visible.length - 1)];
+  const lineage = character.lineageId ? rules.lineages.find((item) => item.id === character.lineageId) : null;
+  const lineageMode = lineage ? lineageAsiMode(lineage) : "none";
+  const lineageReady = !lineage || lineage.asi === "none" || lineage.asi === "unknown" || asiAssignmentOk(lineageMode, character.lineageAsi);
+  const pointsReady = character.scoreMethod !== "pointbuy" || pointBuySpent(character.baseScores, rules) <= rules.pointBuy.budget;
+  const levelsReady = !entries.length || entries.reduce((sum, entry) => sum + entry.level, 0) === character.level;
+  const styleNeeded = entries.some((entry) => {
+    const cls = findClass(rules, entry.id);
+    return Boolean(cls && classNeedsFightingStyle(cls, entry.level));
+  });
+  const nextBlocked = (current === "Lineage" && (!lineageReady || (character.lineageId === "race:jerboan" && !character.sublineage)))
+    || (current === "Scores" && !pointsReady)
+    || (current === "Class" && (!levelsReady || (styleNeeded && character.fightingStyles.length === 0)));
   const upbringing = rules.upbringings.find((item) => item.id === character.upbringingId);
   const granted = new Set((upbringing?.skills ?? []).map(skillKey));
   const budget = skillPickBudget(character, rules);
@@ -145,6 +169,7 @@ function BuilderInner() {
     if (row.id === character.armorId) return sum + (row.cost ?? 0);
     if (character.weapons.some((item) => item.id === row.id)) return sum + (row.cost ?? 0);
     if (character.cybernetics.some((item) => item.id === row.id)) return sum + (row.cost ?? 0);
+    if (character.shield && row.id === "armor:riot-shield") return sum + (row.cost ?? 0);
     if (character.inventory.some((item) => skillKey(item.name) === skillKey(row.name))) return sum + (row.cost ?? 0);
     return sum;
   }, 0);
@@ -230,10 +255,7 @@ function BuilderInner() {
               <Reveal id={item.id} text="Full wiki text, including naming notes." cache={cache} setCache={setCache} />
               {selected && (
                 <div className="mt-2 space-y-2">
-                  <p className="text-xs text-cyan">Assign the ability score increase.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {ABILITIES.map((ability) => <Chip key={ability} active={(character.lineageAsi[ability] ?? 0) > 0} onClick={() => patch({ lineageAsi: { ...character.lineageAsi, [ability]: character.lineageAsi[ability] ? 0 : item.asi === "plus1plus1" ? 1 : 2 } })}>{ABILITY_NAME[ability]}</Chip>)}
-                  </div>
+                  <AsiPicker mode={lineageAsiMode(item)} value={character.lineageAsi} onChange={(lineageAsi) => patch({ lineageAsi })} />
                   {item.id === "race:new-human" && (
                     <Field label="Ancestral Diversity">
                       <Select value={character.lineageOption ?? ""} onChange={(e) => patch({ lineageOption: e.target.value || null })}>
@@ -311,11 +333,12 @@ function BuilderInner() {
               return (
                 <ChoiceCard key={item.id} choiceId={item.id} title={item.name} selected={selected} onSelect={() => {
                   if (selected) return;
-                  patch({ classId: item.id, classLevels: [{ id: item.id, level: character.level, subclassId: null }] });
+                  patch({ classId: item.id, subclassId: null, fightingStyles: [], defenseStyle: false, classLevels: [{ id: item.id, level: character.level, subclassId: null }] });
                 }}>
                   {selected && <TextInput className="mt-2 w-24" type="number" min={1} max={character.level} aria-label={`${item.name} levels`} value={entries.find((entry) => entry.id === item.id)?.level ?? 1} onChange={(e) => {
                     const level = Number(e.target.value) || 1;
-                    patch({ classLevels: entries.map((entry) => entry.id === item.id ? { ...entry, level } : entry) });
+                    const next = fitClassLevels(entries.map((entry) => entry.id === item.id ? { ...entry, level } : entry), character.level, item.id);
+                    patch({ classLevels: next, classId: next[0]?.id ?? item.id, subclassId: next[0]?.subclassId ?? null });
                   }} />}
                   <FactList rows={classFacts(item)} />
                   <Reveal id={item.id} text="Full wiki text." cache={cache} setCache={setCache} />
@@ -323,12 +346,32 @@ function BuilderInner() {
               );
             })}
             <Field label="Add a second class">
-              <Select value="" onChange={(e) => e.target.value && patch({ classLevels: [...entries.filter((entry) => entry.id !== e.target.value), { id: e.target.value, level: 1, subclassId: null }] })}>
+              <Select value="" onChange={(e) => {
+                const id = e.target.value;
+                if (!id) return;
+                const next = addClassLevel(entries, id, character.level);
+                if (!next) {
+                  setHint("Every class is already at 1 level. Raise the starting level before splitting further.");
+                  return;
+                }
+                setHint(null);
+                patch({ classLevels: next, classId: next[0]?.id ?? id, subclassId: next[0]?.subclassId ?? null });
+              }}>
                 <option value="">Choose…</option>
                 {rules.classes.filter((item) => !entries.some((entry) => entry.id === item.id)).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
               </Select>
             </Field>
+            {hint && <p className="text-sm text-pink">{hint}</p>}
             <p className={entries.reduce((sum, entry) => sum + entry.level, 0) === character.level ? "text-cyan" : "text-pink"}>Assigned {entries.reduce((sum, entry) => sum + entry.level, 0)} / {character.level}</p>
+            {entries.some((entry) => { const cls = findClass(rules, entry.id); return cls && classNeedsFightingStyle(cls, entry.level); }) && (
+              <Field label="Fighting style">
+                <Select value={character.fightingStyles[0] ?? ""} onChange={(e) => patch({ fightingStyles: e.target.value ? [e.target.value] : [], defenseStyle: e.target.value === "Defense" })}>
+                  <option value="">Choose a fighting style</option>
+                  {[...new Set(entries.flatMap((entry) => FIGHTING_STYLES[entry.id] ?? []))].map((style) => <option key={style} value={style}>{style}</option>)}
+                </Select>
+                <p className="mt-1 text-xs text-muted">Defense is +1 AC in armor and +2 in heavy armor, for every class whose style says so. Mariner is +1 AC while you are not in heavy armor or using a shield. Dueling adds +2 damage with a single one-handed melee weapon.</p>
+              </Field>
+            )}
           </>
         )}
         {current === "Scores" && (
@@ -341,10 +384,24 @@ function BuilderInner() {
             {character.scoreMethod === "pointbuy" && <p>Points left: {rules.pointBuy.budget - pointBuySpent(character.baseScores, rules)}</p>}
             {character.scoreMethod === "roll" && <Button variant="ghost" onClick={() => { const rolledScores = rollAbilityScores(); patch({ rolledScores, baseScores: { str: rolledScores[0], dex: rolledScores[1], con: rolledScores[2], int: rolledScores[3], wis: rolledScores[4], cha: rolledScores[5] } }); }}>Roll six scores</Button>}
             {character.rolledScores.length > 0 && character.scoreMethod === "roll" && <p className="text-cyan">Pool: {character.rolledScores.join(", ")}</p>}
+            {character.scoreMethod === "pointbuy" && pointBuySpent(character.baseScores, rules) > rules.pointBuy.budget && <p className="text-sm text-pink">That assignment spends more than 27 points.</p>}
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {ABILITIES.map((ability) => (
                 <Field key={ability} label={`${ABILITY_NAME[ability]} ${derived.mods[ability] >= 0 ? "+" : ""}${derived.mods[ability]}`}>
-                  <TextInput type="number" min={character.scoreMethod === "roll" ? 3 : 8} max={character.scoreMethod === "roll" ? 18 : 15} value={character.baseScores[ability]} onChange={(e) => patch({ baseScores: { ...character.baseScores, [ability]: Number(e.target.value) || 8 } })} />
+                  {character.scoreMethod === "pointbuy" ? (
+                    <TextInput type="number" min={8} max={15} value={character.baseScores[ability]} onChange={(e) => {
+                      const value = Math.min(15, Math.max(8, Number(e.target.value) || 8));
+                      const baseScores = { ...character.baseScores, [ability]: value };
+                      if (pointBuySpent(baseScores, rules) > rules.pointBuy.budget) return;
+                      patch({ baseScores });
+                    }} />
+                  ) : (
+                    <Select value={character.baseScores[ability]} onChange={(e) => patch({ baseScores: assignPooledScore(character.baseScores, ability, Number(e.target.value)) })}>
+                      {(character.scoreMethod === "roll" ? (character.rolledScores.length ? character.rolledScores : [character.baseScores[ability]]) : rules.standardArray).map((score, index) => (
+                        <option key={`${score}-${index}`} value={score}>{score}</option>
+                      ))}
+                    </Select>
+                  )}
                 </Field>
               ))}
             </div>
@@ -353,6 +410,7 @@ function BuilderInner() {
         {current === "Skills" && (
           <>
             <p className="text-sm">Picks left: {Math.max(0, budget - chosen.length)}. Filled dots are from upbringing{extraLineageSkills(character.lineageId, character.sublineage) ? " or lineage" : ""} and do not spend a pick.</p>
+            {derived.expertiseCap > 0 && <p className="text-sm text-cyan">Expertise {character.skillExpertise.length}/{derived.expertiseCap}. It doubles proficiency on a skill you already have.</p>}
             <ul className="space-y-2">
               {rules.skills.map((skill) => {
                 const key = skillKey(skill.id);
@@ -370,6 +428,15 @@ function BuilderInner() {
                       <span>
                         <strong>{skill.name}</strong> <span className="text-xs uppercase text-cyan">{skill.ability}</span>
                         {fromGrant && <span className="text-xs text-pink"> · granted</span>}
+                        {derived.expertiseCap > 0 && on && (
+                          <button type="button" className={`ml-2 text-xs ${character.skillExpertise.some((name) => skillKey(name) === key) ? "text-pink" : "text-cyan"}`} onMouseDown={(event) => event.preventDefault()} onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            const has = character.skillExpertise.some((name) => skillKey(name) === key);
+                            if (has) patch({ skillExpertise: character.skillExpertise.filter((name) => skillKey(name) !== key) });
+                            else if (character.skillExpertise.length < derived.expertiseCap) patch({ skillExpertise: [...character.skillExpertise, skill.name] });
+                          }}>{character.skillExpertise.some((name) => skillKey(name) === key) ? "Expertise" : "Add expertise"}</button>
+                        )}
                         <span className="block text-sm text-muted">{SKILL_BLURB[skill.id] ?? ""}</span>
                       </span>
                     </label>
@@ -397,16 +464,41 @@ function BuilderInner() {
             </div>
           );
         })}
-        {current === "Techs" && (
-          <div className="max-h-[28rem] space-y-1 overflow-auto">
-            <p className="text-sm text-muted">Tricks {character.techs.filter((id) => rules.techs.find((tech) => tech.id === id)?.trick).length}/{derived.tricksMax}. Slots {derived.slots.map((n, i) => n ? `${i + 1}:${n}` : "").filter(Boolean).join(" ") || "none"}.</p>
-            {entries.flatMap((entry) => techListFor(rules, findClass(rules, entry.id), findSubclass(rules, entry.subclassId))).filter((tech, index, list) => list.findIndex((item) => item.id === tech.id) === index).map((tech) => (
-              <button type="button" key={tech.id} className={`block min-h-11 w-full border px-3 py-2 text-left text-sm ${character.techs.includes(tech.id) ? "border-cyan text-cyan" : "border-white/10"}`} onClick={() => patch({ techs: character.techs.includes(tech.id) ? character.techs.filter((id) => id !== tech.id) : [...character.techs, tech.id] })}>
-                {tech.name} · {tech.trick ? "trick" : `level ${tech.level}`} · {tech.sector}
-              </button>
-            ))}
-          </div>
-        )}
+        {current === "Techs" && (() => {
+          const known = character.techs.map((id) => rules.techs.find((tech) => tech.id === id)).filter((tech): tech is NonNullable<typeof tech> => Boolean(tech));
+          const trickCount = known.filter((tech) => tech.trick || tech.level === 0).length;
+          const leveledCount = known.filter((tech) => !tech.trick && (tech.level ?? 0) > 0).length;
+          const leveledCap = derived.techsKnownMax ?? (derived.deckMax > 0 ? derived.deckMax : derived.preparedMax ?? 0);
+          const highestSlot = derived.slots.reduce((best, count, index) => count > 0 ? index + 1 : best, 0);
+          const pact = derived.pactLevel ?? 0;
+          const list = entries.flatMap((entry) => techListFor(rules, findClass(rules, entry.id), findSubclass(rules, entry.subclassId))).filter((tech, index, all) => all.findIndex((item) => item.id === tech.id) === index);
+          const castable = list.filter((tech) => {
+            const trick = tech.trick || tech.level === 0;
+            if (trick) return derived.tricksMax > 0;
+            const level = tech.level ?? 99;
+            return level <= highestSlot || level <= pact;
+          }).filter((tech) => `${tech.name} ${tech.sector ?? ""}`.toLowerCase().includes(techQuery.toLowerCase()));
+          return (
+            <div className="max-h-[28rem] space-y-1 overflow-auto">
+              <p className="text-sm text-muted">Tricks {trickCount}/{derived.tricksMax}. {derived.deckMax > 0 || derived.techsKnownMax != null ? `Leveled ${leveledCount}/${leveledCap || "—"}` : `Prepared ${leveledCount}/${leveledCap || "—"}`}{derived.deckMax > 0 && derived.preparedMax != null ? ` · prepare ${derived.preparedMax}` : ""}. Slots {derived.slots.map((n, i) => n ? `${i + 1}:${n}` : "").filter(Boolean).join(" ") || "none"}.</p>
+              <TextInput value={techQuery} onChange={(e) => setTechQuery(e.target.value)} placeholder="Search techs" />
+              {castable.map((tech) => {
+                const owned = character.techs.includes(tech.id);
+                const trick = tech.trick || tech.level === 0;
+                const blocked = !owned && (trick ? trickCount >= derived.tricksMax : leveledCap > 0 && leveledCount >= leveledCap);
+                return (
+                  <button type="button" key={tech.id} disabled={blocked} className={`block min-h-11 w-full border px-3 py-2 text-left text-sm disabled:opacity-40 ${owned ? "border-cyan text-cyan" : "border-white/10"}`} onClick={() => {
+                    if (owned) patch({ techs: character.techs.filter((id) => id !== tech.id) });
+                    else if (!blocked) patch({ techs: [...character.techs, tech.id] });
+                  }}>
+                    {tech.name} · {trick ? "trick" : `level ${tech.level}`} · {tech.sector}
+                  </button>
+                );
+              })}
+              {castable.length === 0 && <p className="text-sm text-muted">No techs of a level this runner can cast match that search.</p>}
+            </div>
+          );
+        })()}
         {current === "Feats" && (
           <>
             {entries.flatMap((entry) => {
@@ -414,9 +506,11 @@ function BuilderInner() {
               return (cls ? asiLevels(cls, entry.level) : []).map((lv) => (
                 <div key={`${entry.id}-${lv}`} className="border border-white/10 p-2">
                   <p className="text-cyan">{findClass(rules, entry.id)?.name} level {lv}</p>
-                  <div className="flex gap-2">
-                    {ABILITIES.map((ability) => <Chip key={ability} active={character.asiPicks.find((pick) => pick.level === lv && pick.classId === entry.id)?.mode === "asi" && (character.asiPicks.find((pick) => pick.level === lv && pick.classId === entry.id)?.abilities?.[ability] ?? 0) > 0} onClick={() => patch({ asiPicks: [...character.asiPicks.filter((pick) => !(pick.level === lv && pick.classId === entry.id)), { level: lv, classId: entry.id, mode: "asi", abilities: { [ability]: 2 } }] })}>+2 {ABILITY_NAME[ability]}</Chip>)}
-                    <Chip active={character.asiPicks.find((pick) => pick.level === lv && pick.classId === entry.id)?.mode === "feat"} onClick={() => patch({ asiPicks: [...character.asiPicks.filter((pick) => !(pick.level === lv && pick.classId === entry.id)), { level: lv, classId: entry.id, mode: "feat" }] })}>Feat</Chip>
+                  <div className="mt-2 space-y-2">
+                    <Chip active={character.asiPicks.find((pick) => pick.level === lv && pick.classId === entry.id)?.mode === "feat"} onClick={() => patch({ asiPicks: [...character.asiPicks.filter((pick) => !(pick.level === lv && pick.classId === entry.id)), { level: lv, classId: entry.id, mode: "feat" }] })}>Feat instead</Chip>
+                    {character.asiPicks.find((pick) => pick.level === lv && pick.classId === entry.id)?.mode !== "feat" && (
+                      <AsiPicker mode="flex" value={character.asiPicks.find((pick) => pick.level === lv && pick.classId === entry.id)?.abilities ?? {}} onChange={(abilities) => patch({ asiPicks: [...character.asiPicks.filter((pick) => !(pick.level === lv && pick.classId === entry.id)), { level: lv, classId: entry.id, mode: "asi", abilities }] })} />
+                    )}
                   </div>
                 </div>
               ));
@@ -462,6 +556,39 @@ function BuilderInner() {
         {current === "Gear" && (
           <>
             <p>Budget {creditsLabel(money.credits)} · spent {creditsLabel(spent)} · left {creditsLabel(money.credits - spent)}</p>
+            {character.cybernetics.length > 0 && (
+              <div className="space-y-2 border border-white/10 p-3 text-sm">
+                <p className="text-cyan">Installed cybernetics {character.cybernetics.length}/{derived.cyberLimit}. BioMod and NeuroMod do nothing until you pick the ability. The higher tier replaces a lower one of the same kind.</p>
+                {character.cybernetics.map((install, index) => {
+                  const name = rules.cybernetics.find((item) => item.id === install.id)?.name ?? install.id;
+                  const stats = cyberStatOptions(install.id);
+                  const needsSkill = cyberNeedsSkill(install.id);
+                  return (
+                    <div key={`${install.id}-${index}`} className="space-y-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <strong>{name}</strong>
+                        <Button variant="ghost" onClick={() => patch({ cybernetics: character.cybernetics.filter((_, itemIndex) => itemIndex !== index) })}>Remove</Button>
+                      </div>
+                      {stats && (
+                        <div className="flex flex-wrap gap-2">
+                          {stats.map((ability) => (
+                            <Chip key={ability} active={install.stat === ability} onClick={() => patch({ cybernetics: character.cybernetics.map((item, itemIndex) => itemIndex === index ? { ...item, stat: ability } : item) })}>
+                              {ABILITY_NAME[ability]}
+                            </Chip>
+                          ))}
+                        </div>
+                      )}
+                      {needsSkill && (
+                        <Select value={install.skill ?? ""} onChange={(e) => patch({ cybernetics: character.cybernetics.map((item, itemIndex) => itemIndex === index ? { ...item, skill: e.target.value || undefined } : item) })}>
+                          <option value="">Choose a skill</option>
+                          {rules.skills.map((skill) => <option key={skill.id} value={skill.name}>{skill.name}</option>)}
+                        </Select>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
             <p className="text-sm text-muted">Carry {weight} / {carryCapacity(derived.scores.str)} lb (Strength × 15, the 5e rule; the wiki does not restate carry capacity). {character.level <= 2 ? "Levels 1–2 stay on a starter kit. Money is tight." : ""}</p>
             {entries[0] && findClass(rules, entries[0].id) && (() => {
               const cls = findClass(rules, entries[0].id)!;
@@ -470,8 +597,10 @@ function BuilderInner() {
               return (
                 <div className="border border-white/10 p-3 text-sm">
                   <Button variant="ghost" onClick={() => {
-                    const weapon = enriched.find((item) => item.category === "weapons" || item.category === "grenades");
+                    const weapons = enriched.filter((item) => item.category === "weapons" || item.category === "grenades");
                     const armor = enriched.find((item) => item.category === "armor");
+                    const shield = enriched.some((item) => item.category === "shields");
+                    const cybernetics = enriched.filter((item) => item.category === "cybernetics").map((item) => ({ id: item.id }));
                     const note = kit.fromWiki ? "From the class’s starting equipment" : "Suggested kit — the class page did not name this item";
                     const inventory = character.inventory.map((item) => ({ ...item }));
                     const lines = enriched.flatMap((item) => {
@@ -484,7 +613,13 @@ function BuilderInner() {
                       if (found) found.qty += line.qty;
                       else inventory.push(line);
                     }
-                    patch({ weapons: weapon ? [{ id: weapon.id }] : [], armorId: armor?.id ?? null, inventory });
+                    patch({
+                      weapons: weapons.map((item) => ({ id: item.id })),
+                      armorId: armor?.id ?? null,
+                      shield,
+                      cybernetics,
+                      inventory,
+                    });
                   }}>Add {cls.name} starter kit</Button>
                   <p className="mt-2 text-muted">{kit.fromWiki ? "Named on the class’s starting equipment." : "Suggested kit. The class page did not name these exact items."}</p>
                   <ul className="mt-2 space-y-2">
@@ -557,9 +692,10 @@ function BuilderInner() {
           </div>
         )}
       </section>
-      <div className="flex justify-between">
+      <div className="h-16 md:hidden" aria-hidden="true" />
+      <div className="fixed inset-x-0 bottom-14 z-30 mx-auto flex max-w-6xl justify-between gap-3 border-t border-cyan/30 bg-[#07060c]/95 px-4 py-3 md:static md:inset-auto md:z-auto md:mt-4 md:border-0 md:bg-transparent md:px-0">
         <Button variant="ghost" disabled={step === 0} onClick={() => setStep((n) => Math.max(0, n - 1))}>Back</Button>
-        {current !== "Review" && <Button disabled={current === "Lineage" && character.lineageId === "race:jerboan" && !character.sublineage} onClick={() => setStep((n) => Math.min(visible.length - 1, n + 1))}>Next</Button>}
+        {current !== "Review" && <Button disabled={nextBlocked} onClick={() => setStep((n) => Math.min(visible.length - 1, n + 1))}>Next</Button>}
       </div>
     </div>
   );

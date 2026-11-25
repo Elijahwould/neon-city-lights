@@ -366,8 +366,10 @@ export function classBlurb(cls: ClassDef) {
 
 export function spentOn(character: Character, rules: Rules) {
   const catalog = gearCatalog(rules);
+  const shield = character.shield ? catalog.find((row) => row.id === "armor:riot-shield") : undefined;
   const ids = [
     character.armorId,
+    shield?.id,
     ...character.weapons.map((item) => item.id),
     ...character.cybernetics.map((item) => item.id),
     ...character.inventory.map((item) => catalog.find((row) => skillKey(row.name) === skillKey(item.name))?.id).filter(Boolean) as string[],

@@ -20,6 +20,7 @@ export default function CompendiumPage() {
   const [klass, setKlass] = useState("");
   const [rarity, setRarity] = useState("");
   const [shown, setShown] = useState(48);
+  const [filtersOpen, setFiltersOpen] = useState(true);
 
   useEffect(() => {
     loadCatalog().then(setEntries).catch((err: Error) => setError(err.message));
@@ -58,8 +59,11 @@ export default function CompendiumPage() {
         <h1 className="brand text-3xl text-pink">Compendium</h1>
         <p className="text-sm text-muted">{entries.filter((e) => !e.hub).length} entries from the wiki. Placeholder AI, Amirani, Hermesian, Netsucker, and Humanoid foe pages are left out.</p>
       </div>
-      <TextInput value={q} onChange={(e) => { setQ(e.target.value); setShown(48); }} placeholder="Search names, tags, damage…" />
-      <div className="space-y-2">
+      <TextInput value={q} onChange={(e) => { setQ(e.target.value); setShown(48); setFiltersOpen(false); }} placeholder="Search names, tags, damage…" />
+      <button type="button" className="text-sm text-cyan" onClick={() => setFiltersOpen((open) => !open)}>
+        {filtersOpen ? "Hide filters" : "Show filters"}
+      </button>
+      {filtersOpen && <div className="space-y-2">
         {GROUPS.map((group) => (
           <div key={group.id} className="flex flex-wrap gap-2">
             {group.cats.map((id) => (
@@ -69,8 +73,8 @@ export default function CompendiumPage() {
             ))}
           </div>
         ))}
-      </div>
-      {(cat === "tech" || cat === "all") && (
+      </div>}
+      {filtersOpen && (cat === "tech" || cat === "all") && (
         <div className="flex flex-wrap gap-2">
           <Chip active={level === "0"} onClick={() => setLevel(level === "0" ? "" : "0")}>Tricks</Chip>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
@@ -84,7 +88,7 @@ export default function CompendiumPage() {
           ))}
         </div>
       )}
-      {["highend-weapon", "highend-armor", "gizmo", "peripheral", "consumable", "keyring", "burner"].includes(cat) && (
+      {filtersOpen && ["highend-weapon", "highend-armor", "gizmo", "peripheral", "consumable", "keyring", "burner"].includes(cat) && (
         <div className="flex flex-wrap gap-2">
           {["common", "uncommon", "rare", "very rare", "legendary", "artifact"].map((name) => (
             <Chip key={name} active={rarity === name} onClick={() => setRarity(rarity === name ? "" : name)}>{name}</Chip>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
+import { AsiPicker } from "@/components/asi-picker";
 import { TechSheet } from "@/components/tech-sheet";
 import { Button, Select, TextInput } from "@/components/ui";
 import { AVRAE_CELL_MAP, characterAsText, downloadAvrae, downloadAvraeCsv } from "@/lib/avrae-sheet";
@@ -13,12 +14,15 @@ import { decodeShare, downloadCharacter, encodeShare, getCharacter, upsertCharac
 import {
   SOURCE_SLOT_COST,
   applyLevelUp,
+  asiAssignmentOk,
   asiLevels,
   canTakeClassLevel,
   classEntries,
+  classNeedsFightingStyle,
   creditsLabel,
   derive,
   featuresThrough,
+  FIGHTING_STYLES,
   findClass,
   formatMod,
   normalizeCharacter,
@@ -71,9 +75,10 @@ function SheetInner() {
   const [levelOpen, setLevelOpen] = useState(false);
   const [gainClass, setGainClass] = useState("");
   const [pendingSubclass, setPendingSubclass] = useState("");
-  const [pendingAbility, setPendingAbility] = useState<Ability>("str");
+  const [pendingAsi, setPendingAsi] = useState<Partial<Record<Ability, number>>>({});
   const [pendingFeat, setPendingFeat] = useState("");
   const [pendingFeatAbility, setPendingFeatAbility] = useState<Ability | "">("");
+  const [pendingStyle, setPendingStyle] = useState("");
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
   const [avraeHelp, setAvraeHelp] = useState(false);
   const [copied, setCopied] = useState("");
@@ -221,6 +226,14 @@ function SheetInner() {
               <div><b>{derived.speed}</b><span>Speed</span></div>
             </div>
             {derived.acNotes.length > 0 && <p className="fine">{derived.acNotes.join(" · ")}</p>}
+            {derived.features.some((feature) => feature.toLowerCase().includes("fighting style")) && (
+              <label className="no-print">Fighting style
+                <Select value={character.fightingStyles[0] ?? ""} onChange={(e) => save({ ...character, fightingStyles: e.target.value ? [e.target.value] : [], defenseStyle: e.target.value === "Defense" })}>
+                  <option value="">Choose</option>
+                  {[...new Set(entries.flatMap((entry) => FIGHTING_STYLES[entry.id] ?? []))].map((style) => <option key={style} value={style}>{style}</option>)}
+                </Select>
+              </label>
+            )}
             <div className="hp-box">
               <label>HP max<strong>{derived.hp}</strong></label>
               <label>Current<input type="number" value={character.hpCurrent ?? derived.hp} onChange={(e) => save({ ...character, hpCurrent: Number(e.target.value) })} /></label>
@@ -330,7 +343,7 @@ function SheetInner() {
       {derived.warnings.map((warning) => <p key={warning} className="text-sm text-pink">{warning}</p>)}
 
       {levelOpen && (
-        <div className="no-print fixed inset-0 z-30 grid place-items-end bg-black/70 p-4 sm:place-items-center">
+        <div className="no-print fixed inset-0 z-50 grid place-items-end bg-black/70 p-4 pb-16 sm:place-items-center sm:pb-4">
           <div className="neon-card max-h-[85vh] w-full max-w-lg space-y-3 overflow-auto p-4">
             <h2 className="brand text-xl text-pink">Level up to {character.level + 1}</h2>
             <p className="text-sm text-muted">MP will be set to the chart’s total for the new level. It does not have to be earned first. {character.level >= 4 && derived.mpToNext != null ? `Leaving level ${character.level} is listed as ${derived.mpToNext} MP.` : "Levels 1–4 are not on the MP chart."}</p>
@@ -348,15 +361,17 @@ function SheetInner() {
                 {rules.subclasses.filter((item) => item.classId === targetClass.id).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
               </Select>
             )}
+            {targetClass && classNeedsFightingStyle(targetClass, nextClassLevel) && character.fightingStyles.length === 0 && (
+              <Select value={pendingStyle} onChange={(e) => setPendingStyle(e.target.value)}>
+                <option value="">Choose a fighting style</option>
+                {(FIGHTING_STYLES[targetClass.id] ?? []).map((style) => <option key={style} value={style}>{style}</option>)}
+              </Select>
+            )}
             {needsAsi && (
               <>
-                <p className="text-sm">This class level includes an ability score improvement.</p>
-                <div className="flex flex-wrap gap-2">
-                  {ABILITIES.map((ability) => (
-                    <button key={ability} className={`border px-2 py-1 text-xs ${pendingAbility === ability && !pendingFeat ? "border-pink text-pink" : "border-white/20"}`} onClick={() => { setPendingAbility(ability); setPendingFeat(""); }}>+2 {ability}</button>
-                  ))}
-                </div>
-                <Select value={pendingFeat} onChange={(e) => { setPendingFeat(e.target.value); setPendingFeatAbility(""); }}>
+                <p className="text-sm">This class level includes an ability score improvement. One score +2, or two scores +1, and the total stops at 20 before cybernetics.</p>
+                {!pendingFeat && <AsiPicker mode="flex" value={pendingAsi} onChange={(next) => { setPendingAsi(next); setPendingFeat(""); }} />}
+                <Select value={pendingFeat} onChange={(e) => { setPendingFeat(e.target.value); setPendingFeatAbility(""); setPendingAsi({}); }}>
                   <option value="">Or take a feat</option>
                   {rules.feats.map((feat) => <option key={feat.id} value={feat.id}>{feat.name}</option>)}
                 </Select>
@@ -370,18 +385,21 @@ function SheetInner() {
               </>
             )}
             <div className="flex gap-2">
-              <Button disabled={!gate.ok || (needsSub && !pendingSubclass)} onClick={() => {
+              <Button disabled={!gate.ok || (needsSub && !pendingSubclass) || (needsAsi && !pendingFeat && !asiAssignmentOk("flex", pendingAsi)) || (Boolean(targetClass && classNeedsFightingStyle(targetClass, nextClassLevel) && character.fightingStyles.length === 0 && !pendingStyle))} onClick={() => {
                 let next = applyLevelUp(character, rules, target, pendingSubclass || null);
                 if (needsAsi) {
                   next = {
                     ...next,
                     asiPicks: [...next.asiPicks, pendingFeat
                       ? { level: nextClassLevel, classId: target, mode: "feat" as const, featId: pendingFeat, abilities: pendingFeatAbility && featAsi[pendingFeat] ? { [pendingFeatAbility]: featAsi[pendingFeat].amount } : featAsi[pendingFeat]?.choices.length === 1 ? { [featAsi[pendingFeat].choices[0]]: featAsi[pendingFeat].amount } : {} }
-                      : { level: nextClassLevel, classId: target, mode: "asi" as const, abilities: { [pendingAbility]: 2 } }],
+                      : { level: nextClassLevel, classId: target, mode: "asi" as const, abilities: pendingAsi }],
                   };
                 }
+                if (pendingStyle) next = { ...next, fightingStyles: [pendingStyle], defenseStyle: pendingStyle === "Defense" };
                 save(next);
                 setLevelOpen(false);
+                setPendingAsi({});
+                setPendingFeat("");
               }}>Confirm</Button>
               <Button variant="ghost" onClick={() => setLevelOpen(false)}>Close</Button>
             </div>
