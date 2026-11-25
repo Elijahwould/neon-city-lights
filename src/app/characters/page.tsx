@@ -19,7 +19,7 @@ export default function CharactersPage() {
           <h1 className="brand text-3xl text-pink">Runners</h1>
           <p className="text-sm text-muted">Saved in this browser only. Export a JSON file if you want a backup or another phone.</p>
         </div>
-        <Link href="/builder/" className="rounded-sm bg-pink px-3 py-2 text-sm font-semibold text-black">New</Link>
+        <Link href="/builder/?new=1" className="rounded-sm bg-pink px-3 py-2 text-sm font-semibold text-black">New</Link>
       </div>
       <label className="block text-sm text-cyan">
         Import JSON

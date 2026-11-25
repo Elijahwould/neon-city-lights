@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Chip, TextInput } from "@/components/ui";
-import { CATEGORY_LABEL, GROUPS, loadCatalog, loadFlavor, originLabel, type FlavorFile } from "@/lib/data";
+import { CATEGORY_LABEL, GROUPS, isHiddenLineage, loadCatalog, loadFlavor, originLabel, type FlavorFile } from "@/lib/data";
 import type { CatalogEntry } from "@/lib/types";
 import { creditsLabel } from "@/lib/character";
 
@@ -32,7 +32,7 @@ export default function CompendiumPage() {
     if (!entries) return [];
     const query = q.trim().toLowerCase();
     return entries.filter((entry) => {
-      if (entry.hub) return false;
+      if (entry.hub || isHiddenLineage(entry.id)) return false;
       if (cat !== "all" && entry.category !== cat) return false;
       if (sector && entry.sector !== sector) return false;
       if (level !== "" && String(entry.level ?? "") !== level) return false;
@@ -47,7 +47,7 @@ export default function CompendiumPage() {
   const counts = useMemo(() => {
     const map: Record<string, number> = {};
     (entries ?? []).forEach((entry) => {
-      if (!entry.hub) map[entry.category] = (map[entry.category] ?? 0) + 1;
+      if (!entry.hub && !isHiddenLineage(entry.id)) map[entry.category] = (map[entry.category] ?? 0) + 1;
     });
     return map;
   }, [entries]);

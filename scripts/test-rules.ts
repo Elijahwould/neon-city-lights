@@ -1,5 +1,7 @@
 import rulesJson from "../public/data/rules.json";
-import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, classLevelAccess, classTechBudget, collectGrantedTechs, cyberdeckSize, derive, findClass, findSubclass, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, techPickCounts, trickAllowance } from "../src/lib/character";
+import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, classLevelAccess, classTechBudget, collectGrantedTechs, cyberdeckSize, derive, findClass, findSubclass, fitClassLevels, lineageAsiMode, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, techPickCounts, trickAllowance } from "../src/lib/character";
+import { HIDDEN_LINEAGES } from "../src/lib/data";
+import { builderIntent, draftHasWork } from "../src/lib/draft";
 import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, gearBalance, gearCatalog, gearLedger, grantEquipment, itemsNamedIn, startingMoney, xpForLevel } from "../src/lib/creation";
 import { unfilledLineageChoices } from "../src/lib/traits";
@@ -305,9 +307,12 @@ check("flex rejects +2 and +1 together", asiAssignmentOk("flex", { str: 2, dex: 
 check("human increase is two +1s", asiAssignmentOk("plus1plus1", { str: 1, dex: 1 }), true);
 check("human increase rejects three +1s", asiAssignmentOk("plus1plus1", { str: 1, dex: 1, con: 1 }), false);
 check("spread accepts +2 and +1", asiAssignmentOk("spread", { str: 2, dex: 1 }), true);
-check("splicer accepts two +2s", asiAssignmentOk("splicer", { str: 2, dex: 2 }), true);
-check("splicer accepts +2 and two +1s", asiAssignmentOk("splicer", { str: 2, dex: 1, con: 1 }), true);
-check("splicer rejects a lone +2", asiAssignmentOk("splicer", { str: 2 }), false);
+const splicerLineage = rules.lineages.find((item) => item.id === "race:splicer")!;
+check("splicer uses the shared increase", splicerLineage.asi, "spread");
+check("splicer house rule is recorded", (splicerLineage.houseRule ?? "").includes("same ability increase"), true);
+check("splicer accepts +2 and +1", asiAssignmentOk(lineageAsiMode(splicerLineage), { str: 2, dex: 1 }), true);
+check("splicer accepts three +1s", asiAssignmentOk(lineageAsiMode(splicerLineage), { str: 1, dex: 1, con: 1 }), true);
+check("splicer no longer accepts two +2s", asiAssignmentOk(lineageAsiMode(splicerLineage), { str: 2, dex: 2 }), false);
 const swapped = assignPooledScore({ str: 15, dex: 14, con: 13, int: 12, wis: 10, cha: 8 }, "cha", 15);
 check("standard array swaps instead of duplicating", swapped, { str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15 });
 
@@ -395,6 +400,17 @@ check("dark stalker is from gloom stalker", flavorBook.classes["auditor:dark-sta
 check("street fighter is from pugilist", flavorBook.classes.streetfighter?.origin, "Pugilist");
 check("enforcer has wiki vignettes", (flavorBook.classes.enforcer?.examples ?? []).length >= 2, true);
 check("human blurb comes from the wiki intro", (flavorBook.lineages["race:human"]?.blurb ?? "").includes("four hundred years"), true);
+check("the phb human is hidden from the picker", HIDDEN_LINEAGES.has("race:human"), true);
+check("the playtest core is hidden from the picker", HIDDEN_LINEAGES.has("race:core"), true);
+check("new human stays in the picker", HIDDEN_LINEAGES.has("race:new-human"), false);
+check("hardlight core stays in the picker", HIDDEN_LINEAGES.has("race:hardlight-core"), false);
+const worked = runner({ name: "Vex", classId: "enforcer", lineageId: "race:new-human" });
+check("a named draft is unfinished work", draftHasWork(worked), true);
+check("a blank draft is not worth continuing", draftHasWork(blankCharacter()), false);
+check("build a runner starts fresh even when a draft exists", builderIntent({ id: null, fresh: true, draftHasWork: true }), "fresh");
+check("opening the builder with a draft asks first", builderIntent({ id: null, fresh: false, draftHasWork: true }), "ask");
+check("an empty visit starts fresh", builderIntent({ id: null, fresh: false, draftHasWork: false }), "fresh");
+check("editing a saved runner loads that runner", builderIntent({ id: "abc", fresh: true, draftHasWork: true }), "edit");
 check("splicer portrait is stored locally", flavorBook.lineages["race:splicer"]?.image, "/art/race-splicer.jpg");
 
 const allowance = trickAllowance(["Ordained Warrior"], 4, [

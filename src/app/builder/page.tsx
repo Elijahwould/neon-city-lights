@@ -1,13 +1,13 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { Button, Chip, Field, Select, TextInput } from "@/components/ui";
 import { AsiPicker } from "@/components/asi-picker";
 import { ChoiceCard, FactList, HeritageField } from "@/components/choice";
 import { ABILITIES, ABILITY_NAME, type Ability, type CatalogEntry, type Character, type ClassDef, type Rules } from "@/lib/types";
-import { loadCatalog, loadEntry, loadFlavor, loadRules, originLabel, type FlavorFile } from "@/lib/data";
+import { isHiddenLineage, loadCatalog, loadEntry, loadFlavor, loadRules, originLabel, type FlavorFile } from "@/lib/data";
 import { getCharacter, upsertCharacter } from "@/lib/storage";
 import {
   addClassLevel,
@@ -33,6 +33,7 @@ import {
 } from "@/lib/character";
 import { TechPicker } from "@/components/tech-picker";
 import { pickLineage, traitGroups, unfilledLineageChoices } from "@/lib/traits";
+import { builderIntent, draftHasWork } from "@/lib/draft";
 import {
   SKILL_BLURB,
   carryCapacity,
@@ -115,7 +116,9 @@ type IdeaBook = Record<string, { traits: string[]; ideals: { text: string; tag?:
 
 function BuilderInner() {
   const router = useRouter();
-  const editId = useSearchParams().get("id");
+  const params = useSearchParams();
+  const editId = params.get("id");
+  const fresh = params.get("new") === "1";
   const [rules, setRules] = useState<Rules | null>(null);
   const [catalog, setCatalog] = useState<CatalogEntry[]>([]);
   const [feats, setFeats] = useState<{ id: string; prerequisite: string | null }[]>([]);
@@ -135,6 +138,8 @@ function BuilderInner() {
   const [kitPicks, setKitPicks] = useState<Record<string, string>>({});
   const [flavor, setFlavor] = useState<FlavorFile | null>(null);
   const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
+  const [pendingDraft, setPendingDraft] = useState<Character | null>(null);
+  const skipDraftReload = useRef(false);
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
@@ -145,26 +150,67 @@ function BuilderInner() {
     fetch("/data/feat-asi.json").then((res) => res.json()).then(setFeatAsi).catch(() => undefined);
     loadFlavor().then(setFlavor).catch(() => undefined);
     fetch("/data/tech-text.json").then((res) => res.json()).then(setTechText).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
     if (editId) {
       const found = getCharacter(editId);
-      if (found) {
-        setCharacter(normalizeCharacter(found));
-        return;
-      }
+      setPendingDraft(null);
+      setStep(0);
+      setCharacter(found ? normalizeCharacter(found) : blankCharacter());
+      return;
     }
-    const draft = sessionStorage.getItem("ncl.draft");
-    if (draft) {
-      try { setCharacter(normalizeCharacter(JSON.parse(draft) as Character)); return; } catch { /* fresh */ }
+    if (fresh) {
+      skipDraftReload.current = true;
+      sessionStorage.removeItem("ncl.draft");
+      setPendingDraft(null);
+      setStep(0);
+      setCharacter(blankCharacter());
+      router.replace("/builder/");
+      return;
     }
+    if (skipDraftReload.current) {
+      skipDraftReload.current = false;
+      return;
+    }
+    const raw = sessionStorage.getItem("ncl.draft");
+    if (raw) {
+      try {
+        const parsed = normalizeCharacter(JSON.parse(raw) as Character);
+        if (builderIntent({ id: null, fresh: false, draftHasWork: draftHasWork(parsed) }) === "ask") {
+          setCharacter(null);
+          setPendingDraft(parsed);
+          return;
+        }
+      } catch { /* start blank */ }
+    }
+    setPendingDraft(null);
+    setStep(0);
     setCharacter(blankCharacter());
-  }, [editId]);
-  useEffect(() => { if (character) sessionStorage.setItem("ncl.draft", JSON.stringify(character)); }, [character]);
+  }, [editId, fresh, router]);
+  useEffect(() => {
+    if (!character || editId) return;
+    sessionStorage.setItem("ncl.draft", JSON.stringify(character));
+  }, [character, editId]);
   useEffect(() => { window.scrollTo(0, 0); }, [step]);
 
   const setCache = (id: string, md: string) => setCacheState((prev) => ({ ...prev, [id]: md }));
   const derived = useMemo(() => (rules && character ? derive(character, rules) : null), [rules, character]);
   if (error) return <p className="text-pink">{error}</p>;
-  if (!rules || !character || !derived) return <p className="text-muted">Warming up the builder…</p>;
+  if (!rules) return <p className="text-muted">Warming up the builder…</p>;
+  if (pendingDraft && !character) {
+    return (
+      <div className="neon-card space-y-3 p-4">
+        <h1 className="brand text-3xl text-pink">Character builder</h1>
+        <p>An unfinished draft is still in this browser{pendingDraft.name.trim() ? `: ${pendingDraft.name}` : ""}.</p>
+        <div className="flex flex-wrap gap-2">
+          <Button onClick={() => { setCharacter(pendingDraft); setPendingDraft(null); setStep(0); }}>Continue draft</Button>
+          <Button variant="ghost" onClick={() => { sessionStorage.removeItem("ncl.draft"); setPendingDraft(null); setStep(0); setCharacter(blankCharacter()); }}>Start new</Button>
+        </div>
+      </div>
+    );
+  }
+  if (!character || !derived) return <p className="text-muted">Warming up the builder…</p>;
 
   const patch = (partial: Partial<Character>) => setCharacter({ ...character, ...partial });
   const summary = (id: string) => catalog.find((entry) => entry.id === id)?.summary ?? "";
@@ -386,7 +432,7 @@ function BuilderInner() {
             </div>
           </>
         )}
-        {current === "Lineage" && rules.lineages.map((item) => {
+        {current === "Lineage" && rules.lineages.filter((item) => !isHiddenLineage(item.id)).map((item) => {
           const selected = character.lineageId === item.id;
           const sizeFromHeritage = item.sublineages.some((sub) => sub.traits.some((trait) => trait.name === "Size"));
           return (
@@ -397,6 +443,7 @@ function BuilderInner() {
               <FlavorNote card={flavor?.lineages[item.id]} />
               <FactList rows={[
                 { label: "Ability score increase", text: item.asiText ?? "The wiki does not state an ability score increase." },
+                { label: "House rule", text: item.houseRule ?? "" },
                 { label: "Size", text: item.size ?? (sizeFromHeritage ? "Set by the heritage." : "The wiki does not state a size.") },
                 { label: "Speed", text: item.speedText ?? (item.speed ? `${item.speed} feet.` : "The wiki does not state a speed.") },
                 { label: "Languages", text: item.languages ?? "The wiki does not grant a language." },
