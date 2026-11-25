@@ -52,6 +52,8 @@ export const SKILL_BLURB: Record<string, string> = {
 export function extraLineageSkills(lineageId: string | null, sublineage: string | null) {
   if (lineageId === "race:human" || lineageId === "race:new-human") return 1;
   if (lineageId === "race:jerboan" && (sublineage ?? "").toLowerCase().includes("nu metal")) return 1;
+  if (lineageId === "race:artificiate" && (sublineage ?? "").toLowerCase().includes("research")) return 2;
+  if (lineageId === "race:remake" && (sublineage ?? "").toLowerCase().includes("life-lite")) return 1;
   return 0;
 }
 
@@ -341,11 +343,77 @@ export function gearCatalog(rules: Rules, entries: CatalogEntry[] = []): Catalog
   return rows.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function starterKit(cls: ClassDef, rules: Rules): { items: CatalogItem[]; fromWiki: boolean } {
+export interface EquipmentOption {
+  key: string;
+  label: string;
+  items: CatalogItem[];
+}
+
+export interface EquipmentLine {
+  id: string;
+  choice: boolean;
+  options: EquipmentOption[];
+}
+
+function equipmentBullets(text: string) {
+  const lines = text.split(/\n/).map((line) => line.trim()).filter(Boolean);
+  const bullets = lines.filter((line) => /^[-*]/.test(line)).map((line) => line.replace(/^[-*]\s*/, ""));
+  return bullets.length ? bullets : lines.filter((line) => !/^you start/i.test(line));
+}
+
+function itemsNamedIn(catalog: CatalogItem[], text: string) {
+  const low = text.toLowerCase().replace(/[’‘]/g, "'");
+  const named = catalog
+    .filter((item) => item.name.length >= 3 && low.includes(item.name.toLowerCase().replace(/[’‘]/g, "'")))
+    .sort((a, b) => b.name.length - a.name.length);
+  const chosen: CatalogItem[] = [];
+  let rest = low;
+  for (const item of named) {
+    const name = item.name.toLowerCase().replace(/[’‘]/g, "'");
+    if (!rest.includes(name)) continue;
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pair = new RegExp(`\\btwo\\s+${escaped}\\b`).test(rest);
+    chosen.push(item);
+    if (pair && (item.category === "weapons" || item.category === "grenades")) chosen.push({ ...item });
+    rest = rest.replace(name, " ");
+  }
+  return chosen;
+}
+
+/** Split a class’s starting equipment into fixed gear and (a) or (b) choices. Option A is the default. */
+export function equipmentLines(cls: ClassDef, rules: Rules): EquipmentLine[] {
   const catalog = gearCatalog(rules);
-  const text = cls.equipment.toLowerCase().replace(/[’‘]/g, "'");
-  const matched = catalog.filter((item) => text.includes(item.name.toLowerCase().replace(/[’‘]/g, "'")));
-  if (matched.length) return { items: matched, fromWiki: true };
+  const bullets = equipmentBullets(cls.equipment.replace(/[’‘]/g, "'"));
+  if (!bullets.length) return [];
+  return bullets.map((bullet, index) => {
+    const choice = bullet.match(/^\(?([a-d])\)\s*([\s\S]+?)\s+or\s+\(?([a-d])\)\s*([\s\S]+)$/i);
+    if (!choice) {
+      return { id: `line-${index}`, choice: false, options: [{ key: "fixed", label: bullet, items: itemsNamedIn(catalog, bullet) }] };
+    }
+    return {
+      id: `line-${index}`,
+      choice: true,
+      options: [
+        { key: choice[1].toLowerCase(), label: choice[2].trim(), items: itemsNamedIn(catalog, choice[2]) },
+        { key: choice[3].toLowerCase(), label: choice[4].trim(), items: itemsNamedIn(catalog, choice[4]) },
+      ],
+    };
+  });
+}
+
+export function chosenEquipment(lines: EquipmentLine[], picks: Record<string, string> = {}): CatalogItem[] {
+  return lines.flatMap((line) => {
+    if (!line.choice) return line.options[0]?.items ?? [];
+    const key = picks[line.id] ?? "a";
+    return (line.options.find((option) => option.key === key) ?? line.options[0])?.items ?? [];
+  });
+}
+
+export function starterKit(cls: ClassDef, rules: Rules): { items: CatalogItem[]; fromWiki: boolean } {
+  const lines = equipmentLines(cls, rules);
+  const fromWiki = lines.some((line) => line.options.some((option) => option.items.length));
+  if (fromWiki) return { items: chosenEquipment(lines, {}), fromWiki: true };
+  const catalog = gearCatalog(rules);
   const suggested: CatalogItem[] = [];
   const knife = catalog.find((item) => item.id === "weapon:knife");
   const pistol = catalog.find((item) => item.id === "weapon:light-pistol");
@@ -357,6 +425,25 @@ export function starterKit(cls: ClassDef, rules: Rules): { items: CatalogItem[];
   if ((cls.armor.toLowerCase().includes("light") || cls.armor.toLowerCase().includes("all")) && film) suggested.push(film);
   if (pack) suggested.push(pack);
   return { items: suggested, fromWiki: false };
+}
+
+export function grantEquipment(items: CatalogItem[], note: string) {
+  const weapons = items.filter((item) => item.category === "weapons" || item.category === "grenades");
+  const armor = items.find((item) => item.category === "armor");
+  const shield = items.some((item) => item.category === "shields");
+  const cybernetics = items.filter((item) => item.category === "cybernetics").map((item) => ({ id: item.id }));
+  const inventory = items.flatMap((item) => {
+    if (item.contents.length) return packPieces(item.contents).map((piece) => ({ name: piece.name, qty: piece.qty, notes: `${note}; from ${item.name}` }));
+    if (["weapons", "grenades", "armor", "shields", "cybernetics"].includes(item.category)) return [];
+    return [{ name: item.name, qty: 1, notes: note }];
+  });
+  return {
+    weapons: weapons.map((item) => ({ id: item.id })),
+    armorId: armor?.id ?? null,
+    shield,
+    cybernetics,
+    inventory,
+  };
 }
 
 export function classBlurb(cls: ClassDef) {

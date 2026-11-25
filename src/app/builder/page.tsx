@@ -35,6 +35,7 @@ import {
   standardScores,
   techListFor,
 } from "@/lib/character";
+import { traitGroups } from "@/lib/traits";
 import {
   SKILL_BLURB,
   carryCapacity,
@@ -44,10 +45,12 @@ import {
   applyItemStats,
   gearCatalog,
   gearSummary,
+  chosenEquipment,
+  equipmentLines,
+  grantEquipment,
   packPieces,
   skillPickBudget,
   sortGear,
-  starterKit,
   type ItemStat,
   startingMoney,
   xpForLevel,
@@ -108,6 +111,7 @@ function BuilderInner() {
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
   const [hint, setHint] = useState<string | null>(null);
   const [techQuery, setTechQuery] = useState("");
+  const [kitPicks, setKitPicks] = useState<Record<string, string>>({});
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
@@ -243,7 +247,7 @@ function BuilderInner() {
           return (
             <ChoiceCard key={item.id} choiceId={item.id} title={item.name} selected={selected} onSelect={() => {
               if (selected) return;
-              patch({ lineageId: item.id, sublineage: null, lineageAsi: {}, subAsi: {}, lineageOption: null });
+              patch({ lineageId: item.id, sublineage: null, lineageAsi: {}, subAsi: {}, lineageOption: null, lineagePicks: [] });
             }}>
               <FactList rows={[
                 { label: "Ability score increase", text: item.asiText ?? "The wiki does not state an ability score increase." },
@@ -271,9 +275,34 @@ function BuilderInner() {
                     heritages={item.sublineages}
                     value={character.sublineage}
                     subAsi={character.subAsi}
-                    onChange={(name) => patch({ sublineage: name, subAsi: {} })}
+                    onChange={(name) => patch({ sublineage: name, subAsi: {}, lineagePicks: character.lineagePicks.filter((pick) => !pick.startsWith("nu-") && !pick.startsWith("major:") && !pick.startsWith("minor:")) })}
                     onAsi={(ability, amount) => patch({ subAsi: { [ability]: amount } })}
                   />
+                  {traitGroups(character).map((group) => {
+                    const picked = character.lineagePicks.filter((id) => group.traits.some((trait) => trait.id === id));
+                    return (
+                      <div key={group.id} className="mt-3 space-y-2">
+                        <p className="text-xs uppercase tracking-wider text-cyan">{group.title} · {picked.length}/{group.max}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {group.traits.map((trait) => {
+                            const on = character.lineagePicks.includes(trait.id);
+                            return (
+                              <Chip key={trait.id} active={on} onClick={() => {
+                                if (on) {
+                                  patch({ lineagePicks: character.lineagePicks.filter((id) => id !== trait.id) });
+                                  return;
+                                }
+                                const inGroup = character.lineagePicks.filter((id) => group.traits.some((item) => item.id === id));
+                                const withoutOldest = inGroup.length >= group.max ? character.lineagePicks.filter((id) => id !== inGroup[0]) : character.lineagePicks;
+                                patch({ lineagePicks: [...withoutOldest, trait.id] });
+                              }}>{trait.name}</Chip>
+                            );
+                          })}
+                        </div>
+                        {group.traits.filter((trait) => character.lineagePicks.includes(trait.id)).map((trait) => <p key={trait.id} className="text-xs text-muted">{trait.summary}</p>)}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </ChoiceCard>
@@ -471,7 +500,11 @@ function BuilderInner() {
           const leveledCap = derived.techsKnownMax ?? (derived.deckMax > 0 ? derived.deckMax : derived.preparedMax ?? 0);
           const highestSlot = derived.slots.reduce((best, count, index) => count > 0 ? index + 1 : best, 0);
           const pact = derived.pactLevel ?? 0;
-          const list = entries.flatMap((entry) => techListFor(rules, findClass(rules, entry.id), findSubclass(rules, entry.subclassId))).filter((tech, index, all) => all.findIndex((item) => item.id === tech.id) === index);
+          const extraClasses = [
+            character.fightingStyles.includes("Ordained Warrior") ? "ordinator" : "",
+            character.fightingStyles.includes("Introvert") ? "shutin" : "",
+          ].filter(Boolean);
+          const list = [...entries.flatMap((entry) => techListFor(rules, findClass(rules, entry.id), findSubclass(rules, entry.subclassId))), ...extraClasses.flatMap((id) => techListFor(rules, findClass(rules, id), null))].filter((tech, index, all) => all.findIndex((item) => item.id === tech.id) === index);
           const castable = list.filter((tech) => {
             const trick = tech.trick || tech.level === 0;
             if (trick) return derived.tricksMax > 0;
@@ -480,19 +513,29 @@ function BuilderInner() {
           }).filter((tech) => `${tech.name} ${tech.sector ?? ""}`.toLowerCase().includes(techQuery.toLowerCase()));
           return (
             <div className="max-h-[28rem] space-y-1 overflow-auto">
-              <p className="text-sm text-muted">Tricks {trickCount}/{derived.tricksMax}. {derived.deckMax > 0 || derived.techsKnownMax != null ? `Leveled ${leveledCount}/${leveledCap || "—"}` : `Prepared ${leveledCount}/${leveledCap || "—"}`}{derived.deckMax > 0 && derived.preparedMax != null ? ` · prepare ${derived.preparedMax}` : ""}. Slots {derived.slots.map((n, i) => n ? `${i + 1}:${n}` : "").filter(Boolean).join(" ") || "none"}.</p>
+              <p className="text-sm text-muted">Tricks {trickCount}/{derived.tricksMax}. {derived.deckMax > 0 ? `Cyberdeck ${leveledCount}/${derived.deckMax} · prepared ${character.prepared.length}/${derived.preparedMax ?? 0}` : derived.techsKnownMax != null ? `Leveled ${leveledCount}/${leveledCap || "—"}` : `Prepared ${leveledCount}/${leveledCap || "—"}`}. Slots {derived.slots.map((n, i) => n ? `${i + 1}:${n}` : "").filter(Boolean).join(" ") || "none"}.</p>
               <TextInput value={techQuery} onChange={(e) => setTechQuery(e.target.value)} placeholder="Search techs" />
               {castable.map((tech) => {
                 const owned = character.techs.includes(tech.id);
                 const trick = tech.trick || tech.level === 0;
                 const blocked = !owned && (trick ? trickCount >= derived.tricksMax : leveledCap > 0 && leveledCount >= leveledCap);
+                const prepared = character.prepared.includes(tech.id);
+                const prepareBlocked = !prepared && (character.prepared.length >= (derived.preparedMax ?? 0) || !owned);
                 return (
-                  <button type="button" key={tech.id} disabled={blocked} className={`block min-h-11 w-full border px-3 py-2 text-left text-sm disabled:opacity-40 ${owned ? "border-cyan text-cyan" : "border-white/10"}`} onClick={() => {
-                    if (owned) patch({ techs: character.techs.filter((id) => id !== tech.id) });
-                    else if (!blocked) patch({ techs: [...character.techs, tech.id] });
-                  }}>
-                    {tech.name} · {trick ? "trick" : `level ${tech.level}`} · {tech.sector}
-                  </button>
+                  <div key={tech.id} className="flex items-stretch gap-2">
+                    <button type="button" disabled={blocked} className={`block min-h-11 flex-1 border px-3 py-2 text-left text-sm disabled:opacity-40 ${owned ? "border-cyan text-cyan" : "border-white/10"}`} onClick={() => {
+                      if (owned) patch({ techs: character.techs.filter((id) => id !== tech.id), prepared: character.prepared.filter((id) => id !== tech.id) });
+                      else if (!blocked) patch({ techs: [...character.techs, tech.id] });
+                    }}>
+                      {tech.name} · {trick ? "trick" : `level ${tech.level}`} · {tech.sector}{derived.deckMax > 0 && !trick ? (owned ? " · in deck" : "") : ""}
+                    </button>
+                    {derived.deckMax > 0 && !trick && (
+                      <button type="button" disabled={prepareBlocked && !prepared} className={`min-h-11 shrink-0 border px-2 text-xs disabled:opacity-40 ${prepared ? "border-pink text-pink" : "border-white/20"}`} onClick={() => {
+                        if (!owned) return;
+                        patch({ prepared: prepared ? character.prepared.filter((id) => id !== tech.id) : [...character.prepared, tech.id] });
+                      }}>{prepared ? "Prepared" : "Prepare"}</button>
+                    )}
+                  </div>
                 );
               })}
               {castable.length === 0 && <p className="text-sm text-muted">No techs of a level this runner can cast match that search.</p>}
@@ -589,49 +632,29 @@ function BuilderInner() {
                 })}
               </div>
             )}
-            <p className="text-sm text-muted">Carry {weight} / {carryCapacity(derived.scores.str)} lb (Strength × 15, the 5e rule; the wiki does not restate carry capacity). {character.level <= 2 ? "Levels 1–2 stay on a starter kit. Money is tight." : ""}</p>
+            <p className="text-sm text-muted">Carry {weight} / {carryCapacity(derived.scores.str) * derived.carryMultiplier} lb (Strength × 15{derived.carryMultiplier > 1 ? `, ×${derived.carryMultiplier} for Powerful Build or a taur body` : ""}; the wiki does not restate carry capacity). {character.level <= 2 ? "Levels 1–2 stay on a starter kit. Money is tight." : ""}</p>
             {entries[0] && findClass(rules, entries[0].id) && (() => {
               const cls = findClass(rules, entries[0].id)!;
-              const kit = starterKit(cls, rules);
-              const enriched = kit.items.map((item) => catalogRows.find((row) => row.id === item.id) ?? item);
+              const lines = equipmentLines(cls, rules);
+              const selected = chosenEquipment(lines, kitPicks);
+              const note = lines.length ? "From the class’s starting equipment" : "Suggested kit";
               return (
                 <div className="border border-white/10 p-3 text-sm">
-                  <Button variant="ghost" onClick={() => {
-                    const weapons = enriched.filter((item) => item.category === "weapons" || item.category === "grenades");
-                    const armor = enriched.find((item) => item.category === "armor");
-                    const shield = enriched.some((item) => item.category === "shields");
-                    const cybernetics = enriched.filter((item) => item.category === "cybernetics").map((item) => ({ id: item.id }));
-                    const note = kit.fromWiki ? "From the class’s starting equipment" : "Suggested kit — the class page did not name this item";
-                    const inventory = character.inventory.map((item) => ({ ...item }));
-                    const lines = enriched.flatMap((item) => {
-                      if (item.contents.length) return packPieces(item.contents).map((piece) => ({ name: piece.name, qty: piece.qty, notes: `${note}; from ${item.name}` }));
-                      if (["weapons", "grenades", "armor", "shields", "cybernetics"].includes(item.category)) return [];
-                      return [{ name: item.name, qty: 1, notes: note }];
-                    });
-                    for (const line of lines) {
-                      const found = inventory.find((item) => skillKey(item.name) === skillKey(line.name));
-                      if (found) found.qty += line.qty;
-                      else inventory.push(line);
-                    }
-                    patch({
-                      weapons: weapons.map((item) => ({ id: item.id })),
-                      armorId: armor?.id ?? null,
-                      shield,
-                      cybernetics,
-                      inventory,
-                    });
-                  }}>Add {cls.name} starter kit</Button>
-                  <p className="mt-2 text-muted">{kit.fromWiki ? "Named on the class’s starting equipment." : "Suggested kit. The class page did not name these exact items."}</p>
-                  <ul className="mt-2 space-y-2">
-                    {enriched.map((item) => (
-                      <li key={item.id}>
-                        <strong>{item.name}</strong>
-                        {item.contents.length > 0 && (
-                          <ul className="ml-4 list-disc text-muted">{item.contents.map((line) => <li key={line}>{line}</li>)}</ul>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-cyan">Starting equipment. Each (a) or (b) line is one choice. Option A is selected until you switch it.</p>
+                  {lines.map((line) => (
+                    <div key={line.id} className="mt-2">
+                      {line.choice ? (
+                        <div className="flex flex-wrap gap-2">
+                          {line.options.map((option) => (
+                            <Chip key={option.key} active={(kitPicks[line.id] ?? "a") === option.key} onClick={() => setKitPicks((prev) => ({ ...prev, [line.id]: option.key }))}>
+                              ({option.key}) {option.items.map((item) => item.name).join(", ") || option.label}
+                            </Chip>
+                          ))}
+                        </div>
+                      ) : <p>{line.options[0]?.items.map((item) => item.name).join(", ") || line.options[0]?.label}</p>}
+                    </div>
+                  ))}
+                  <Button className="mt-3" variant="ghost" onClick={() => patch(grantEquipment(selected, note))}>Add chosen kit</Button>
                 </div>
               );
             })()}

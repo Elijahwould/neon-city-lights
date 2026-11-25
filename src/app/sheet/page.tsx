@@ -226,6 +226,9 @@ function SheetInner() {
               <div><b>{derived.speed}</b><span>Speed</span></div>
             </div>
             {derived.acNotes.length > 0 && <p className="fine">{derived.acNotes.join(" · ")}</p>}
+            <p className="fine">{derived.movement}</p>
+            {derived.styleNotes.map((note) => <p key={note} className="fine">{note}</p>)}
+            {derived.traitNotes.map((note) => <p key={note} className="fine">{note}</p>)}
             {derived.features.some((feature) => feature.toLowerCase().includes("fighting style")) && (
               <label className="no-print">Fighting style
                 <Select value={character.fightingStyles[0] ?? ""} onChange={(e) => save({ ...character, fightingStyles: e.target.value ? [e.target.value] : [], defenseStyle: e.target.value === "Defense" })}>
@@ -249,8 +252,8 @@ function SheetInner() {
             <table>
               <thead><tr><th>Name</th><th>Atk bonus</th><th>Damage / type</th></tr></thead>
               <tbody>
-                {derived.attacks.map((attack) => (
-                  <tr key={attack.name}><td>{attack.name}{attack.proficient ? "" : " *"}</td><td>{formatMod(attack.toHit)}</td><td>{attack.damage}</td></tr>
+                {derived.attacks.map((attack, index) => (
+                  <tr key={`${attack.name}-${index}`}><td>{attack.name}{attack.proficient ? "" : " *"}{attack.notes ? <span className="block text-[10px] normal-case tracking-normal text-muted">{attack.notes}</span> : null}</td><td>{formatMod(attack.toHit)}</td><td>{attack.damage}</td></tr>
                 ))}
                 {derived.attacks.length === 0 && <tr><td colSpan={3}>No weapons equipped.</td></tr>}
               </tbody>
@@ -268,7 +271,7 @@ function SheetInner() {
             </ul>
             {derived.pactSlots > 0 && <p>Gifted tech: {derived.pactSlots} slot{derived.pactSlots === 1 ? "" : "s"} of level {derived.pactLevel}. These stay separate from the multiclass table and can cast either list.</p>}
             {derived.techDc != null && <p>Tech DC {derived.techDc} · attack {formatMod(derived.techAttack ?? 0)} ({derived.techAbility})</p>}
-            {derived.deckMax > 0 && <p>Cyberdeck {character.techs.filter((id) => !rules.techs.find((tech) => tech.id === id)?.trick).length}/{derived.deckMax} leveled techs. Level 1 starts with 6, then +2 each Techwizard level.</p>}
+            {derived.deckMax > 0 && <p>Cyberdeck {character.techs.filter((id) => !rules.techs.find((tech) => tech.id === id)?.trick).length}/{derived.deckMax} leveled techs. Prepared {character.prepared.length}/{derived.preparedMax ?? 0}. The deck starts at 6 and gains 2 each Techwizard level. You prepare Intelligence + Techwizard level.</p>}
             {derived.sourcePoints > 0 && (
               <p className="no-print">Source points {derived.sourcePoints}. {SOURCE_SLOT_COST.slice(1).map((cost, index) => (
                 <button key={cost} className="ml-1 underline" onClick={() => {
@@ -282,7 +285,18 @@ function SheetInner() {
             <ul>
               {character.techs.map((techId) => {
                 const tech = rules.techs.find((item) => item.id === techId);
-                return <li key={techId}><Link href={`/entry/?id=${techId}`}>{tech?.name ?? techId}</Link> {tech?.trick ? "trick" : `L${tech?.level}`}</li>;
+                const ready = character.prepared.includes(techId);
+                return (
+                  <li key={techId}>
+                    <Link href={`/entry/?id=${techId}`}>{tech?.name ?? techId}</Link> {tech?.trick ? "trick" : `L${tech?.level}`}
+                    {derived.deckMax > 0 && !tech?.trick && (
+                      <button type="button" className="no-print ml-2 underline" onClick={() => {
+                        if (ready) save({ ...character, prepared: character.prepared.filter((id) => id !== techId) });
+                        else if (character.prepared.length < (derived.preparedMax ?? 0)) save({ ...character, prepared: [...character.prepared, techId] });
+                      }}>{ready ? "prepared" : "prepare"}</button>
+                    )}
+                  </li>
+                );
               })}
               {derived.grantedTechIds.map((techId) => <li key={techId}>{rules.techs.find((item) => item.id === techId)?.name ?? techId} · granted, always prepared</li>)}
             </ul>

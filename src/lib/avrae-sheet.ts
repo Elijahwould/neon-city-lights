@@ -185,7 +185,9 @@ export function buildAvraeWorkbook(character: Character, rules: Rules, derived: 
   if (derived.techAttack != null) put(main, "AI91", derived.techAttack);
   const spells = [...character.techs, ...derived.grantedTechIds].filter((id, index, list) => list.indexOf(id) === index).map((id) => {
     const tech = rules.techs.find((item) => item.id === id);
-    return { name: tech?.name ?? id, level: tech?.trick || !tech?.level ? 0 : Math.min(9, tech.level), prepared: !character.prepared.length || character.prepared.includes(id) || Boolean(tech?.trick) };
+    const inBook = character.prepared.includes(id) || Boolean(tech?.trick) || derived.grantedTechIds.includes(id);
+    const prepared = derived.deckMax > 0 ? inBook : !character.prepared.length || inBook;
+    return { name: tech?.name ?? id, level: tech?.trick || !tech?.level ? 0 : Math.min(9, tech.level), prepared };
   });
   fillSpells(main, extra, spells);
   const features = [`Speed: ${derived.speed} ft.`, ...derived.features, ...derived.featAsiNotes];
