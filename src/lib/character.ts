@@ -68,7 +68,9 @@ export function blankCharacter(): Character {
     defenseStyle: false,
     fightingStyles: [],
     armorId: null,
+    armorSource: null,
     shield: false,
+    shieldSource: null,
     weapons: [],
     techs: [],
     techPicks: [],
@@ -126,6 +128,8 @@ export function normalizeCharacter(input: Character): Character {
     sheetNotes: input.sheetNotes ?? {},
     fightingStyles: input.fightingStyles ?? (input.defenseStyle ? ["Defense"] : []),
     techPicks: input.techPicks ?? [],
+    armorSource: input.armorSource ?? null,
+    shieldSource: input.shieldSource ?? null,
   };
 }
 

@@ -222,6 +222,7 @@ export interface CyberInstall {
 export interface WeaponEquip {
   id: string;
   ability?: Ability;
+  source?: string;
 }
 
 export interface InventoryItem {
@@ -277,7 +278,9 @@ export interface Character {
   defenseStyle: boolean;
   fightingStyles: string[];
   armorId: string | null;
+  armorSource: string | null;
   shield: boolean;
+  shieldSource: string | null;
   weapons: WeaponEquip[];
   techs: string[];
   /** Which class, feat, or style each chosen tech belongs to. Empty on older saves; the builder infers it from techs. */

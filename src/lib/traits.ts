@@ -158,6 +158,21 @@ export function traitGroups(
   return groups;
 }
 
+export function unfilledLineageChoices(
+  character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "lineagePicks" | "asiPicks">,
+  lineages: { id: string; name: string; traits: { name: string; line: string }[] }[] = [],
+) {
+  const gaps: string[] = [];
+  if (character.lineageId === "race:new-human" && !character.lineageOption) gaps.push("Ancestral Diversity");
+  for (const group of traitGroups(character, lineages)) {
+    const picked = (character.lineagePicks ?? []).filter((id) =>
+      group.traits.some((trait) => trait.id === id) || (group.trickList ? id.startsWith(`bonus-tech:${group.trickList}:`) : false),
+    );
+    if (picked.length < group.max) gaps.push(`${group.title} (${picked.length} of ${group.max})`);
+  }
+  return gaps;
+}
+
 export function borrowedNotes(picks: string[], lineages: { id: string; name: string; traits: { name: string; line: string }[] }[]) {
   return picks.filter((pick) => pick.startsWith("borrow|")).map((pick) => {
     const parts = pick.split("|");

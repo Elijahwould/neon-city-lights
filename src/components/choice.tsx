@@ -20,7 +20,8 @@ export function ChoiceCard({
   children?: ReactNode;
 }) {
   const [peek, setPeek] = useState(false);
-  const open = selected || peek;
+  const [collapsed, setCollapsed] = useState(false);
+  const open = peek || (selected && !collapsed);
   return (
     <div
       data-choice={choiceId}
@@ -28,7 +29,7 @@ export function ChoiceCard({
       className={`border p-3 ${selected ? "border-pink bg-pink/10" : "border-white/10"} ${disabled ? "opacity-50" : ""}`}
     >
       <div className="flex items-start justify-between gap-3">
-        <button type="button" className="order-1 min-h-11 flex-1 pt-2 text-left text-base font-semibold" aria-expanded={open} onClick={() => setPeek((value) => !value)}>
+        <button type="button" className="order-1 min-h-11 flex-1 pt-2 text-left text-base font-semibold" aria-expanded={open} onClick={() => { if (selected) setCollapsed((value) => !value); else setPeek((value) => !value); }}>
           {title}
         </button>
         <button
@@ -36,7 +37,7 @@ export function ChoiceCard({
           aria-pressed={selected}
           disabled={disabled}
           className={`order-2 min-h-11 shrink-0 border px-4 text-xs font-semibold disabled:opacity-40 ${selected ? "border-pink bg-pink text-black" : "border-cyan text-cyan"}`}
-          onClick={() => { onSelect(); setPeek(true); }}
+          onClick={() => { onSelect(); setPeek(true); setCollapsed(false); }}
         >
           {selected ? "Selected" : "Select"}
         </button>

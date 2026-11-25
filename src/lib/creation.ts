@@ -361,7 +361,7 @@ function equipmentBullets(text: string) {
   return bullets.length ? bullets : lines.filter((line) => !/^you start/i.test(line));
 }
 
-function itemsNamedIn(catalog: CatalogItem[], text: string) {
+export function itemsNamedIn(catalog: CatalogItem[], text: string) {
   const low = text.toLowerCase().replace(/[’‘]/g, "'");
   const named = catalog
     .filter((item) => item.name.length >= 3 && low.includes(item.name.toLowerCase().replace(/[’‘]/g, "'")))
@@ -427,23 +427,60 @@ export function starterKit(cls: ClassDef, rules: Rules): { items: CatalogItem[];
   return { items: suggested, fromWiki: false };
 }
 
-export function grantEquipment(items: CatalogItem[], note: string) {
-  const weapons = items.filter((item) => item.category === "weapons" || item.category === "grenades");
-  const armor = items.find((item) => item.category === "armor");
-  const shield = items.some((item) => item.category === "shields");
-  const cybernetics = items.filter((item) => item.category === "cybernetics").map((item) => ({ id: item.id }));
-  const inventory = items.flatMap((item) => {
-    if (item.contents.length) return packPieces(item.contents).map((piece) => ({ name: piece.name, qty: piece.qty, notes: `${note}; from ${item.name}` }));
-    if (["weapons", "grenades", "armor", "shields", "cybernetics"].includes(item.category)) return [];
-    return [{ name: item.name, qty: 1, notes: note }];
+export function grantEquipment(items: CatalogItem[], source: string) {
+  const gear = items.filter((item) => item.category !== "cybernetics");
+  const weapons = gear.filter((item) => item.category === "weapons" || item.category === "grenades");
+  const armor = gear.find((item) => item.category === "armor");
+  const shield = gear.some((item) => item.category === "shields");
+  const inventory = gear.flatMap((item) => {
+    if (item.contents.length) return packPieces(item.contents).map((piece) => ({ name: piece.name, qty: piece.qty, notes: source }));
+    if (["weapons", "grenades", "armor", "shields"].includes(item.category)) return [];
+    return [{ name: item.name, qty: 1, notes: source }];
   });
   return {
-    weapons: weapons.map((item) => ({ id: item.id })),
+    weapons: weapons.map((item) => ({ id: item.id, source })),
     armorId: armor?.id ?? null,
+    armorSource: armor ? source : null,
     shield,
-    cybernetics,
+    shieldSource: shield ? source : null,
+    cybernetics: [] as { id: string }[],
     inventory,
   };
+}
+
+export interface GearLine {
+  name: string;
+  cost: number;
+  source: string;
+}
+
+/** What the stipend is charged for. A negative cost is money added, such as an upbringing credchip. */
+export function gearLedger(character: Character, rules: Rules): GearLine[] {
+  const catalog = gearCatalog(rules);
+  const lines: GearLine[] = [];
+  const upbringing = rules.upbringings.find((item) => item.id === character.upbringingId);
+  if (upbringing?.credits) lines.push({ name: "Credchip", cost: -upbringing.credits, source: `Upbringing: ${upbringing.name}` });
+  if (character.armorId) {
+    const row = catalog.find((item) => item.id === character.armorId);
+    if (row) lines.push({ name: row.name, cost: row.cost ?? 0, source: character.armorSource || "Purchased" });
+  }
+  if (character.shield) {
+    const row = catalog.find((item) => item.id === "armor:riot-shield");
+    if (row) lines.push({ name: row.name, cost: row.cost ?? 0, source: character.shieldSource || "Purchased" });
+  }
+  for (const weapon of character.weapons) {
+    const row = catalog.find((item) => item.id === weapon.id);
+    if (row) lines.push({ name: row.name, cost: row.cost ?? 0, source: weapon.source || "Purchased" });
+  }
+  for (const item of character.inventory) {
+    const row = catalog.find((entry) => skillKey(entry.name) === skillKey(item.name));
+    lines.push({ name: item.qty > 1 ? `${item.qty}× ${item.name}` : item.name, cost: (row?.cost ?? 0) * item.qty, source: item.notes || "Purchased" });
+  }
+  return lines;
+}
+
+export function gearBalance(stipend: number, lines: GearLine[]) {
+  return stipend - lines.reduce((sum, line) => sum + line.cost, 0);
 }
 
 export function classBlurb(cls: ClassDef) {
