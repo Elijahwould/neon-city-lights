@@ -2,6 +2,7 @@ import * as XLSX from "xlsx";
 import type { Ability, Character, Rules } from "./types";
 import type { Derived } from "./character";
 import { findClass, findSubclass } from "./character";
+import { sheetAttackName } from "./grants";
 import { gearBalance, gearLedger, startingMoney } from "./creation";
 
 const SCORE_INPUT: Record<Ability, string> = { str: "C16", dex: "C21", con: "C26", int: "C31", wis: "C36", cha: "C41" };
@@ -195,9 +196,10 @@ export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, r
 
   character.weapons.slice(0, 5).forEach((weapon, index) => {
     const item = rules.weapons.find((row) => row.id === weapon.id);
-    const name = item ? closest(item.name, weaponNames) : null;
-    if (item && !name) unmapped.push(`Weapon ${item.name} is not on the Attack Info tab`);
-    put(main, `R${32 + index}`, name ?? item?.name ?? weapon.id);
+    const wanted = item ? sheetAttackName(item, weapon) : weapon.id;
+    const name = closest(wanted, weaponNames);
+    if (item && !name) unmapped.push(`Weapon ${wanted} is not on the Attack Info tab`);
+    put(main, `R${32 + index}`, name ?? wanted);
   });
   if (character.weapons.length > 5) unmapped.push(`${character.weapons.length - 5} weapons past the five main attack rows were not copied there`);
 
@@ -220,6 +222,8 @@ export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, r
     ...derived.features,
     ...derived.featAsiNotes,
     `Speed: ${derived.speed} ft.`,
+    derived.movement,
+    ...derived.initiativeNotes.map((note) => `Initiative: ${note}`),
   ];
   features.slice(0, 26).forEach((feature, index) => put(main, `C${59 + index}`, feature));
   if (features.length > 26) unmapped.push(`${features.length - 26} features past row 84`);

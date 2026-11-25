@@ -102,7 +102,7 @@ function toolTraits(): TraitDef[] {
 }
 
 export function traitGroups(
-  character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "asiPicks">,
+  character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "asiPicks" | "grantPicks">,
   lineages: { id: string; name: string; traits: { name: string; line: string }[] }[] = [],
 ): TraitGroup[] {
   const groups: TraitGroup[] = [];
@@ -111,7 +111,7 @@ export function traitGroups(
     groups.push({ id: "major", title: "Major splice (choose 1)", max: 1, traits: MAJOR_PICKS });
     groups.push({ id: "minor", title: "Minor splices (choose 2)", max: 2, traits: MINOR_PICKS });
   }
-  if (character.lineageId === "race:jerboan" && sub.includes("nu metal")) {
+  if (character.lineageId === "race:jerboan" && sub.includes("nu metal") && (character.grantPicks?.["option:nu-metal"] ?? []).includes("Down With the Sickness")) {
     groups.push({ id: "nu-major", title: "Down With the Sickness (one major splice)", max: 1, traits: MAJOR_PICKS });
   }
   if (character.lineageId === "race:new-human" && character.lineageOption === "Specialized Predisposition") {
@@ -159,7 +159,7 @@ export function traitGroups(
 }
 
 export function unfilledLineageChoices(
-  character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "lineagePicks" | "asiPicks">,
+  character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "lineagePicks" | "asiPicks" | "grantPicks">,
   lineages: { id: string; name: string; traits: { name: string; line: string }[] }[] = [],
 ) {
   const gaps: string[] = [];

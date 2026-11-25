@@ -33,6 +33,8 @@ import {
 } from "@/lib/character";
 import { TechPicker } from "@/components/tech-picker";
 import { pickLineage, traitGroups, unfilledLineageChoices } from "@/lib/traits";
+import { missingGrantLabels, weaponDamageTypes } from "@/lib/grants";
+import { GrantPicks } from "@/components/grant-picks";
 import { builderIntent, draftHasWork } from "@/lib/draft";
 import {
   SKILL_BLURB,
@@ -254,6 +256,11 @@ function BuilderInner() {
     !pointsReady ? "Point buy is over 27" : "",
     !character.upbringingId ? "Upbringing" : "",
     character.upbringingId && chosen.length < budget ? `Skill picks (${budget - chosen.length} left)` : "",
+    ...missingGrantLabels(character, rules, entries),
+    ...character.weapons.flatMap((weapon) => {
+      const item = rules.weapons.find((row) => row.id === weapon.id);
+      return item && weaponDamageTypes(item).length && !weapon.damageType ? [`${item.name} damage type`] : [];
+    }),
   ].filter(Boolean);
   const nextBlocked = (current === "Basics" && !character.name.trim())
     || (current === "Class" && (!entries.length || !levelsReady || subclassNeeded || (styleNeeded && character.fightingStyles.length === 0)))
@@ -408,6 +415,7 @@ function BuilderInner() {
       {current !== "Review" && missing.length > 0 && (
         <p className="text-sm text-pink">Still needed before Review: {missing.join(", ")}.</p>
       )}
+      <GrantPicks character={character} rules={rules} entries={entries} onChange={(grantPicks) => patch({ grantPicks })} />
       <section className="neon-card space-y-4 p-4">
         {current === "Basics" && (
           <>

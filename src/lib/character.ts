@@ -1,4 +1,5 @@
 import { activeTraits, borrowedNotes, traitAbility } from "./traits";
+import { resolveGrants, versatileDice } from "./grants";
 import {
   ABILITIES,
   ABILITY_NAME,
@@ -81,6 +82,7 @@ export function blankCharacter(): Character {
     biography: "",
     sheetNotes: {},
     choices: [],
+    grantPicks: {},
     playerName: "",
     alignment: "",
     personality: "",
@@ -130,6 +132,8 @@ export function normalizeCharacter(input: Character): Character {
     techPicks: input.techPicks ?? [],
     armorSource: input.armorSource ?? null,
     shieldSource: input.shieldSource ?? null,
+    grantPicks: input.grantPicks ?? {},
+    weapons: (input.weapons ?? []).map((weapon) => ({ ...weapon })),
   };
 }
 
@@ -230,7 +234,7 @@ export const MULTICLASS_PROFICIENCIES: Record<string, string> = {
   auditor: "Light armor, medium armor, shields, civilian weapons, military weapons",
   brawler: "Civilian weapons, machetes",
   enforcer: "Light armor, medium armor, shields, civilian weapons, military weapons",
-  influencer: "Light armor, one skill of your choice, one streaming tool of your choice",
+  influencer: "Light armor, one skill of your choice, one streaming tool of your choice or one instrument of your choice",
   mechanist: "Light armor, medium armor, shields, locksmith's kit, one basic toolkit of your choice",
   ordinator: "Light armor, medium armor, shields",
   outlaw: "Light armor, one skill from the outlaw skill list, locksmith's kit",
@@ -567,6 +571,7 @@ export interface Derived {
   ac: number;
   acNotes: string[];
   initiative: number;
+  initiativeNotes: string[];
   speed: number;
   size: string;
   saves: { ability: Ability; name: string; mod: number; proficient: boolean }[];
@@ -672,11 +677,25 @@ export function derive(raw: Character, rules: Rules): Derived {
 
   const armor = rules.armor.find((item) => item.id === character.armorId) ?? null;
   const wearingBody = Boolean(armor && armor.category !== "shield");
+  const shield = character.shield || armor?.category === "shield";
   const strNeed = Number(armor?.strength?.match(/(\d+)/)?.[1] ?? 0);
   const strengthShort = Boolean(wearingBody && strNeed && scores.str < strNeed);
   const armorStealth = Boolean(armor?.stealth?.toLowerCase().includes("disadvantage"));
   const dexDisadvantage = new Set(strengthShort ? ["acrobatics", "sleight of hand", "stealth"] : []);
   if (armorStealth) dexDisadvantage.add("stealth");
+  const grants = resolveGrants(character, rules, entries, {
+    wearingArmor: wearingBody,
+    armorCategory: wearingBody ? armor?.category ?? null : null,
+    shield,
+    mods,
+    characterLevel: level,
+    knownSkills: new Set(profs),
+  });
+  for (const skill of grants.skills) {
+    const key = skillKey(skill.name);
+    profs.add(key);
+    if (skill.expertise) expertise.add(key);
+  }
 
   const skills = rules.skills.map((skill) => {
     const key = skillKey(skill.id);
@@ -714,10 +733,10 @@ export function derive(raw: Character, rules: Rules): Derived {
   });
   if (tough) hp += level * 2;
   if (character.lineageId === "race:jerboan" && character.sublineage === "Punk Rock Jerboan") hp += level;
+  if (grants.hpBonus) hp += grants.hpBonus;
   if (character.hpOverride != null) hp = character.hpOverride;
 
   const acNotes: string[] = [];
-  const shield = character.shield || armor?.category === "shield";
   const unarmoredClass = classes.find((row) => row.cls?.unarmored)?.cls ?? null;
   let ac = 10 + mods.dex;
   const unarmoredOk = Boolean(unarmoredClass?.unarmored) && !wearingBody && (!shield || unarmoredClass?.unarmored?.allowsShield);
@@ -756,18 +775,41 @@ export function derive(raw: Character, rules: Rules): Derived {
       acNotes.push("Natural armor 13 + Dexterity");
     }
   }
+  let chassisStealth = false;
+  for (const option of grants.unarmored) {
+    const total = option.ac + (shield ? 2 : 0);
+    if (total > ac) {
+      ac = total;
+      acNotes.push(option.note);
+      chassisStealth = option.stealthDisadvantage;
+    }
+  }
+  if (chassisStealth) {
+    dexDisadvantage.add("stealth");
+    const stealth = skills.find((skill) => skillKey(skill.name) === "stealth");
+    if (stealth) stealth.disadvantage = true;
+    acNotes.push("Disadvantage on Stealth");
+  }
+  if (grants.acHeavy) {
+    ac += grants.acHeavy;
+    if (grants.acHeavyNote) acNotes.push(grants.acHeavyNote);
+  }
 
   let speed = lineage?.speed ?? 30;
   const move = resources["Unarmored Movement"];
   if (move && !wearingBody && !shield) {
     const bonus = Number(move.match(/(\d+)/)?.[1] ?? 0);
-    if (bonus) speed += bonus;
+    if (bonus) {
+      speed += bonus;
+      grants.notes.push(`+${bonus} ft. unarmored movement (Brawler)`);
+    }
   }
   if (strengthShort && character.lineageId !== "race:jerboan") speed = Math.max(0, speed - 10);
   for (const trait of traits) {
     if (trait.speedSet) speed = Math.max(speed, trait.speedSet);
   }
   for (const trait of traits) speed += trait.speedBonus ?? 0;
+  speed += grants.speedBonus;
 
   const castingClasses = classes.filter((row) => row.cls && (row.cls.caster !== "none" || row.sub?.techProgression || contributesCasterLevels(row.entry)));
   const separateStreamer = castingClasses.filter((row) => row.entry.id === "streamer");
@@ -856,12 +898,16 @@ export function derive(raw: Character, rules: Rules): Derived {
     if (!weapon) return [{ name: equipped.id, toHit: 0, damage: "—", proficient: false, notes: "Missing from the weapons table" }];
     const properties = (weapon.properties ?? "").toLowerCase();
     const finesse = properties.includes("finesse");
-    const ranged = weapon.category.includes("ranged") || properties.includes("ammunition");
-    const ability = equipped.ability ?? (finesse ? (mods.dex >= mods.str ? "dex" : "str") : ranged ? "dex" : "str");
-    const proficient = weaponProficient(profText.toLowerCase(), weapon.name, weapon.category);
-    const dice = weapon.damage?.match(/\d+d\d+(?:\s*\+\s*\d+)?|\d+/)?.[0] ?? weapon.damage ?? "—";
-    const dtype = weapon.damage?.replace(dice, "").trim() ?? "";
-    const twoHanded = properties.includes("two-handed") || properties.includes("two handed");
+    const ranged = weapon.category.includes("ranged") || properties.includes("ammunition") || properties.includes("range");
+    const armorerWeapon = classes.some((row) => row.entry.subclassId === "mechanist:armorer") && (weapon.id === "weapon:concussion-gloves" || weapon.id === "weapon:arc-launcher");
+    const ability = equipped.ability ?? (armorerWeapon ? "int" : finesse ? (mods.dex >= mods.str ? "dex" : "str") : ranged ? "dex" : "str");
+    const proficient = armorerWeapon || weaponProficient(`${profText} ${grants.lines.join(" ")}`.toLowerCase(), weapon.name, weapon.category);
+    const versatileDie = versatileDice(weapon);
+    const twoHanded = properties.includes("two-handed") || properties.includes("two handed") || equipped.grip === "two";
+    const typed = (weapon.damage ?? "—").replace(/varies/i, equipped.damageType || "varies");
+    const damageSource = twoHanded && versatileDie ? `${versatileDie} ${typed.replace(/^\d+d\d+\s*/, "")}`.trim() : typed;
+    const dice = damageSource.match(/\d+d\d+(?:\s*\+\s*\d+)?|\d+/)?.[0] ?? damageSource;
+    const dtype = damageSource.replace(dice, "").trim();
     const versatile = properties.includes("versatile");
     const melee = weapon.category.includes("melee") && !twoHanded;
     meleeSeen += melee ? 1 : 0;
@@ -883,7 +929,8 @@ export function derive(raw: Character, rules: Rules): Derived {
       toHit += 1;
       notes.push("gun-fu +1");
     }
-    const row: AttackLine = { name: weapon.name, toHit, damage: `${dice}${formatMod(damageMod)} ${dtype}`.trim(), proficient, notes: notes.filter(Boolean).join("; ") };
+    const attackName = twoHanded && versatileDie ? `${weapon.name} (two-handed)` : weapon.name;
+    const row: AttackLine = { name: attackName, toHit, damage: `${dice}${formatMod(damageMod)} ${dtype}`.trim(), proficient, notes: notes.filter(Boolean).join("; ") };
     if (!properties.includes("thrown") || !thrownStyle) return [row];
     const thrownAbility = finesse && mods.dex >= mods.str ? "dex" : "str";
     const thrownHit = mods[thrownAbility] + (proficient ? pb : 0);
@@ -922,7 +969,7 @@ export function derive(raw: Character, rules: Rules): Derived {
   if (styles.has("Riot Fighting")) styleNotes.push("Riot Fighting: bonus-action defensive stance.");
   if (styles.has("Clobbering Swing")) styleNotes.push("Clobbering Swing: splash your modifier on a second target when you have advantage.");
   if (styles.has("Dancing Thorns")) styleNotes.push("Dancing Thorns: a near-crit with advantage can become a critical hit.");
-  const traitNotes = [...traits.flatMap((trait) => {
+  const traitNotes = [...grants.notes, ...traits.flatMap((trait) => {
     const lines = [trait.note, trait.resistance ? `Resistance: ${trait.resistance}` : "", trait.tool ? `Tool: ${trait.tool}` : ""].filter((line): line is string => Boolean(line));
     return lines;
   }), ...borrowedNotes(character.lineagePicks ?? [], rules.lineages)];
@@ -946,7 +993,8 @@ export function derive(raw: Character, rules: Rules): Derived {
     hitDicePool: [...dice.entries()].map(([die, count]) => `${count}d${die}`).join(" + ") || "—",
     ac,
     acNotes,
-    initiative: mods.dex + (traits.some((trait) => trait.initiative === "pb") ? pb : 0),
+    initiative: mods.dex + (traits.some((trait) => trait.initiative === "pb") ? pb : 0) + grants.initiativeBonus,
+    initiativeNotes: grants.initiativeNotes,
     speed,
     size: lineage?.size ?? "Medium",
     saves,
@@ -968,7 +1016,10 @@ export function derive(raw: Character, rules: Rules): Derived {
     techAttack: techMod == null ? null : pb + techMod,
     styleNotes,
     traitNotes,
-    movement: [`${speed} ft. walk`, ...traits.flatMap((trait) => [trait.swim ? `${speed} ft. swim` : "", trait.climb === "speed" ? `${speed} ft. climb` : typeof trait.climb === "number" ? `${trait.climb} ft. climb` : ""]), ...styleNotes.filter((note) => note.startsWith("Swim"))].filter(Boolean).join(", "),
+    movement: [`${speed} ft. walk`, ...traits.flatMap((trait) => [trait.swim ? `${speed} ft. swim` : "", trait.climb === "speed" ? `${speed} ft. climb` : typeof trait.climb === "number" ? `${trait.climb} ft. climb` : ""]), ...grants.moves.map((move) => {
+      const feet = move.feet === "walk" ? speed : move.feet + (move.kind === "swim" || move.kind === "climb" ? grants.swimClimbBonus : 0);
+      return `${feet} ft. ${move.kind} (${move.note})`;
+    }), ...styleNotes.filter((note) => note.startsWith("Swim"))].filter(Boolean).join(", "),
     carryMultiplier: traits.reduce((factor, trait) => factor * (trait.carryMultiplier ?? 1), 1),
     grantedTechIds,
     grantedTechNotes,
@@ -977,7 +1028,7 @@ export function derive(raw: Character, rules: Rules): Derived {
     cyberOverflow: character.cybernetics.length > pb,
     expertiseCap: classes.reduce((sum, row) => sum + expertiseCap(row.cls, row.entry.level), 0),
     classLabels: classes.map((row) => `${row.cls?.name} ${row.entry.level}`).join(" / ") || "—",
-    proficiencyText: [profText, ...traits.flatMap((trait) => trait.tool ? [trait.tool] : [])].filter(Boolean).join("; "),
+    proficiencyText: [profText, ...traits.flatMap((trait) => trait.tool ? [trait.tool] : []), ...grants.lines].filter(Boolean).join("; "),
     sourcePoints: Math.max(0, sourceRaw - character.sourcePointsSpent),
     warnings,
     featAsiNotes,

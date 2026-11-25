@@ -75,6 +75,7 @@ export interface SubclassDef {
   sectors: string[];
   listId: string;
   blurb: string;
+  /** Wiki bonuses and granted proficiencies are applied from src/lib/grants.ts. */
 }
 
 export interface LineageDef {
@@ -225,6 +226,10 @@ export interface WeaponEquip {
   id: string;
   ability?: Ability;
   source?: string;
+  /** Versatile weapons can be swung in one or two hands. */
+  grip?: "one" | "two";
+  /** Brass knuckles and polearms change type. */
+  damageType?: string;
 }
 
 export interface InventoryItem {
@@ -294,6 +299,8 @@ export interface Character {
   biography: string;
   sheetNotes: Record<string, string>;
   choices: { label: string; value: string }[];
+  /** Subclass and lineage picks the wiki asks for, such as Vlogger skills or a surge affinity. */
+  grantPicks: Record<string, string[]>;
   createdAt: string;
   updatedAt: string;
 }
