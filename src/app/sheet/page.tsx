@@ -6,7 +6,9 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import { AsiPicker } from "@/components/asi-picker";
 import { TechSheet } from "@/components/tech-sheet";
 import { Button, Select, TextInput } from "@/components/ui";
-import { AVRAE_CELL_MAP, characterAsText, downloadAvrae, downloadAvraeCsv } from "@/lib/avrae-sheet";
+import { characterAsText } from "@/lib/avrae-sheet";
+import { createSheetInDrive, downloadFilledSheet } from "@/lib/gsheet";
+import { gearBalance, gearLedger, startingMoney } from "@/lib/creation";
 import { GOOGLE_SHEET_LABEL, GOOGLE_SHEET_URL } from "@/lib/config";
 import { ABILITIES, ABILITY_NAME, type Ability, type Character, type Rules } from "@/lib/types";
 import { loadRules } from "@/lib/data";
@@ -80,11 +82,21 @@ function SheetInner() {
   const [pendingFeatAbility, setPendingFeatAbility] = useState<Ability | "">("");
   const [pendingStyle, setPendingStyle] = useState("");
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
-  const [avraeHelp, setAvraeHelp] = useState(false);
+  const [sheetNote, setSheetNote] = useState<string | null>(null);
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
   const [copied, setCopied] = useState("");
   const [featureBook, setFeatureBook] = useState<Record<string, { text?: string; level?: number | null; source?: string }>>({});
   const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
   const [openFeatures, setOpenFeatures] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    if (!googleClientId || document.querySelector("script[data-gsi]")) return;
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.dataset.gsi = "true";
+    document.head.appendChild(script);
+  }, [googleClientId]);
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
@@ -150,37 +162,19 @@ function SheetInner() {
         <Link href={`/builder/?id=${character.id}`} className="inline-flex items-center rounded-sm border border-cyan/50 px-3 py-2 text-sm text-cyan">Edit</Link>
         <Button variant="ghost" onClick={() => window.print()}>Print / PDF</Button>
         <Button variant="ghost" onClick={() => downloadCharacter(character)}>Export JSON</Button>
-        <Button variant="ghost" onClick={() => downloadAvrae(character, rules, derived)}>Export for Avrae (.xlsx)</Button>
-        <Button variant="ghost" onClick={() => downloadAvraeCsv(character, rules, derived)}>CSV fallback</Button>
         <Button variant="ghost" onClick={() => { const text = characterAsText(character, derived); navigator.clipboard.writeText(text).then(() => setCopied("Copied the sheet as text and JSON.")).catch(() => setCopied(text)); }}>Copy as text</Button>
-        <Button variant="ghost" onClick={() => setAvraeHelp((open) => !open)}>Avrae import help</Button>
+        <Button variant="ghost" onClick={() => downloadFilledSheet(character, rules, derived).then((unmapped) => setSheetNote(unmapped.length ? `Downloaded. Not filled: ${unmapped.join(" ")}` : "Downloaded the Google Sheet.")).catch((err: Error) => setSheetNote(err.message))}>Download Google Sheet</Button>
+        {googleClientId && <Button variant="ghost" onClick={() => createSheetInDrive(googleClientId, character, rules, derived).catch((err: Error) => setSheetNote(err.message))}>Create in my Google Drive</Button>}
         <Button variant="ghost" onClick={copyShare}>Copy share link</Button>
         <Button onClick={() => { setGainClass(entries[0]?.id ?? ""); setLevelOpen(true); }}>Level up</Button>
-        {GOOGLE_SHEET_URL ? (
+        {GOOGLE_SHEET_URL && (
           <a className="inline-flex items-center rounded-sm border border-cyan/50 px-3 py-2 text-sm text-cyan" href={GOOGLE_SHEET_URL}>{GOOGLE_SHEET_LABEL}</a>
-        ) : (
-          <span className="inline-flex items-center rounded-sm border border-white/15 px-3 py-2 text-sm text-muted" title="Sheet URL not set yet">{GOOGLE_SHEET_LABEL}</span>
         )}
         <Button variant="ghost" onClick={() => save({ ...character, slotsExpended: [0, 0, 0, 0, 0, 0, 0, 0, 0], bonusSlots: [0, 0, 0, 0, 0, 0, 0, 0, 0], sourcePointsSpent: 0 })}>Long rest</Button>
       </div>
       {share && <p className="no-print break-all text-xs text-cyan">{share}</p>}
       {copied && <pre className="no-print max-h-40 overflow-auto whitespace-pre-wrap text-xs text-muted">{copied}</pre>}
-      {avraeHelp && (
-        <section className="no-print neon-card space-y-2 p-4 text-sm">
-          <h2 className="text-cyan">Export for Avrae / Google Sheets</h2>
-          <p>A static site cannot push a character into Avrae. Download the workbook, import it into Google Sheets, share it, then import it in Discord.</p>
-          <ol className="list-decimal space-y-1 pl-5">
-            <li>Click Export for Avrae. The file has three tabs: Sheet1, Additional, and Inventory. Cell AQ4 says Avrae GSheet v2.1.</li>
-            <li>In Google Sheets, choose File, then Import, then Upload, and replace the current sheet.</li>
-            <li>Share the sheet as “Anyone with the link can view,” or share it with avrae-320@avrae-bot.iam.gserviceaccount.com.</li>
-            <li>In Discord, run !import and paste the sheet URL. Then !char and the character name.</li>
-          </ol>
-          <p>The CSV is a fallback of those same three tabs. Avrae itself only reads a Google Sheet, not the CSV.</p>
-          <p>Cells written for Avrae’s importer:</p>
-          <ul className="list-disc pl-5 text-muted">{AVRAE_CELL_MAP.map((line) => <li key={line}>{line}</li>)}</ul>
-          <p>Limitations: Neon City dollars are stored as gold pieces, because Avrae’s purse is coins. Technology is placed on the Arcana row and Culture on the Religion row. Walking speed is a feature line, not a movement cell, because the importer does not read speed. NCL feature names are written out, but Avrae only builds automation for feature names it already knows. Inventory item rows are on the Inventory tab for you; Avrae reads the coin cells, not those rows. High-end weapon bonuses are not separate damage dice.</p>
-        </section>
-      )}
+      {sheetNote && <p className="no-print text-sm text-muted">{sheetNote}</p>}
 
       <article className="paper">
         <header className="paper-head">
@@ -349,9 +343,22 @@ function SheetInner() {
             <h3>Languages</h3>
             <TextInput value={character.languages.join(", ")} onChange={(e) => save({ ...character, languages: e.target.value.split(",").map((item) => item.trim()).filter(Boolean) })} />
             <h3>Equipped</h3>
-            <p>{rules.armor.find((item) => item.id === character.armorId)?.name ?? "No armor"}{character.shield ? ", shield" : ""} · {character.weapons.map((weapon) => rules.weapons.find((item) => item.id === weapon.id)?.name).filter(Boolean).join(", ") || "no weapons"}</p>
-            <p>{creditsLabel(character.credits)} · cybernetics {character.cybernetics.length}/{derived.cyberLimit}: {character.cybernetics.map((item) => rules.cybernetics.find((cyber) => cyber.id === item.id)?.name).join(", ") || "none"}</p>
-            <ul>{character.inventory.map((item, index) => <li key={index}>{item.qty}× {item.name}</li>)}</ul>
+            <p>{rules.armor.find((item) => item.id === character.armorId)?.name ?? "No armor"}{character.armorSource ? ` · ${character.armorSource}` : ""}{character.shield ? `, shield${character.shieldSource ? ` · ${character.shieldSource}` : ""}` : ""}</p>
+            <ul>
+              {character.weapons.map((weapon, index) => {
+                const name = rules.weapons.find((item) => item.id === weapon.id)?.name ?? weapon.id;
+                return <li key={`${weapon.id}-${index}`}>{name}{weapon.source ? ` · ${weapon.source}` : ""}</li>;
+              })}
+              {character.inventory.map((item, index) => <li key={`pack-${index}`}>{item.qty}× {item.name}{item.notes ? ` · ${item.notes}` : ""}</li>)}
+            </ul>
+            {(() => {
+              const lines = gearLedger(character, rules);
+              const balance = gearBalance(startingMoney(character.level).credits, lines);
+              return balance < 0
+                ? <p className="text-pink">Debt {creditsLabel(-balance)}. The gear costs more than the stipend. That debt stays on purpose, so the runner has a reason to take work.</p>
+                : <p>Left {creditsLabel(balance)}.</p>;
+            })()}
+            <ul>{gearLedger(character, rules).map((line, index) => <li key={`${line.source}-${index}`}>{line.source} · {line.name} · {line.cost < 0 ? `adds ${creditsLabel(-line.cost)}` : creditsLabel(line.cost)}</li>)}</ul>
           </div>
         </footer>
       </article>

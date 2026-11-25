@@ -1,7 +1,11 @@
 import rulesJson from "../public/data/rules.json";
 import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, classLevelAccess, classTechBudget, collectGrantedTechs, cyberdeckSize, derive, findClass, findSubclass, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, techPickCounts, trickAllowance } from "../src/lib/character";
 import flavor from "../public/data/flavor.json";
-import { chosenEquipment, equipmentLines, startingMoney, xpForLevel } from "../src/lib/creation";
+import { chosenEquipment, equipmentLines, gearBalance, gearCatalog, gearLedger, grantEquipment, itemsNamedIn, startingMoney, xpForLevel } from "../src/lib/creation";
+import { unfilledLineageChoices } from "../src/lib/traits";
+import { fillNclWorkbook } from "../src/lib/gsheet";
+import * as XLSX from "xlsx";
+import { readFileSync } from "node:fs";
 import type { Character, Rules } from "../src/lib/types";
 
 const rules = rulesJson as Rules;
@@ -295,10 +299,14 @@ check("edited class levels still sum to the total", fitClassLevels([
   { id: "techwizard", level: 1, subclassId: null },
 ], 5, "techwizard").map((entry) => entry.level), [4, 1]);
 
+check("flex accepts +2 on one score", asiAssignmentOk("flex", { str: 2 }), true);
+check("flex accepts two +1s", asiAssignmentOk("flex", { str: 1, dex: 1 }), true);
+check("flex rejects +2 and +1 together", asiAssignmentOk("flex", { str: 2, dex: 1 }), false);
 check("human increase is two +1s", asiAssignmentOk("plus1plus1", { str: 1, dex: 1 }), true);
 check("human increase rejects three +1s", asiAssignmentOk("plus1plus1", { str: 1, dex: 1, con: 1 }), false);
 check("spread accepts +2 and +1", asiAssignmentOk("spread", { str: 2, dex: 1 }), true);
 check("splicer accepts two +2s", asiAssignmentOk("splicer", { str: 2, dex: 2 }), true);
+check("splicer accepts +2 and two +1s", asiAssignmentOk("splicer", { str: 2, dex: 1, con: 1 }), true);
 check("splicer rejects a lone +2", asiAssignmentOk("splicer", { str: 2 }), false);
 const swapped = assignPooledScore({ str: 15, dex: 14, con: 13, int: 12, wis: 10, cha: 8 }, "cha", 15);
 check("standard array swaps instead of duplicating", swapped, { str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15 });
@@ -463,6 +471,51 @@ const helping = collectGrantedTechs(rules, runner({ asiPicks: [{ level: 1, mode:
 check("helping hand hacker grants its trick", helping.some((note) => note.id === "tech:hovering-helping-hand" && note.source === "Granted by Helping Hand Hacker"), true);
 const elfTrick = collectGrantedTechs(rules, runner({ lineageId: "race:elf", lineagePicks: ["bonus-tech:techwizard:tech:aimbot"] }));
 check("a lineage trick is granted by the lineage", elfTrick.some((note) => note.id === "tech:aimbot" && note.source === "Granted by Elf"), true);
+
+check("debt is the stipend minus the charged gear", gearBalance(10000, [{ name: "Heavy pistol", cost: 12000, source: "Class: Streamer" }]), -2000);
+const streamerClass = findClass(rules, "streamer")!;
+const streamerKit = grantEquipment(chosenEquipment(equipmentLines(streamerClass, rules), {}).filter((item) => item.category !== "cybernetics"), "Class: Streamer");
+check("streamer starting kit does not add cybernetics", streamerKit.cybernetics.length, 0);
+check("streamer weapons are labeled with the class", streamerKit.weapons.every((weapon) => weapon.source === "Class: Streamer"), true);
+const street = rules.upbringings.find((item) => item.id === "upbringing:street-kid")!;
+const streetGear = itemsNamedIn(gearCatalog(rules), street.equipment);
+check("street kid gear is not added without that upbringing", streetGear.every((item) => item.category !== "cybernetics"), true);
+const bare = runner({ classId: "streamer", level: 1 });
+check("a runner with no upbringing has no upbringing charges", gearLedger(bare, rules).some((line) => line.source.startsWith("Upbringing:")), false);
+check("an empty splicer still needs both splice groups", unfilledLineageChoices(runner({ lineageId: "race:splicer" }), rules.lineages).length, 2);
+check("filled splices leave the lineage list", unfilledLineageChoices(runner({
+  lineageId: "race:splicer",
+  lineagePicks: ["major:aquatic", "minor:adorable-tail", "minor:digitigrade"],
+}), rules.lineages).length, 0);
+
+const template = XLSX.read(readFileSync("public/data/ncl-gsheet-v2.1.xlsx"));
+const filledRunner = runner({
+  name: "Vex Kade",
+  classId: "enforcer",
+  subclassId: "enforcer:juicer",
+  level: 5,
+  classLevels: [{ id: "enforcer", level: 5, subclassId: "enforcer:juicer" }],
+  lineageId: "race:human",
+  upbringingId: "upbringing:street-kid",
+  baseScores: scores,
+  lineageAsi: { str: 1, dex: 1 },
+  fightingStyles: ["Defense"],
+  armorId: "armor:ceramiron",
+  armorSource: "Class: Enforcer",
+  weapons: [{ id: "weapon:spear", source: "Class: Enforcer" }],
+  skillProfs: ["Athletics", "Intimidation"],
+});
+const filledDerived = derive(filledRunner, rules);
+const filled = fillNclWorkbook(template, filledRunner, rules, filledDerived);
+const mainSheet = filled.book.Sheets["v2.1"];
+check("the template level formula stays", Boolean(mainSheet.AL6?.f), true);
+check("the template version cell stays 2.1", mainSheet.AQ4?.v, "2.1");
+check("the class cell names the enforcer", String(mainSheet.T5?.v).includes("Enforcer"), true);
+check("the name is written", mainSheet.C6?.v, "Vex Kade");
+check("the strength base score is written", mainSheet.C16?.v, 16);
+check("athletics is marked proficient", mainSheet.H28?.v, 1);
+check("the sheet keeps every template tab", filled.book.SheetNames.join(","), template.SheetNames.join(","));
+check("age has no runner field", filled.unmapped.some((line) => line.startsWith("Age")), true);
 
 if (failed) {
   console.error(`${failed} failed`);

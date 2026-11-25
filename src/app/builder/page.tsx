@@ -18,8 +18,6 @@ import {
   classEntries,
   classNeedsFightingStyle,
   creditsLabel,
-  cyberNeedsSkill,
-  cyberStatOptions,
   derive,
   FIGHTING_STYLES,
   findClass,
@@ -34,7 +32,7 @@ import {
   standardScores,
 } from "@/lib/character";
 import { TechPicker } from "@/components/tech-picker";
-import { pickLineage, traitGroups } from "@/lib/traits";
+import { pickLineage, traitGroups, unfilledLineageChoices } from "@/lib/traits";
 import {
   SKILL_BLURB,
   carryCapacity,
@@ -46,8 +44,10 @@ import {
   gearSummary,
   chosenEquipment,
   equipmentLines,
+  gearBalance,
+  gearLedger,
   grantEquipment,
-  starterKit,
+  itemsNamedIn,
   packPieces,
   skillPickBudget,
   sortGear,
@@ -204,6 +204,7 @@ function BuilderInner() {
     !character.lineageId ? "Lineage" : "",
     character.lineageId && !lineageReady ? "Lineage ability score increase" : "",
     character.lineageId === "race:jerboan" && !character.sublineage ? "Jerboan heritage" : "",
+    ...unfilledLineageChoices(character, rules.lineages),
     !pointsReady ? "Point buy is over 27" : "",
     !character.upbringingId ? "Upbringing" : "",
     character.upbringingId && chosen.length < budget ? `Skill picks (${budget - chosen.length} left)` : "",
@@ -213,14 +214,6 @@ function BuilderInner() {
     || (current === "Lineage" && (!character.lineageId || !lineageReady || (character.lineageId === "race:jerboan" && !character.sublineage)))
     || (current === "Scores" && !pointsReady)
     || (current === "Upbringing" && (!character.upbringingId || chosen.length < budget));
-  const spent = catalogRows.reduce((sum, row) => {
-    if (row.id === character.armorId) return sum + (row.cost ?? 0);
-    if (character.weapons.some((item) => item.id === row.id)) return sum + (row.cost ?? 0);
-    if (character.cybernetics.some((item) => item.id === row.id)) return sum + (row.cost ?? 0);
-    if (character.shield && row.id === "armor:riot-shield") return sum + (row.cost ?? 0);
-    if (character.inventory.some((item) => skillKey(item.name) === skillKey(row.name))) return sum + (row.cost ?? 0);
-    return sum;
-  }, 0);
   const weight = catalogRows.reduce((sum, row) => {
     const owned = row.id === character.armorId || character.weapons.some((item) => item.id === row.id) || character.inventory.some((item) => skillKey(item.name) === skillKey(row.name));
     return owned ? sum + row.weight : sum;
@@ -239,7 +232,7 @@ function BuilderInner() {
   function save() {
     const saved: Character = {
       ...draft,
-      credits: editId ? draft.credits : money.credits,
+      credits: gearBalance(money.credits, gearLedger(draft, book)),
       xp: editId ? draft.xp : xpForLevel(draft.level),
       mpEarned: editId ? draft.mpEarned : (draft.level >= 5 ? rankFor(book, draft.level)?.totalMp ?? 0 : 0),
       classLevels: entries,
@@ -255,12 +248,90 @@ function BuilderInner() {
     const cls = findClass(book, classId);
     if (!cls) return {};
     const lines = equipmentLines(cls, book);
-    const items = lines.length ? chosenEquipment(lines, picks) : starterKit(cls, book).items;
-    const note = lines.length ? "From the class’s starting equipment" : "Suggested kit";
-    const granted = grantEquipment(items, note);
+    const source = `Class: ${cls.name}`;
+    const items = (lines.length ? chosenEquipment(lines, picks) : []).filter((item) => item.category !== "cybernetics");
+    const granted = grantEquipment(items, source);
     if (!keepExtra) return granted;
-    const extra = draft.inventory.filter((item) => !/starting equipment|Suggested kit/i.test(item.notes));
-    return { ...granted, inventory: [...granted.inventory, ...extra] };
+    const extraInventory = draft.inventory.filter((item) => !item.notes.startsWith("Class:"));
+    const extraWeapons = draft.weapons.filter((weapon) => !weapon.source?.startsWith("Class:"));
+    return {
+      ...granted,
+      weapons: [...granted.weapons, ...extraWeapons],
+      inventory: [...granted.inventory, ...extraInventory],
+      armorId: granted.armorId ?? (draft.armorSource?.startsWith("Class:") ? null : draft.armorId),
+      armorSource: granted.armorSource ?? (draft.armorSource?.startsWith("Class:") ? null : draft.armorSource),
+      shield: granted.shield || Boolean(draft.shield && !draft.shieldSource?.startsWith("Class:")),
+      shieldSource: granted.shieldSource ?? (draft.shieldSource?.startsWith("Class:") ? null : draft.shieldSource),
+    };
+  }
+
+  function lineageOptions(item: NonNullable<typeof lineage>) {
+    if (!character || !rules) return null;
+    return (
+      <>
+        <AsiPicker mode={lineageAsiMode(item)} value={character.lineageAsi} onChange={(lineageAsi) => patch({ lineageAsi })} />
+        {item.id === "race:new-human" && (
+          <Field label="Ancestral Diversity">
+            <Select value={character.lineageOption ?? ""} onChange={(e) => patch({ lineageOption: e.target.value || null })}>
+              <option value="">Choose</option>
+              <option>Specialized Predisposition</option>
+              <option>Natural Biodiversity</option>
+              <option>Hyper Adaptability</option>
+            </Select>
+          </Field>
+        )}
+        <HeritageField
+          required={item.id === "race:jerboan"}
+          heritages={item.sublineages}
+          value={character.sublineage}
+          subAsi={character.subAsi}
+          onChange={(name) => patch({ sublineage: name, subAsi: {}, lineagePicks: character.lineagePicks.filter((pick) => !pick.startsWith("nu-") && !pick.startsWith("major:") && !pick.startsWith("minor:")) })}
+          onAsi={(ability, amount) => patch({ subAsi: { [ability]: amount } })}
+        />
+        {traitGroups(character, rules.lineages).map((group) => {
+          const picked = character.lineagePicks.filter((id) => group.traits.some((trait) => trait.id === id) || (group.trickList ? id.startsWith(`bonus-tech:${group.trickList}:`) : false));
+          return (
+            <div key={group.id} className="mt-3 space-y-2">
+              <p className="text-xs uppercase tracking-wider text-cyan">{group.title} · {picked.length}/{group.max}</p>
+              {group.trickList ? (
+                <Select value={character.lineagePicks.find((id) => id.startsWith(`bonus-tech:${group.trickList}:`)) ?? ""} onChange={(event) => {
+                  const rest = character.lineagePicks.filter((id) => !id.startsWith(`bonus-tech:${group.trickList}:`));
+                  patch({ lineagePicks: event.target.value ? [...rest, event.target.value] : rest });
+                }}>
+                  <option value="">Choose a trick</option>
+                  {rules.techs.filter((tech) => tech.trick && (tech.classes ?? []).includes(group.trickList!)).map((tech) => (
+                    <option key={tech.id} value={`bonus-tech:${group.trickList}:${tech.id}`}>{tech.name}</option>
+                  ))}
+                </Select>
+              ) : (
+                <div className="flex max-h-48 flex-wrap gap-2 overflow-auto">
+                  {group.traits.map((trait) => {
+                    const on = character.lineagePicks.includes(trait.id);
+                    return (
+                      <Chip key={trait.id} active={on} onClick={() => {
+                        if (on) {
+                          patch({ lineagePicks: character.lineagePicks.filter((id) => id !== trait.id) });
+                          return;
+                        }
+                        const inGroup = character.lineagePicks.filter((id) => group.traits.some((entry) => entry.id === id));
+                        if (group.lineageCap) {
+                          const lineages = new Set(inGroup.map(pickLineage).filter(Boolean));
+                          const nextLineage = pickLineage(trait.id);
+                          if (nextLineage && !lineages.has(nextLineage) && lineages.size >= group.lineageCap) return;
+                        }
+                        const withoutOldest = inGroup.length >= group.max ? character.lineagePicks.filter((id) => id !== inGroup[0]) : character.lineagePicks;
+                        patch({ lineagePicks: [...withoutOldest, trait.id] });
+                      }}>{trait.name}</Chip>
+                    );
+                  })}
+                </div>
+              )}
+              {group.traits.filter((trait) => character.lineagePicks.includes(trait.id)).slice(0, 4).map((trait) => <p key={trait.id} className="text-xs text-muted">{trait.summary}</p>)}
+            </div>
+          );
+        })}
+      </>
+    );
   }
 
   function addStory(field: "personality" | "ideals" | "bonds" | "flaws", line: string) {
@@ -279,7 +350,15 @@ function BuilderInner() {
       <div className="flex gap-1" aria-hidden="true">
         {visible.map((name, index) => <div key={name} className={`h-1.5 flex-1 ${index <= Math.min(step, visible.length - 1) ? "bg-pink" : "bg-white/15"}`} />)}
       </div>
-      <p className="text-xs text-muted">{visible.join(" · ")}</p>
+      <p className="text-xs text-muted">{visible.map((name, index) => (
+        <button key={name} type="button" className={`mr-2 min-h-11 underline-offset-2 ${index === Math.min(step, visible.length - 1) ? "text-pink" : "text-cyan"}`} onClick={() => setStep(index)}>{name}</button>
+      ))}</p>
+      {lineage && current !== "Lineage" && (
+        <details className="border border-white/10 p-3 text-sm">
+          <summary className="min-h-11 cursor-pointer text-cyan">Lineage choices · {lineage.name}. Open this on any step. The rest of the runner stays.</summary>
+          <div className="mt-3 space-y-2">{lineageOptions(lineage)}</div>
+        </details>
+      )}
       {current !== "Review" && missing.length > 0 && (
         <p className="text-sm text-pink">Still needed before Review: {missing.join(", ")}.</p>
       )}
@@ -324,78 +403,24 @@ function BuilderInner() {
                 ...item.traits.map((trait) => ({ label: trait.name, text: trait.line })),
               ]} />
               <Reveal id={item.id} text="Full wiki text, including naming notes." cache={cache} setCache={setCache} />
-              {selected && (
-                <div className="mt-2 space-y-2">
-                  <AsiPicker mode={lineageAsiMode(item)} value={character.lineageAsi} onChange={(lineageAsi) => patch({ lineageAsi })} />
-                  {item.id === "race:new-human" && (
-                    <Field label="Ancestral Diversity">
-                      <Select value={character.lineageOption ?? ""} onChange={(e) => patch({ lineageOption: e.target.value || null })}>
-                        <option value="">Choose</option>
-                        <option>Specialized Predisposition</option>
-                        <option>Natural Biodiversity</option>
-                        <option>Hyper Adaptability</option>
-                      </Select>
-                    </Field>
-                  )}
-                  <HeritageField
-                    required={item.id === "race:jerboan"}
-                    heritages={item.sublineages}
-                    value={character.sublineage}
-                    subAsi={character.subAsi}
-                    onChange={(name) => patch({ sublineage: name, subAsi: {}, lineagePicks: character.lineagePicks.filter((pick) => !pick.startsWith("nu-") && !pick.startsWith("major:") && !pick.startsWith("minor:")) })}
-                    onAsi={(ability, amount) => patch({ subAsi: { [ability]: amount } })}
-                  />
-                  {traitGroups(character, rules.lineages).map((group) => {
-                    const picked = character.lineagePicks.filter((id) => group.traits.some((trait) => trait.id === id) || (group.trickList ? id.startsWith(`bonus-tech:${group.trickList}:`) : false));
-                    return (
-                      <div key={group.id} className="mt-3 space-y-2">
-                        <p className="text-xs uppercase tracking-wider text-cyan">{group.title} · {picked.length}/{group.max}</p>
-                        {group.trickList ? (
-                          <Select value={character.lineagePicks.find((id) => id.startsWith(`bonus-tech:${group.trickList}:`)) ?? ""} onChange={(event) => {
-                            const rest = character.lineagePicks.filter((id) => !id.startsWith(`bonus-tech:${group.trickList}:`));
-                            patch({ lineagePicks: event.target.value ? [...rest, event.target.value] : rest });
-                          }}>
-                            <option value="">Choose a trick</option>
-                            {rules.techs.filter((tech) => tech.trick && (tech.classes ?? []).includes(group.trickList!)).map((tech) => (
-                              <option key={tech.id} value={`bonus-tech:${group.trickList}:${tech.id}`}>{tech.name}</option>
-                            ))}
-                          </Select>
-                        ) : (
-                          <div className="flex max-h-48 flex-wrap gap-2 overflow-auto">
-                            {group.traits.map((trait) => {
-                              const on = character.lineagePicks.includes(trait.id);
-                              return (
-                                <Chip key={trait.id} active={on} onClick={() => {
-                                  if (on) {
-                                    patch({ lineagePicks: character.lineagePicks.filter((id) => id !== trait.id) });
-                                    return;
-                                  }
-                                  const inGroup = character.lineagePicks.filter((id) => group.traits.some((item) => item.id === id));
-                                  if (group.lineageCap) {
-                                    const lineages = new Set(inGroup.map(pickLineage).filter(Boolean));
-                                    const nextLineage = pickLineage(trait.id);
-                                    if (nextLineage && !lineages.has(nextLineage) && lineages.size >= group.lineageCap) return;
-                                  }
-                                  const withoutOldest = inGroup.length >= group.max ? character.lineagePicks.filter((id) => id !== inGroup[0]) : character.lineagePicks;
-                                  patch({ lineagePicks: [...withoutOldest, trait.id] });
-                                }}>{trait.name}</Chip>
-                              );
-                            })}
-                          </div>
-                        )}
-                        {group.traits.filter((trait) => character.lineagePicks.includes(trait.id)).slice(0, 4).map((trait) => <p key={trait.id} className="text-xs text-muted">{trait.summary}</p>)}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+              {selected && <div className="mt-2 space-y-2">{lineageOptions(item)}</div>}
             </ChoiceCard>
           );
         })}
         {current === "Upbringing" && rules.upbringings.map((item) => (
           <ChoiceCard key={item.id} choiceId={item.id} title={item.name} selected={character.upbringingId === item.id} onSelect={() => {
             if (character.upbringingId === item.id) return;
-            patch({ upbringingId: item.id, toolProfs: item.tools.filter((tool) => tool.toLowerCase() !== "none") });
+            const source = `Upbringing: ${item.name}`;
+            const granted = grantEquipment(itemsNamedIn(gearCatalog(book), item.equipment).filter((piece) => piece.category !== "cybernetics"), source);
+            const keptInventory = draft.inventory.filter((entry) => !entry.notes.startsWith("Upbringing:"));
+            const keptWeapons = draft.weapons.filter((weapon) => !weapon.source?.startsWith("Upbringing:"));
+            patch({
+              upbringingId: item.id,
+              toolProfs: item.tools.filter((tool) => tool.toLowerCase() !== "none"),
+              weapons: [...keptWeapons, ...granted.weapons],
+              inventory: [...keptInventory, ...granted.inventory],
+              ...(granted.armorId && !draft.armorId ? { armorId: granted.armorId, armorSource: source } : {}),
+            });
           }}>
             <FactList rows={[
               { label: "Skills", text: item.skills.join(", ") || "None listed." },
@@ -658,40 +683,7 @@ function BuilderInner() {
         )}
         {current === "Equipment" && (
           <>
-            <p>Budget {creditsLabel(money.credits)} · spent {creditsLabel(spent)} · left {creditsLabel(money.credits - spent)}</p>
-            {character.cybernetics.length > 0 && (
-              <div className="space-y-2 border border-white/10 p-3 text-sm">
-                <p className="text-cyan">Installed cybernetics {character.cybernetics.length}/{derived.cyberLimit}. BioMod and NeuroMod do nothing until you pick the ability. The higher tier replaces a lower one of the same kind.</p>
-                {character.cybernetics.map((install, index) => {
-                  const name = rules.cybernetics.find((item) => item.id === install.id)?.name ?? install.id;
-                  const stats = cyberStatOptions(install.id);
-                  const needsSkill = cyberNeedsSkill(install.id);
-                  return (
-                    <div key={`${install.id}-${index}`} className="space-y-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <strong>{name}</strong>
-                        <Button variant="ghost" onClick={() => patch({ cybernetics: character.cybernetics.filter((_, itemIndex) => itemIndex !== index) })}>Remove</Button>
-                      </div>
-                      {stats && (
-                        <div className="flex flex-wrap gap-2">
-                          {stats.map((ability) => (
-                            <Chip key={ability} active={install.stat === ability} onClick={() => patch({ cybernetics: character.cybernetics.map((item, itemIndex) => itemIndex === index ? { ...item, stat: ability } : item) })}>
-                              {ABILITY_NAME[ability]}
-                            </Chip>
-                          ))}
-                        </div>
-                      )}
-                      {needsSkill && (
-                        <Select value={install.skill ?? ""} onChange={(e) => patch({ cybernetics: character.cybernetics.map((item, itemIndex) => itemIndex === index ? { ...item, skill: e.target.value || undefined } : item) })}>
-                          <option value="">Choose a skill</option>
-                          {rules.skills.map((skill) => <option key={skill.id} value={skill.name}>{skill.name}</option>)}
-                        </Select>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+            <MoneyLines stipend={money.credits} note={money.note} lines={gearLedger(character, rules)} />
             <p className="text-sm text-muted">Carry {weight} / {carryCapacity(derived.scores.str) * derived.carryMultiplier} lb (Strength × 15{derived.carryMultiplier > 1 ? `, ×${derived.carryMultiplier} for Powerful Build or a taur body` : ""}; the wiki does not restate carry capacity). {character.level <= 2 ? "Levels 1–2 stay on a starter kit. Money is tight." : ""}</p>
             {entries[0] && findClass(rules, entries[0].id) && (() => {
               const cls = findClass(rules, entries[0].id)!;
@@ -723,14 +715,14 @@ function BuilderInner() {
             })()}
             <TextInput value={gearQuery} onChange={(e) => setGearQuery(e.target.value)} placeholder="Search gear" />
             <div className="flex flex-wrap gap-2">
-              {GEAR_FILTERS.map((cat) => <Chip key={cat} active={gearCat === cat} onClick={() => setGearCat(cat)}>{cat}</Chip>)}
+              {GEAR_FILTERS.filter((cat) => cat !== "cybernetics").map((cat) => <Chip key={cat} active={gearCat === cat} onClick={() => setGearCat(cat)}>{cat}</Chip>)}
             </div>
             <div className="flex flex-wrap gap-2">
               {([["rarity", "rarity then price"], ["name", "name"], ["price", "price"]] as const).map(([mode, label]) => <Chip key={mode} active={gearSort === mode} onClick={() => setGearSort(mode)}>{label}</Chip>)}
             </div>
             <p className="text-xs text-muted">{catalogRows.filter((row) => (gearCat === "all" || (gearCat === "high-end" ? row.highEnd : row.category === gearCat)) && row.name.toLowerCase().includes(gearQuery.toLowerCase())).length} shown · {catalogRows.length} items. {unpriced} have no wiki price. {undescribed} have no wiki description. The wiki has no separate services price list.</p>
             <ul className="max-h-[32rem] space-y-2 overflow-auto">
-              {catalogRows.filter((row) => (gearCat === "all" || (gearCat === "high-end" ? row.highEnd : row.category === gearCat)) && row.name.toLowerCase().includes(gearQuery.toLowerCase())).map((row) => (
+              {catalogRows.filter((row) => row.category !== "cybernetics" && (gearCat === "all" || (gearCat === "high-end" ? row.highEnd : row.category === gearCat)) && row.name.toLowerCase().includes(gearQuery.toLowerCase())).map((row) => (
                 <li key={row.id} className="border border-white/10 p-2 text-sm">
                   <div className="flex items-start justify-between gap-2">
                     <button type="button" className="min-h-11 text-left" onClick={() => setOpenGear(openGear === row.id ? null : row.id)}>
@@ -743,16 +735,15 @@ function BuilderInner() {
                         for (const piece of packPieces(row.contents)) {
                           const found = inventory.find((item) => skillKey(item.name) === skillKey(piece.name));
                           if (found) found.qty += piece.qty;
-                          else inventory.push({ name: piece.name, qty: piece.qty, notes: `From ${row.name}` });
+                          else inventory.push({ name: piece.name, qty: piece.qty, notes: "Purchased" });
                         }
                         patch({ inventory });
                         return;
                       }
-                      if (row.category === "armor") patch({ armorId: row.id });
-                      else if (row.category === "shields") patch({ shield: true });
-                      else if (row.category === "weapons" || row.category === "grenades") patch({ weapons: [...character.weapons, { id: row.id }] });
-                      else if (row.category === "cybernetics") patch({ cybernetics: [...character.cybernetics, { id: row.id }] });
-                      else patch({ inventory: [...character.inventory, { name: row.name, qty: 1, notes: "" }] });
+                      if (row.category === "armor") patch({ armorId: row.id, armorSource: "Purchased" });
+                      else if (row.category === "shields") patch({ shield: true, shieldSource: "Purchased" });
+                      else if (row.category === "weapons" || row.category === "grenades") patch({ weapons: [...character.weapons, { id: row.id, source: "Purchased" }] });
+                      else patch({ inventory: [...character.inventory, { name: row.name, qty: 1, notes: "Purchased" }] });
                     }}>{row.contents.length ? "Add pack" : "Add"}</Button>
                   </div>
                   {openGear === row.id && (
@@ -777,7 +768,7 @@ function BuilderInner() {
             <p className="text-lg">{character.name || "Unnamed"} · level {character.level} · {derived.classLabels}</p>
             <p>HP {derived.hp} (minimum 1 per level) · AC {derived.ac} · proficiency {derived.pb >= 0 ? `+${derived.pb}` : derived.pb}</p>
             <p>{character.level < 5 ? `XP ${xpForLevel(character.level).toLocaleString()} (5e threshold; the wiki chart starts at level 5).` : `MP ${rankFor(rules, character.level)?.totalMp ?? 0} (wiki total for this level).`}</p>
-            <p>{creditsLabel(money.credits)} budget · {creditsLabel(spent)} of gear · {money.houseRule ? money.note : ""}</p>
+            <MoneyLines stipend={money.credits} note={money.note} lines={gearLedger(character, rules)} />
             <p>Scores {ABILITIES.map((ability) => `${ability.toUpperCase()} ${derived.scores[ability]}`).join(" · ")}</p>
             {derived.warnings.map((warning) => <p key={warning} className="text-pink">{warning}</p>)}
             <Button disabled={missing.length > 0} onClick={save}>{editId ? "Save changes" : "Save runner and open sheet"}</Button>
@@ -789,6 +780,25 @@ function BuilderInner() {
         <Button variant="ghost" disabled={step === 0} onClick={() => setStep((n) => Math.max(0, n - 1))}>Back</Button>
         {current !== "Review" && <Button disabled={nextBlocked} onClick={() => setStep((n) => Math.min(visible.length - 1, n + 1))}>Next</Button>}
       </div>
+    </div>
+  );
+}
+
+function MoneyLines({ stipend, note, lines }: { stipend: number; note: string; lines: { name: string; cost: number; source: string }[] }) {
+  const balance = gearBalance(stipend, lines);
+  return (
+    <div className="space-y-1 text-sm" data-money={balance}>
+      <p>Starting stipend {creditsLabel(stipend)}. {note}</p>
+      <ul className="space-y-1">
+        {lines.map((line, index) => (
+          <li key={`${line.source}-${line.name}-${index}`}>{line.source} · {line.name} · {line.cost < 0 ? `adds ${creditsLabel(-line.cost)}` : creditsLabel(line.cost)}</li>
+        ))}
+      </ul>
+      {balance < 0 ? (
+        <p className="text-pink">Debt {creditsLabel(-balance)}. The gear costs more than the stipend. That debt stays on purpose, so the runner has a reason to take work.</p>
+      ) : (
+        <p>Left {creditsLabel(balance)}.</p>
+      )}
     </div>
   );
 }

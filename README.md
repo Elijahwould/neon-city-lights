@@ -54,7 +54,7 @@ npm run build
 
 Deploy the `out/` folder (the zip root is the site, not a nested `out/` directory). On Vercel, the build command is `npm run build` and the output directory is `out`. No server, database, or environment variables are required. Do not commit a `.env` file.
 
-Characters stay in the browser. From the sheet you can export JSON, copy a text summary, or download an Avrae GSheet v2.1 workbook (`.xlsx`, with a CSV fallback) and import that file into Google Sheets.
+Characters stay in the browser. From the sheet you can export JSON, copy a text summary, or download a filled copy of the NCL Google Sheet template. Formulas in that template stay put. Import the file into Google Sheets yourself. If a public Google client id is set as NEXT_PUBLIC_GOOGLE_CLIENT_ID at build time, the sheet can also be created in Drive.
 
 ## Credits
 
