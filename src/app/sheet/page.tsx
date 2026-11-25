@@ -83,11 +83,13 @@ function SheetInner() {
   const [avraeHelp, setAvraeHelp] = useState(false);
   const [copied, setCopied] = useState("");
   const [featureBook, setFeatureBook] = useState<Record<string, { text?: string; level?: number | null; source?: string }>>({});
+  const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
   const [openFeatures, setOpenFeatures] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
     fetch("/data/feature-text.json").then((res) => res.json()).then(setFeatureBook).catch(() => undefined);
+    fetch("/data/tech-text.json").then((res) => res.json()).then(setTechText).catch(() => undefined);
     fetch("/data/feat-asi.json").then((res) => res.json()).then(setFeatAsi).catch(() => undefined);
   }, []);
 
@@ -127,7 +129,7 @@ function SheetInner() {
   const needsAsi = Boolean(targetClass && asiLevels(targetClass, nextClassLevel).includes(nextClassLevel));
   const needsSub = Boolean(targetClass?.subclassLevel === nextClassLevel && !targetEntry?.subclassId);
   const gate = target ? canTakeClassLevel(character, target, derived.scores) : { ok: true, reason: "" };
-  const owned = new Set(character.techs);
+  const owned = new Set([...character.techs, ...derived.grantedTechIds]);
 
   async function copyShare() {
     const payload = await encodeShare(character!);
@@ -288,7 +290,13 @@ function SheetInner() {
                 const ready = character.prepared.includes(techId);
                 return (
                   <li key={techId}>
-                    <Link href={`/entry/?id=${techId}`}>{tech?.name ?? techId}</Link> {tech?.trick ? "trick" : `L${tech?.level}`}
+                    <Link href={`/entry/?id=${techId}`}>{tech?.name ?? techId}</Link> {tech?.trick ? "cantrip" : `level ${tech?.level}`}
+                    {techText[techId]?.summary && <span className="block text-muted">{techText[techId].summary}</span>}
+                    <details className="text-muted">
+                      <summary className="cursor-pointer">Casting details</summary>
+                      <p>{[tech?.castingTime && `Casting time: ${tech.castingTime}`, tech?.range && `Range: ${tech.range}`, tech?.components && `Components: ${tech.components}`, tech?.duration && `Duration: ${tech.duration}`].filter(Boolean).join(" · ")}</p>
+                      {techText[techId]?.effect && <p className="whitespace-pre-wrap">{techText[techId].effect}</p>}
+                    </details>
                     {derived.deckMax > 0 && !tech?.trick && (
                       <button type="button" className="no-print ml-2 underline" onClick={() => {
                         if (ready) save({ ...character, prepared: character.prepared.filter((id) => id !== techId) });
@@ -298,7 +306,7 @@ function SheetInner() {
                   </li>
                 );
               })}
-              {derived.grantedTechIds.map((techId) => <li key={techId}>{rules.techs.find((item) => item.id === techId)?.name ?? techId} · granted, always prepared</li>)}
+              {derived.grantedTechNotes.map((note) => <li key={`${note.classId}-${note.id}`}>{note.name} · {note.source}. Always prepared, and it does not count against your picks.</li>)}
             </ul>
             {derived.bonusOffers.filter((offer) => !owned.has(offer.id)).map((offer) => (
               <p key={offer.id} className="fine">{rules.techs.find((tech) => tech.id === offer.id)?.name} is available to add. {offer.note} <button className="no-print underline" onClick={() => save({ ...character, techs: [...character.techs, offer.id] })}>Add</button></p>

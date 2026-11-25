@@ -19,31 +19,29 @@ export function ChoiceCard({
   onSelect: () => void;
   children?: ReactNode;
 }) {
+  const [peek, setPeek] = useState(false);
+  const open = selected || peek;
   return (
     <div
       data-choice={choiceId}
       data-selected={selected ? "true" : "false"}
-      className={`cursor-pointer border p-3 ${selected ? "border-pink bg-pink/10" : "border-white/10"} ${disabled ? "opacity-50" : ""}`}
-      onClick={(event) => {
-        if (disabled) return;
-        const target = event.target as HTMLElement;
-        if (target.closest("button, a, input, select, textarea")) return;
-        onSelect();
-      }}
+      className={`border p-3 ${selected ? "border-pink bg-pink/10" : "border-white/10"} ${disabled ? "opacity-50" : ""}`}
     >
       <div className="flex items-start justify-between gap-3">
-        <strong className="pt-2 text-base">{title}</strong>
+        <button type="button" className="order-1 min-h-11 flex-1 pt-2 text-left text-base font-semibold" aria-expanded={open} onClick={() => setPeek((value) => !value)}>
+          {title}
+        </button>
         <button
           type="button"
           aria-pressed={selected}
           disabled={disabled}
-          className={`min-h-11 shrink-0 border px-4 text-xs font-semibold disabled:opacity-40 ${selected ? "border-pink bg-pink text-black" : "border-cyan text-cyan"}`}
-          onClick={() => onSelect()}
+          className={`order-2 min-h-11 shrink-0 border px-4 text-xs font-semibold disabled:opacity-40 ${selected ? "border-pink bg-pink text-black" : "border-cyan text-cyan"}`}
+          onClick={() => { onSelect(); setPeek(true); }}
         >
           {selected ? "Selected" : "Select"}
         </button>
       </div>
-      {children}
+      {open && children}
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Chip, TextInput } from "@/components/ui";
-import { CATEGORY_LABEL, GROUPS, loadCatalog } from "@/lib/data";
+import { CATEGORY_LABEL, GROUPS, loadCatalog, loadFlavor, originLabel, type FlavorFile } from "@/lib/data";
 import type { CatalogEntry } from "@/lib/types";
 import { creditsLabel } from "@/lib/character";
 
@@ -21,9 +21,11 @@ export default function CompendiumPage() {
   const [rarity, setRarity] = useState("");
   const [shown, setShown] = useState(48);
   const [filtersOpen, setFiltersOpen] = useState(true);
+  const [flavor, setFlavor] = useState<FlavorFile | null>(null);
 
   useEffect(() => {
     loadCatalog().then(setEntries).catch((err: Error) => setError(err.message));
+    loadFlavor().then(setFlavor).catch(() => undefined);
   }, []);
 
   const filtered = useMemo(() => {
@@ -101,6 +103,19 @@ export default function CompendiumPage() {
         {filtered.slice(0, shown).map((entry) => (
           <li key={entry.id}>
             <Link href={`/entry/?id=${encodeURIComponent(entry.id)}`} className="neon-card block h-full p-3 hover:border-cyan">
+              {(() => {
+                const card = flavor?.classes[entry.id] ?? flavor?.lineages[entry.id];
+                const label = originLabel(card);
+                return card?.image || label ? (
+                  <div className="mb-2">
+                    {card?.image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={card.image} alt={card.credit || entry.title} loading="lazy" width={480} height={270} className="mb-2 h-28 w-full rounded-sm object-cover object-top" />
+                    )}
+                    {label && <p className="text-[10px] uppercase tracking-wide text-cyan">{label}</p>}
+                  </div>
+                ) : null;
+              })()}
               <div className="flex items-baseline justify-between gap-2">
                 <h2 className="font-semibold">{entry.title}</h2>
                 <span className="text-[10px] uppercase tracking-widest text-cyan">{CATEGORY_LABEL[entry.category] ?? entry.category}</span>

@@ -23,6 +23,8 @@ export interface TraitGroup {
   title: string;
   max: number;
   traits: TraitDef[];
+  trickList?: string;
+  lineageCap?: number;
 }
 
 const MAJOR: TraitDef[] = [
@@ -72,8 +74,10 @@ const MINOR_PICKS = MINOR.flatMap((trait) => trait.id === "minor:tough-hide" ? w
 
 const SKILL = (id: string, name: string, skill: string): TraitDef => ({ id, name, summary: `Proficiency in ${skill}.`, skill });
 
+const noted = new Map<string, TraitDef>();
+
 export function traitById(id: string) {
-  return [...MAJOR_PICKS, ...MINOR_PICKS, ...skillTraits(), ...toolTraits()].find((trait) => trait.id === id) ?? null;
+  return noted.get(id) ?? [...MAJOR_PICKS, ...MINOR_PICKS, ...skillTraits(), ...toolTraits()].find((trait) => trait.id === id) ?? null;
 }
 
 function skillTraits(): TraitDef[] {
@@ -97,7 +101,10 @@ function toolTraits(): TraitDef[] {
   ];
 }
 
-export function traitGroups(character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "asiPicks">): TraitGroup[] {
+export function traitGroups(
+  character: Pick<Character, "lineageId" | "sublineage" | "lineageOption" | "asiPicks">,
+  lineages: { id: string; name: string; traits: { name: string; line: string }[] }[] = [],
+): TraitGroup[] {
   const groups: TraitGroup[] = [];
   const sub = (character.sublineage ?? "").toLowerCase();
   if (character.lineageId === "race:splicer") {
@@ -120,7 +127,60 @@ export function traitGroups(character: Pick<Character, "lineageId" | "sublineage
   if (character.lineageId === "race:jerboan") {
     groups.push({ id: "jerboan-tool", title: "Desert Mechanic (choose 1 tool)", max: 1, traits: toolTraits() });
   }
+  if (character.lineageId === "race:elf" && sub.includes("executive")) {
+    groups.push({ id: "elf-trick", title: "Worked With IT: one Techwizard trick", max: 1, traits: [], trickList: "techwizard" });
+  }
+  if (character.lineageId === "race:trash-gremlin" && sub.includes("genetic")) {
+    groups.push({ id: "gremlin-trick", title: "Nanite Infusion: one Source Coder trick", max: 1, traits: [], trickList: "sourcecoder" });
+  }
+  const biodiversity = character.lineageId === "race:new-human" && character.lineageOption === "Natural Biodiversity";
+  const custom = character.lineageId === "race:custom";
+  if ((biodiversity || custom) && lineages.length) {
+    const blocked = new Set(lineages.filter((lineage) => lineage.traits.some((trait) => trait.name === "Legacy Programming")).map((lineage) => lineage.id));
+    const borrowed = lineages.filter((lineage) => lineage.id !== character.lineageId && !(biodiversity && blocked.has(lineage.id))).flatMap((lineage) =>
+      lineage.traits
+        .filter((trait) => !/ability score|choose|you gain one feat/i.test(`${trait.name} ${trait.line}`))
+        .map((trait) => ({
+          id: `borrow|${lineage.id}|${trait.name}`,
+          name: `${lineage.name}: ${trait.name}`,
+          summary: trait.line,
+          note: `${lineage.name} — ${trait.name}. ${trait.line}`,
+        })),
+    );
+    groups.push({
+      id: "borrowed",
+      title: biodiversity ? "Natural Biodiversity: two traits, from up to two lineages" : "Inherited traits: two, from up to two lineages",
+      max: 2,
+      lineageCap: 2,
+      traits: [...MAJOR_PICKS, ...MINOR_PICKS, ...borrowed],
+    });
+  }
   return groups;
+}
+
+export function borrowedNotes(picks: string[], lineages: { id: string; name: string; traits: { name: string; line: string }[] }[]) {
+  return picks.filter((pick) => pick.startsWith("borrow|")).map((pick) => {
+    const parts = pick.split("|");
+    const lineage = lineages.find((item) => item.id === parts[1]);
+    const name = parts.slice(2).join("|");
+    const trait = lineage?.traits.find((item) => item.name === name);
+    return trait && lineage ? `${lineage.name}: ${trait.name}. ${trait.line}` : name;
+  });
+}
+
+export function lineageTechIds(picks: string[]) {
+  return picks.flatMap((pick) => {
+    if (!pick.startsWith("bonus-tech:")) return [];
+    const rest = pick.slice("bonus-tech:".length);
+    const split = rest.indexOf(":");
+    return split >= 0 ? [rest.slice(split + 1)] : [];
+  });
+}
+
+export function pickLineage(id: string) {
+  if (id.startsWith("major:") || id.startsWith("minor:")) return "race:splicer";
+  if (id.startsWith("borrow|")) return id.split("|")[1] ?? "";
+  return "";
 }
 
 export function activeTraits(character: Pick<Character, "lineagePicks">): TraitDef[] {
