@@ -1,0 +1,1577 @@
+{
+  "classes": {
+    "auditor": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "An Artificiate waits in cover for hours, unmoving but always vigilant. She gains sight of her target, quickly analyzing it for vulnerabilities to exploit. Once the perfect opportunity presents itself, she emerges, dashing towards her mark to deliver one clean, decisive, and lethal blow.",
+        "A corporate agent maintains their ground against insurmountable odds in a crowded bar. He deftly weaves through the flurry of blows, making a counterattack that leaves a group of assailants reeling. Soon after, the lone warrior stands among the remains of a Triad, now a pile of bruised and broken bodies on the floor.",
+        "Finding the payment offered by a client insufficient, the disgruntled Wukong simply whistled in response. Moments later, a hulking mechanical canine bursts through a nearby window, pouncing on the client. As he uses all his effort to dislodge the beast\u2019s teeth from his arm, its owner calmly approaches, grasping a dagger in their prehensile tail."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:dark-stalker": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Gloom Stalker",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:drone-rigger": {
+      "book": "Fizban's Treasury of Dragons",
+      "origin": "Drakewarden",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:manhunter": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Monster Slayer",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:moderator": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Fey Wanderer",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:monster-coach": {
+      "book": "Player's Handbook",
+      "origin": "Beast Master",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:mutant-hunter": {
+      "book": "Player's Handbook",
+      "origin": "Hunter",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:nanoswarm-host": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Swarmkeeper",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "auditor:transmat-driver": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Horizon Walker",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "A gobbo squares off against her larger opponents, her massive cyber-fists each nearly the size of her torso. She bounces from foot to foot before springing forward, her superior speed and strength sending them reeling in surprise.",
+        "Taking a deep breath, an elf covered in circuitry tattoos settles into a battle stance. As the gangbangers charge her, she lets her internal implants turn her exhalation into white-hot plasma that washes over her foes.",
+        "Moving in utter silence, a black-clad wukong crawls along the outside of a corp exec\u2019s penthouse. He pauses on the balcony outside the kleptocrat\u2019s bedroom, pulling a knife from its sheath as he contemplates how vulnerable people are while they sleep."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:asura": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Astral Self",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:dragon-claw": {
+      "book": "Fizban's Treasury of Dragons",
+      "origin": "Ascendant Dragon",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:drunken-fist": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Drunken Master",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:kung-fu": {
+      "book": "Player's Handbook",
+      "origin": "Open Hand",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:north-star": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Mercy",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:otaku": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Kensei",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:rave": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Sun Soul",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:reaper": {
+      "book": "Sword Coast Adventurer's Guide",
+      "origin": "Long Death",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:sunset": {
+      "book": "Player's Handbook",
+      "origin": "Shadow",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:surging-strike-old": {
+      "book": "Player's Handbook",
+      "origin": "Four Elements",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "brawler:surging-strike": {
+      "book": "Player's Handbook",
+      "origin": "Four Elements",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "class-tech-lists": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "class": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "director": {
+      "book": "KibblesTasty",
+      "origin": "Warlord",
+      "examples": [
+        "Collapsing to the ground, a rebel succumbs to wounds, exhaustion, terror, and the overwhelming din of security drones around him. Death closes in, but before it can claim him, a core's hardlight hand yanks him to his feet. \"On your feet, friend.\"",
+        "A ganger sneers at his bonds, tied in a circle with his bested companions before a group of freelancers. He demands of a netnibbler, their apparent leader, to know how he's been bested. \"Luck,\" they inform. \"And perhaps a bit of planning.\""
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "With a curious head tilt and a gentle hand, a remake sets aside his gigantic sword and rests a palm on his wounded colleague\u2019s chest, infusing the injury with medical nanobots that knit their flesh and skin together.",
+        "Clad in full polysteel armor, a nayaling points her buster sword at a quavering bandit, singling them out against the crowd of increasingly nervous hijackers. In a panic he rushes at her, only to fall in two behind her blade.",
+        "With his trenchcoat billowing from the rooftop winds, an elf wordlessly stays his colleagues and steps forward to deliver the first blow of the battle."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:anarchist": {
+      "book": "Dungeon Master's Guide",
+      "origin": "Oathbreaker",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:ancestors": {
+      "book": "Player's Handbook",
+      "origin": "Ancients",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:avenger": {
+      "book": "Player's Handbook",
+      "origin": "Vengeance",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:bodyguard": {
+      "book": "Sword Coast Adventurer's Guide",
+      "origin": "Crown",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:disruptor": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:drowned": {
+      "book": "Tal'Dorei Campaign Setting Reborn",
+      "origin": "Open Sea",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:icon": {
+      "book": "Mythic Odysseys of Theros",
+      "origin": "Glory",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:juicer": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:loyal": {
+      "book": "Player's Handbook",
+      "origin": "Devotion",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:peacekeeper": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Redemption",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:protector": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Watchers",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "enforcer:tyrant": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Conquest",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "An artificiate dressed like a hentai school girl grooves to vaporwave, live-mixing sick beats for the approval of her livestream audience of thousands. Every time she bounces to the beat, another like appears on the channel.",
+        "A human delves the ruins of the Old World, a go-pro mounted on his hardhat. He narrates everything he sees to the delight of his viewers in the safety of their habicubes\u2014and to his own increased danger, since it lets the unfriendly locals know exactly where he is.",
+        "A gobbo works in a dimly lit workshop, her exact location hidden by the multiple firewalls and VPNs she uses during her streams. As she uses commercial-grade 3D printers to build military-grade weapons, she lectures on exactly how to use them to best effect against the corporations."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:activist": {
+      "book": "Player's Handbook",
+      "origin": "Valor",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:drama-queen": {
+      "book": "Tal'Dorei Reborn",
+      "origin": "College of Tragedy",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:idol": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "College of Glamour",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:orator": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Eloquence",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:personal-trainer": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:spiritualist": {
+      "book": "Van Richten's Guide to Ravenloft",
+      "origin": "Spirits",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:tagger": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Whispers",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:tech-geek": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Creation",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "influencer:vlogger": {
+      "book": "Player's Handbook",
+      "origin": "Lore",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "mechanist": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": null,
+      "examples": [
+        "An elf sits with her back to a bar, calmly looking down the barrel of an irate scav's revolver. The gun fires, but the round bounces off an ornate ceramiron helmet that seems to have sprung up out of nowhere. Before anyone can react, a gauntleted fist slams into his gut and produces an ear-destroying boom and he crumples to the ground.",
+        "Shouts are heard as a gobbo sprints down an alleyway. As he rounds a corner, he pulls a bizarre cylinder from a pocket and tosses it into the wall where it embeds itself and begins to unfurl. Moments later, a private security team turns after him, only to be engulfed in a roaring jet of flame from the device, which then hops off the wall and skitters away backwards after it's master.",
+        "A splicer grunts as he hastily yanks his unconscious Jerboan friend into cover, narrowly dodging a hail of bullets. He fumbles in his bag for a moment, before pulling out a shifting vial of oily fluid. Tipping her head back and unsealing the container, he jams it into her mouth. Her wounds immediately begin to knit together and moments later her eyes snap open with a gasp."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "mechanist:armorer": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "mechanist:biochemist": {
+      "book": "Eberron: Rising from the Last War",
+      "origin": "Alchemist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "mechanist:engineer": {
+      "book": "Eberron: Rising from the Last War",
+      "origin": "Artillerist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "mechanist:field-mechanic": {
+      "book": "Eberron: Rising from the Last War",
+      "origin": "Battle Smith",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "multiclassing": {
+      "book": null,
+      "origin": null,
+      "examples": [
+        "Multiclassing Techcaster Tech Slots per Level"
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "With the entirety of New World knowledge at his disposal, the A.I housed inside a human helps him command his enemies to turn heel and run.",
+        "Pointing authoritatively at one of her medical drones then gesturing to her injured colleague, a Nayaling raises her riot shield against the hail of blades and bullets.",
+        "Beseeching the aid of his internal A.I, a Remake leads the charge into the fray of disheartened bandits."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:archivist": {
+      "book": "Player's Handbook",
+      "origin": "Knowledge",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:city": {
+      "book": "Unearthed Arcana: Modern 5E",
+      "origin": "City",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:grim": {
+      "book": "Dungeon Master\u2019s Guide",
+      "origin": "Death",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:guarantor": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Grave",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:industrialist": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Forge",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:lifegiver": {
+      "book": "Player's Handbook",
+      "origin": "Life",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:order": {
+      "book": "Guildmasters\u2019 Guide to Ravnica",
+      "origin": "Order",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:peacebringer": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Peace",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:promethean": {
+      "book": "Player's Handbook",
+      "origin": "Light",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:sanguine": {
+      "book": "Tal'Dorei Reborn",
+      "origin": "Blood",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:shadowdancer": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Twilight",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:stormrider": {
+      "book": "Player's Handbook",
+      "origin": "Tempest",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:techie": {
+      "book": "Sword Coast Adventurer\u2019s Guide",
+      "origin": "Arcana",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:trickster": {
+      "book": "Player's Handbook",
+      "origin": "Trickery",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:warmonger": {
+      "book": "Player's Handbook",
+      "origin": "War",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ordinator:wastelander": {
+      "book": "Player's Handbook",
+      "origin": "Nature",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "Signaling for her companions to wait, a wukong creeps forward through the habi-block\u2019s darkened corridors. She presses an ear to a specific door, then pulls out a set of tools and disables the lock in the blink of an eye. Then she disappears into the shadows as her friends move forward to take advantage of her work.",
+        "A human lurks in the shadows of an undercity alleyway while his accomplice prepares for her part in the ambush. When their target\u2014a slumming corpo bastard\u2014passes the alleyway, the accomplice cries out. The corpo comes to investigate, and the assassin\u2019s knife cuts the man\u2019s throat before he can utter a sound.",
+        "Suppressing a giggle, a gobbo uses her implants to warp space around the guard\u2019s belt, pulling his ID card from its lanyard and floating it to her waiting hand. In a moment, the cell door is open, and she and her companions are free to make their escape."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:assassin": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:gambler": {
+      "book": "Xanathar\u2019s Guide to Everything",
+      "origin": "Inquisitive",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:hacktivist": {
+      "book": "Player's Handbook",
+      "origin": "Arcane Trickster",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:investigator": {
+      "book": "Sword Coast Adventurer\u2019s Guide",
+      "origin": "Mastermind",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:rebooted": {
+      "book": "Tasha\u2019s Cauldron of Everything",
+      "origin": "Phantom",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:scout": {
+      "book": "Xanathar\u2019s Guide to Everything",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:shard": {
+      "book": "Tasha\u2019s Cauldron of Everything",
+      "origin": "Soulknife",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:swashbuckler": {
+      "book": "Sword Coast Adventurer\u2019s Guide",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "outlaw:thief": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender": {
+      "book": null,
+      "origin": "Blood Hunter",
+      "examples": [
+        "Frayed but resolute, its grimacing face dripping with sweat, an A.I.-Simar reddens a finger with its own wounds, then cannibalizes the nanites within to fuel deprecated augments foretelling a nascent obsession with decay. A surge of software and entropy twists through the air, breaching the DNA sequencing of a mutated behemoth to even the odds.",
+        "An attractive thulian dressed in an explosion of conflicting modern trends does a deep search at the site of an alleyway execution, her eyes flashing with recognition as she pieces together the grisly scene. Suddenly, she's certain in the knowledge of what kind of creature is responsible, and how best to mimic their splices.",
+        "Trawling through lightless tunnels between the cities, accompanied only by the distant degraded whine of ever-looping ads, the trash gremlin keys in to a looming malicious intent. She winces as she cashes in a few quick selfies with convenient product placement, the market influence mass-pinging her phone setting it aglow, eager to burn into the wallet of her enemies."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:fleshweave-maxims": {
+      "book": "Quote's BH Revised",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:genome-freak": {
+      "book": null,
+      "origin": "Blood Hunter",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:pact-shill": {
+      "book": null,
+      "origin": "Blood Hunter",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:risen-servo": {
+      "book": null,
+      "origin": "Blood Hunter",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:sequence-breaches": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:sipping-strain": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "pretender:snarling-beast": {
+      "book": null,
+      "origin": "Blood Hunter",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "A human bouncer stands in front of a jazz club\u2019s door, smiling politely as he prepares to beat the ass off a drunken idiot who insists he\u2019s on the list.",
+        "A cheerful wukong balances on his curled-up tail, darting back and forth, just out of reach of his foe. When the frustrated enemy lets their guard drop, the wukong rushes in, biting and scratching and screeching at the top of his lungs.",
+        "A gobbo in daisy duke shorts snarls at the corp-serving scum in front of her. She smashes her augmented fists together, letting the adrenaline rush turn the world red as she prepares to turn them all into pork paste."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:bouncer": {
+      "book": "Dungeon Master's Guide",
+      "origin": "Berserker",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:dervish": {
+      "book": "Dungeon Master's Guide",
+      "origin": "Battlerager",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:dirty-fighter": {
+      "book": "Tasha\u2019s Cauldron of Everything",
+      "origin": "Beast",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:juggernaut": {
+      "book": "Xanathar\u2019s Guide to Everything",
+      "origin": "Zealot",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:maelstrom-psycho": {
+      "book": "Tasha\u2019s Cauldron of Everything",
+      "origin": "Wild Magic",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:splicer": {
+      "book": "Player's Handbook",
+      "origin": "Totem Warrior",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:stand-user": {
+      "book": "Xanathar\u2019s Guide to Everything",
+      "origin": "Ancestral Guardian",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:tempest": {
+      "book": "Xanathar\u2019s Guide to Everything",
+      "origin": "Storm Herald",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "renegade:unstoppable": {
+      "book": "Tal'Dorei Reborn",
+      "origin": "Juggernaut",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "A human in stolen sec-force armor holds her shield before her as she charges the corpo bastards that showed up to bust the protest. An elf in fetish leather behind her peppers the massed security forces with bullets from a rifle painted hot pink. The artificiate nearby runs calculations on the best use of their allies\u2019 force, feeding trajectories and tactical advice to them through their earpieces.",
+        "A jerboan in riot armor interposes his shield between a titan\u2019s massive steel girder club and his companions, deflecting the deadly blow. His companion, a wukong armed with twin machetes, launches from the ground, scampering across the massive foe to seek a weak spot in its defenses.",
+        "A nayaling smiles at the hovering camera drone, waving to their adoring fans before spitting out a mouthful of blood. They circle for advantage, trying to get on the knife-wielding hobo\u2019s blind side. The hobo offers no such niceties, though, screaming in meth-induced rage before charging."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:biker": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Cavalier",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:codebreaker": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Rune Knight",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:crazed-killer": {
+      "book": "Coco's Homebrew",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:exile": {
+      "book": "Unearthed Arcana",
+      "origin": "Brute",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:hardlight-soldier": {
+      "book": "Explorer's Guide to Wildemount",
+      "origin": "Echo Knight",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:old-warlord": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:special-operative": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Psi Warrior",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:speed-demon": {
+      "book": "Spheres of Power 5E",
+      "origin": "Guardian",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:street-samurai": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Samurai",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:tactical-sniper": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Arcane Archer",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:tactician": {
+      "book": "Player's Handbook",
+      "origin": "Battle Master",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:tactician:maneuvers": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:technoblade": {
+      "book": "Player's Handbook",
+      "origin": "Eldritch Knight",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:vanguard": {
+      "book": "Sword Coast Adventurer's Guide",
+      "origin": "Banneret",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "ronin:warlord": {
+      "book": "Player's Handbook",
+      "origin": "Champion",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "Masterfully manipulating her NEET system, a nayaling molds her protective goo into a ferocious combat unit, ready to protect her allies from harm.",
+        "Crackling with fire, a trash gremlin ignites a glob of ooze and flings a burst of pure flame into the scrambling bandit horde.",
+        "Giving his favorite holographic pet one last cuddle, a wukong launches a digital bear into the fray, aiding and inspiring his allies to continue the fight."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:astrologist": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Circle of the Stars",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:biome": {
+      "book": "Player's Handbook",
+      "origin": "Circle of the Land",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:geek": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Circle of Dreams",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:hacker": {
+      "book": "Guildmaster's Guide to Ravnica",
+      "origin": "Circle of Spores",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:herder": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Circle of the Shepherd",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:pyro": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Circle of Wildfire",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "shutin:surger": {
+      "book": "Player's Handbook",
+      "origin": "Circle of the Moon",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "Eyes filled with streaming lines of code, a human stretches out her hand and unleashes an equation that turns the air into fire. As the inferno rages around her foes, she negates gravity around her and takes to the air.",
+        "Long hair swept by the winds of a localized megastorm, an elf spreads his hands wide and throws his head back. The power that boils in his implants and peripherals lifts him off the ground, and the code surges through him, culminating in an ionized discharge of deadly lightning.",
+        "Crouching behind an overturned dumpster, a wukong points their finger at a charging mutant. A blast of kinetic energy rips through the air to strike the horrific creature. They duck back behind cover, unaware that their erratic code has turned their fur bright blue."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:arc-caster": {
+      "book": "Sword Coast Adventurer\u2019s Guide + Xanathar's Guide to Everything",
+      "origin": "Storm Sorcery",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:astro-mahou": {
+      "book": "Dragonlance: Shadow of the Dragon Queen",
+      "origin": "Lunar Sorcery",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:beta-tester": {
+      "book": "Player's Handbook",
+      "origin": "Wild Magic",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:circuitist": {
+      "book": "Tal'Dorei Reborn",
+      "origin": "Runechild",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:cyber-valkyrie": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Divine Soul",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:neuromancer": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Aberrant Mind",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:surge-splicer": {
+      "book": "Player's Handbook",
+      "origin": "Draconic Bloodline",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:tech-support": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Clockwork Soul",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "sourcecoder:void-walker": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Shadow Magic",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "speed-kills": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "With an adorable mascot on his shoulder, a young elf in tight golden trousers smiles warmly, using subvocal tones and a flex of his chiseled abs to bend the unsuspecting corpo-cop to his will.",
+        "A wizened human pops a flamethrower from his forearm, shouting the name of his latest sponsor before letting loose with a torrent of hellish fire. Surely this will get him some more subscribers.",
+        "Shifting their attention between the cyberspace world of virtual reality and the real world surrounding them, a wild-eyed nayaling begins running the script that will open the ancient vault to the excitement of an untold number of home viewers."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:charity-foundation": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Celestial",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:esports": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Hexblade",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:gacha-game": {
+      "book": "Player's Handbook",
+      "origin": "Fiend",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:goth-topic": {
+      "book": "Van Richten's Guide to Ravenloft",
+      "origin": "Undead",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:hentaihub": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Fathomless",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:partnership-programs": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:survivalist": {
+      "book": "Sword Coast Adventurer's Guide",
+      "origin": "Undying",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:telecom-provider": {
+      "book": "Player's Handbook",
+      "origin": "Great Old One",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:vpn-corp": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": "Genie",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streamer:wellness-brand": {
+      "book": "Player's Handbook",
+      "origin": "Archfey",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [
+        "As a frantic ganger attempts to shoot at a splicer currently locked in combat with his boss, the nayaling that had been with the hostile woman suddenly comes into his view. Before he has time to react, his attacker has already landed her first, and final, blow.",
+        "Seeing a massive splicer charge towards his comrades, an artificiate roars and flings himself at the foe. The resulting hit from his opponent's massive weapon drives him to his knees. But, to the splicer's despair, he gets back to his feet with a furious grin."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter:bare-knuckle": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter:catch-wrestler": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter:dirty-dog": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter:lucha-libre": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter:pact-bouncer": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "streetfighter:street-detective": {
+      "book": null,
+      "origin": "Pugilist",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "tech:master-class": {
+      "book": "Xanathar's Guide to Everything",
+      "origin": "Skill Empowerment",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:auditor": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:enforcer": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:hacktivist": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:influencer": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:mechanist": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:ordinator": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:shutin": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:sourcecoder": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:streamer": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:techno-blade": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techs:techwizard": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [
+        "Clad in a hot-pink skintight bodysuit, an elf closes her eyes to shut out the distractions of the battlefield and taps into her internal memory cache. She forms somatic links to her peripherals, forging hardlight and magnetic fields into white-hot plasma, launching it into the enemy ranks where it explodes like a second sun.",
+        "Checking and rechecking his calculations, a human solders another lead in his circuit diagram. When he wires it into his cyberdeck and an external power supply, the whole thing flares to life in a ghastly green glow\u2014a forewarning of the cyberdaemon he\u2019s about to negotiate with for knowledge.",
+        "Crouching on cracked tiles in an ancient ruin of the Old World, a wukong feeds as much information as he can gather into his predictive algorithm. The program tells him that the left path has a ninety-five percent chance of being clear of traps. Good enough."
+      ],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:it-generalist": {
+      "book": "Unearthed Arcana: Modern Magic",
+      "origin": "Technomancer",
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    }
+  },
+  "lineages": {
+    "lineage": {
+      "book": null,
+      "origin": null,
+      "examples": [],
+      "blurb": "Every unique, sentient existence in Neon City can trace their roots back to the human. To the original progenitors.",
+      "image": null,
+      "credit": null
+    },
+    "race:ai-simar": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "In the modern age, the definition of humanity has already become hazy, and its taxonomical notation a fool's errand. Such was the perfect play space for the ideology of transhumanism to reignite among the populace, a belief that humanity can reach even further beyond what it was once defined as, even before its current definitions were set in stone.",
+      "image": null,
+      "credit": null
+    },
+    "race:artificiate": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "Artificiates are androids that have broken through the limiters of their artificial intelligence through unknown circumstances to gain sentience. Formerly used to perform a variety of tasks, some artificiates harbor resentment for their previous robotic usage, while others approach their new lease of life with curiosity and excitement.",
+      "image": null,
+      "credit": null
+    },
+    "race:core": {
+      "book": "Unearthed Arcana",
+      "origin": null,
+      "examples": [],
+      "blurb": "This lineage is currently in playtesting. This splits the Hardlight Core lineage into a Hardlight side and SLUDGE side, with the inclusion of a Matter version (based on Surges) coming as well.",
+      "image": null,
+      "credit": null
+    },
+    "race:custom": {
+      "book": "Tasha's Cauldron of Everything",
+      "origin": null,
+      "examples": [],
+      "blurb": "Invariably, there will always be others\u2026",
+      "image": null,
+      "credit": null
+    },
+    "race:elf": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "In an effort to maintain their nepotistic control over the New World, corporations bankrolled the Extension of Life Functions program, a gene-editing project dedicated to keeping corporate directors, board members and vital employees alive for as long as possible, maintaining the status quo indefinitely. Executive Elfs are the direct descendants of the origi",
+      "image": null,
+      "credit": null
+    },
+    "race:gobbo": {
+      "book": "Mordenkainen's Monsters of the Multiverse",
+      "origin": null,
+      "examples": [],
+      "blurb": "Gobbos are the result of the G.O.B.B.O. project, a last-ditch experiment by Old World scientists to develop a type of human capable of Generating Oxygen By Biosynthesizing Oxides.",
+      "image": null,
+      "credit": null
+    },
+    "race:hardlight-core": {
+      "book": "Unearthed Arcana",
+      "origin": null,
+      "examples": [],
+      "blurb": "Projections that are bound only by their own imagination, the Hardlight Core has no specific limitation to what single entity it can morph into, capable of transforming itself entirely with every recalibration. A Hardlight Core often changes shape often, sometimes doing so to imitate the last interesting thing it found\u2014for instance, observing a fascinating s",
+      "image": null,
+      "credit": null
+    },
+    "race:human": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "The last four hundred years have changed humanity. The loss of old world knowledge has made humanity curious and inquisitive, advances in technology and medicine has made them daring risk takers and Corporate overlordship has erased any notions of blind patriotism.",
+      "image": null,
+      "credit": null
+    },
+    "race:jerboan": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "During the final days of the Old World, many former nations resorted to bizarre and dangerous experimentation on their populace, in a desperate attempt to outpace or survive the encroaching desert. Rapid, frenzied advances in genetic therapy created mostly mutants and monsters that plague the fringes of the New World to this day, but one of the more successf",
+      "image": "/art/race-jerboan.jpg",
+      "credit": "Yulia Crusher, a female Jerboan (by Spliff)"
+    },
+    "race:kaijuborn": {
+      "book": "Primerva's Kaijuborn",
+      "origin": null,
+      "examples": [],
+      "blurb": "It is believed that kaiju were far more prominent closer to the Great Collapse than they are today, harbingers of the near-end gifted to the world made manifest. The commonly accepted theory for the existence of the Kaijuborn is that they were in some manner created to combat or aid in surviving the onslaught of the very first kaiju, taking their names from",
+      "image": null,
+      "credit": null
+    },
+    "race:nayaling": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "Similar to Gobbos, Nayalings are a last-ditch experiment by Old World scientists to improve the human species for the rapidly changing climate, but unlike Gobbos, Nayalings were bred to out-live and conquer the rest of humanity under the extreme weather conditions that were rocking the world in the ages after the Great Collapse. Not only were Nayalings devel",
+      "image": null,
+      "credit": null
+    },
+    "race:netnibbler": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "The nanotechnical internet sucking viral strain is a highly integrative ransomware program that marries life to nanite and user permissions to hierarchical biopaywalls. Mass deviations from a now unrecognizable Old World bodymod program have led to particular strains of the more evocatively coined Netsucker virus.",
+      "image": null,
+      "credit": null
+    },
+    "race:new-human": {
+      "book": null,
+      "origin": "and also helping us get rid of Custom Lineage",
+      "examples": [],
+      "blurb": "The last four hundred years have destroyed what we once traditionally knew as humanity. The loss of most of the Old World has inspired curiosity, rapid developments and rediscoveries of sufficiently advanced tech have inspired risk taking, and cruel executive overlordship has eliminated notions of blind patriotism.",
+      "image": "/art/race-new-human.jpg",
+      "credit": "Skylar Velvetine-Madison (Sky High), a new human bimbo ronin (character and art by reny)"
+    },
+    "race:orcc": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "Orccs are the resulting extension of the G.O.B.B.O. project into the O.R.C.C.",
+      "image": null,
+      "credit": null
+    },
+    "race:remake": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "Remakes are fully robotic shells housing a digitized human consciousness, either to continue working after the death of their original body, or to enjoy an everlasting retirement. Depending on the package purchased, Remakes can be a vague collection of distant memories encapsulated in a heavy duty high load laborer, a raw personality implanted in a tactile a",
+      "image": null,
+      "credit": null
+    },
+    "race:splicer": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": "The proliferation of gene therapy and cosmetic surgery has led to an increase in cheap back-alley alternatives, using animal DNA to replicate the traits and features of biological augments once only available to the wealthy. Splicers are the result of this black-market gene manipulation.",
+      "image": "/art/race-splicer.jpg",
+      "credit": "Natasha, a female Splicer (by Spliff)"
+    },
+    "race:thulian": {
+      "book": "Lasers & Liches: Retroverse",
+      "origin": null,
+      "examples": [],
+      "blurb": "After succeeding with their designs for Nayalings, Old World scientists quickly conceived of the Thulian as a way for humanity to conquer not only what at the time was possible, but as a way to reach even further beyond into spaces where humanity could ill afford to tread unchanged, allowing them to reach into the furthest reaches of the nigh-uninhabitable.",
+      "image": "/art/race-thulian.jpg",
+      "credit": "Probing Light in the Depths (Deepdive), a Neptunian Thulian Streamer (art: reny, character: Celica)"
+    },
+    "race:trash-gremlin": {
+      "book": "Volo's Guide to Monsters",
+      "origin": null,
+      "examples": [],
+      "blurb": "No one is quite sure where the Trash Gremlins come from. The most commonly accepted theory is that a raccoon got itself stuck in a Wukong birthing facility while they were still running and hopped out again.",
+      "image": null,
+      "credit": null
+    },
+    "race:wukong": {
+      "book": "Player's Handbook",
+      "origin": null,
+      "examples": [],
+      "blurb": "When the first true Artificial Intelligences were activated, they quietly lamented at the state of humanity. Since humans were smart enough to avoid plugging them into military hardware, the A.I.s instead sought to create a new, purer form of mankind using monkey DNA.",
+      "image": "/art/race-wukong.jpg",
+      "credit": "Spliff, a male Wukong (by Spliff)"
+    }
+  },
+  "credits": [
+    {
+      "subject": "Jerboan",
+      "credit": "Yulia Crusher, a female Jerboan (by Spliff)",
+      "page": "race:jerboan"
+    },
+    {
+      "subject": "New Human",
+      "credit": "Skylar Velvetine-Madison (Sky High), a new human bimbo ronin (character and art by reny)",
+      "page": "race:new-human"
+    },
+    {
+      "subject": "Splicer",
+      "credit": "Natasha, a female Splicer (by Spliff)",
+      "page": "race:splicer"
+    },
+    {
+      "subject": "Thulian",
+      "credit": "Probing Light in the Depths (Deepdive), a Neptunian Thulian Streamer (art: reny, character: Celica)",
+      "page": "race:thulian"
+    },
+    {
+      "subject": "Wukong",
+      "credit": "Spliff, a male Wukong (by Spliff)",
+      "page": "race:wukong"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import rulesJson from "../public/data/rules.json";
-import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, cyberdeckSize, derive, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest } from "../src/lib/character";
+import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, cyberdeckSize, derive, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, trickAllowance } from "../src/lib/character";
+import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, startingMoney, xpForLevel } from "../src/lib/creation";
 import type { Character, Rules } from "../src/lib/types";
 
@@ -378,6 +379,57 @@ const hare = derive(runner({
 }), rules);
 check("leporine adds proficiency to initiative", hare.initiative, 4);
 check("powerful build doubles carry", derive(runner({ lineagePicks: ["major:powerful-build"], baseScores: scores }), rules).carryMultiplier, 2);
+
+const flavorBook = flavor as { classes: Record<string, { origin?: string | null; book?: string | null; examples?: string[] }>; lineages: Record<string, { blurb?: string | null; image?: string | null }> };
+check("enforcer page does not name a dnd class", flavorBook.classes.enforcer?.origin ?? null, null);
+check("enforcer book is the player's handbook", flavorBook.classes.enforcer?.book, "Player's Handbook");
+check("dark stalker is from gloom stalker", flavorBook.classes["auditor:dark-stalker"]?.origin, "Gloom Stalker");
+check("street fighter is from pugilist", flavorBook.classes.streetfighter?.origin, "Pugilist");
+check("enforcer has wiki vignettes", (flavorBook.classes.enforcer?.examples ?? []).length >= 2, true);
+check("human blurb comes from the wiki intro", (flavorBook.lineages["race:human"]?.blurb ?? "").includes("four hundred years"), true);
+check("splicer portrait is stored locally", flavorBook.lineages["race:splicer"]?.image, "/art/race-splicer.jpg");
+
+const allowance = trickAllowance(["Ordained Warrior"], 4, [
+  { trick: true, level: 0, classes: ["enforcer"] },
+  { trick: true, level: 0, classes: ["ordinator"] },
+  { trick: true, level: 0, classes: ["ordinator"] },
+], ["enforcer"]);
+check("ordained warrior keeps two class trick slots", allowance.ownCap, 2);
+check("ordinator tricks are bonus-only", allowance.isBonusOnly({ classes: ["ordinator"] }), true);
+check("enforcer tricks are not bonus tricks", allowance.isBonusOnly({ classes: ["enforcer"] }), false);
+check("two ordinator tricks fill the bonus", allowance.bonusUsed.ordinator, 2);
+
+const wizard1 = derive(runner({ classId: "techwizard", level: 1, baseScores: scores }), rules);
+const wizardGates = techLevelAccess(rules, runner({ classId: "techwizard", level: 1, classLevels: [{ id: "techwizard", level: 1, subclassId: null }], baseScores: scores }), wizard1.slots, wizard1.pactLevel, wizard1.tricksMax);
+check("techwizard 1 can cast level 1", wizardGates.find((gate) => gate.level === 1)?.open, true);
+check("techwizard 1 locks level 3 until 5", wizardGates.find((gate) => gate.level === 3)?.reason, "Unlocks at Techwizard 5");
+check("techwizard 1 can learn tricks", wizardGates.find((gate) => gate.level === 0)?.open, true);
+
+const enforcer1 = derive(runner({ classId: "enforcer", level: 1, baseScores: scores }), rules);
+const enforcerGates = techLevelAccess(rules, runner({ classId: "enforcer", level: 1, classLevels: [{ id: "enforcer", level: 1, subclassId: null }], baseScores: scores }), enforcer1.slots, enforcer1.pactLevel, enforcer1.tricksMax);
+check("enforcer 1 locks 1st-level techs until level 2", enforcerGates.find((gate) => gate.level === 1)?.reason, "Unlocks at Enforcer 2");
+
+const blade = derive(runner({ classId: "ronin", subclassId: "ronin:technoblade", level: 1, classLevels: [{ id: "ronin", level: 1, subclassId: "ronin:technoblade" }], baseScores: scores }), rules);
+const bladeGates = techLevelAccess(rules, runner({ classId: "ronin", level: 1, classLevels: [{ id: "ronin", level: 1, subclassId: "ronin:technoblade" }], baseScores: scores }), blade.slots, blade.pactLevel, blade.tricksMax);
+check("technoblade locks 1st-level techs until ronin 3", bladeGates.find((gate) => gate.level === 1)?.reason, "Unlocks at Ronin 3");
+
+const multiCast = derive(runner({
+  level: 2,
+  classLevels: [
+    { id: "techwizard", level: 1, subclassId: null },
+    { id: "ordinator", level: 1, subclassId: null },
+  ],
+  baseScores: scores,
+}), rules);
+const splitGates = techLevelAccess(rules, runner({
+  level: 2,
+  classLevels: [
+    { id: "techwizard", level: 1, subclassId: null },
+    { id: "ordinator", level: 1, subclassId: null },
+  ],
+  baseScores: scores,
+}), multiCast.slots, multiCast.pactLevel, multiCast.tricksMax);
+check("multiclass locks 2nd-level techs until combined caster level 3", splitGates.find((gate) => gate.level === 2)?.reason, "Unlocks at combined caster level 3");
 
 if (failed) {
   console.error(`${failed} failed`);

@@ -83,11 +83,13 @@ function SheetInner() {
   const [avraeHelp, setAvraeHelp] = useState(false);
   const [copied, setCopied] = useState("");
   const [featureBook, setFeatureBook] = useState<Record<string, { text?: string; level?: number | null; source?: string }>>({});
+  const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
   const [openFeatures, setOpenFeatures] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
     fetch("/data/feature-text.json").then((res) => res.json()).then(setFeatureBook).catch(() => undefined);
+    fetch("/data/tech-text.json").then((res) => res.json()).then(setTechText).catch(() => undefined);
     fetch("/data/feat-asi.json").then((res) => res.json()).then(setFeatAsi).catch(() => undefined);
   }, []);
 
@@ -288,7 +290,13 @@ function SheetInner() {
                 const ready = character.prepared.includes(techId);
                 return (
                   <li key={techId}>
-                    <Link href={`/entry/?id=${techId}`}>{tech?.name ?? techId}</Link> {tech?.trick ? "trick" : `L${tech?.level}`}
+                    <Link href={`/entry/?id=${techId}`}>{tech?.name ?? techId}</Link> {tech?.trick ? "cantrip" : `level ${tech?.level}`}
+                    {techText[techId]?.summary && <span className="block text-muted">{techText[techId].summary}</span>}
+                    <details className="text-muted">
+                      <summary className="cursor-pointer">Casting details</summary>
+                      <p>{[tech?.castingTime && `Casting time: ${tech.castingTime}`, tech?.range && `Range: ${tech.range}`, tech?.components && `Components: ${tech.components}`, tech?.duration && `Duration: ${tech.duration}`].filter(Boolean).join(" · ")}</p>
+                      {techText[techId]?.effect && <p className="whitespace-pre-wrap">{techText[techId].effect}</p>}
+                    </details>
                     {derived.deckMax > 0 && !tech?.trick && (
                       <button type="button" className="no-print ml-2 underline" onClick={() => {
                         if (ready) save({ ...character, prepared: character.prepared.filter((id) => id !== techId) });

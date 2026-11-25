@@ -27,6 +27,39 @@ export function entryUrl(id: string) {
   return `/data/entries/${id.replace(/:/g, "__")}.json`;
 }
 
+export interface FlavorCard {
+  book?: string | null;
+  origin?: string | null;
+  examples?: string[];
+  blurb?: string | null;
+  image?: string | null;
+  credit?: string | null;
+}
+
+export interface FlavorFile {
+  classes: Record<string, FlavorCard>;
+  lineages: Record<string, FlavorCard>;
+  credits: { subject: string; credit: string; page: string }[];
+}
+
+let flavorPromise: Promise<FlavorFile> | null = null;
+
+export function loadFlavor(): Promise<FlavorFile> {
+  if (!flavorPromise) {
+    flavorPromise = fetch("/data/flavor.json").then((res) => {
+      if (!res.ok) throw new Error("Could not load the wiki flavor notes.");
+      return res.json();
+    });
+  }
+  return flavorPromise;
+}
+
+export function originLabel(card?: FlavorCard | null) {
+  if (!card) return "";
+  const from = card.origin ? `from ${card.origin}` : "";
+  return [from, card.book].filter(Boolean).join(" · ");
+}
+
 export function loadEntry(id: string): Promise<EntryDoc> {
   return fetch(entryUrl(id)).then((res) => {
     if (!res.ok) throw new Error("That page is not in the mirror.");

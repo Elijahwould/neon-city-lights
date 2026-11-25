@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { loadFlavor, type FlavorFile } from "@/lib/data";
 
 type Credits = {
   carbonPink: { name: string; role: string }[];
@@ -9,8 +10,10 @@ type Credits = {
 
 export default function CreditsPage() {
   const [data, setData] = useState<Credits | null>(null);
+  const [flavor, setFlavor] = useState<FlavorFile | null>(null);
   useEffect(() => {
     fetch("/data/credits.json").then((res) => res.json()).then(setData);
+    loadFlavor().then(setFlavor).catch(() => undefined);
   }, []);
 
   return (
@@ -30,6 +33,17 @@ export default function CreditsPage() {
           The wiki describes itself as an extension of Carbon Pink, a cyberpunk presentation of Dungeons & Dragons 5th Edition.
         </p>
       </section>
+      {flavor && flavor.credits.length > 0 && (
+        <section className="neon-card space-y-2 p-4">
+          <h2 className="brand text-cyan">Portrait art</h2>
+          <p>These portraits are the images hosted on the wiki pages. The credit is the wiki caption.</p>
+          <ul className="space-y-1 text-sm">
+            {flavor.credits.map((item) => (
+              <li key={item.page}><strong>{item.subject}.</strong> {item.credit}</li>
+            ))}
+          </ul>
+        </section>
+      )}
       <section className="neon-card space-y-2 p-4">
         <h2 className="brand text-cyan">Carbon Pink</h2>
         <p>The wiki page What is Carbon Pink? names these designers. Roles are quoted from that page.</p>
