@@ -63,6 +63,7 @@ export function blankCharacter(): Character {
     languages: ["Common"],
     hpOverride: null,
     defenseStyle: false,
+    fightingStyles: [],
     armorId: null,
     shield: false,
     weapons: [],
@@ -118,6 +119,7 @@ export function normalizeCharacter(input: Character): Character {
     sourcePointsSpent: input.sourcePointsSpent ?? 0,
     xp: input.xp ?? 0,
     sheetNotes: input.sheetNotes ?? {},
+    fightingStyles: input.fightingStyles ?? (input.defenseStyle ? ["Defense"] : []),
   };
 }
 
@@ -329,6 +331,90 @@ export function lineageGrantsFeat(lineageId: string | null, option: string | nul
   return bonusFeat;
 }
 
+/** Wiki ability-score patterns. Splicer is not the usual +2-or-two-+1 flex increase. */
+export function lineageAsiMode(lineage: { id: string; asi: string }) {
+  if (lineage.id === "race:splicer") return "splicer";
+  return lineage.asi;
+}
+
+export function asiAssignmentOk(mode: string, bonuses: Partial<Record<Ability, number>>) {
+  const amounts = ABILITIES.map((ability) => bonuses[ability] ?? 0).filter((amount) => amount > 0);
+  const twos = amounts.filter((amount) => amount === 2).length;
+  const ones = amounts.filter((amount) => amount === 1).length;
+  if (amounts.some((amount) => amount !== 1 && amount !== 2)) return false;
+  if (mode === "plus1") return ones === 1 && twos === 0;
+  if (mode === "plus2") return twos === 1 && ones === 0;
+  if (mode === "plus1plus1") return ones === 2 && twos === 0;
+  if (mode === "flex") return (twos === 1 && ones === 0) || (ones === 2 && twos === 0);
+  if (mode === "spread") return (twos === 1 && ones === 1) || (ones === 3 && twos === 0);
+  if (mode === "splicer") return (twos === 2 && ones === 0) || (twos === 1 && ones === 2);
+  if (mode === "none" || mode === "unknown") return amounts.length === 0;
+  return false;
+}
+
+export function assignPooledScore(scores: Record<Ability, number>, ability: Ability, value: number) {
+  const next = { ...scores };
+  const other = ABILITIES.find((candidate) => candidate !== ability && next[candidate] === value);
+  if (other) next[other] = next[ability];
+  next[ability] = value;
+  return next;
+}
+
+/** Keep class levels adding up to the character level. The edited class keeps its request when another class can absorb the difference. */
+export function fitClassLevels(entries: ClassLevel[], total: number, editedId?: string): ClassLevel[] {
+  const level = Math.max(1, total);
+  if (!entries.length) return [];
+  const next = entries.map((entry) => ({ ...entry, level: Math.max(1, Math.min(level, entry.level || 1)) }));
+  if (next.length === 1) {
+    next[0].level = level;
+    return next;
+  }
+  const locked = editedId ? next.find((entry) => entry.id === editedId) : undefined;
+  if (locked) locked.level = Math.max(1, Math.min(level - (next.length - 1), locked.level));
+  let guard = 0;
+  while (next.reduce((sum, entry) => sum + entry.level, 0) !== level && guard < 40) {
+    guard += 1;
+    const sum = next.reduce((totalLevels, entry) => totalLevels + entry.level, 0);
+    const delta = level - sum;
+    const target = next.find((entry) => entry.id !== editedId && (delta > 0 || entry.level > 1))
+      ?? next.find((entry) => delta > 0 || entry.level > 1);
+    if (!target) break;
+    target.level += Math.sign(delta);
+  }
+  return next;
+}
+
+export function addClassLevel(entries: ClassLevel[], classId: string, total: number): ClassLevel[] | null {
+  if (entries.some((entry) => entry.id === classId)) return entries;
+  if (!entries.length) return [{ id: classId, level: Math.max(1, total), subclassId: null }];
+  const draft = entries.map((entry) => ({ ...entry }));
+  const donor = draft.find((entry) => entry.level > 1);
+  if (!donor) return null;
+  donor.level -= 1;
+  draft.push({ id: classId, level: 1, subclassId: null });
+  return fitClassLevels(draft, total);
+}
+
+export const FIGHTING_STYLES: Record<string, string[]> = {
+  enforcer: ["Blind Fighting", "Defense", "Dueling", "Great Weapon Fighting", "Gun-Fu", "Interception", "Mariner", "Ordained Warrior", "Protection", "Thrown Weapon Fighting", "Unarmed Fighting"],
+  auditor: ["Blind Fighting", "Defense", "Dueling", "Gun-Fu", "Introvert", "Mariner", "Marksmanship", "Pugilism", "Thrown Weapon Fighting", "Two-Weapon Fighting"],
+  ronin: ["Blind Fighting", "Defense", "Dueling", "Great Weapon Fighting", "Gun-Fu", "Interception", "Mariner", "Marksmanship", "Protection", "Pugilism", "Riot Fighting", "Tactical Technique", "Thrown Weapon Fighting", "Two-Weapon Fighting"],
+  pretender: ["Blind Fighting", "Clobbering Swing", "Dancing Thorns", "Dueling", "Great Weapon Fighting", "Gun-Fu", "Marksmanship", "Riot Fighting", "Thrown Weapon Fighting", "Two-Weapon Fighting", "Unarmed Fighting"],
+};
+
+export function classNeedsFightingStyle(cls: ClassDef, level: number) {
+  return hasFeature(cls, level, "fighting style") && Boolean(FIGHTING_STYLES[cls.id]);
+}
+
+export function cyberStatOptions(id: string): Ability[] | null {
+  const family = CYBER_FAMILIES.find((row) => row.ids.includes(id));
+  return family ? family.pool : null;
+}
+
+export function cyberNeedsSkill(id: string) {
+  return id === "cybernetic:skill-chip" || id === "cybernetic:datamatrix";
+}
+
 const BONUS_TECHS: Record<string, { id: string; note: string }[]> = {
   auditor: [{ id: "tech:bug", note: "Auditor feature. No concentration, and twice per long rest without a tech slot." }],
 };
@@ -496,6 +582,8 @@ export function derive(raw: Character, rules: Rules): Derived {
   const upbringing = rules.upbringings.find((item) => item.id === character.upbringingId) ?? null;
   const level = Math.max(1, entries.reduce((sum, entry) => sum + entry.level, 0) || character.level);
   const warnings: string[] = [];
+  const styles = new Set(character.fightingStyles ?? []);
+  if (character.defenseStyle) styles.add("Defense");
 
   const asi = sumBonuses(character.asiPicks.filter((pick) => pick.mode === "asi").map((pick) => pick.abilities ?? {}));
   const featAsi = sumBonuses(character.asiPicks.filter((pick) => pick.mode === "feat").map((pick) => pick.abilities ?? {}));
@@ -506,8 +594,8 @@ export function derive(raw: Character, rules: Rules): Derived {
   });
   const preCyber = blankScores();
   for (const ability of ABILITIES) {
-    const beforeFeat = (character.baseScores[ability] ?? 10) + (character.lineageAsi[ability] ?? 0) + (character.subAsi[ability] ?? 0) + asi[ability];
-    preCyber[ability] = featAsi[ability] ? Math.min(20, beforeFeat + featAsi[ability]) : beforeFeat;
+    const total = (character.baseScores[ability] ?? 10) + (character.lineageAsi[ability] ?? 0) + (character.subAsi[ability] ?? 0) + asi[ability] + featAsi[ability];
+    preCyber[ability] = Math.min(20, total);
   }
 
   const pb = proficiencyBonus(null, level);
@@ -521,9 +609,11 @@ export function derive(raw: Character, rules: Rules): Derived {
     let chosen: Ability | undefined;
     activeCyber.forEach((install) => {
       const index = family.ids.indexOf(install.id);
-      if (index > best) {
+      if (index > best && install.stat && family.pool.includes(install.stat)) {
         best = index;
-        chosen = install.stat && family.pool.includes(install.stat) ? install.stat : family.pool[0];
+        chosen = install.stat;
+      } else if (index >= 0 && !install.stat) {
+        warnings.push(`${install.id.replace("cybernetic:", "")} is installed with no ability chosen, so it does not change a score.`);
       }
     });
     if (best >= 0 && chosen) scores[chosen] = Math.min(family.cap[best], scores[chosen] + family.bonus[best]);
@@ -533,12 +623,15 @@ export function derive(raw: Character, rules: Rules): Derived {
 
   const skillChip = activeCyber.find((install) => install.id === "cybernetic:skill-chip");
   const matrix = activeCyber.find((install) => install.id === "cybernetic:datamatrix");
+  if (skillChip && !skillChip.skill) warnings.push("Skill Chip needs a skill before it adds +2.");
+  if (matrix && !matrix.skill) warnings.push("Datamatrix needs a proficient skill before it grants expertise.");
   const profs = new Set([...character.skillProfs, ...(upbringing?.skills ?? [])].map(skillKey));
   const expertise = new Set(character.skillExpertise.map(skillKey));
   if (matrix?.skill) expertise.add(skillKey(matrix.skill));
   const jack = classes.some((row) => row.cls && hasFeature(row.cls, row.entry.level, "jack of all trades"));
 
   const features = classes.flatMap((row) => (row.cls ? featuresThrough(row.cls, row.entry.level).map((name) => `${row.cls!.name}: ${name}`) : []));
+  if (styles.size) features.push(`Fighting style: ${[...styles].join(", ")}`);
   const resources: Record<string, string> = {};
   classes.forEach((row) => {
     if (!row.cls) return;
@@ -587,6 +680,7 @@ export function derive(raw: Character, rules: Rules): Derived {
     }
   });
   if (tough) hp += level * 2;
+  if (character.lineageId === "race:jerboan" && character.sublineage === "Punk Rock Jerboan") hp += level;
   if (character.hpOverride != null) hp = character.hpOverride;
 
   const acNotes: string[] = [];
@@ -599,11 +693,13 @@ export function derive(raw: Character, rules: Rules): Derived {
     ac = parseAcFormula(armor.ac, mods.dex, replacement);
     if (armorStealth) acNotes.push("Disadvantage on Stealth");
     if (strengthShort) {
-      acNotes.push(`Strength below ${strNeed}: speed −10, disadvantage on Acrobatics, Sleight of Hand, and Stealth`);
+      const slow = character.lineageId === "race:jerboan" ? "" : "speed −10, ";
+      acNotes.push(`Strength below ${strNeed}: ${slow}disadvantage on Acrobatics, Sleight of Hand, and Stealth`);
     }
-    if (character.defenseStyle) {
-      const enforcer = classes.some((row) => row.entry.id === "enforcer");
-      ac += enforcer && armor.category === "heavy" ? 2 : 1;
+    if (styles.has("Defense")) {
+      const heavyDefense = armor.category === "heavy";
+      ac += heavyDefense ? 2 : 1;
+      acNotes.push(heavyDefense ? "Defense fighting style +2 in heavy armor" : "Defense fighting style +1");
     }
   } else if (unarmoredOk && unarmoredClass?.unarmored) {
     ac = unarmoredClass.unarmored.base + unarmoredClass.unarmored.abilities.reduce((sum, ability) => sum + mods[ability], 0);
@@ -616,6 +712,10 @@ export function derive(raw: Character, rules: Rules): Derived {
     }
     ac += 2;
   }
+  if (styles.has("Mariner") && !shield && armor?.category !== "heavy") {
+    ac += 1;
+    acNotes.push("Mariner +1 while not in heavy armor or behind a shield");
+  }
 
   let speed = lineage?.speed ?? 30;
   const move = resources["Unarmored Movement"];
@@ -623,7 +723,7 @@ export function derive(raw: Character, rules: Rules): Derived {
     const bonus = Number(move.match(/(\d+)/)?.[1] ?? 0);
     if (bonus) speed += bonus;
   }
-  if (strengthShort) speed = Math.max(0, speed - 10);
+  if (strengthShort && character.lineageId !== "race:jerboan") speed = Math.max(0, speed - 10);
 
   const castingClasses = classes.filter((row) => row.cls && (row.cls.caster !== "none" || row.sub?.techProgression || contributesCasterLevels(row.entry)));
   const separateStreamer = castingClasses.filter((row) => row.entry.id === "streamer");
@@ -708,7 +808,24 @@ export function derive(raw: Character, rules: Rules): Derived {
     const proficient = weaponProficient(profText.toLowerCase(), weapon.name, weapon.category);
     const dice = weapon.damage?.match(/\d+d\d+(?:\s*\+\s*\d+)?|\d+/)?.[0] ?? weapon.damage ?? "—";
     const dtype = weapon.damage?.replace(dice, "").trim() ?? "";
-    return { name: weapon.name, toHit: mods[ability] + (proficient ? pb : 0), damage: `${dice}${formatMod(mods[ability])} ${dtype}`.trim(), proficient, notes: properties };
+    const twoHanded = properties.includes("two-handed") || properties.includes("two handed");
+    const melee = weapon.category.includes("melee") && !twoHanded;
+    let damageMod = mods[ability];
+    const notes = [properties];
+    if (styles.has("Dueling") && character.weapons.length === 1 && melee) {
+      damageMod += 2;
+      notes.push("dueling +2");
+    }
+    if (styles.has("Thrown Weapon Fighting") && properties.includes("thrown")) {
+      const thrownBonus = classes.some((row) => row.entry.id === "enforcer") ? 1 : 2;
+      notes.push(`thrown style +${thrownBonus} on a ranged throw`);
+    }
+    let toHit = mods[ability] + (proficient ? pb : 0);
+    if (styles.has("Marksmanship") && ranged && twoHanded) {
+      toHit += 2;
+      notes.push("marksmanship +2");
+    }
+    return { name: weapon.name, toHit, damage: `${dice}${formatMod(damageMod)} ${dtype}`.trim(), proficient, notes: notes.filter(Boolean).join("; ") };
   });
 
   const perception = skills.find((skill) => skillKey(skill.name) === "perception");

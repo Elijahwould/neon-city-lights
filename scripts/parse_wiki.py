@@ -361,6 +361,9 @@ def trait_bullets(block: str) -> list[dict]:
 
 def asi_mode(text: str) -> str:
     low = text.lower()
+    # Splicer is +2 and then either another +2 or two +1s, which also mentions "two".
+    if "different one by 2" in low:
+        return "splicer"
     if "three different" in low:
         return "spread"
     if "by 2" in low and "two" in low:

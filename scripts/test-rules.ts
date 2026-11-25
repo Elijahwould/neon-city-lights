@@ -1,5 +1,5 @@
 import rulesJson from "../public/data/rules.json";
-import { applyLevelUp, blankCharacter, cyberdeckSize, derive, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest } from "../src/lib/character";
+import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, cyberdeckSize, derive, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest } from "../src/lib/character";
 import { startingMoney, xpForLevel } from "../src/lib/creation";
 import type { Character, Rules } from "../src/lib/types";
 
@@ -143,7 +143,7 @@ const roninDefense = derive(runner({
   armorId: "armor:polysteel",
   defenseStyle: true,
 }), rules);
-check("defense +2 is enforcer only", roninDefense.ac, 19);
+check("defense +2 in heavy armor is not enforcer-only", roninDefense.ac, 20);
 
 const multi = derive(runner({
   classId: "auditor",
@@ -237,6 +237,70 @@ check("level 10 money is the house rule", startingMoney(10).credits, 90000);
 check("level 10 money is labeled a house rule", startingMoney(10).houseRule, true);
 check("level 3 uses 5e xp", xpForLevel(3), 900);
 check("level 1 xp", xpForLevel(1), 0);
+
+const capped = derive(runner({
+  classId: "enforcer",
+  level: 8,
+  baseScores: { ...scores, str: 15 },
+  lineageAsi: { str: 2 },
+  asiPicks: [
+    { level: 4, classId: "enforcer", mode: "asi", abilities: { str: 2 } },
+    { level: 8, classId: "enforcer", mode: "asi", abilities: { str: 2 } },
+  ],
+}), rules);
+check("ability scores stop at 20 before cybernetics", capped.scores.str, 20);
+
+const jerboanHeavy = derive(runner({
+  classId: "enforcer",
+  level: 1,
+  lineageId: "race:jerboan",
+  sublineage: "Punk Rock Jerboan",
+  baseScores: { str: 10, dex: 14, con: 14, int: 10, wis: 10, cha: 12 },
+  armorId: "armor:ceramiron",
+}), rules);
+check("jerboan speed ignores heavy armor", jerboanHeavy.speed, 25);
+check("punk rock jerboan gains 1 hp per level", jerboanHeavy.hp, 13);
+
+const noStat = derive(runner({
+  classId: "enforcer",
+  level: 5,
+  baseScores: scores,
+  cybernetics: [{ id: "cybernetic:biomod-xl" }],
+}), rules);
+check("biomod without an ability does nothing", noStat.scores.str, 16);
+
+const mariner = derive(runner({
+  classId: "ronin",
+  level: 1,
+  baseScores: { ...scores, dex: 14 },
+  fightingStyles: ["Mariner"],
+}), rules);
+check("mariner adds 1 ac without heavy armor", mariner.ac, 13);
+
+const duelist = derive(runner({
+  classId: "ronin",
+  level: 1,
+  baseScores: { ...scores, str: 16 },
+  fightingStyles: ["Dueling"],
+  weapons: [{ id: "weapon:katana" }],
+}), rules);
+check("dueling adds 2 damage", duelist.attacks[0]?.damage.includes("+5"), true);
+
+const split = addClassLevel([{ id: "enforcer", level: 5, subclassId: null }], "techwizard", 5);
+check("adding a class keeps the level total", split?.map((entry) => entry.level), [4, 1]);
+check("a level-1 character cannot be split", addClassLevel([{ id: "enforcer", level: 1, subclassId: null }], "techwizard", 1), null);
+check("edited class levels still sum to the total", fitClassLevels([
+  { id: "enforcer", level: 5, subclassId: null },
+  { id: "techwizard", level: 1, subclassId: null },
+], 5, "techwizard").map((entry) => entry.level), [4, 1]);
+
+check("human increase is two +1s", asiAssignmentOk("plus1plus1", { str: 1, dex: 1 }), true);
+check("human increase rejects three +1s", asiAssignmentOk("plus1plus1", { str: 1, dex: 1, con: 1 }), false);
+check("spread accepts +2 and +1", asiAssignmentOk("spread", { str: 2, dex: 1 }), true);
+check("splicer accepts two +2s", asiAssignmentOk("splicer", { str: 2, dex: 2 }), true);
+check("splicer rejects a lone +2", asiAssignmentOk("splicer", { str: 2 }), false);
+const swapped = assignPooledScore({ str: 15, dex: 14, con: 13, int: 12, wis: 10, cha: 8 }, "cha", 15);
+check("standard array swaps instead of duplicating", swapped, { str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15 });
 
 if (failed) {
   console.error(`${failed} failed`);

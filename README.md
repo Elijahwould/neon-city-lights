@@ -62,6 +62,6 @@ Rules and item text come from the [Neon City Lights wiki](https://neoncitylights
 
 ## What the builder follows
 
-Class hit dice, proficiency, features, tech slots, and prepared-tech formulas come from the class pages. Upbringings grant the skills and tools written on their pages. Cybernetic slots equal proficiency bonus, and BioMod / NeuroMod caps follow the cybernetics page (20 / 22 / 24). Milestone ranks follow the leveling chart, which starts at level 5.
+Class hit dice, proficiency, features, tech slots, and prepared-tech formulas come from the class pages. Upbringings grant the skills and tools written on their pages. Lineage ability increases follow the wiki patterns, including Splicer’s extra +2, and class improvements are +2 or two +1s, capped at 20 before cybernetics. Cybernetic slots equal proficiency bonus. BioMod and NeuroMod apply only after you pick an ability, and their caps follow the cybernetics page (20 / 22 / 24). Defense is +1 AC in armor and +2 in heavy armor. Milestone ranks follow the leveling chart, which starts at level 5.
 
 Where the wiki is quiet, the sheet uses the usual 5e reading and says so in the app: standard array, 27-point buy, and a minimum of 1 hit point gained on a level. The Discord's `.threshold` rolls are entered as manual scores.

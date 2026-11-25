@@ -266,7 +266,9 @@ export interface Character {
   toolProfs: string[];
   languages: string[];
   hpOverride: number | null;
+  /** @deprecated Kept so older saves that toggled Defense still apply. Prefer fightingStyles. */
   defenseStyle: boolean;
+  fightingStyles: string[];
   armorId: string | null;
   shield: boolean;
   weapons: WeaponEquip[];
