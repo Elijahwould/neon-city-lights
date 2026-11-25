@@ -23,20 +23,17 @@ import {
   derive,
   FIGHTING_STYLES,
   findClass,
-  findSubclass,
   fitClassLevels,
   lineageAsiMode,
   lineageGrantsFeat,
   normalizeCharacter,
-  trickAllowance,
   pointBuySpent,
   rankFor,
   rollAbilityScores,
   skillKey,
   standardScores,
-  techLevelAccess,
-  techListFor,
 } from "@/lib/character";
+import { TechPicker } from "@/components/tech-picker";
 import { pickLineage, traitGroups } from "@/lib/traits";
 import {
   SKILL_BLURB,
@@ -135,7 +132,6 @@ function BuilderInner() {
   const [itemStats, setItemStats] = useState<Record<string, ItemStat>>({});
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
   const [hint, setHint] = useState<string | null>(null);
-  const [techQuery, setTechQuery] = useState("");
   const [kitPicks, setKitPicks] = useState<Record<string, string>>({});
   const [flavor, setFlavor] = useState<FlavorFile | null>(null);
   const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
@@ -595,71 +591,17 @@ function BuilderInner() {
             </ul>
           </>
         )}
-        {current === "Techs" && (() => {
-          const known = character.techs.map((id) => rules.techs.find((tech) => tech.id === id)).filter((tech): tech is NonNullable<typeof tech> => Boolean(tech));
-          const trickCount = known.filter((tech) => tech.trick || tech.level === 0).length;
-          const leveledCount = known.filter((tech) => !tech.trick && (tech.level ?? 0) > 0).length;
-          const leveledCap = derived.techsKnownMax ?? (derived.deckMax > 0 ? derived.deckMax : derived.preparedMax ?? 0);
-          const extraClasses = [
-            character.fightingStyles.includes("Ordained Warrior") ? "ordinator" : "",
-            character.fightingStyles.includes("Introvert") ? "shutin" : "",
-          ].filter(Boolean);
-          const list = [...entries.flatMap((entry) => techListFor(rules, findClass(rules, entry.id), findSubclass(rules, entry.subclassId))), ...extraClasses.flatMap((id) => techListFor(rules, findClass(rules, id), null))].filter((tech, index, all) => all.findIndex((item) => item.id === tech.id) === index);
-          const access = techLevelAccess(rules, character, derived.slots, derived.pactLevel, derived.tricksMax);
-          const query = techQuery.toLowerCase();
-          return (
-            <div className="space-y-3">
-              <p className="text-sm text-muted">Tricks {trickCount}/{derived.tricksMax}. {derived.deckMax > 0 ? `Cyberdeck ${leveledCount}/${derived.deckMax} · prepared ${character.prepared.length}/${derived.preparedMax ?? 0}` : derived.techsKnownMax != null ? `Leveled ${leveledCount}/${leveledCap || "—"}` : `Prepared ${leveledCount}/${leveledCap || "—"}`}. Slots {derived.slots.map((n, i) => n ? `${i + 1}:${n}` : "").filter(Boolean).join(" ") || "none"}.</p>
-              <TextInput value={techQuery} onChange={(e) => setTechQuery(e.target.value)} placeholder="Search techs" />
-              {access.map((gate) => {
-                const group = list.filter((tech) => (tech.trick || !tech.level ? 0 : tech.level) === gate.level && `${tech.name} ${tech.sector ?? ""} ${techText[tech.id]?.summary ?? ""}`.toLowerCase().includes(query));
-                if (!group.length) return null;
-                return (
-                  <section key={gate.level} className="space-y-1">
-                    <h2 className="text-sm uppercase tracking-wide text-cyan">{gate.level === 0 ? "Cantrip (trick)" : `Level ${gate.level}`}{gate.open ? "" : ` · ${gate.reason}`}</h2>
-                    {group.map((tech) => {
-                const owned = character.techs.includes(tech.id);
-                const trick = tech.trick || tech.level === 0;
-                const allowance = trickAllowance(character.fightingStyles, derived.tricksMax, known.map((item) => ({ trick: Boolean(item.trick || item.level === 0), level: item.level, classes: item.classes ?? [] })), entries.map((entry) => entry.id));
-                const bonusOnly = trick && allowance.isBonusOnly({ classes: tech.classes ?? [] });
-                const bonusList = allowance.bonusLists.find((id) => (tech.classes ?? []).includes(id));
-                const levelLocked = !gate.open && !owned;
-                const blocked = levelLocked || (!owned && (trick
-                  ? bonusOnly
-                    ? (bonusList ? allowance.bonusUsed[bonusList] >= allowance.bonusCap : true)
-                    : allowance.ownUsed >= allowance.ownCap
-                  : leveledCap > 0 && leveledCount >= leveledCap));
-                const prepared = character.prepared.includes(tech.id);
-                const prepareBlocked = !prepared && (character.prepared.length >= (derived.preparedMax ?? 0) || !owned);
-                return (
-                  <div key={tech.id} className="space-y-1 border border-white/10 p-2">
-                    <button type="button" disabled={blocked} className={`block min-h-11 w-full px-1 py-1 text-left text-sm disabled:opacity-40 ${owned ? "text-cyan" : ""}`} onClick={() => {
-                      if (owned) patch({ techs: character.techs.filter((id) => id !== tech.id), prepared: character.prepared.filter((id) => id !== tech.id) });
-                      else if (!blocked) patch({ techs: [...character.techs, tech.id] });
-                    }}>
-                      <span className="block">{tech.name} · {tech.sector}{derived.deckMax > 0 && !trick ? (owned ? " · in deck" : "") : ""}{levelLocked ? ` · ${gate.reason}` : ""}</span>
-                      {techText[tech.id]?.summary && <span className="mt-1 block text-xs text-muted">{techText[tech.id].summary}</span>}
-                      <span className="mt-1 block text-[10px] uppercase tracking-wide text-muted">{[tech.castingTime, tech.range, tech.duration].filter(Boolean).join(" · ")}</span>
-                    </button>
-                    {derived.deckMax > 0 && !trick && (
-                      <button type="button" disabled={prepareBlocked && !prepared} className={`min-h-11 shrink-0 border px-2 text-xs disabled:opacity-40 ${prepared ? "border-pink text-pink" : "border-white/20"}`} onClick={() => {
-                        if (!owned) return;
-                        patch({ prepared: prepared ? character.prepared.filter((id) => id !== tech.id) : [...character.prepared, tech.id] });
-                      }}>{prepared ? "Prepared" : "Prepare"}</button>
-                    )}
-                    <details className="border border-white/10 px-2 py-1 text-xs text-muted">
-                      <summary className="cursor-pointer text-cyan">Full description</summary>
-                      <p className="mt-1 whitespace-pre-wrap">{techText[tech.id]?.effect || "The wiki page has no effect text in the mirror."}</p>
-                    </details>
-                  </div>
-                );
-                    })}
-                  </section>
-                );
-              })}
-            </div>
-          );
-        })()}
+        {current === "Techs" && (
+          <TechPicker
+            rules={rules}
+            character={character}
+            mods={derived.mods}
+            slots={derived.slots}
+            pactLevel={derived.pactLevel}
+            techText={techText}
+            onChange={(next) => patch(next)}
+          />
+        )}
         {current === "Scores" && (
           <>
             {entries.flatMap((entry) => {

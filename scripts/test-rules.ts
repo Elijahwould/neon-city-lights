@@ -1,5 +1,5 @@
 import rulesJson from "../public/data/rules.json";
-import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, cyberdeckSize, derive, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, trickAllowance } from "../src/lib/character";
+import { addClassLevel, applyLevelUp, asiAssignmentOk, assignPooledScore, blankCharacter, classLevelAccess, classTechBudget, collectGrantedTechs, cyberdeckSize, derive, findClass, findSubclass, fitClassLevels, lineageGrantsFeat, meetsMulticlassPrereq, pointBuySpent, roll4d6DropLowest, techLevelAccess, techPickCounts, trickAllowance } from "../src/lib/character";
 import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, startingMoney, xpForLevel } from "../src/lib/creation";
 import type { Character, Rules } from "../src/lib/types";
@@ -430,6 +430,39 @@ const splitGates = techLevelAccess(rules, runner({
   baseScores: scores,
 }), multiCast.slots, multiCast.pactLevel, multiCast.tricksMax);
 check("multiclass locks 2nd-level techs until combined caster level 3", splitGates.find((gate) => gate.level === 2)?.reason, "Unlocks at combined caster level 3");
+
+const sourcecoder = findClass(rules, "sourcecoder")!;
+const influencer = findClass(rules, "influencer")!;
+const enforcerClass = findClass(rules, "enforcer")!;
+const wizard = findClass(rules, "techwizard")!;
+const roninClass = findClass(rules, "ronin")!;
+const bladeSub = findSubclass(rules, "ronin:technoblade")!;
+check("source coder 1 learns 4 tricks and 2 techs", classTechBudget(sourcecoder, null, 1, 3), { tricks: 4, techs: 2, prepared: null, mode: "known" });
+check("source coder 5 learns 5 tricks and 6 techs", classTechBudget(sourcecoder, null, 5, 3), { tricks: 5, techs: 6, prepared: null, mode: "known" });
+check("influencer 1 learns 2 tricks and 4 techs", classTechBudget(influencer, null, 1, 2), { tricks: 2, techs: 4, prepared: null, mode: "known" });
+check("enforcer 5 prepares 4 techs and no tricks", classTechBudget(enforcerClass, null, 5, 2), { tricks: 0, techs: 4, prepared: 4, mode: "prepared" });
+check("techwizard 1 has 3 tricks and a 6-tech deck", classTechBudget(wizard, null, 1, 3), { tricks: 3, techs: 6, prepared: 4, mode: "deck" });
+check("technoblade 1 has no tricks or techs yet", classTechBudget(roninClass, bladeSub, 1, 3), { tricks: 0, techs: 0, prepared: null, mode: "known" });
+check("technoblade 3 learns 2 tricks and 3 techs", classTechBudget(roninClass, bladeSub, 3, 3), { tricks: 2, techs: 3, prepared: null, mode: "known" });
+check("source coder 3 locks 3rd-level techs until 5", classLevelAccess(sourcecoder, null, 3).find((gate) => gate.level === 3)?.reason, "Unlocks at Source Coder 5");
+check("source coder 3 can learn 2nd-level techs", classLevelAccess(sourcecoder, null, 3).find((gate) => gate.level === 2)?.open, true);
+check("enforcer class lock still names level 2", classLevelAccess(enforcerClass, null, 1).find((gate) => gate.level === 1)?.reason, "Unlocks at Enforcer 2");
+
+const juicer5 = collectGrantedTechs(rules, runner({ classId: "enforcer", subclassId: "enforcer:juicer", level: 5, classLevels: [{ id: "enforcer", level: 5, subclassId: "enforcer:juicer" }] }));
+check("juicer 5 grants the level 3 techs", juicer5.some((note) => note.id === "tech:cacophonous-strike" && note.source === "Granted by Clause of the Juicer at level 3"), true);
+check("juicer 5 grants the level 5 techs", juicer5.some((note) => note.id === "tech:wavedash" && note.source === "Granted by Clause of the Juicer at level 5"), true);
+const juicer2 = collectGrantedTechs(rules, runner({ classId: "enforcer", subclassId: "enforcer:juicer", level: 2, classLevels: [{ id: "enforcer", level: 2, subclassId: "enforcer:juicer" }] }));
+check("juicer grants wait until their level", juicer2.length, 0);
+const grantIds = new Set(juicer5.map((note) => note.id));
+check("a granted tech does not spend a tech pick", techPickCounts([
+  { id: "tech:cacophonous-strike", classId: "enforcer" },
+  { id: "tech:anomaly-detector", classId: "enforcer" },
+  { id: "tech:aimbot", classId: "sourcecoder" },
+], "enforcer", rules.techs, grantIds), { tricks: 0, techs: 1 });
+const helping = collectGrantedTechs(rules, runner({ asiPicks: [{ level: 1, mode: "feat", featId: "feat:helping-hand-hacker" }] }));
+check("helping hand hacker grants its trick", helping.some((note) => note.id === "tech:hovering-helping-hand" && note.source === "Granted by Helping Hand Hacker"), true);
+const elfTrick = collectGrantedTechs(rules, runner({ lineageId: "race:elf", lineagePicks: ["bonus-tech:techwizard:tech:aimbot"] }));
+check("a lineage trick is granted by the lineage", elfTrick.some((note) => note.id === "tech:aimbot" && note.source === "Granted by Elf"), true);
 
 if (failed) {
   console.error(`${failed} failed`);

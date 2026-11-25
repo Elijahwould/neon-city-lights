@@ -129,7 +129,7 @@ function SheetInner() {
   const needsAsi = Boolean(targetClass && asiLevels(targetClass, nextClassLevel).includes(nextClassLevel));
   const needsSub = Boolean(targetClass?.subclassLevel === nextClassLevel && !targetEntry?.subclassId);
   const gate = target ? canTakeClassLevel(character, target, derived.scores) : { ok: true, reason: "" };
-  const owned = new Set(character.techs);
+  const owned = new Set([...character.techs, ...derived.grantedTechIds]);
 
   async function copyShare() {
     const payload = await encodeShare(character!);
@@ -306,7 +306,7 @@ function SheetInner() {
                   </li>
                 );
               })}
-              {derived.grantedTechIds.map((techId) => <li key={techId}>{rules.techs.find((item) => item.id === techId)?.name ?? techId} · granted, always prepared</li>)}
+              {derived.grantedTechNotes.map((note) => <li key={`${note.classId}-${note.id}`}>{note.name} · {note.source}. Always prepared, and it does not count against your picks.</li>)}
             </ul>
             {derived.bonusOffers.filter((offer) => !owned.has(offer.id)).map((offer) => (
               <p key={offer.id} className="fine">{rules.techs.find((tech) => tech.id === offer.id)?.name} is available to add. {offer.note} <button className="no-print underline" onClick={() => save({ ...character, techs: [...character.techs, offer.id] })}>Add</button></p>

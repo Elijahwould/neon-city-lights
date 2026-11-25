@@ -1,4 +1,4 @@
-import { activeTraits, borrowedNotes, lineageTechIds, traitAbility } from "./traits";
+import { activeTraits, borrowedNotes, traitAbility } from "./traits";
 import {
   ABILITIES,
   ABILITY_NAME,
@@ -9,6 +9,7 @@ import {
   type Rules,
   type SkillDef,
   type SubclassDef,
+  type TechPick,
 } from "./types";
 
 export function modifier(score: number) {
@@ -70,6 +71,7 @@ export function blankCharacter(): Character {
     shield: false,
     weapons: [],
     techs: [],
+    techPicks: [],
     prepared: [],
     inventory: [],
     cybernetics: [],
@@ -123,6 +125,7 @@ export function normalizeCharacter(input: Character): Character {
     xp: input.xp ?? 0,
     sheetNotes: input.sheetNotes ?? {},
     fightingStyles: input.fightingStyles ?? (input.defenseStyle ? ["Defense"] : []),
+    techPicks: input.techPicks ?? [],
   };
 }
 
@@ -585,6 +588,7 @@ export interface Derived {
   movement: string;
   carryMultiplier: number;
   grantedTechIds: string[];
+  grantedTechNotes: GrantedTechNote[];
   bonusOffers: { id: string; note: string }[];
   cyberLimit: number;
   cyberOverflow: boolean;
@@ -828,7 +832,8 @@ export function derive(raw: Character, rules: Rules): Derived {
 
   const wizard = classes.find((row) => row.entry.id === "techwizard");
   const deckMax = wizard ? cyberdeckSize(wizard.entry.level) : 0;
-  const grantedTechIds = [...classes.flatMap((row) => (row.sub?.grantedTechs ?? []).filter((block) => block.level <= row.entry.level).flatMap((block) => block.techIds)), ...lineageTechIds(character.lineagePicks ?? [])];
+  const grantedTechNotes = collectGrantedTechs(rules, character);
+  const grantedTechIds = [...new Set(grantedTechNotes.map((note) => note.id))];
   const profText = classes.map((row, index) => {
     if (!row.cls) return "";
     if (index === 0) return `${row.cls.armor} ${row.cls.weapons} ${row.cls.tools}`;
@@ -963,6 +968,7 @@ export function derive(raw: Character, rules: Rules): Derived {
     movement: [`${speed} ft. walk`, ...traits.flatMap((trait) => [trait.swim ? `${speed} ft. swim` : "", trait.climb === "speed" ? `${speed} ft. climb` : typeof trait.climb === "number" ? `${trait.climb} ft. climb` : ""]), ...styleNotes.filter((note) => note.startsWith("Swim"))].filter(Boolean).join(", "),
     carryMultiplier: traits.reduce((factor, trait) => factor * (trait.carryMultiplier ?? 1), 1),
     grantedTechIds,
+    grantedTechNotes,
     bonusOffers: bonusTechOffers(entries),
     cyberLimit: pb,
     cyberOverflow: character.cybernetics.length > pb,
@@ -1036,6 +1042,128 @@ export function techListFor(rules: Rules, cls: ClassDef | null, sub: SubclassDef
     if (sectors.length && tech.sector && !sectors.includes(tech.sector)) return false;
     if (sectors.length && !tech.sector) return false;
     return true;
+  });
+}
+
+export interface ClassTechBudget {
+  tricks: number;
+  techs: number;
+  prepared: number | null;
+  mode: "known" | "prepared" | "deck";
+}
+
+export interface GrantedTechNote {
+  id: string;
+  classId: string;
+  source: string;
+  name: string;
+}
+
+/** Feats that name a specific trick or tech. These are added for free once the feat is taken. */
+const NAMED_FEAT_TECHS: Record<string, string[]> = {
+  "feat:helping-hand-hacker": ["tech:hovering-helping-hand"],
+  "feat:ghetto-go-getter": ["tech:physical-cloaking"],
+};
+
+/** Feats that give extra picks. The picks do not spend the class table's trick or tech count. */
+export const FEAT_TECH_CHOICES: Record<string, { tricks: number; techs: number; maxLevel: number }> = {
+  "feat:gifted-techcaster": { tricks: 0, techs: 4, maxLevel: 7 },
+  "feat:hacker-wannabe": { tricks: 2, techs: 1, maxLevel: 1 },
+  "feat:mechanist-wannabe": { tricks: 1, techs: 1, maxLevel: 1 },
+  "feat:boosted-wifi": { tricks: 1, techs: 0, maxLevel: 0 },
+  "feat:ghetto-go-getter": { tricks: 0, techs: 1, maxLevel: 1 },
+};
+
+/** Tricks and techs this class can learn at this level, from its wiki table. */
+export function classTechBudget(cls: ClassDef, sub: SubclassDef | null, level: number, abilityMod: number): ClassTechBudget {
+  const cast = castingProfile(cls, sub, level);
+  const tricks = cast.tricks ?? 0;
+  if (cls.id === "techwizard") {
+    const prepared = Math.max(cls.prepared?.minimum ?? 1, abilityMod + level);
+    return { tricks, techs: cyberdeckSize(level), prepared, mode: "deck" };
+  }
+  if (cast.known == null && cls.prepared) {
+    const prepared = Math.max(cls.prepared.minimum, abilityMod + (cls.prepared.halfLevel ? Math.floor(level / 2) : level));
+    return { tricks, techs: prepared, prepared, mode: "prepared" };
+  }
+  return { tricks, techs: cast.known ?? 0, prepared: null, mode: "known" };
+}
+
+/** Levels this one class can learn, as if it were the only class. */
+export function classLevelAccess(cls: ClassDef, sub: SubclassDef | null, classLevel: number) {
+  const cast = castingProfile(cls, sub, classLevel);
+  return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((level) => {
+    if (level === 0) {
+      if ((cast.tricks ?? 0) > 0) return { level, open: true, reason: "" };
+      const at = tableUnlock(cls, sub, "trick");
+      return { level, open: false, reason: at ? `Unlocks at ${cls.name} ${at}` : "This class has no tricks." };
+    }
+    const open = (cast.slots[level - 1] ?? 0) > 0 || (cast.pactLevel != null && level <= cast.pactLevel && (cast.pactSlots ?? 0) > 0);
+    if (open) return { level, open: true, reason: "" };
+    const at = tableUnlock(cls, sub, level - 1);
+    if (cls.id === "streamer" && at == null) return { level, open: false, reason: "Streamer gifted tech ends at 5th level." };
+    if (at) return { level, open: false, reason: `Unlocks at ${cls.name} ${at}` };
+    return { level, open: false, reason: "No class table grants this tech level." };
+  });
+}
+
+/** Always-prepared and bonus tricks and techs that do not spend a class pick. */
+export function collectGrantedTechs(rules: Rules, character: Character): GrantedTechNote[] {
+  const notes: GrantedTechNote[] = [];
+  const seen = new Set<string>();
+  const add = (id: string, classId: string, source: string, name?: string) => {
+    const key = `${classId}|${id}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    notes.push({ id, classId, source, name: name || rules.techs.find((tech) => tech.id === id)?.name || id });
+  };
+  for (const entry of classEntries(character)) {
+    const cls = findClass(rules, entry.id);
+    const sub = findSubclass(rules, entry.subclassId);
+    if (!cls) continue;
+    for (const block of sub?.grantedTechs ?? []) {
+      if (block.level > entry.level) continue;
+      block.techIds.forEach((id, index) => add(id, entry.id, `Granted by ${sub!.name} at level ${block.level}`, block.names[index]));
+    }
+    for (const bonus of BONUS_TECHS[entry.id] ?? []) add(bonus.id, entry.id, `Granted by ${cls.name} at level 1`);
+  }
+  const lineage = rules.lineages.find((item) => item.id === character.lineageId);
+  for (const pick of character.lineagePicks ?? []) {
+    if (!pick.startsWith("bonus-tech:")) continue;
+    const rest = pick.slice("bonus-tech:".length);
+    const split = rest.indexOf(":");
+    const id = split >= 0 ? rest.slice(split + 1) : "";
+    if (id) add(id, "lineage", `Granted by ${lineage?.name ?? "lineage"}`);
+  }
+  for (const pick of character.asiPicks ?? []) {
+    const ids = pick.featId ? NAMED_FEAT_TECHS[pick.featId] : undefined;
+    if (!pick.featId || !ids) continue;
+    const feat = rules.feats.find((item) => item.id === pick.featId);
+    for (const id of ids) add(id, `feat:${pick.featId}`, `Granted by ${feat?.name ?? "a feat"}`);
+  }
+  return notes;
+}
+
+export function techPickCounts(picks: TechPick[], classId: string, catalog: { id: string; trick: boolean; level: number | null }[], grantIds: Set<string>) {
+  let tricks = 0;
+  let techs = 0;
+  for (const pick of picks) {
+    if (pick.classId !== classId || grantIds.has(pick.id)) continue;
+    const tech = catalog.find((item) => item.id === pick.id);
+    if (!tech) continue;
+    if (tech.trick || !tech.level) tricks += 1;
+    else techs += 1;
+  }
+  return { tricks, techs };
+}
+
+/** Older saves stored only tech ids. Assign each one to the first class whose list contains it. */
+export function resolvedTechPicks(character: Character, rules: Rules): TechPick[] {
+  if (character.techPicks?.length) return character.techPicks;
+  const entries = classEntries(character);
+  return character.techs.map((id) => {
+    const owner = entries.find((entry) => techListFor(rules, findClass(rules, entry.id), findSubclass(rules, entry.subclassId)).some((tech) => tech.id === id));
+    return { id, classId: owner?.id ?? entries[0]?.id ?? "" };
   });
 }
 

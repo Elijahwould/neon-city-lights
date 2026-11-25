@@ -199,6 +199,12 @@ export interface ClassLevel {
   subclassId: string | null;
 }
 
+/** A trick or tech the runner chose for one class, feat, or fighting style. */
+export interface TechPick {
+  id: string;
+  classId: string;
+}
+
 export interface AsiPick {
   level: number;
   classId?: string;
@@ -274,6 +280,8 @@ export interface Character {
   shield: boolean;
   weapons: WeaponEquip[];
   techs: string[];
+  /** Which class, feat, or style each chosen tech belongs to. Empty on older saves; the builder infers it from techs. */
+  techPicks: TechPick[];
   prepared: string[];
   inventory: InventoryItem[];
   cybernetics: CyberInstall[];
