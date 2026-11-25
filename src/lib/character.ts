@@ -341,9 +341,8 @@ export function lineageGrantsFeat(lineageId: string | null, option: string | nul
   return bonusFeat;
 }
 
-/** Wiki ability-score patterns. Splicer is not the usual +2-or-two-+1 flex increase. */
+/** Ability-score pattern for a lineage. Splicer uses the shared spread pattern by house rule. */
 export function lineageAsiMode(lineage: { id: string; asi: string }) {
-  if (lineage.id === "race:splicer") return "splicer";
   return lineage.asi;
 }
 

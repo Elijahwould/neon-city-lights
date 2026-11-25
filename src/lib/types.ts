@@ -85,6 +85,8 @@ export interface LineageDef {
   size: string | null;
   asi: "flex" | "spread" | "plus1plus1" | "plus2" | "plus1" | "unknown" | string;
   asiText: string | null;
+  /** Present when this companion uses a house rule instead of the wiki sentence. */
+  houseRule?: string | null;
   languages: string | null;
   traits: TraitLine[];
   sublineages: HeritageDef[];

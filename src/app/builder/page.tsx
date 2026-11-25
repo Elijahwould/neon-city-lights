@@ -7,7 +7,7 @@ import { Button, Chip, Field, Select, TextInput } from "@/components/ui";
 import { AsiPicker } from "@/components/asi-picker";
 import { ChoiceCard, FactList, HeritageField } from "@/components/choice";
 import { ABILITIES, ABILITY_NAME, type Ability, type CatalogEntry, type Character, type ClassDef, type Rules } from "@/lib/types";
-import { loadCatalog, loadEntry, loadFlavor, loadRules, originLabel, type FlavorFile } from "@/lib/data";
+import { isHiddenLineage, loadCatalog, loadEntry, loadFlavor, loadRules, originLabel, type FlavorFile } from "@/lib/data";
 import { getCharacter, upsertCharacter } from "@/lib/storage";
 import {
   addClassLevel,
@@ -386,7 +386,7 @@ function BuilderInner() {
             </div>
           </>
         )}
-        {current === "Lineage" && rules.lineages.map((item) => {
+        {current === "Lineage" && rules.lineages.filter((item) => !isHiddenLineage(item.id)).map((item) => {
           const selected = character.lineageId === item.id;
           const sizeFromHeritage = item.sublineages.some((sub) => sub.traits.some((trait) => trait.name === "Size"));
           return (
@@ -397,6 +397,7 @@ function BuilderInner() {
               <FlavorNote card={flavor?.lineages[item.id]} />
               <FactList rows={[
                 { label: "Ability score increase", text: item.asiText ?? "The wiki does not state an ability score increase." },
+                { label: "House rule", text: item.houseRule ?? "" },
                 { label: "Size", text: item.size ?? (sizeFromHeritage ? "Set by the heritage." : "The wiki does not state a size.") },
                 { label: "Speed", text: item.speedText ?? (item.speed ? `${item.speed} feet.` : "The wiki does not state a speed.") },
                 { label: "Languages", text: item.languages ?? "The wiki does not grant a language." },

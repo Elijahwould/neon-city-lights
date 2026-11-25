@@ -3,6 +3,13 @@ import type { CatalogEntry, EntryDoc, Rules } from "./types";
 let rulesPromise: Promise<Rules> | null = null;
 let catalogPromise: Promise<CatalogEntry[]> | null = null;
 
+/** Hidden from the builder and compendium. The records stay in the data so an older runner still resolves. */
+export const HIDDEN_LINEAGES = new Set(["race:human", "race:core"]);
+
+export function isHiddenLineage(id: string) {
+  return HIDDEN_LINEAGES.has(id);
+}
+
 export function loadRules(): Promise<Rules> {
   if (!rulesPromise) {
     rulesPromise = fetch("/data/rules.json").then((res) => {
