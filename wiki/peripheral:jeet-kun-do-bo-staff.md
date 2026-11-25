@@ -1,0 +1,18 @@
+---
+title: "Jeet Kun Do Bo-Staff"
+slug: "peripheral:jeet-kun-do-bo-staff"
+url: "https://neoncitylights.wikidot.com/peripheral:jeet-kun-do-bo-staff"
+breadcrumbs: ["HOME.info", "LOOT.info", "Peripherals", "Jeet Kun Do Bo-Staff"]
+tags: ["1m", "peripherals"]
+---
+##### Source: Dungeon Master's Guide (Staff of Defense)
+
+*Peripheral, rare (requires installation by a [influencer](/influencer), [sourcer coder](/source-coder) [streamer](/streamer), or [techwizard](/techwizard))*
+
+**Specs:** 4 lbs., $$800,000
+
+This slender, hollow staff is made of aramid fibreglass, and is stronger than oak. It weighs 3 pounds. While holding the staff, you have a +1 bonus to your Armor Class.
+
+**Techs.** The staff has 10 charges. While holding it, you can expend the requisite number of charges to cast one of the following techs from the staff: [Hardlight Armor](/tech:hardlight-armor) (1 charge) or [Emergency Barrier](/tech:emergency-barrier) (2 charges).
+
+The staff regains 1d6 + 4 expended charges each day at dawn. If you expend the staff's last charge, roll a d20. On a 1, the staff shatters and is destroyed.

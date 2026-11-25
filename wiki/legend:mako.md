@@ -1,0 +1,34 @@
+---
+title: "Mako \"Flame Dragon Crystal\""
+slug: "legend:mako"
+url: "https://neoncitylights.wikidot.com/legend:mako"
+breadcrumbs: ["HOME.info", "WORLD.info", "Street Legends", "Mako \"Flame Dragon Crystal\""]
+tags: ["pc", "street-legend"]
+---
+**Name.** Mako "Flame Dragon Crystal"
+
+**Lineage.** New Human
+
+**Age.** 29
+
+**Height and Weight.** 6'8", 260 lbs
+
+**Pronouns.** he/they
+
+**Classes/Subclasses.** Techwizard (Sentai Savior) 19
+
+**Features.** Black eyes with red sclera, a set of bighorn-like horns located near the eyes, black Gojira scales around their neck, chin and face
+
+**Status.** Alive
+
+From street rat to corporate dog, to a hero of his own making… Mako and FDC have come far from their humble beginnings.
+
+Once an employee for an unknown corporation, Mako was chosen to join a project called Tokusatsu Severance, a procedure which would fully split his mind into two separate personalities. These two personalities would assume his personal life and acting life, respectively. The procedure worked well—too well, in fact. The ensuing disaster birthed a new person inside of him, donning the name of "Flame Devil Crystal". Disillusioned with what his eyes now saw to be the truth behind corporate behaviors and interests, he left shortly after.
+
+Mako and FDC started their new lives as runners, living on the fringes of society before they joined the [Super Henshin Guild](/org:super-henshin-guild). Years of stuntman and weapons training certainly helped them during their gigs, and their newfound freedom gave them the time and space to fully explore themselves, allowing them to learn about each other's ideals, fighting styles, kinks, and more. Certainly, Mako was full glad to leave behind the corporate life.
+
+They usually cooperate and plan their runs together, but the moment a battle starts, FDC immediately takes over, charging at the enemy. This has given them a reputation of a runner that escalates every situation: even simple situations often carry over collateral damage. This was fully explored when, at the peak of their career, a L.I.C.H. extermination gig started with simple explosions and ended with FDC using *[absolute source code manipulation](/tech:absolute-source-code-manipulation)* to power himself up to fly into the sky with said L.I.C.H. and their engrammatic tesseract, kicking it so hard that the L.I.C.H. and its tesseract sailed through space and eventually crashed into Pluto, where it is likely to be stuck for several thousand years. Mako came falling down soon after, shattering every bone in his body upon impact—but, to everyone's surprise, *alive*.
+
+These days, Mako and FDC, now named "Flame Dragon Crystal" after a new awakening, continue to patrol and wait for gigs to reach them. They occasionally visit conventions and fan gatherings to find Super Sentai and Kamen Rider merch, and can often be found promoting the guild.
+
+**Player.** MakoPeanuts#4814

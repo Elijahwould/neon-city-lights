@@ -1,0 +1,64 @@
+---
+title: "Clause of the Juicer"
+slug: "enforcer:juicer"
+url: "https://neoncitylights.wikidot.com/enforcer:juicer"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Enforcer", "Clause of the Juicer"]
+tags: ["enforcer", "subclass"]
+---
+## "High-voltage wires stretched between steel spires like titans holding jumping ropes into the distance. Who wouldn't be drawn to that?"
+
+Most linerunners operate quid pro quo, trading favors for power grid maintenance, and others still do the work simply for the love of it. Some, though, find themselves enchanted by the singing of the wires and make the bolt of innovation their contractual obligation. These enforcers are the Juicers, called as such for juicin' up the grid, and a daze-like appreciation for electrical infrastructure in all forms, from electromagnetic railways to decades old signal towers.
+
+#### Juicers and Metal
+
+> In general, a Juicer's abilities are assumed to work on Surges, Hacked, Machines, Titans, and any creature in heavy armor, as long as we're talking about realspace. On the digital, admins decide what is and isn't metal. Being mostly composed of metal beyond these suggestions is a judgment call, but some hazards derived from nanites or ferrous plant life would apply, for example.
+
+##### Source: Neon City NightsThis is a reny joint, with the Mechanics team providing adjustments and suggestions!
+
+### Clause Techs
+
+You gain clause techs at the enforcer levels listed.
+
+*Clause of the Disruptor Techs*
+
+| Enforcer Level | Techs |
+| --- | --- |
+| 3rd | [Cacophonous Strike](/tech:cacophonous-strike), [Shockwave](/tech:shockwave) |
+| 5th | [Wavedash](/tech:wavedash), [Quantum Lock](/tech:quantum-lock) |
+| 9th | [Arc Cannon](/tech:arc-cannon), [ESC:Dubstep](/tech:esc-dubstep) |
+| 13th | [Microwave](/tech:microwave), [Shocking Ball](/tech:shocking-ball) |
+| 17th | [Power Wave](/tech:power-wave), [Neurodisruptor](/tech:neurodisruptor) |
+
+### Clause Perks
+
+When you take this Clause at 3rd level, you gain the following two Clause Perks options.
+
+- **Conduit Chorus.** As an action, you can align yourself with the electromagnetic field around you. For 1 minute, any time you deal neon or entropic damage with an Enforcer feature, such as neon smite, or an Enforcer tech, you can choose to instead deal lightning damage. Lightning damage dealt in this way ignores a hacked or virus's resistance to lightning damage.
+  - Additionally, when you throw a metal weapon as part of an attack you can activate neon smite on the attack, and you can magnetically pull the weapon back to you after it hits or misses, causing the weapon to fly instantly back to the hand used to throw it.
+- **Magnetic Momentum.** As a bonus action or as a reaction to being targeted by an attack from a creature within range, you blast one creature you can see within 30 feet of you with an electromagnetic wave of static. The target must make a Constitution saving throw. On a failed save, the target takes thunder damage to 1d4 + your enforcer level and is pushed up to 20 feet away from you. On a success, the target takes half as much damage and isn't pushed. Creatures composed significantly of nanotech, metal, or adorned in metal, such as surges, most machines, or an enemy in power armor make this saving throw at disadvantage and can be pushed an additional 10 feet on a failure.
+  - If you would have disadvantage on the saving throw, you can instead target yourself, automatically failing the save. In doing so, you take no damage and can push yourself twice as far and in any direction.
+
+### Generator Firewall
+
+At 7th level, you constantly produce an electrostatic field around you and your allies. When a creature within 10 feet of you, including yourself, takes lightning or thunder damage, you can grant them resistance to that damage type as a reaction. If the target already has resistance to the triggering damage, the damage is reduced by an amount equal to your Enforcer level.
+
+Immediately after taking this reaction, you become charged until the end of your next turn. While you are charged with electricity, your movement speed increases by 10 feet, any creature that hits you with a melee attack takes 1d8 lightning damage, and any creature that grapples you or is grappled by you takes 2d8 lightning damage. Once per round, you can end your charge early to make the generator firewall reaction without using a reaction.
+
+At 18th level, the range of this firewall increases to 30 feet.
+
+### Static Charge
+
+Starting at 15th level, when you cast a tech that deals lightning or thunder damage, you can add your Charisma modifier to one damage roll of that tech.
+
+Whenever you are charged, as per generator firewall, you instead add your Charisma modifier to one damage roll of all lightning or thunder damage you deal. If you have your conduit chorus clause perk active, you can expend a tech slot as a bonus action to grant yourself the effect of charged. When becoming charged in this way, the next lightning or thunder damage roll you make before the end of your next turn is increased by 1d6 for each level of the tech slot expended.
+
+### Magnetic Tempest
+
+When you reach 20th level, you can supercharge any errant piece of metal like a dynamo, painting magnetic paths through local nanites as an action. For 1 minute, you have a magnetic field that extends 30 feet out from you, granting you the following benefits:
+
+- Weapon attacks made using metal weapons and ammunition, and natural attacks made by creatures significantly made of or adorned in metal have disadvantage if they pass through the area or if their target is within the area.
+- Creatures significantly made of or adorned in metal must spend 3 feet of movement for every 1 foot they move through the area.
+- As long as you are charged, you gain a flying speed equal to your movement speed if you are significantly made of or adorned in metal, otherwise, you gain a flying speed equal to half your movement speed.
+- As a bonus action on your turn, you can focus your electromagnetic field on one creature of your choice within the area that you can see, forcing it to make a Strength saving throw. If the target is significantly made of or adorned in metal, it makes this save at disadvantage. On a failed save, the target is knocked prone and you can choose to move it 10 feet in any direction. You can perform this bonus action as part of the same bonus action taken to activate your magnetic momentum clause perk.
+
+Once you have used this ability, you cannot use it again until you finish a long rest.

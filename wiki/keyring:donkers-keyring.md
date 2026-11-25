@@ -1,0 +1,16 @@
+---
+title: "Donkers Keyring"
+slug: "keyring:donkers-keyring"
+url: "https://neoncitylights.wikidot.com/keyring:donkers-keyring"
+breadcrumbs: ["HOME.info", "LOOT.info", "Keyrings", "Donkers Keyring"]
+tags: ["500k", "keyring"]
+---
+##### Source: Dungeon Master's Guide (Ring of the Ram)
+
+*Keyring, rare (requires installation)*
+
+**Specs:** <1 lbs., $$125,000
+
+This keyring stores up kinetic force from the user's movements in an implanted battery. The implanted battery holds 3 charges and regains 1d3 expended charges each day at dawn. You can hold forth the keyring and expend 1 to 3 charges to attack one creature you can see within 60 feet of you. The keyring produces a battering ram made of pure kinetic energy and makes an attack with a +7 bonus. On a hit, for each charge expended, the target takes 2d10 kinetic damage and is pushed 5 feet directly away from you.
+
+Alternately, you can use the keyring for the function it is named for: breaking objects. You can expend 1 to 3 charges as an action to try and break an object you can see within 60 feet of you that isn't being worn or carried. The keyring makes a Strength check with a +5 bonus for each charge you spend.

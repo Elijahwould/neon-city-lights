@@ -1,0 +1,34 @@
+---
+title: "Path of the Dervish"
+slug: "renegade:dervish"
+url: "https://neoncitylights.wikidot.com/renegade:dervish"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Renegade", "Path of the Dervish"]
+tags: ["renegade", "subclass"]
+---
+## “Having drunk the dregs of your love, I am intoxicated beyond recognition. Now, I only pray for the nearness of you so I may advance in my annihilation.”
+
+Filled with intoxication both literal and spiritual, dervishes are renegades who get themselves high as balls to find their hype. They cover themselves in straps and spikes, seeking the ultimate high in mosh pits, leather bars, and bloody battle. Dervishes use their own bodies as weapons, giving themselves over to the hype without thought for tomorrow.
+
+##### Source: Dungeon Master's Guide (Battlerager)
+
+### Leather Daddy
+
+When you choose this path at 3rd level, you gain the ability to use spiked armor as a weapon.
+
+While you are wearing spiked armor and are hyped up, you can use a bonus action to make one melee weapon attack with your armor spikes against a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.
+
+Additionally, when you use the Attack action to grapple a creature, the target takes your Strength modifier as piercing damage if your grapple check succeeds.
+
+**Spiked Armor.** This is medium armor that has been modified to be mostly straps, leather, and spikes. It is effectively a leather jacket with added spikes, granting AC 14 + Dexterity modifier (maximum 2) and disadvantage on Stealth rolls.
+
+### Feeling No Pain
+
+Beginning at 6th level, when you use Reckless Attack while hype, you also gain temporary hit points equal to your Constitution modifier (minimum 1). These temporary hit points are lost if any of them remain when your hype ends.
+
+### Tweaker’s Charge
+
+Beginning at 10th level, you can take the Dash action as a bonus action while you are hype.
+
+### Spiked Reacharound
+
+Starting at 14th level, when a creature within 5 feet of you hits with a melee attack, the attacker takes your Strength modifier in piercing damage. To use this ability, you must be hype, not incapacitated, and wearing spiked armor.

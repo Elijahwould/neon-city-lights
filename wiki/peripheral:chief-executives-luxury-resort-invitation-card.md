@@ -1,0 +1,20 @@
+---
+title: "Chief Executive's Luxury Resort Invitation Card"
+slug: "peripheral:chief-executives-luxury-resort-invitation-card"
+url: "https://neoncitylights.wikidot.com/peripheral:chief-executives-luxury-resort-invitation-card"
+breadcrumbs: ["HOME.info", "LOOT.info", "Peripherals", "Chief Executive's Luxury Resort Invitation Card"]
+tags: [">6m", "peripherals"]
+---
+##### Source: Dungeon Master's Guide (Rod of Security)
+
+*Peripheral, very rare*
+
+**Specs:** 2 lbs., $$9,000,000
+
+Embossed with markings of the favor of CEOs, compact, and sleek, this card is a piece of plastic and metal that many would do unthinkable things to get their hands on. Regardless of how you've obtained it, it's in your possession now.
+
+While holding this card, you can use an action to activate it. The card then instantly transports you and up to 199 other willing creatures you can see to a luxurious resort that exists in an digital realm. You choose the form that the resort takes. It could be a tranquil garden, lovely glade, cheery tavern, immense palace, tropical island, fantastic carnival, or whatever else you can imagine. Regardless of its nature, the resort contains enough water and food to sustain its visitors. Everything else that can be interacted with inside the extraplanar space can exist only there. For example, a flower picked from a garden in the resort disappears if it is taken outside the digital realm.
+
+For each hour spent in the resort, a visitor regains hit points as if it had spent 1 Hit Die. Also, creatures don't age while in the resort, although time passes normally. Visitors can remain in the resort for up to 200 days divided by the number of creatures present (round down).
+
+When the time runs out or you use an action to end it, all visitors reappear in the location they occupied when you activated the card, or an unoccupied space nearest that location. The card can't be used again until ten days have passed.

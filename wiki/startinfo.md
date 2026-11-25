@@ -1,0 +1,73 @@
+---
+title: "START.info"
+slug: "startinfo"
+url: "https://neoncitylights.wikidot.com/startinfo"
+breadcrumbs: ["HOME.info", "START.info"]
+tags: []
+---
+So you've decided that you've read enough and would like to come roll some dice and have fun in Neon City Nights with us? Great! We'd love to have you playing with us.
+
+If you want to get playing as fast as possible, here's a good guide to follow:
+
+# Joining & Creating Your Character
+
+1. Be over 18 years of age. If you are underage, sorry, this server is not for you.
+2. Join the [server](http://discord.gg/neoncitynights)!
+3. Go through the server's initial onboarding process, then read the server rules either [here](/rules) or in the **#rules** channel and learn what is expected of you as a member of the server.
+4. Follow the instructions at the bottom of the **#rules** channel to gain access to the server. You'll need to go to the server rules channel on the server to get your Player role, as well.
+5. After reading through the setting on our Wiki (and asking questions in **#server-questions-and-answers**), start planning your character.
+  - Some people may also want to head in to **#character-idea-conversation**!
+6. If the content is in this wiki, it's allowed for you to use for creating your character!
+  - Despite coming from Carbon Pink, Neon City Nights is more of an extension of the base rules. As such, while we will share many rules with Carbon Pink, many things (such as spell names, and races) will not work the same. Use our wiki as your primary reference!
+  - We may have homebrew content in playtesting. This content is allowed beyond the content of this wiki, and can be found in **#approved-homebrew**!
+7. Pick a place to put your character sheet! Neon City Nights' team recommends one of following options:
+  - The [2.1 Gsheet](https://docs.google.com/spreadsheets/d/1HZeFpLm3ZSAn-U4P5nEcei1mgIYCZYaIyD1RKh9ho34/edit) is extremely useful and fairly straightforward. Open it, make a copy to your GDocs and go!
+  - [Dicecloud](https://v1.dicecloud.com) is another extremely useful tool; the V1 version is probably the most flexible for NCN, but it has a learning curve. We have a [helper document](https://docs.google.com/spreadsheets/d/1RX8hgmMfyff1YA4ttGVrvtLBGKcqPug-Xj9EJUIOhzA/) that should help you create formulas, and people on the server can help guide you on how to make a Dicecloud character if you prefer this option!
+8. Go to **#dice-stats** and type **.threshold** to get two stat blocks to choose from. You can pick either of them for your character and must use one of the two for this character.
+  - You cannot make a new character until you have completed the process of this one and used one of the stat blocks.
+  - You cannot use both stat blocks for two characters.
+9. Decide on your character's [class](/class) and [upbringing](/upbringing).
+10. Assign your ability scores from the roll you made earlier.
+11. Select your Racial Features, Class Features, and Skill Proficiencies as listed.
+12. Level your character up immediately to level 5 and grants yourself 40,000 credits.
+13. Now, it's time to roll health!
+  1. Your first level's HP is always = to the size of your hit die, plus your Constitution modifier (so a +3 Con on a 1d8 character would be 11).
+  2. You can take the average of your hit die if you don't want to roll for it. 1d6 = 4 hp per level 1d8 = 5 hp per level 1d10 = 6 hp per level 1d12 = 7 hp per level
+  3. You can roll for your HP, if you want to gamble! Go to **#health-gamble** and use **.starterhp** to get your starting HP! **Command:** .starterhp *class* *constitutionmod* This will roll your HP to start and show you the results of each roll. Your class name will be one word (eg. ronin, shutin, sourcecoder, streetfighter, techwizard, auditor, pretender, etc.) Example: **.starterhp ronin 4**
+  4. If you multi-classed to start, take the maximum HP for your first class level, then use .gamblehp instead. **Command:** .gamblehp *class* *constitutionmod* *levels* This will roll the amount of levels you need for your class' worth of HP. Your class name will be one word (eg. ronin, shutin, sourcecoder, streetfighter, techwizard, auditor, etc.) Example: you started as 3 levels of ronin and will take 2 levels of renegade, so you would do: **.gamblehp ronin 2 2** **.gamblehp renegade 2 2** Add 10 + your Constitution mod to the result (since your first level was ronin).
+
+# Setting Your Roles
+
+1. Head to **#roles** and pick up your Lewd Level tags, as well as your Level Bracket tags.
+  1. Lewd Level is a measure of how horny you're willing to get with other players. **Lewd Level 0:** *None, thanks!* You're here to roll dice. **Lewd Level 1:** *I'll watch!* You're here to roll dice, and don't mind if there's some spicy window dressing. **Lewd Level 2:** *I'll play!* You're here to mostly roll dice, but you're fine with your adventure being spicy in and of itself! **Lewd Level 3:** *I'm down for anything!* You're not here for dice, you're here because the spice calls.
+  2. Level Brackets determine what level you are. You just started, so you will always be a **Runt**! You will change this later as you level up.
+
+# Getting Into Games
+
+So, how do you play?
+
+On Neon City Nights, we have a system put in place: fixers run games on their own schedule and announce them. Each fixer has their own guidelines on who they'll take for any given job.
+
+Therefore, you need to keep your level brackets in check, and watch for pings! Jobs tend to be posted in the **#job-forum-listings** channel on the Discord! You can also use **#player-request** to request fixers to run jobs for you.
+
+After a successful job/mission, your character receives two things: MP (Milestone Points) and Credits. Refer to the [Leveling and Rewards](/leveling-and-rewards) page to check character progression.
+
+╭──────────────────────────────────────╮
+
+│ chat log ►▸►▸►▸► ??:??XX, 1622/11/18 │
+
+├──────────────────────────────────────┴──────────────────────────────────────╮
+
+│ (X:ѲѲPM) **the administrator**: hopefully that wasn't too confusing.            │
+
+│ (Ѳ:ѲѲPM) **the pharmacist**: but if it is, we're always happy to help people    │
+
+│          with any questions they might have!                                │
+
+│ (Ѳ:XѲPM) **the escort**: Absolutely! We really do hope you're able to join us   │
+
+│          in Neon City!                                                      │
+
+│ (X:XXPM) **the weaver**: how overly saccharine of all of you                    │
+
+╰─────────────────────────────────────────────────────────────────────────────╯

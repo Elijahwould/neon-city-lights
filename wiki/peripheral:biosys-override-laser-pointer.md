@@ -1,0 +1,16 @@
+---
+title: "BioSys Override Laser Pointer"
+slug: "peripheral:biosys-override-laser-pointer"
+url: "https://neoncitylights.wikidot.com/peripheral:biosys-override-laser-pointer"
+breadcrumbs: ["HOME.info", "LOOT.info", "Peripherals", "BioSys Override Laser Pointer"]
+tags: ["3m", "peripherals"]
+---
+##### Source: Dungeon Master's Guide (Wand of Paralysis)
+
+*Peripheral, rare (requires installation by a techcaster)*
+
+**Specs:** 1 lb., $$2,500,000
+
+This laser pointer, powered by a battery, has 7 charges. While holding it, you can use an action to expend 1 of its charges to cause a thin blue ray to streak from the tip toward a creature you can see within 60 feet of you. The target must succeed on a DC 15 Constitution saving throw or be paralyzed for 1 minute. At the end of each of the target's turns, it can repeat the saving throw, ending the effect on itself on a success.
+
+The battery inside regains 1d6 + 1 expended charges daily at dawn. If you expend the battery's last charge, roll a d20. On a 1, the battery melts into slag within the laser pointer's internals, bricking it entirely.

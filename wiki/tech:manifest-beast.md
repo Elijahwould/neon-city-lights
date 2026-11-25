@@ -1,0 +1,33 @@
+---
+title: "Manifest Beast"
+slug: "tech:manifest-beast"
+url: "https://neoncitylights.wikidot.com/tech:manifest-beast"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Manifest Beast"]
+tags: ["auditor", "manifestation", "second", "shutin", "tech"]
+---
+##### Source: Tasha's Cauldron of Everything (Summon Beast)
+
+*2nd-level manifestation*
+
+**Casting Time:** 1 action
+
+**Range:** 90 feet
+
+**Components:** V, S, M (a small figurine worth $$20,000 depicting a fish, a furry animal, a bird, and an acorn)
+
+**Duration:** Concentration, up to 1 hour
+
+You summon a bestial projection. It manifests in an unoccupied space that you can see within range. This hardlight form uses the Bestial Projection stat block. When you cast the tech, choose an environment: Air, Land, or Water. The creature resembles an animal of your choice that is native to the chosen environment, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the tech ends.
+
+The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don’t issue any, it takes the Dodge action and uses its move to avoid danger.
+
+***At Higher Levels.*** When you cast this tech using a tech slot of 3rd level or higher, use the higher level where the tech’s level appears in the stat block.
+
+***Tech Lists.*** [Auditor](/techs:auditor), [Shut-In](/techs:shutin)
+
+*Bestial Projection · *Small beast* · **Armor Class:** 11 + the level of the tech (natural armor) · **Hit Points:** 20 (Air only) or 30 (Land and Water only) + 5 for each tech level above 2nd · **Speed:** 30 ft., climb 30 ft. (Land only), fly 60 ft. (Air only), swim 30 ft. (Water only) · STR — DEX — CON — INT — WIS — CHA · 18 (+4) — 11 (+0) — 16 (+3) — 4 (−4) — 14 (+2) — 5 (−3) · **Senses:** darkvision 60 ft., passive Perception 12 · **Languages:** understands the languages you speak · **Challenge:** — · **Proficiency Bonus:** equals your bonus · ***Flyby (Air Only).*** The beast doesn’t provoke opportunity attacks when it flies out of an enemy’s reach. · ***Pack Tactics (Land and Water Only).*** The beast has advantage on an attack roll against a creature if at least one of the beast’s allies is within 5 feet of the creature and the ally isn’t incapacitated. · ***Water Breathing (Water Only).*** The beast can breathe only underwater.*
+
+| Actions |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| ***Multiattack.*** The beast makes a number of attacks equal to half this tech’s level (rounded down). |  |  |  |  |  |
+| ***Maul.*** *Melee Weapon Attack:* your tech attack modifier to hit, reach 5 ft., one target. *Hit:* 1d8 + 4 + the tech’s level piercing damage. |  |  |  |  |  |

@@ -1,0 +1,34 @@
+---
+title: "Master Blaster"
+slug: "techwizard:master-blaster"
+url: "https://neoncitylights.wikidot.com/techwizard:master-blaster"
+breadcrumbs: ["Master Blaster"]
+tags: ["subclass", "techwizard"]
+---
+## “I say we take off and nuke the site from orbit. It’s the only way to be sure.”
+
+Master blasters are focused in the understanding, application, and use of weapon technologies—the more destructive, the better. While corporations and rebels alike eschew the use of tech that wreak any further destruction to the environment, master blasters excel at surgical strikes that deal maximum harm to their target and minimum collateral damage. Still, collateral damage can be fun at times.
+
+##### Source: Player's Handbook (School of Evocation)
+
+### Altercation Expert
+
+Beginning when you select this specialty at 2nd level, the cash and time you must spend to copy an Altercation tech into your cyberdeck is halved.
+
+### Friendly Fire
+
+Beginning at 2nd level, you can create pockets of relative safety within the effects of your Altercation techs. When you cast a Altercation tech that affects other creatures that you can see, you can choose a number of them equal to 1 + the tech’s level. The chosen creatures automatically succeed on their saving throws against the tech, and they take no damage if they would normally take half damage on a successful save.
+
+### Potent Trick
+
+Starting at 6th level, your damaging tricks affect even creatures that avoid the brunt of the effect. When a creature succeeds on a saving throw against your trick, the creature takes half the trick’s damage (if any) but suffers no additional effect from the trick.
+
+### Empowered Tech
+
+Beginning at 10th level, you can add your Intelligence modifier (minimum of +1) to the damage roll of any techwizard Altercation tech that you cast. The damage bonus applies to one damage roll of a tech, not multiple rolls.
+
+### Overchannel
+
+Starting at 14th level, you can increase the power of your simpler techs. When you cast a techwizard tech of 5th level or lower that deals damage and isn’t a trick, you can deal maximum damage with that tech.
+
+The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take 2d12 entropic damage for each level of the tech, immediately after you cast it. Each time you use this feature again before finishing a long rest, the entropic damage per tech level increases by 1d12. This damage ignores resistance and immunity.

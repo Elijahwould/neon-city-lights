@@ -1,0 +1,28 @@
+---
+title: "Channel of the Vlogger"
+slug: "influencer:vlogger"
+url: "https://neoncitylights.wikidot.com/influencer:vlogger"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Influencer", "Channel of the Vlogger"]
+tags: ["influencer", "subclass"]
+---
+## “Tomorrow, we’ll be talking about ten more weird things that have been in my butt, so make sure to tune back in!”
+
+Whether it’s gossip, trivia, lifehacks, or deep dives into the lore of their favorite holovid drama, vloggers pursue knowledge above all else. Their search for the truth (or at least for truthiness) can take them all over the world, from the highest offices of the corporations to the desolate wastelands of the Old World. This lets them hone a wide variety of skills and uncover techs that other influencers can only dream of.
+
+##### Source: Player's Handbook (Lore)
+
+### Bonus Proficiencies
+
+When you join the Channel of the Vlogger at 3rd level, you gain proficiency with three skills of your choice.
+
+### Brilliance and Bullshit
+
+Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Influencer Inspiration, rolling an Influencer Inspiration die and subtracting the number rolled from the creature’s roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can’t hear you or if it’s immune to being charmed.
+
+### Extra Tech
+
+At 6th level, you learn two [techs](http://neoncitylights.wikidot.com/techs) of your choice from any class. A tech you choose must be of a level you can cast, as shown on the Influencer table, or a trick. The chosen techs count as influencer techs for you but don’t count against the number of influencer techs you know.
+
+### Peerless Skill
+
+Starting at 14th level, when you make an ability check, you can expend one use of Influencer Inspiration. Roll an Influencer Inspiration die and add the number rolled to your ability check. You can choose to do so after you roll the die for the ability check, but before the DM tells you whether you succeed or fail.

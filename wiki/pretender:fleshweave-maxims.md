@@ -1,0 +1,140 @@
+---
+title: "Fleshweave Maxims"
+slug: "pretender:fleshweave-maxims"
+url: "https://neoncitylights.wikidot.com/pretender:fleshweave-maxims"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Pretender", "Mask of the Genome Freak", "Fleshweave Maxims"]
+tags: ["pretender"]
+---
+##### Source: Quote's BH Revised, Neon City NightsThanks to reny#8234 for her incredible work on Quote's revised mechanics!
+
+If a maxim has prerequisites, you must meet them to learn the maxim. You can learn a maxim at the same time that you meet its prerequisites. A level prerequisite refers to your level in the pretender class, not your overall character level.
+
+# Dueling Maxims
+
+## Aether Dust
+
+*Prerequisite: 7th level*
+
+Once imbibed, this maxim weaves poetry through your flesh, to pull you from the ground with wings, air, or jets. Though ever unstable, never regret thy fall, for the greatest tragedy of them all is never to feel the burning light. You gain a flying speed of 10 feet for 1 hour. At 11th level, this increases to 20 feet.
+
+**Side Effect.** You have disadvantage on Strength and Dexterity ability checks for the duration.
+
+## No Stopping Now
+
+*Prerequisite: 7th level*
+
+Once imbibed, this maxim weaves baser instincts through your flesh, stitching claws and barbs with cruelty and adrenaline. Actions have always shouted louder than words. When you take the Attack action, you can make an additional weapon attack as a bonus action. At 15th level, you can make an additional weapon attack as a free action instead.
+
+**Side Effect.** You have disadvantage on Intelligence, Wisdom, and Charisma saving throws.
+
+## Heart Crosses
+
+*Prerequisite: 11th level*
+
+Once imbibed, this maxim weaves danger through your flesh, mixing luck with analysis, tugging fate through synapse. Nothing of value shall be gained from a venture untaken. Your weapon attacks score a critical hit on a roll of 19-20.
+
+**Side Effect.** Weapon attacks against you score a critical hit on a roll of 19-20.
+
+## Hydros Slips
+
+Once imbibed, this maxim weaves flexibility through your flesh, every promise of touch failing to reach your shifting, fluid muscle and servo. Your enemies might be kept closer than your friends, best you not get tangled up with them. You gain immunity to the grappled and restrained conditions. At 11th level, you are also immune to the paralyzed condition.
+
+**Side Effect.** You have disadvantage on Strength and Dexterity saving throws.
+
+## Deep Squid
+
+Once imbibed, this maxim weaves awareness through your flesh, clarity and definition spreading your sight, if not opening new eyes entirely. If it should fall out of mind, let it not escape your sight. You can see normally in darkness to a range of 60 feet. At 11th level, this improves to include technical darkness.
+
+**Side Effect.** You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.
+
+## Sugar Scoop
+
+Once imbibed, this maxim weaves haste through your flesh, joints folded over for extra propulsive force, legs longer to carry you. A steady gait needn't be slow to win every race. Your walking speed increases by 10 feet. At 15th level, your walking speed increases by 20 feet instead.
+
+**Side Effect.** You have disadvantage on Constitution saving throws.
+
+## Muscle Candy
+
+Once imbibed, this maxim weaves offense through your flesh, muscles empowered, secondary grips righting your aim. Even if it should bring a spark back, best to strike while the iron is hot. You gain a bonus to your attack rolls equal to your Nanophage modifier (minimum of 1).
+
+**Side Effect.** You suffer a penalty to your AC equal to your Nanophage modifier (minimum of 1).
+
+## Bone Juice
+
+Once imbibed, this maxim weaves defense through your flesh, bones empowered, your limbs standing firm like a wall. You might hope for the best but be prepared for the worst. You gain a bonus to your AC equal to your Nanophage modifier (minimum of 1).
+
+**Side Effect.** You suffer a penalty to your attack rolls equal to your Nanophage modifier (minimum of 1).
+
+# Rhetorical Maxims
+
+## Pink Passion
+
+Once imbibed, this maxim weaves love through your flesh, pheromones dancing on the edge of honeyed words and sanguine affection. Let your mind slip away, for as in war, as in love, all is fair. You have advantage on Charisma ability checks.
+
+**Side Effect.** You have disadvantage on Intelligence ability checks.
+
+## Smart Ones
+
+Once imbibed, this maxim weaves thought through your flesh, synapses are charged with ambient information, speed of information triumphing the body. A little knowledge has always been a dangerous thing. You have advantage on Intelligence ability checks.
+
+**Side Effect.** You have disadvantage on Dexterity ability checks.
+
+## Speedsters
+
+Once imbibed, this maxim weaves alacrity through your flesh, body shifting ever faster, this ligament a hundred more. Forgo hesitation, lest ye be forever lost. You have advantage on Dexterity ability checks.
+
+**Side Effect.** You have disadvantage on Wisdom ability checks.
+
+## Skip Apples
+
+Once imbibed, this maxim weaves cognition through your flesh, every memory of the muscle yours to behold, even as your body becomes more than your own. Let blank stares fall, for beauty is in your eye. You have advantage on Wisdom ability checks.
+
+**Side Effect.** You have disadvantage on Charisma ability checks.
+
+## Happy Addy
+
+*Prerequisite: 7th level*
+
+Once imbibed, this maxim weaves hyperfocus through your flesh, a specialized form borne out of singular necessity. Whatever power may be helps only those who help themselves. You cannot roll lower than a 10 on one skill of your choice, chosen when you imbibe this maxim.
+
+**Side Effect.** You cannot roll higher than a 10 on any other skill.
+
+# Strategic Maxims
+
+## Pump Stacks
+
+Once imbibed, this maxim weaves impermeability through your flesh, your form drawn in sinews and cables, where needles slip between. So shun the swinging sword else surely, you'd die by it. You gain resistance to piercing damage.
+
+**Side Effect.** You gain vulnerability to slashing damage.
+
+## Enthicc 'Ems
+
+Once imbibed, this maxim weaves protection through your flesh, your form drawn in cartilage and plates, where edges cannot sweep through. Stand tall, for even empires were not built in days. You gain resistance to slashing damage.
+
+**Side Effect.** You gain vulnerability to bludgeoning damage.
+
+## Muscle Ups
+
+Once imbibed, this maxim weaves unbreakability through your flesh, your form drawn in marrow and steel, where impact is wasted without precision. Chains only stand as strong as their weakest links. You gain resistance to bludgeoning damage.
+
+**Side Effect.** You gain vulnerability to piercing damage.
+
+## Hot Devils
+
+Once imbibed, this maxim weaves flame through your flesh, your vitality boiling, your skin and chassis charring with heat. Where draws heat, draws life, so plant where the sun shines. You gain resistance to fire damage.
+
+**Side Effect.** You gain vulnerability to cold damage.
+
+## Chill Pills
+
+Once imbibed, this maxim weaves frost through your flesh, your ichor frozen, your frame still and pale with ice. Let a cold shoulder establish your boundaries, for cold hands make a warm heart. You gain resistance to cold damage.
+
+**Side Effect.** You gain vulnerability to fire damage.
+
+## Pain Aways
+
+*Prerequisite: 7th level*
+
+Once imbibed, this maxim weaves health through your flesh, your body a copy of itself grown into a copy of itself grown into a copy of itself— Just a touch of prevention is worth forevermore in cure. For 1 hour, at the start of each of your turns, you regain hit points equal to half your pretender level (minimum of 1) + your Nanophage modifier (minimum of 1) if you have at least 1 hit point, but no more than half of your maximum hit points.
+
+**Side Effect.** All of your movement speeds are halved for the duration.

@@ -1,0 +1,14 @@
+---
+title: "Automatic rifle"
+slug: "weapon:automatic-rifle"
+url: "https://neoncitylights.wikidot.com/weapon:automatic-rifle"
+breadcrumbs: ["HOME.info", "LOOT.info", "Weapons", "Automatic rifle"]
+tags: ["mil-ranged"]
+---
+*1d8 piercing, 9 lb., ammunition R (range 80/320), burst fire, heavy, two-handed*
+
+An automatic rifle is a type of autoloading rifle that is capable of fully automatic fire. Automatic rifles are generally select-fire weapons capable of firing in semi-automatic and automatic firing modes (some automatic rifles are capable of burst-fire as well). Automatic rifles are distinguished from semi-automatic rifles in their ability to fire more than one shot in succession once the trigger is pulled. Most automatic rifles are further subcategorized as battle rifles or assault rifles.
+
+### Features
+
+- ***Focus Fire.*** Once per turn, if you hit a target, you gain a +1 cumulative bonus to hit and damage against that target, to a maximum of +3. This bonus resets whenever you change targets to another target.

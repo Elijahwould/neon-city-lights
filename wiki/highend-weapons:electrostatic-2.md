@@ -1,0 +1,22 @@
+---
+title: "Electrostatic +2 Bleeding Edge Armaments Blade/Blaster (BEA:B/B)"
+slug: "highend-weapons:electrostatic-2"
+url: "https://neoncitylights.wikidot.com/highend-weapons:electrostatic-2"
+breadcrumbs: ["HOME.info", "LOOT.info", "High End Weapons", "Electrostatic +2 Bleeding Edge Armaments Blade/Blaster (BEA:B/B)"]
+tags: ["3m", "highend-weapons"]
+---
+##### Source: Neon City Nights
+
+*Weapon (any melee or ranged weapon), very rare (requires installation)*
+
+**Specs:** Variable, $$3,000,000
+
+This weapon features a prominent coil of wire and batteries, seated along a powerful magnet, effecting a generator and a dangerous discharge and grounding point. You gain a +2 bonus to the attack rolls of this weapon, and it deals an extra 2d8 lightning damage on a hit.
+
+You can use a bonus action to set the electrostatic weapon to discharge mode. When in discharge mode, for a number of attacks (hit or miss) equal to the weapon’s rarity bonus, each lightning damage die you roll as part of an attack with this weapon is rolled twice, taking the higher result. After you have made all your discharging attacks, the weapon ceases to do any amount of extra lightning damage until it has been recharged by not making an attack with it for an entire one of your turns.
+
+When you hit a target with this weapon, as a reaction, you can choose to deal an additional 1d8 of lighting damage, which is retroactively affected by discharge if the triggering attack was a discharging attack. If the target takes any lightning damage from the triggering attack, it cannot take reactions until the start of its next turn.
+
+***Blades.*** A blade is any melee BEA:B/B. Whenever you roll a 20 on your attack roll with a blade, each creature of your choice within 5 feet of the target takes 5 damage of the type dealt by a rare BEA:B/B, 10 damage of the type dealt by a very rare BEA:B/B, and 15 damage of the type dealt by a legendary BEA:B/B.
+
+***Blasters.*** A blaster is any ranged BEA:B/B. Whenever you make an attack roll with a blaster, the ammunition supplies itself from a collection of near-surging nanites. You may still provide your own ammo to benefit from the bonuses of specific ammo, and it is consumed as normal.

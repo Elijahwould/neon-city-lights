@@ -1,0 +1,80 @@
+---
+title: "Netnibbler"
+slug: "race:netnibbler"
+url: "https://neoncitylights.wikidot.com/race:netnibbler"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Lineage", "Netnibbler"]
+tags: ["netnibbler", "race"]
+---
+## "Trans pro tip: become a knock off vampire."
+
+##### Source: Player's Handbook, Neon City NightsThanks to reny#8234 for making bootleg vampires mechanically cool based on JessicaShtebs, Assorted Beanie#0512's original expansion of Netsucker lore!
+
+The *nanotechnical internet sucking viral strain* is a highly integrative ransomware program that marries life to nanite and user permissions to hierarchical biopaywalls. Mass deviations from a now unrecognizable Old World bodymod program have led to particular strains of the more evocatively coined Netsucker virus. Of course, every string of code has its exception, and every ten-foot wall its twelve-foot ladder. That'd be the Netnibblers.
+
+Reported Netsucker attacks are so rare so as to be a statistical margin of error within Neon City, because most actual attacks go unreported, producing some manner of thrall. The reported ones are attributed to the resistant or just plain lucky, who produce a dead-end error within the virus and retain autonomy and some gifts from their would-be master, at the price of immortality and an inability to spread their strain.
+
+Knock-off machine vampires proliferate the city primarily by making a mockery of vanity, a benefit Netnibblers share. They might find themselves transformed or otherwise transitioned to a form more immediately appealing to them at the time of their conversion. Of course, every strain has its calling card that will slip into a Netnibbler's visage, and a pair of fangs will forever taint their grin.
+
+### Roleplaying a Netnibbler
+
+When roleplaying a Netnibbler, you should first determine your relationship with the one who turned you. The process of turning has a more visually dramatic effect on those who are part animal or plant in some fashion, as the virus only operates under certain parameters, and may rob you of some facets you considered primary pieces of yourself. With the very same breath, it has given you whatever form you found most desirable, within said parameters. Do you feel a sort of twisted thankfulness to your would-be master? Maybe this arrangement was agreed upon? Maybe you want nothing more than to visit death on them and theirs? Beyond the formative moments of your new life with your would-be master, most of your actions will be driven by a semiconscious urge to satiate yourself, as your neutered virus hungers for the ransoming power it once had. Fulfilling this craving is not necessary to your survival, but your mental state may fracture without it for too long. Common cravings are milk, blood, intimate fluids, physical contact, embarrassing secrets, emotional connections, etc.
+
+### Netnibbler Naming Conventions
+
+As Netnibblers can look more or less identical to the lineage they were prior to infection in most cases, many retain the name they had prior, such names greatly depending on who and what lineage they were. A recent pattern suggests that some Netnibblers, unconsciously taking after the aristocratic naming scheme of full 'suckers, take on handles that harken back to Old World vampire media.
+
+Netnibbler handles include Alucard, Nadja, Finè, the Baron von Zarovich, the Countess Elizabeth Báthory, Carmilla, Baobhan Sith, the Queen Marceline, Lestat de Lioncourt, etc.
+
+# Netnibbler Features
+
+- **Ability Score Increase.** Increase one ability score by 2, and increase a different one by 1, or increase three different scores by 1.
+- **Age.** Netnibblers stay the age they were when the virus entered their nanite colony and don't die from old age. Unfortunately for them, they are often killed before this can even happen.
+- **Size.** Your size is Small or Medium, selected when you choose this lineage. Their heights and build can vary wildly in size and shape based on the lineage they bore prior to infection.
+- **Speed.** Your base walking speed is 30 feet.
+- **Dead End Error.** For the purposes of observation techs and creature type detection abilities, you read as hacked in addition to humanoid.
+- **Legacy Programming.** If you replace a different lineage with this one, you can keep the following elements of that lineage: any skill proficiencies you gained from it and any climbing, flying, burrowing, or swimming speed you gained from it.
+  - If you don't keep any of those elements or you choose this lineage at character creation, you gain proficiency in one skill of your choice.
+- **Cracked Biopaywall.** You do not need to breathe, and only need to eat and drink half as much as a human. You must satiate your craving with one of your meals throughout the course of a week or suffer -1 to your Intelligence, Wisdom, and Charisma saving throws.
+- **Nightvision.** You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness as shades of gray.
+- **Wall-Walking.** You have a climbing speed equal to your walking speed. In addition, at 3rd level, you can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free.
+- **Ransom Fang.** Your bite is a natural weapon, which counts as a civilian melee weapon with which you are proficient. You add your Constitution modifier, instead of your Strength modifier, to the attack and damage rolls when you attack with this bite. It deals 1d4 piercing damage on a hit. While you are missing half or more of your hit points, you have advantage on the attack rolls you make with this bite.
+  - When you attack with this bite and hit a creature that isn't a machine or hacked, you can empower yourself in the following way: You regain hit points equal to the damage dealt by the attack.
+  - You can empower yourself with this bite a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+## Netnibbler Strains
+
+### Stokerian
+
+Formerly the most prominent strain within Neon City in both Netsuckers and Netnibblers, the Stokerian strain is what one might consider the classic flavor. Though the tampering of crimson revenge has culled their numbers in recent times. Stokers harken back to the aristocratic ways of storied vampires, doubling down on their hierarchical viral structure with acts of long-term manipulation and rare but brutal hit-and-run executions. Stokerian Netnibblers possess minor iterations of these gifts, manifesting archaic looking augments, and either sharing or very much defying that noble veneer.
+
+- **Micro Digitizer.** You have a small digitizer built into your body, which allows you to briefly turns parts of yourself into data clouds. At the beginning of your turn, you can choose to activate the digitizer, partially becoming data. Until the start of your next turn, all attacks against you are made at disadvantage and you have resistance to non-technical bludgeoning, piercing, and slashing damage. Once you use this trait, you cannot do so again until you finish a short or long rest.
+- **Ashen Claws.** You can manifest a pair of dark, off-black, cybernetic claws with an old, somewhat expensive looking design. You can make the damage from your Ransom Fang attack entropic and can deliver the attack granted to you by Ransom Fang through your claws, dealing 1d6 slashing damage on a hit. This attack can use either your Strength or your Constitution modifier. Additionally, you can empower your Ransom Fang attack in the following way:
+  - You gain a bonus to the next ability check or attack roll you make; the bonus equals the damage dealt by the attack.
+- **Stokerian Tech.** You gain proficiency in the Persuasion skill. When you reach 3rd level, you can cast the *[meet cute](/tech:meet-cute)* tech with this trait. When you reach 5th level, you can cast the *[digital dash](/tech:digital-dash)* tech with this trait. Casting these techs with this trait doesn't require material components. Once you cast either of these techs with this trait, you can’t cast that tech with it again until you finish a long rest. You can also cast these techs using tech slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your techcasting ability for these techs when you cast them with this trait (choose when you select this lineage).
+
+### Gautierre
+
+The Gautier are the bimbos and the businesspeople of the strains, which is to say, they fit in the most, practically being invisible within the daily workings of the Neon City. They are the most modernized of Netsuckers, trading claws for hyperdeveloped assets and the fitting production of milk, which bolsters their strength and spreads their strain. Gautierre Netnibblers share in the… rapid development of their chest, regardless of any other biological factors or social constructs. But they also share in the camaraderie and support that the Gautier can offer.
+
+- **Nursing Touch.** When a creature within 5 feet of you, including yourself, gains hit points in any way, you can quickly bottle or directly provide Gautierre milk to bolster the healing as a reaction. The healing increases by 1d10 + your Constitution modifier, and this bonus healing can allow the targets' current hit points to exceed their hit point maximum. You can use this trait a number of times equal to half your proficiency bonus (rounded down), and you regain all expended uses when you finish a long rest.
+- **Mommy Milkers.** You can pose oh-just-so and chug proprietary lacto-aide to even further strain your top with sudden size. You can make the damage from your Ransom Fang attack bludgeoning and can deliver the attack granted to you by Ransom Fang through your chest, dealing 1d8 bludgeoning damage on a hit. Additionally, you can empower your Ransom Fang attack in the following way:
+  - You grant both yourself and your target 1d4 temporary hit points, but your target suffers disadvantage on the next saving throw it makes.
+- **Gautierre Tech.** You gain proficiency in the Performance skill. When you reach 3rd level, you can cast the *[lube](/tech:lube)* tech with this trait. When you reach 5th level, you can cast the *[temporary surgery](/tech:temporary-surgery)* tech with this trait. Casting these techs with this trait doesn't require material components. Once you cast either of these techs with this trait, you can’t cast that tech with it again until you finish a long rest. You can also cast these techs using tech slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your techcasting ability for these techs when you cast them with this trait (choose when you select this lineage).
+
+### Févalish
+
+Before fire disrupted the empire of the Stokers, they were already being undermined by the growing underground presence of the Févals, the street rats, the drug dealers, the street community freaks to counter the aristocrats of the Stokerian Netsuckers. The Févalish operate in their own weaknesses, walking bundles of contradiction, melodrama, pill-popping heartbreak, and self-destructive hardlight stained in pink electrotoxin. Féval Netnibblers cannot reach the near-lethal heights of longing euphoria as the 'Suckers, but unlike Stokerian Netnibblers, they find much less to disagree with their would-be masters on.
+
+- **Caustic Static.** You can generate a diluted form of electrotoxin. Once per turn when you deal damage to a creature, you can choose to deal an additional 2d4 damage. If the additional damage roll is odd it deals acid damage; if it is even it deals lightning damage. You then immediately take the additional damage as well, and cannot resist, reduce, or redirect it in any way. While you are below half your maximum hit points, your Caustic Static damage becomes 2d6. While you are below one fourth your maximum hit points, your Caustic Static damage becomes 2d8.
+- **Bleached Claws.** You can manifest a pair of white-bleeding, hardlight, claws with an unstable and user-unfriendly design. You can make the damage from your Ransom Fang attack neon and can deliver the attack granted to you by Ransom Fang through your claws, dealing 1d6 slashing damage on a hit. This attack can use either your Dexterity or your Constitution modifier. Additionally, you can empower your Ransom Fang attack in the following way:
+  - You increase your speed by 10 feet until the end of your next turn and gain advantage on the next Dexterity saving throw you make. The next time you take damage from your Caustic Static trait, the last creature that took damage from your Ransom Fang takes the damage as well.
+- **Févalish Tech.** You gain proficiency in the Deception skill. When you reach 3rd level, you can cast the *[painkillers](/tech:painkillers)* tech with this trait. When you reach 5th level, you can cast the *[meme zone](/tech:meme-zone)* tech with this trait. Casting these techs with this trait doesn't require material components. Once you cast either of these techs with this trait, you can’t cast that tech with it again until you finish a long rest. You can also cast these techs using tech slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your techcasting ability for these techs when you cast them with this trait (choose when you select this lineage).
+
+### De Le Fanu
+
+Borne from a tethered nanotechnical surge of passion, vindication, and embers, the Netnibblers De Le Fanu are something of an anomaly, in that they've come before the Netsuckers of the same name. They will instead be found in the jailbroken self-hacks of the new and power desperate Le Fanu Netnibblers. They bear strength coursing through their veins, an internal heat and burn, a passion for an order all their own, and their tech is not light or ornate, but the jury rigs of someone with a hyper specific goal in mind. The problem now is not burning themselves out.
+
+- **Lies Like Embers.** Once per turn, when you make an Intelligence (Investigation), Wisdom (Insight) check, or roll an instance of fire damage, you can expend and roll one hit die, adding the number rolled to the ability check or damage rolled. When modifying an ability check, the maximum number added to the check is equal to your proficiency bonus. When modifying fire damage, you can choose to reduce your hit points by the number rolled to add your Constitution modifier to the fire damage dealt. You can use this trait a number of times equal to your Constitution modifier (minimum 1), and you regain all expended uses when you finish a long rest.
+- **Crimson Claws.** You can manifest a pair of burning-hot, crimson-fueled, claws with a slapdash and determined design. You can make the damage from your Ransom Fang attack fire and can deliver the attack granted to you by Ransom Fang through your claws, dealing 1d6 slashing damage on a hit. This attack can use either your Strength or your Constitution modifier. Additionally, you can empower your Ransom Fang attack in the following way:
+  - You become aware of your target's skill proficiencies, if any, and can choose one that you do not possess. Both you and your target only add half your individual proficiency bonuses to the chosen skill for the next hour.
+- **De Le Fanu Tech.** You gain proficiency in the Insight skill. When you reach 3rd level, you can cast the *[thermal backlash](/tech:thermal-backlash)* tech with this trait. When you reach 5th level, you can cast the *[incendiary salvo](/tech:incendiary-salvo)* tech with this trait. Casting these techs with this trait doesn't require material components. Once you cast either of these techs with this trait, you can’t cast that tech with it again until you finish a long rest. You can also cast these techs using tech slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your techcasting ability for these techs when you cast them with this trait (choose when you select this lineage).

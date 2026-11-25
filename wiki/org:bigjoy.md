@@ -1,0 +1,36 @@
+---
+title: "BigJoy Entertainment"
+slug: "org:bigjoy"
+url: "https://neoncitylights.wikidot.com/org:bigjoy"
+breadcrumbs: ["HOME.info", "WORLD.info", "Organizations", "BigJoy Entertainment"]
+tags: ["moderate", "organization"]
+---
+**Organization Name.** BigJoy Entertainment
+
+**Leader.** Clark Jones & Ralph Steel
+
+**Organization Type.** Business
+
+**Years in existence.** ~20+
+
+**Goals.** Entertainment distributor
+
+**Creed.** *"The best of old-world movies and games—that's right, it's BigJoy!"*
+
+**Impact.** Moderate
+
+An associate of NCAPS, BigJoy Entertainment is pretty much a family & friends business that focuses on providing old world entertainment to the modern world. They are famous for their ownership of several arcades and movie theaters all across the entirety of Neon City, where they charge low prices for tickets, video games and other classic old world electronic entertainment.
+
+Between performing restoration services on older forms of media, contracting runners to perform acquisitions on said media, running several of the free old and new world radio stations that populate the admittedly old-school, yet popular hi-definition FM radio waves (as well as being available for online live streaming for people's decks, smart phones and portable music players), sponsoring the creation of art in the form of books, newer works of media (like games and movies), portraits, and more… one could say that they are one of the most influential purveyors of media that sits outside of being pure corporate control: BigJoy is the only "publicly owned" company in Neon City that could count itself to be as powerful as a minor corporation. The fact that they have become an associate of the NCAPS never changed that; if anything, the addition of BigJoy to the NCAPS family may have merely helped to bolster both of their positions in what would otherwise be a corporate-dominated world.
+
+They have, on occasion, partnered with NANiTE to create modern reinventions of several pieces of old-world media and gaming hardware. One of the most popular items they sell is a portable gaming system called the BigJoy 128X, a portable console that is able to accurately emulate every classic old world gaming system through the "PS6", though it mostly remains popular due to its ability to connect to the Neon City Long-Distance Network to enable people to play against their friends wirelessly from one side of Neon City to another.
+
+Still, their true home lies in their base of operations: a classically styled, still relevant arcade, BigJoy Arcade #1, located but a few blocks away from Poncy's, one of Neon City's longest-standing institutions. The owners of BigJoy, Clark Jones and Ralph Steel, still mostly go to the location and still do the things they love best—manage an arcade, run events, and try to take the minds of the citizens of Neon City off what might otherwise have been a dreary, difficult day, by providing them a place to hang out, meet friends, have fun, and escape the reality of their situation—if only for a few hours.
+
+**Owner.** Celica#1988
+
+**Creator.** Celica#1988
+
+**Fixer Use.** Restricted; please request permission from the owner if using the org for a game.
+
+**CEO Use.** Closed.

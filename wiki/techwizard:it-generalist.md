@@ -1,0 +1,42 @@
+---
+title: "IT Generalist"
+slug: "techwizard:it-generalist"
+url: "https://neoncitylights.wikidot.com/techwizard:it-generalist"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Techwizard", "IT Generalist"]
+tags: ["subclass", "techwizard"]
+---
+## "It's the work you do behind the scenes, when no one is watching that determines your level of performance."
+
+Some say, since most techwizes specialize in only one tech sector, that it is only the rare and exceptionally gifted that can effect an equal level of efficiency with every sector. Sure, it takes a certain mindset and talent, but it's far from that glamorous. The IT generalist is a techwizard invested solely in the efficient use of their machines, half of them personally kept up for the sake of familiarity. They pay no mind to the grander workings of tech and the digital-philosophical ramifications its constant advancements mean for reality, they just keep all the servers plugged up.
+
+##### Source: Unearthed Arcana: Modern Magic (Technomancer), Neon City NightsThis is a reny joint, with the Mechanics team providing adjustments and suggestions!
+
+### Custom Hardware
+
+At 2nd level, choose 1 tech that you know to set-up periphery hardware for. This tech is always prepared and does not count against your total number of techs known or prepared. You select an additional tech to set-up at 6th, 10th, and 14th level.
+
+### Retrostyle Cyberdeck
+
+Cobbled together from all your favorite end user computational aids from the last century, you've put together a highly personal cyberdeck. At 2nd level, while you are holding the deck, it grants you the following benefits:
+
+- You can use the cyberdeck as a techcasting focus for your techwizard techs.
+- You can use the cyberdeck as a Hacker's Kit and a Programmer's Kit, and are proficient with the tool when used in this way.
+- The cash you must spend to copy a tech into this cyberdeck is halved.
+
+If necessary, you can replace the cyberdeck over the course of a short rest by compiling and combing through a relentless pile of backups you keep, using any computational device, such as a smartphone or smartwatch, as a substitute for some of the custom tools you had set up. At the end of the rest, your jury-rig can act as your retrostyle cyberdeck, along with all its techs. If the previous cyberdeck still existed somewhere, it decays without your upkeep.
+
+### Custom Burner
+
+At 6th level, you can cast a tech within an electronic device of your choosing, one with the processing power of at least a burner phone, selecting any options for the tech at the time of casting, but the tech does not take effect and is instead programmed into the burner. The burner can be activated as if casting the tech. Alternatively, you can expend the burner along with a tech slot of the same level as the programmed tech to cast a prepared tech of one level higher.
+
+A custom burner retains the tech placed in it for 48 hours or until activated. You can use this feature to program a tech into only one device at a time and only you can make use of the custom burner. If the device is destroyed, the tech is lost. Once you use this feature, you can't use it again until you finish a long rest.
+
+### Remote Casting
+
+At 10th level, you can cast techs through networked devices, such as cameras, mobile phones, and computers. You can only remote cast techs that target specific creatures, and must be able to see or otherwise determine the position of such targets. If the tech requires the caster to be seen or heard, the target must see you, hear you, or a live feed of you, as required. The tech's range is determined using the distance from you to your device, and then from the target to its device.
+
+This feature can be used a number of times per day equal to your Intelligence modifier (minimum once).
+
+### Off and On Again
+
+By 14th level, you can create and maintain up to three custom burner's per long rest. You've long since learned that the simplest solution to a problem is often the most direct; foresight, backups, restart. When a tech you cast would be prematurely ended, such as by losing concentration, or being targeted by [Localized EMP](/tech:localized-emp) or [Counter EMP](/tech:counter-emp), you can instead, as a reaction, choose to maintain your focus and the tech by expending a custom burner that contains a tech of equal or greater level.

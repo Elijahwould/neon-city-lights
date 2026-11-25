@@ -1,0 +1,56 @@
+---
+title: "Surge Splicer"
+slug: "sourcecoder:surge-splicer"
+url: "https://neoncitylights.wikidot.com/sourcecoder:surge-splicer"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Source Coder", "Surge Splicer"]
+tags: ["sourcecoder", "subclass"]
+---
+## “It’s just a question of mind over matter. My mind, your matter.”
+
+Modern gravitic technology allows for the direct manipulation of matter, changing it between its four common states (as well as a fifth phase-state) virtually at will. This allows for rapid temperature changes, alterations to the properties of materials, and other seemingly miraculous feats. This “surgetech” has also led to the creation of surges, creatures made of a combination of phased matter, digitized engrams, and nanotech. Surge Splicers have tapped into the code that makes such alterations possible, fusing their implants with raw surgetech. This gives them a strong affinity to one of the four states of matter, or to the phasic interstitial state matter takes on when it changes.
+
+##### Source: Player's Handbook (Draconic Bloodline)
+
+### Surge Splice
+
+At 1st level, you choose one state of matter to which you have been surge spliced. The damage type associated with each surge is used by features you gain later.
+
+Additionally, you can communicate with intelligent surge-based creatures as though you shared a common language.
+
+*Surge Splice*
+
+| Surge | Damage Type |
+| --- | --- |
+| Aqueous | Poison |
+| Gaseous | Lightning |
+| Phased | Acid |
+| Plasmatic | Fire |
+| Solid | Cold |
+
+### Surge Resilience
+
+As surgetech alters your body, it causes physical traits of your matter state affinity to emerge. At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this class.
+
+Additionally, parts of your skin are covered by a thin layer of altered surge matter. When you aren’t wearing armor, your AC equals 13 + your Dexterity modifier.
+
+Your appearance is permanently changed by association with your matter state. Aqueous state affinity makes your skin appear slick and shiny, gaseous affinity causes you to seem indistinct and hazy, phased affinity causes your form to occasionally flicker like static, plasmatic affinity makes you radiate faint heat haze, and solid affinity causes you to seem exceptionally solid and rocky or crystalline in places. This appearance becomes more pronounced as you gain source coder levels.
+
+### Surge Power
+
+Starting at 6th level, when you cast a tech that deals damage of the type associated with your surge affinity, add your Charisma modifier to that damage. At the same time, you can spend 1 source point to gain resistance to that damage type for 1 hour.
+
+### Surge Movement
+
+At 14th level, you gain the ability to gain a special form of movement related to your surge affinity. You can adopt this movement form as a bonus action on your turn. It lasts until you dismiss it as a bonus action on your turn.
+
+- **Aqueous.** You can breathe water and gain a swimming speed equal to your walking speed.
+- **Gaseous.** You gain a flying speed equal to your walking speed, and you do not need to breathe.
+- **Phased.** When you take a movement action, you can teleport rather than crossing the intervening distance physically.
+- **Plasmatic.** You gain a flying speed equal to your walking speed. When you take the Dash action while flying, you double your flying speed for that action.
+- **Solid.** You gain a burrowing speed equal to your walking speed, and you gain advantage on saving throws and ability checks made to resist being moved against your will.
+
+You can’t manifest this movement mode while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your special movement might be destroyed when you manifest them.
+
+### Inhuman Presence
+
+Beginning at 18th level, you can channel the alien presence of an embodied surge, causing those around you to become awestruck or frightened. As an action, you can spend 5 source points to draw on this power and exude an aura of awe or fear (your choice) to a distance of 60 feet. For 1 minute or until you lose your concentration (as if you were casting a concentration tech), each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours.

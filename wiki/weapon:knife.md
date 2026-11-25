@@ -1,0 +1,15 @@
+---
+title: "Knife"
+slug: "weapon:knife"
+url: "https://neoncitylights.wikidot.com/weapon:knife"
+breadcrumbs: ["HOME.info", "LOOT.info", "Weapons", "Knife"]
+tags: ["civ-melee"]
+---
+*1d4 slashing, 1 lb., finesse, light, thrown (range 20/60)*
+
+A knife is a tool or weapon with a cutting edge or blade, usually attached to a handle or hilt. One of the earliest tools used by humanity, knives appeared at least 2.5 million years ago, as evidenced by the Oldowan tools. Originally made of wood, bone, and stone (such as flint and obsidian), over the centuries, in step with improvements in both metallurgy and manufacturing, knife blades have been made from copper, bronze, iron, steel, ceramic, and titanium. Most modern knives have either fixed or folding blades; blade patterns and styles vary by maker and country of origin.
+
+### Features
+
+- ***Shank.*** Any attacks made with this weapon against a surprised enemy crit on a 19-20.
+- ***Nice and Light.*** A knife can be drawn or stowed as a free action.

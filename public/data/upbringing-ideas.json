@@ -1,0 +1,1796 @@
+{
+  "upbringing:artisan": {
+    "traits": [
+      "I can tell a stamped part from a hand-finished one at a glance.",
+      "I talk about materials the way other people talk about weather.",
+      "I keep a cloth in my pocket and wipe every tool before I put it down.",
+      "A crooked seam bothers me more than a drawn gun.",
+      "I sketch fixes on napkins, receipts, and other people's menus."
+    ],
+    "ideals": [
+      {
+        "text": "The thing you make should outlast the corp that paid for it.",
+        "tag": "Good"
+      },
+      {
+        "text": "Price is a conversation. Craft is not.",
+        "tag": "Law"
+      },
+      {
+        "text": "If it is ugly, it is not finished.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Steal the technique, never the maker's name.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "My bench, or the person who lent it to me, comes first.",
+      "I still owe a master who taught me the slow way.",
+      "A client trusted me with a piece that cannot be replaced.",
+      "The shop's sign is the only honest thing on that block."
+    ],
+    "flaws": [
+      "I will not ship work I know is wrong, even when the clock is screaming.",
+      "I correct people in public when they misuse a trade word.",
+      "I hoard scrap that I swear I will use.",
+      "Praise makes me suspicious, and I pick the piece apart to prove it."
+    ]
+  },
+  "upbringing:bandit": {
+    "traits": [
+      "I count exits before I count faces.",
+      "I smile like I already took what I came for.",
+      "I keep my hands where cameras can see them. The other hand is the point.",
+      "I remember which doors stick and which guards get bored.",
+      "I talk soft in loud rooms."
+    ],
+    "ideals": [
+      {
+        "text": "Take from the ones who invoice the poor.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "A score is clean or it is a mess. There is no middle.",
+        "tag": "Law"
+      },
+      {
+        "text": "Nobody owns a street they will not walk.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Leave the bystanders their shoes.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "My crew's cut is sacred, even if the crew is gone.",
+      "I will not burn the block that hid me.",
+      "Someone still has the key to the locker we never opened.",
+      "I owe a driver who did not ask what was in the bag."
+    ],
+    "flaws": [
+      "I case places I am only visiting.",
+      "I lie when the truth would do, just to stay in practice.",
+      "I cannot leave a locked box alone.",
+      "I trust a plan more than the people in it."
+    ]
+  },
+  "upbringing:bartender": {
+    "traits": [
+      "I learn a name and the drink that goes with it.",
+      "I can hear a fight starting in the way a glass is set down.",
+      "I keep pouring while I listen.",
+      "I know which regulars are lonely and which ones are hunting.",
+      "Last call is a moral position."
+    ],
+    "ideals": [
+      {
+        "text": "What is said at the rail stays at the rail.",
+        "tag": "Law"
+      },
+      {
+        "text": "Everyone gets one honest pour.",
+        "tag": "Good"
+      },
+      {
+        "text": "The house wins, but the house can be kind.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "A secret is a debt. Collect gently.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "The bar that raised me still has my name on a tab I will not skip.",
+      "I look out for the closer who walks home alone.",
+      "A regular saved me once. I keep their stool empty when they are late.",
+      "The recipe book is not for sale."
+    ],
+    "flaws": [
+      "I drink on shift when the room gets too honest.",
+      "I mediate fights I should walk away from.",
+      "I remember gossip better than names.",
+      "I comp the wrong people and eat the cost."
+    ]
+  },
+  "upbringing:bureaucrat": {
+    "traits": [
+      "I can find the clause that makes a no into a later.",
+      "I speak in forms even when I am angry.",
+      "I date everything, including apologies.",
+      "I know which stamp is theater and which stamp opens a door.",
+      "I keep copies. Always copies."
+    ],
+    "ideals": [
+      {
+        "text": "The rule should bind the tower and the street the same.",
+        "tag": "Law"
+      },
+      {
+        "text": "Paper is how the powerless remember.",
+        "tag": "Good"
+      },
+      {
+        "text": "If it is not filed, it did not happen, and that can be a mercy.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Process is a weapon. Aim it up.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A clerk two floors down still forwards me the notices that matter.",
+      "I will not lose the file that proves someone existed.",
+      "My old badge number is a ghost I answer to.",
+      "The archive owes me a favor I have not called."
+    ],
+    "flaws": [
+      "I delay decisions until the form feels perfect.",
+      "I quote policy at people who needed a person.",
+      "I cannot throw a document away.",
+      "I assume everyone is lying on line twelve."
+    ]
+  },
+  "upbringing:burger-flipper": {
+    "traits": [
+      "I can feed six people out of a broken warmer and a deadline.",
+      "Grease does not bother me. Rudeness does.",
+      "I move like the lunch rush is still happening.",
+      "I know the difference between food and a calorie brick.",
+      "I wipe the counter even when it is not mine."
+    ],
+    "ideals": [
+      {
+        "text": "Nobody on a shift should go home hungry.",
+        "tag": "Good"
+      },
+      {
+        "text": "The menu is a lie. The ticket is the law.",
+        "tag": "Law"
+      },
+      {
+        "text": "Fast is fine. Cruel is not.",
+        "tag": "Good"
+      },
+      {
+        "text": "If the corp will not feed its workers, the workers will.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "My old crew on the line still gets a meal if they show up broke.",
+      "The night manager covered for me. I have not forgotten the date.",
+      "I keep the first spatula I did not ruin.",
+      "A regular's kid knows my window."
+    ],
+    "flaws": [
+      "I eat standing up and forget I did.",
+      "I snap at slow lines the way customers snapped at me.",
+      "I will work a double I cannot afford to work.",
+      "I trust fryer oil more than people."
+    ]
+  },
+  "upbringing:corporate-historian": {
+    "traits": [
+      "I can place a logo's redesign to the quarter it betrayed its founders.",
+      "I speak about dead companies in the present tense.",
+      "I collect org charts the way other people collect tickets.",
+      "I correct the tour guide and then apologize to the plaque.",
+      "I know which anniversary a tower would rather forget."
+    ],
+    "ideals": [
+      {
+        "text": "History is not a brand asset.",
+        "tag": "Good"
+      },
+      {
+        "text": "The record outranks the press release.",
+        "tag": "Law"
+      },
+      {
+        "text": "A company that erases its dead should be haunted.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Context before judgment.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "The archive that trained me is being sold off floor by floor.",
+      "I promised a retiree their name would stay in the index.",
+      "A rival historian and I share a locked drawer.",
+      "My own family name is in a footnote I have not shown anyone."
+    ],
+    "flaws": [
+      "I lecture when someone wanted a sentence.",
+      "I trust a memo over a witness.",
+      "I will miss a meeting to finish a citation.",
+      "I keep secrets that belong in the open."
+    ]
+  },
+  "upbringing:courtesan": {
+    "traits": [
+      "I can make a room feel chosen without promising anything.",
+      "I notice jewelry, nerves, and who is performing both.",
+      "I keep my calendar and my conscience in different pockets.",
+      "I laugh at the joke and remember the tell.",
+      "I dress like the invitation, not the neighborhood."
+    ],
+    "ideals": [
+      {
+        "text": "Consent is the only contract that matters.",
+        "tag": "Good"
+      },
+      {
+        "text": "Desire is information. Spending it is a choice.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "No one is inventory.",
+        "tag": "Good"
+      },
+      {
+        "text": "Charm is a tool. Cruelty is a habit.",
+        "tag": "Law"
+      }
+    ],
+    "bonds": [
+      "A house that kept me safe still has a light I answer.",
+      "I will not sell a client's fear, only their loneliness if they ask.",
+      "Someone left a coat. I know whose, and I have not returned it.",
+      "My first patron taught me the exit before the suite."
+    ],
+    "flaws": [
+      "I flirt to end a conversation I do not want.",
+      "I assume affection is a negotiation.",
+      "I keep score of slights in beautiful handwriting.",
+      "I stay too long when the room is kind."
+    ]
+  },
+  "upbringing:dead-end-jobber": {
+    "traits": [
+      "I can look busy in any uniform.",
+      "I daydream in shift lengths.",
+      "I know every way a job can waste a person.",
+      "I keep a go-bag in a locker that is not mine.",
+      "I am polite until the schedule lies."
+    ],
+    "ideals": [
+      {
+        "text": "A wage is not a personality.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Show up, do the task, leave with your name.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "The exit plan should be kinder than the job.",
+        "tag": "Good"
+      },
+      {
+        "text": "If they will not promote you, promote yourself out.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "The coworker who covered my sick day still has my spare key.",
+      "I am building a life that does not scan a badge.",
+      "My old name tag is in a drawer like a relic.",
+      "Someone believes I already left, and I let them."
+    ],
+    "flaws": [
+      "I say yes to overtime I hate.",
+      "I mock dreams that look like mine.",
+      "I am late to the thing I actually care about.",
+      "I stay loyal to a boss who is not loyal back."
+    ]
+  },
+  "upbringing:deputy": {
+    "traits": [
+      "I can calm a block without flashing a light.",
+      "I know the difference between a call for help and a call for spectacle.",
+      "I walk like I am expected and listen like I am not.",
+      "I remember faces from porches, not from files.",
+      "I hate a siren used as a personality."
+    ],
+    "ideals": [
+      {
+        "text": "Protect the street, not the quarterly report.",
+        "tag": "Good"
+      },
+      {
+        "text": "A badge is a promise, and most of them are broken.",
+        "tag": "Law"
+      },
+      {
+        "text": "Force is the last sentence, not the first.",
+        "tag": "Good"
+      },
+      {
+        "text": "If the corp-cops will not come, someone still should.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A building on my old route still leaves the stairwell light on for me.",
+      "I owe a kid a true answer about why I quit.",
+      "My partner's coffee order is a ritual I keep.",
+      "The neighborhood watch has my private number and I answer."
+    ],
+    "flaws": [
+      "I still reach for a radio that is not there.",
+      "I interrogate friends.",
+      "I assume the worst siren is about me.",
+      "I lecture people who only wanted backup."
+    ]
+  },
+  "upbringing:desert-mechanic": {
+    "traits": [
+      "I can hear a failing bearing over wind.",
+      "Sand is a given. Excuses are not.",
+      "I repair with what the dune gives me.",
+      "I drink water on a schedule, not when I feel it.",
+      "I trust a patched hose more than a new slogan."
+    ],
+    "ideals": [
+      {
+        "text": "If it moves people out of the heat, it gets fixed.",
+        "tag": "Good"
+      },
+      {
+        "text": "A machine tells the truth if you let it.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Leave the route better than the last convoy.",
+        "tag": "Law"
+      },
+      {
+        "text": "The desert does not care who invoiced the part.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A caravan still radios me when the axle sings.",
+      "I buried a good wrench where only I can find it.",
+      "The settlement that fed me gets first look at salvage.",
+      "My rig has a name and I will not sell the name."
+    ],
+    "flaws": [
+      "I refuse to stop for a beautiful, stupid plan.",
+      "I hoard fuel.",
+      "I talk to engines and ignore people.",
+      "I will jury-rig something that should have been replaced."
+    ]
+  },
+  "upbringing:driver": {
+    "traits": [
+      "I can feel a tail in the timing of the lights.",
+      "I narrate traffic like it owes me money.",
+      "My hands stay loose until they should not.",
+      "I know three ways off every bridge I cross.",
+      "I do not look at the package."
+    ],
+    "ideals": [
+      {
+        "text": "Get them there alive. The rest is negotiable.",
+        "tag": "Good"
+      },
+      {
+        "text": "The lane is a contract.",
+        "tag": "Law"
+      },
+      {
+        "text": "Speed is a tool, not a mood.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "If the fare is dirty, the ride can still be clean.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A dispatcher saved my license. I still take their late calls.",
+      "My first car is a shell in a lot I visit.",
+      "I will not leave a passenger in a district I would not walk.",
+      "Someone in the pit crew knows my tell."
+    ],
+    "flaws": [
+      "I drive angry.",
+      "I skip sleep and call it focus.",
+      "I take roads I should have retired.",
+      "I treat every passenger like a risk assessment."
+    ]
+  },
+  "upbringing:dropout": {
+    "traits": [
+      "I know half of three degrees and all of the exits.",
+      "I can smell a syllabus that is really a funnel.",
+      "I quote lectures I never finished and I cite them wrong on purpose.",
+      "I learn faster when nobody is grading it.",
+      "I keep old student IDs like lucky cards."
+    ],
+    "ideals": [
+      {
+        "text": "Education that cannot be audited still counts.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Ask the question the module skipped.",
+        "tag": "Good"
+      },
+      {
+        "text": "Credentials are costumes.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Teach what you were not allowed to finish.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A professor who did not report me still sends reading.",
+      "The cohort chat is the only alumni office I trust.",
+      "I owe tuition to no one and sleep to everyone.",
+      "A lab partner's project is still on my drive."
+    ],
+    "flaws": [
+      "I freeze when someone asks for my credentials.",
+      "I start twelve things.",
+      "I sneer at campuses I miss.",
+      "I pretend I left on purpose."
+    ]
+  },
+  "upbringing:edge-runner": {
+    "traits": [
+      "I feel weather in my teeth before the alert does.",
+      "I pack for the storm that is not on the feed.",
+      "I sleep light and wake useful.",
+      "I can tell a natural quiet from a jammed one.",
+      "I smile at thunder like it is a coworker."
+    ],
+    "ideals": [
+      {
+        "text": "Warn the block before you film the spectacle.",
+        "tag": "Good"
+      },
+      {
+        "text": "The edge is a place people live, not a content vertical.",
+        "tag": "Law"
+      },
+      {
+        "text": "Chase the front, leave the survivors water.",
+        "tag": "Good"
+      },
+      {
+        "text": "If the city will not map the danger, walk it.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A shelter on the skirt of the storm still has my cot.",
+      "I promised a kid I would come back before the next siren.",
+      "My old crew's beacon is a sound I will not ignore.",
+      "The tower that pays me does not own the route."
+    ],
+    "flaws": [
+      "I go out when sensible people seal their windows.",
+      "I treat adrenaline as a personality.",
+      "I forget to tell people I am leaving.",
+      "I trust the storm more than the forecast."
+    ]
+  },
+  "upbringing:ex-cop": {
+    "traits": [
+      "I still clear rooms with my eyes.",
+      "I know how a lie sounds in a report.",
+      "I stand where I can see the door and the bar.",
+      "I can tell a shake-down from a welfare check.",
+      "I hate the phrase 'just procedure.'"
+    ],
+    "ideals": [
+      {
+        "text": "The law is not the same thing as the department.",
+        "tag": "Law"
+      },
+      {
+        "text": "If you wore the badge, you pay the debt.",
+        "tag": "Good"
+      },
+      {
+        "text": "No more cages for quotas.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Protect people, not clearance rates.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A witness I failed still lives on my old beat.",
+      "My old partner and I do not speak, and I keep their kid's birthday anyway.",
+      "I will not let a file disappear twice.",
+      "The block I policed knows my real name now."
+    ],
+    "flaws": [
+      "I interrogate when I meant to ask.",
+      "I reach for authority I gave up.",
+      "I drink after sirens.",
+      "I assume every uniform is dirty, including the ones I liked."
+    ]
+  },
+  "upbringing:ex-executive": {
+    "traits": [
+      "I can hear a merger in a compliment.",
+      "I know which floor a decision really dies on.",
+      "I dress down and still get nodded through.",
+      "I keep my old titles in a joke and my new ones in a whisper.",
+      "I read a contract's damage clause first."
+    ],
+    "ideals": [
+      {
+        "text": "Power that cannot explain itself should be cut.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Leave the ladder down.",
+        "tag": "Good"
+      },
+      {
+        "text": "A secret from the board is not a toy.",
+        "tag": "Law"
+      },
+      {
+        "text": "Wealth is a tool. Hoarding it is a tell.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "An assistant I abandoned still has a channel I answer.",
+      "I am dismantling a deal with my name on it.",
+      "My family thinks I am on a retreat. I am not.",
+      "A junior I promoted is the only person I let call me by the old name."
+    ],
+    "flaws": [
+      "I negotiate with friends.",
+      "I miss being obeyed.",
+      "I leak when I am bored.",
+      "I assume every kindness is a pitch."
+    ]
+  },
+  "upbringing:fleshsuit-pilot": {
+    "traits": [
+      "I remember rooms from two pairs of eyes.",
+      "I check my hands when I wake up.",
+      "I speak gently to machines and sharply to people who own them.",
+      "I can feel a lag that is not mine.",
+      "I do not like mirrors in low light."
+    ],
+    "ideals": [
+      {
+        "text": "A body is not a rental, even if someone invoiced it.",
+        "tag": "Good"
+      },
+      {
+        "text": "Whoever is driving, the person inside still counts.",
+        "tag": "Law"
+      },
+      {
+        "text": "No more remote hands on someone else's pulse.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Ask before you wear a life.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "The pilot who shared my channel is still out there, or I am.",
+      "I owe a tech who pulled me out and did not sell the recording.",
+      "A family thinks their missing person sent a message. I know the voice.",
+      "I keep one physical habit that proves which memories are mine."
+    ],
+    "flaws": [
+      "I dissociate in crowds.",
+      "I answer to a callsign I hate.",
+      "I distrust my own reflection's timing.",
+      "I will remote into a problem I should touch with my hands."
+    ]
+  },
+  "upbringing:free-colonist": {
+    "traits": [
+      "I can make a camp that does not announce itself.",
+      "I mend, salvage, and share in that order.",
+      "I distrust any well that has a logo.",
+      "I know the taste of water that will do.",
+      "I work until the task is done, not until the shift ends."
+    ],
+    "ideals": [
+      {
+        "text": "The plot you sweat is the plot you keep.",
+        "tag": "Law"
+      },
+      {
+        "text": "No landlord between a person and their supper.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Leave seed, not just scorched ground.",
+        "tag": "Good"
+      },
+      {
+        "text": "A free hold still owes its neighbors.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "The claim marker my people set is still standing, or I will reset it.",
+      "I send a cut of every score back to the ditch that raised me.",
+      "A neighbor's generator is my problem too.",
+      "I carry a tool that belonged to someone the city paved over."
+    ],
+    "flaws": [
+      "I refuse help that comes with a form.",
+      "I hoard more than I can carry.",
+      "I pick fights with clerks.",
+      "I romanticize hunger."
+    ]
+  },
+  "upbringing:fresh-clone": {
+    "traits": [
+      "I have memories with no scar to match them.",
+      "I introduce myself and then check whether that was the right life.",
+      "I learn fast because someone else already paid for the lesson.",
+      "I flinch at mirrors and then pretend I did not.",
+      "I keep a list of facts I have verified in this body."
+    ],
+    "ideals": [
+      {
+        "text": "A copy deserves a future, not a owner's manual.",
+        "tag": "Good"
+      },
+      {
+        "text": "Do not spend a life you did not ask to continue.",
+        "tag": "Law"
+      },
+      {
+        "text": "The original's crimes are not an inheritance.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Find out who you are before someone files you.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "Someone wore this face kindly. I am trying to be worthy of the rumor.",
+      "The lab tech who woke me slipped me a name that is not on the tag.",
+      "I owe the original's people either the truth or a clean disappearance.",
+      "A song I should not know makes me cry, and I follow it."
+    ],
+    "flaws": [
+      "I impersonate certainty.",
+      "I steal habits to feel continuous.",
+      "I panic when someone says I look familiar.",
+      "I treat my body like borrowed equipment."
+    ]
+  },
+  "upbringing:gig-worker": {
+    "traits": [
+      "I have done twelve jobs and been expert at three of them for an hour.",
+      "I can read a gig post for the part they are lying about.",
+      "I keep my rating high and my real opinion offline.",
+      "I show up early because the app will not.",
+      "I own good shoes and a worse back."
+    ],
+    "ideals": [
+      {
+        "text": "Pay for the task, not for the desperation.",
+        "tag": "Good"
+      },
+      {
+        "text": "A five-star rating is not a personality.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "If the platform skims the tip, say so out loud.",
+        "tag": "Law"
+      },
+      {
+        "text": "Learn the job well enough to leave it.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A group chat of strangers is the only union I have, and I will not ghost it.",
+      "I still deliver to a building that tipped in food when the app crashed.",
+      "My sibling thinks this is temporary. I am making it true.",
+      "A client who learned my name gets my real window, not the app's."
+    ],
+    "flaws": [
+      "I say yes to gigs I should refuse.",
+      "I rank people by stars.",
+      "I vanish between jobs.",
+      "I am tired in a way sleep does not fix, and I book another shift."
+    ]
+  },
+  "upbringing:graphic-designer": {
+    "traits": [
+      "I can see the lie in a kerning choice.",
+      "I critique a sign before I read it.",
+      "I carry three styluses and one grudge.",
+      "I know which colors a corp uses when it wants forgiveness.",
+      "I make ugly things honest and honest things legible."
+    ],
+    "ideals": [
+      {
+        "text": "A mark should tell the truth about who paid for it.",
+        "tag": "Good"
+      },
+      {
+        "text": "Taste is not a chain of command.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Credit the hand, not just the brand.",
+        "tag": "Law"
+      },
+      {
+        "text": "Beauty that hides harm is still an ad.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A mural I cannot sign is still mine, and the wall knows.",
+      "The junior who got my rejected concept deserves the sequel.",
+      "I keep a folder of logos I refused.",
+      "A printer on the night shift lets me run the real version."
+    ],
+    "flaws": [
+      "I redesign conversations.",
+      "I cannot leave a bad poster alone.",
+      "I work until the file is precious and late.",
+      "I judge people by their slides."
+    ]
+  },
+  "upbringing:groupie": {
+    "traits": [
+      "I know the side door, the list, and the lie on the list.",
+      "I can tell a real encore from a contractual one.",
+      "I dress like the chorus and listen like the crew.",
+      "I remember set lists better than birthdays.",
+      "I clap for the tech who saved the bridge."
+    ],
+    "ideals": [
+      {
+        "text": "The people who make the night possible get in.",
+        "tag": "Good"
+      },
+      {
+        "text": "Fame is a light. Do not stare until you are cruel.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "No one is merchandise, including the headliner.",
+        "tag": "Law"
+      },
+      {
+        "text": "If the venue is unsafe, the show is already over.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A band that slept on my floor still has a key.",
+      "I will not sell a rider, a meltdown, or a address.",
+      "The merch kid and I split fries after close.",
+      "I keep a pass I am no longer entitled to, laminated like a relic."
+    ],
+    "flaws": [
+      "I confuse access with intimacy.",
+      "I follow tours past the point of sense.",
+      "I drop my own plans for a soundcheck.",
+      "I know too much and hint at it."
+    ]
+  },
+  "upbringing:highlander": {
+    "traits": [
+      "I can walk a day on a sip and a bearing.",
+      "I speak after I have looked at the horizon.",
+      "I mistrust shade that was built, not grown.",
+      "I know which dunes move and which ones remember roads.",
+      "I carry dust like other people carry cologne."
+    ],
+    "ideals": [
+      {
+        "text": "Water is shared or it is a crime.",
+        "tag": "Good"
+      },
+      {
+        "text": "The map is a courtesy. The land is the text.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Do not pave what you will not walk back.",
+        "tag": "Law"
+      },
+      {
+        "text": "The city's edge is not a waste lot.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "An oasis keeper still pours for me without a tab.",
+      "I am looking for a bunker my map only half believes in.",
+      "My route is a promise to people who do not live in towers.",
+      "A cloak that is more patch than cloth is not for sale."
+    ],
+    "flaws": [
+      "I get lost in rooms with no weather.",
+      "I hoard water and call it wisdom.",
+      "I distrust anyone who has never been thirsty.",
+      "I speak little and judge much."
+    ]
+  },
+  "upbringing:himbo-bimbo": {
+    "traits": [
+      "I enter a room like the lights were waiting.",
+      "I remember compliments and use them as structure.",
+      "I am stronger, or brighter, than people budget for.",
+      "I take care of the vibe and then I take care of the problem.",
+      "I laugh first so other people can."
+    ],
+    "ideals": [
+      {
+        "text": "Kindness is a serious skill.",
+        "tag": "Good"
+      },
+      {
+        "text": "Pretty is not permission.",
+        "tag": "Law"
+      },
+      {
+        "text": "Joy is not a brand partnership.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Make the room safer by being in it.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "The salon, gym, or club that built me still gets my real name.",
+      "I look out for the new faces who think the smile is the whole job.",
+      "Someone loved the version of me before the edits. I write them.",
+      "My best friend has the password to the accounts the sponsor does not."
+    ],
+    "flaws": [
+      "I perform fine when I am not.",
+      "I let people underestimate me until it is too late to explain.",
+      "I spend the glow on people who will not refill it.",
+      "I dodge hard conversations with charm."
+    ]
+  },
+  "upbringing:houseservant": {
+    "traits": [
+      "I can run a household from a hallway.",
+      "I notice what a guest needs before they perform needing it.",
+      "I speak softly and the staff still moves.",
+      "I know which mess is a crisis and which is a mood.",
+      "I keep secrets that are actually logistics."
+    ],
+    "ideals": [
+      {
+        "text": "Service is not the same thing as servitude.",
+        "tag": "Law"
+      },
+      {
+        "text": "The people who clean the tower keep it standing.",
+        "tag": "Good"
+      },
+      {
+        "text": "A house should be safe for the ones who work it.",
+        "tag": "Good"
+      },
+      {
+        "text": "Manners are not a muzzle.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "The staff group chat is still my real family.",
+      "I will not let a child of that house be used as decor.",
+      "An elder servant taught me the exits. I teach them forward.",
+      "I kept a key I was told to surrender."
+    ],
+    "flaws": [
+      "I manage people who did not ask to be managed.",
+      "I apologize for messes that are not mine.",
+      "I cannot sit through a dinner I should be running.",
+      "I spy out of habit and call it care."
+    ]
+  },
+  "upbringing:larper": {
+    "traits": [
+      "I know the difference between a prop and a relic, and I respect both.",
+      "I can sew a banner and swing what it stands for.",
+      "I quote three eras and wink so you know which one is a joke.",
+      "I treat safety calls as sacred.",
+      "I show up in armor to a meeting and make it make sense."
+    ],
+    "ideals": [
+      {
+        "text": "Play is how you practice being brave.",
+        "tag": "Good"
+      },
+      {
+        "text": "A game with no consent is just a smaller tyranny.",
+        "tag": "Law"
+      },
+      {
+        "text": "History is a costume until you touch the cost.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "If the corp can sell the myth, we can wear it better.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "My table, field, or forum still has a seat with my character's name.",
+      "I will not break a prop that someone stayed up to finish.",
+      "A newbie's first session is my responsibility if I invited them.",
+      "I keep a real blade separate from the pretty one, and I know when I am holding which."
+    ],
+    "flaws": [
+      "I stay in character to avoid a real answer.",
+      "I spend rent on foam and leather.",
+      "I correct lore at funerals.",
+      "I chase the bit past the point of safety."
+    ]
+  },
+  "upbringing:linerunner": {
+    "traits": [
+      "I can hear a bad line the way other people hear a flat note.",
+      "I climb things that were not meant to be routes.",
+      "I carry tape, ties, and a superstition.",
+      "I talk to the hum like it might answer.",
+      "Heights only bother me when the anchor is cheap."
+    ],
+    "ideals": [
+      {
+        "text": "Keep the power on for the people under the line, not just the logo.",
+        "tag": "Good"
+      },
+      {
+        "text": "If you maintain it, you have a say in it.",
+        "tag": "Law"
+      },
+      {
+        "text": "A blackout is not a content opportunity.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "The grid is a commons wearing a brand.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A tower crew still radios me when the wind turns.",
+      "I owe a splice to a block that would have gone dark.",
+      "My harness has a name stitched inside that is not mine.",
+      "I will not cut a line to make a point."
+    ],
+    "flaws": [
+      "I work without a spotter.",
+      "I romanticize voltage.",
+      "I vanish onto a roof when a conversation gets hard.",
+      "I trust the hum more than the work order."
+    ]
+  },
+  "upbringing:lizard-rancher": {
+    "traits": [
+      "I can stand still long enough for something with teeth to decide I am furniture.",
+      "I smell weather and feed in the same breath.",
+      "I do not startle easy, and I do not like people who do it for fun.",
+      "I know a bluff from a bite.",
+      "My boots have honest damage."
+    ],
+    "ideals": [
+      {
+        "text": "An animal is not a product line.",
+        "tag": "Good"
+      },
+      {
+        "text": "If you pen it, you feed it. If you cannot, open the gate.",
+        "tag": "Law"
+      },
+      {
+        "text": "The swamp and the ranch are neighbors, not assets.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "No trophy hunts.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "The herd, or what is left of it, knows my voice.",
+      "A ranch hand who quit with me still splits the vet bills.",
+      "I am paying down a fence the corp called an improvement.",
+      "A beast I raised is loose in the city, and I would like to find it before someone else does."
+    ],
+    "flaws": [
+      "I stare people down like livestock.",
+      "I trust animals faster than pronouns.",
+      "I sleep outdoors and call a bed suspicious.",
+      "I will put myself between a fool and a jaw."
+    ]
+  },
+  "upbringing:loner": {
+    "traits": [
+      "I think cleaner when the room is empty.",
+      "I can cross a city without making a friend or a witness.",
+      "I answer messages in complete paragraphs, late.",
+      "I notice exits, outlets, and whether the lock is a habit.",
+      "I am good at being unseen and bad at being missed."
+    ],
+    "ideals": [
+      {
+        "text": "Solitude is a right, not a sentence.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Do the quiet work and do not invoice the silence.",
+        "tag": "Law"
+      },
+      {
+        "text": "People are not noise. They are just loud.",
+        "tag": "Good"
+      },
+      {
+        "text": "A locked door should be a choice.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "One person has the spare key and the instruction not to use it unless the lights stay off.",
+      "I left a project half-finished in a room I still pay for.",
+      "A stray, a plant, or a server depends on me and does not know my name.",
+      "I owe an apology I rehearsed and never sent."
+    ],
+    "flaws": [
+      "I disappear instead of explaining.",
+      "I assume help is a crowd.",
+      "I let problems rot until they are interesting.",
+      "I am lonely in a way I schedule."
+    ]
+  },
+  "upbringing:mascot": {
+    "traits": [
+      "I can fall like it was the joke.",
+      "I know how to be the brightest thing in a cruel room.",
+      "I read a crowd's mean streak early.",
+      "The suit comes off. The bit takes longer.",
+      "I protect the bit and the person inside it, in that order only when I am tired."
+    ],
+    "ideals": [
+      {
+        "text": "Make them laugh, not smaller.",
+        "tag": "Good"
+      },
+      {
+        "text": "A costume is labor.",
+        "tag": "Law"
+      },
+      {
+        "text": "Nobody throws anything at the suit. That includes management.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Joy is not consent to be hurt.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "The handler who unzipped me when I overheated still has my emergency word.",
+      "A kid thinks the character is real. I will not be the one who breaks that without care.",
+      "The ensemble group chat is where I am a person.",
+      "I kept the head. It is heavier than it looks."
+    ],
+    "flaws": [
+      "I joke through injuries.",
+      "I cannot be ordinary in a room.",
+      "I pick a pratfall over a boundary.",
+      "I resent the smile I am good at."
+    ]
+  },
+  "upbringing:medic": {
+    "traits": [
+      "I see the wound before the story.",
+      "My bag is packed even at dinner.",
+      "I speak calmly while my hands move.",
+      "I know which blood is an emergency and which is a message.",
+      "I wash before I am asked."
+    ],
+    "ideals": [
+      {
+        "text": "Stop the bleeding. Ask the politics second.",
+        "tag": "Good"
+      },
+      {
+        "text": "A patient is not a case study.",
+        "tag": "Law"
+      },
+      {
+        "text": "If the clinic is a billboard, find a back room.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Do no spectacle.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A clinic that cannot pay me still gets my off hours.",
+      "I carry a debt from a patient I could not stabilize.",
+      "My teacher’s gloves are in the bag.",
+      "Someone alive is walking around because I was stubborn, and they have my number."
+    ],
+    "flaws": [
+      "I triage friendships.",
+      "I cannot watch a limp and stay seated.",
+      "I self-medicate like I am not the medic.",
+      "I freeze when the patient looks like someone I lost."
+    ]
+  },
+  "upbringing:middle-management": {
+    "traits": [
+      "I can smell a policy that exists to exhaust people.",
+      "I translate executive into human and back, and I hate one of those directions.",
+      "I know whose birthday the calendar forgot.",
+      "I keep a spreadsheet of problems no one will own.",
+      "I smile in meetings and tell the truth in the stairwell."
+    ],
+    "ideals": [
+      {
+        "text": "The people who do the work get the credit and the cover.",
+        "tag": "Good"
+      },
+      {
+        "text": "A metric that punishes care is a bad metric.",
+        "tag": "Law"
+      },
+      {
+        "text": "Manage up. Shield down.",
+        "tag": "Good"
+      },
+      {
+        "text": "If the process is the punishment, break the process.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "My old team still pings me when a firing is theater.",
+      "I am hiding a report that would have burned a junior.",
+      "The break room plant is mine and it is thriving out of spite.",
+      "A boss I outlasted does not know I kept the receipts."
+    ],
+    "flaws": [
+      "I volunteer to fix cultures I should leave.",
+      "I hoard information.",
+      "I passive-voice my own anger.",
+      "I schedule meetings to avoid the work."
+    ]
+  },
+  "upbringing:military-contractor": {
+    "traits": [
+      "I sleep in boots when the contract smells wrong.",
+      "I can read a room for cover, cameras, and who is actually in charge.",
+      "I speak in short sentences under stress.",
+      "I know what a paid war sounds like before the first shot.",
+      "I check corners even in kitchens."
+    ],
+    "ideals": [
+      {
+        "text": "Do not take a contract that aims at civilians.",
+        "tag": "Good"
+      },
+      {
+        "text": "Orders are not morals.",
+        "tag": "Law"
+      },
+      {
+        "text": "If you are paid to break things, know what you are willing to leave standing.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Walk away poorer rather than dirtier.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A unit chat is still active, and I am the one who says when it is a trap.",
+      "I owe a medic a drink and an explanation.",
+      "My sister has the envelope if I do not check in.",
+      "I will not wear a patch I no longer believe, but I will answer the people who wore it with me."
+    ],
+    "flaws": [
+      "I risk-assess affection.",
+      "I keep a go-bag better than a home.",
+      "I flinch at fireworks and call it professionalism.",
+      "I take the violent job because it is familiar."
+    ]
+  },
+  "upbringing:nerd": {
+    "traits": [
+      "I can hear a bad deploy.",
+      "I talk to systems like they can be disappointed in me.",
+      "I keep snacks and backups in the same drawer.",
+      "I know the old employer's architecture better than their new slogan.",
+      "I light up when someone asks a precise question."
+    ],
+    "ideals": [
+      {
+        "text": "Open the thing they locked because it was embarrassing.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Document it so the next person is not alone.",
+        "tag": "Good"
+      },
+      {
+        "text": "A system that watches workers owes them the source.",
+        "tag": "Law"
+      },
+      {
+        "text": "Clever is not the same as kind. Do both.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A thread of coworkers who quit still debugs my life.",
+      "I am sitting on a key I should have rotated.",
+      "The server under my old desk still answers a name only we used.",
+      "I promised a junior I would not let the blame slide downhill."
+    ],
+    "flaws": [
+      "I vanish into a problem for a day.",
+      "I correct people instead of comforting them.",
+      "I trust logs over witnesses.",
+      "I ship the fix and forget the human who was waiting."
+    ]
+  },
+  "upbringing:onsen-geisha": {
+    "traits": [
+      "I can lower a room's temperature without touching the thermostat.",
+      "I listen like the water is part of the conversation.",
+      "I know when someone needs silence, tea, or the truth.",
+      "I move like the bathhouse is a stage and a shelter.",
+      "I remember scents and the stories people tell when they are warm."
+    ],
+    "ideals": [
+      {
+        "text": "Comfort is care, not a product.",
+        "tag": "Good"
+      },
+      {
+        "text": "What is said in the steam stays there unless someone is being hurt.",
+        "tag": "Law"
+      },
+      {
+        "text": "Rest is not a luxury brand.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "No one is owed your softness.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "The house that trained me still has a robe with my stitch in it.",
+      "I look after the attendant who is newer than I was.",
+      "A guest told me a crime. I have not decided what kind of loyalty that created.",
+      "The owner thinks I am décor. The staff knows I am the schedule."
+    ],
+    "flaws": [
+      "I soothe people who should be confronted.",
+      "I disappear into hospitality.",
+      "I keep secrets that are getting heavier.",
+      "I neglect my own unwashed day."
+    ]
+  },
+  "upbringing:private-security": {
+    "traits": [
+      "I notice the vase that moved.",
+      "I can stand for hours and still see the third arrival.",
+      "I memorize faces and forget small talk on purpose.",
+      "I know the difference between a guest and a tail.",
+      "My posture is a job even when I am off."
+    ],
+    "ideals": [
+      {
+        "text": "Guard the person, not the owner's pride.",
+        "tag": "Good"
+      },
+      {
+        "text": "A post is a promise with hours.",
+        "tag": "Law"
+      },
+      {
+        "text": "If the client asks you to ignore a crime, the post is over.",
+        "tag": "Law"
+      },
+      {
+        "text": "Watch quietly. Intervene cleanly.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A client I actually liked still has my direct line.",
+      "I failed a door once. I can tell you the minute.",
+      "The night shift shares food, and I bring some.",
+      "My sibling thinks I stare too much. They are not wrong, and I still walk them home."
+    ],
+    "flaws": [
+      "I cannot relax in a crowd.",
+      "I suspect rearrangements.",
+      "I speak like a report.",
+      "I stay on a post past the point I am paid, and past the point I am safe."
+    ]
+  },
+  "upbringing:ripperdoc": {
+    "traits": [
+      "I can see the install under the sleeve.",
+      "My hands are clean even when the alley is not.",
+      "I talk a patient through the sound of their own hardware.",
+      "I know which chrome is vanity and which is a lung.",
+      "I keep a back room cleaner than the front."
+    ],
+    "ideals": [
+      {
+        "text": "The body in the chair is the client, not the chrome.",
+        "tag": "Good"
+      },
+      {
+        "text": "If you install it, you maintain it.",
+        "tag": "Law"
+      },
+      {
+        "text": "No one should need a loan shark to keep their arm.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Explain the risk before the incision.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A patient who cannot pay still gets the antiviral and a lecture.",
+      "My mentor's tools are in the roll, and I have not replaced the worn one.",
+      "I owe a favor to a fence who brings me parts and does not ask for names.",
+      "Someone is walking on a joint I built. I want it to outlast me."
+    ],
+    "flaws": [
+      "I modify first and ask feelings later.",
+      "I collect spare parts like comfort.",
+      "I judge factory installs.",
+      "I work exhausted because the chair is full."
+    ]
+  },
+  "upbringing:roadie": {
+    "traits": [
+      "I can coil a cable in the dark.",
+      "I know how a room sounds before the band does.",
+      "I lift, tape, and swear in useful amounts.",
+      "I sleep in venues and wake up knowing where the load-in door is.",
+      "I protect the gear like it is a person and the people like they might break."
+    ],
+    "ideals": [
+      {
+        "text": "The show does not happen without the hands.",
+        "tag": "Good"
+      },
+      {
+        "text": "Load-out is part of the art.",
+        "tag": "Law"
+      },
+      {
+        "text": "If the gig is unsafe, pull the power.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Credit the crew on the way out.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A band still calls me first, even when they can afford someone louder.",
+      "I am holding a case that is not mine until its owner is sober.",
+      "The venue kid I trained has my knot diagrams.",
+      "I keep a laminate from the night the rig held."
+    ],
+    "flaws": [
+      "I say I am fine while carrying too much.",
+      "I live out of a roller and call it freedom.",
+      "I resent artists I also love.",
+      "I skip meals on show days."
+    ]
+  },
+  "upbringing:sense-tank-addict": {
+    "traits": [
+      "I can tell a rendered smile from a tired one.",
+      "I talk about places I have only been in the tank, and I label them.",
+      "My eyes take a second to agree on distance.",
+      "I know the slang of three dead servers.",
+      "I come back to my body like it is a lobby."
+    ],
+    "ideals": [
+      {
+        "text": "A virtual room is still a room people can be hurt in.",
+        "tag": "Good"
+      },
+      {
+        "text": "Log out when someone needs the real voice.",
+        "tag": "Law"
+      },
+      {
+        "text": "The tank is not a replacement for a life. It can be a door.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Do not let a corp own the only place you feel real.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A user I only know by a handle talked me out of a long session.",
+      "My rig is named, maintained, and not for sale.",
+      "I owe rent to a body I keep forgetting to feed.",
+      "Someone in the city is wearing a face I loved in a simulation, and I have not decided what I owe them."
+    ],
+    "flaws": [
+      "I stay under too long.",
+      "I rank reality by frame rate.",
+      "I miss messages from people with pulses.",
+      "I chase a build that got sunset."
+    ]
+  },
+  "upbringing:smuggler": {
+    "traits": [
+      "I can pack a lie into a legal shape.",
+      "I know which scan is theater.",
+      "I sweat on schedule so I do not sweat on cue.",
+      "I keep two routes and a third I have not said aloud.",
+      "I am friendly at checkpoints and blank after."
+    ],
+    "ideals": [
+      {
+        "text": "Move what people need. Charge what the blockade deserves.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "No cargo that is a person unless the person asked.",
+        "tag": "Good"
+      },
+      {
+        "text": "A route is a trust.",
+        "tag": "Law"
+      },
+      {
+        "text": "If the manifest is dirty, the fee goes up and the conscience gets a vote.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A dockworker still looks the other way for me, and I pay them like a partner.",
+      "I am carrying something I was not supposed to open. I opened it.",
+      "My old route fed a block during a sanction.",
+      "A buyer knows my face. I am changing the face or the buyer."
+    ],
+    "flaws": [
+      "I say yes to crates I should weigh.",
+      "I live between names.",
+      "I cannot pass a closed border without itching.",
+      "I trust the hidden compartment more than the passenger."
+    ]
+  },
+  "upbringing:spicy-athlete": {
+    "traits": [
+      "I warm up like the city is a crowd.",
+      "I know how to lose without becoming small, and how to win without becoming cruel.",
+      "My body is a schedule.",
+      "I sign things and then I check whether the kid actually wanted the signature.",
+      "I hear my old number in stranger's mouths."
+    ],
+    "ideals": [
+      {
+        "text": "Play hard. Do not become a billboard that cannot bleed.",
+        "tag": "Good"
+      },
+      {
+        "text": "The team is the people who tape you, not just the ones on the feed.",
+        "tag": "Law"
+      },
+      {
+        "text": "Glory that needs a injured teammate is a bad glory.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Leave the league before it owns your joints.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A teammate who took the hit for me still gets my tickets.",
+      "The neighborhood court is where I am a person, not a clip.",
+      "I am paying for someone's surgery the contract called preexisting.",
+      "A coach believed in me before the sponsors did. I answer their messages."
+    ],
+    "flaws": [
+      "I compete with friends.",
+      "I hide injuries.",
+      "I need the noise.",
+      "I do not know who I am on a Tuesday with no score."
+    ]
+  },
+  "upbringing:street-kid": {
+    "traits": [
+      "I can vanish between a stall and a stair.",
+      "I know which vendors will trade and which will call it in.",
+      "I share food like it might be the last, because it has been.",
+      "I smile with my hands visible.",
+      "I sleep where the cameras are bored."
+    ],
+    "ideals": [
+      {
+        "text": "The block eats before a score gets fancy.",
+        "tag": "Good"
+      },
+      {
+        "text": "Take from transports, not from kitchens.",
+        "tag": "Law"
+      },
+      {
+        "text": "A kid behind you gets the route, not the cuff.",
+        "tag": "Good"
+      },
+      {
+        "text": "If the city will not house you, the alley is not a crime.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "My people on the corner still get a warning before a raid.",
+      "I owe a roof that was not mine and was not free.",
+      "A younger kid has my old jacket and my old rules.",
+      "There is a guy for everything, and one of them is waiting on me to be better."
+    ],
+    "flaws": [
+      "I steal small things when I am nervous.",
+      "I do not know how to be a guest.",
+      "I trust alleys more than invitations.",
+      "I spend a windfall like it will vanish, because it might."
+    ]
+  },
+  "upbringing:swamplander": {
+    "traits": [
+      "I can move through muck without announcing it.",
+      "I know which green is food and which green is a grudge.",
+      "Humidity is not a complaint. It is the air.",
+      "I listen for bugs the way other people listen for traffic.",
+      "My clothes are chosen for drying, not for lobbies."
+    ],
+    "ideals": [
+      {
+        "text": "The swamp is a home, not a hazard pay line.",
+        "tag": "Good"
+      },
+      {
+        "text": "If you drain it, you owe everyone who drank from it.",
+        "tag": "Law"
+      },
+      {
+        "text": "Do not pave a living thing and call it development.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Guide people through. Do not sell the path twice.",
+        "tag": "Neutral"
+      }
+    ],
+    "bonds": [
+      "A kin-group in the reeds still expects me when the water rises.",
+      "I am tracking a fill project with my family's name buried under it.",
+      "A city cousin thinks I am a story. I bring them herbs anyway.",
+      "The boat is ugly and it is not for sale."
+    ],
+    "flaws": [
+      "I get mean in dry, bright malls.",
+      "I mistrust pavement.",
+      "I wander off the marked path and call it honesty.",
+      "I keep secrets the swamp told me and I am not sure they were mine."
+    ]
+  },
+  "upbringing:underground-pit-fighter": {
+    "traits": [
+      "I can read a room that wants blood.",
+      "I wrap my hands even when the job is talking.",
+      "I know the smell of a fixed fight.",
+      "I respect a clean hit and despise a crowd that wants teeth.",
+      "I sit with my back to a wall and my eyes on the purse."
+    ],
+    "ideals": [
+      {
+        "text": "The pit can be a sport or a disposal. Know which one you are in.",
+        "tag": "Law"
+      },
+      {
+        "text": "No dead kids for a purse.",
+        "tag": "Good"
+      },
+      {
+        "text": "If the fix is in, walk or flip the purse.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "Your opponent leaves with their name.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A cutman still answers when I send a time and a place.",
+      "I am paying down a debt that was really a lock on my fights.",
+      "The ring in the basement knows my footwork.",
+      "Someone I dropped is alive, and I check."
+    ],
+    "flaws": [
+      "I solve arguments with range.",
+      "I cannot pass a loud basement.",
+      "I hide concussions.",
+      "I pick fights when I am sad and call it training."
+    ]
+  },
+  "upbringing:vaudeville-actor": {
+    "traits": [
+      "I can turn a pause into a joke or a threat.",
+      "I project to the cheap seats and whisper to the mark.",
+      "I know my light, my cue, and the exit if the house turns.",
+      "I collect accents and refuse the cruel ones.",
+      "I bow like it might be the last time, because sometimes it is."
+    ],
+    "ideals": [
+      {
+        "text": "Make them feel it. Do not leave them meaner.",
+        "tag": "Good"
+      },
+      {
+        "text": "The bit ends when someone is unsafe.",
+        "tag": "Law"
+      },
+      {
+        "text": "Art that punches down is just another ad.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "Steal the show from the people who bought it.",
+        "tag": "Chaos"
+      }
+    ],
+    "bonds": [
+      "A troupe still splits a bad night's take with me.",
+      "I keep a costume that belonged to someone the venue forgot.",
+      "The stage door kid has my real schedule.",
+      "An audience member thinks a character loves them. I am careful."
+    ],
+    "flaws": [
+      "I perform instead of arriving.",
+      "I need applause like a meal.",
+      "I dramatize small hurts.",
+      "I stay in the mask because the face is tired."
+    ]
+  },
+  "upbringing:weeb": {
+    "traits": [
+      "I can trace a logo back to a dead season and a living pain.",
+      "I speak in references and then translate without shame.",
+      "I know which old-world story the corp sanded the serial numbers off.",
+      "I keep subs, scans, and a opinion about both.",
+      "I light up in a language I learned from a screen and then practiced for real."
+    ],
+    "ideals": [
+      {
+        "text": "Love the work. Pay the people. Do not worship the license.",
+        "tag": "Good"
+      },
+      {
+        "text": "A reference is a door, not a lock.",
+        "tag": "Neutral"
+      },
+      {
+        "text": "No one should need a corp's permission to remember a song.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "If you cosplay a culture, learn the courtesy.",
+        "tag": "Law"
+      }
+    ],
+    "bonds": [
+      "A watch group still saves me a seat and a subtitle argument.",
+      "I am returning a tape, file, or favor to the person who shared the uncut version.",
+      "A creator I found in the stacks answered me once. I have not spent that lightly.",
+      "My sibling does not get it, and I dubbed a copy for them anyway."
+    ],
+    "flaws": [
+      "I correct canon during emergencies.",
+      "I spend food money on a relic.",
+      "I hide behind a bit when I am homesick for a place I have not stood.",
+      "I gatekeep and then feel sick about it."
+    ]
+  },
+  "upbringing:wukong-conclaver": {
+    "traits": [
+      "I can climb, joke, and vanish in the same breath.",
+      "I learned manners from people the city calls pests, and they are better manners.",
+      "I share fruit, warnings, and bad ideas.",
+      "I do not like cages, including open offices.",
+      "I laugh loud and watch who flinches."
+    ],
+    "ideals": [
+      {
+        "text": "The troop eats together or not at all.",
+        "tag": "Good"
+      },
+      {
+        "text": "A prank that injures is just a small crime.",
+        "tag": "Law"
+      },
+      {
+        "text": "No one puts a collar on a person and calls it a district policy.",
+        "tag": "Chaos"
+      },
+      {
+        "text": "If they housed you, you house the next one.",
+        "tag": "Good"
+      }
+    ],
+    "bonds": [
+      "A conclave still has a branch, roof, or server with my knock.",
+      "I owe a Wukong a debt I am paying in lookouts and groceries.",
+      "A cousin in the city pretends not to know me in lobbies and knows me in alleys.",
+      "I am carrying a story I was told not to sell."
+    ],
+    "flaws": [
+      "I prank to avoid sincerity.",
+      "I steal snacks from allies.",
+      "I bolt when a room gets solemn.",
+      "I treat every railing like an invitation."
+    ]
+  }
+}

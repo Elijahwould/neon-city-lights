@@ -1,0 +1,22 @@
+---
+title: "Doolittle's Dialog"
+slug: "tech:doolittles-dialog"
+url: "https://neoncitylights.wikidot.com/tech:doolittles-dialog"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Doolittle's Dialog"]
+tags: ["auditor", "first", "influencer", "observation", "shutin", "tech"]
+---
+##### Source: Player's Handbook (Speak With Animals)
+
+*1st-level observation (script)*
+
+**Casting Time:** 1 action
+
+**Range:** Self
+
+**Components:** V, S
+
+**Duration:** 10 minutes
+
+You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and creatures, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the fixer's discretion.
+
+***Tech Lists.*** [Auditor](/techs:auditor), [Influencer](/techs:influencer), [Shut-In](/techs:shutin)

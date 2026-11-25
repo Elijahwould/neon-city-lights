@@ -1,0 +1,15 @@
+---
+title: "Hunting bow"
+slug: "weapon:hunting-bow"
+url: "https://neoncitylights.wikidot.com/weapon:hunting-bow"
+breadcrumbs: ["HOME.info", "LOOT.info", "Weapons", "Hunting bow"]
+tags: ["mil-ranged"]
+---
+*1d8 piercing, 12 lb., ammunition A (range 150/600), finesse, loading, silent, two-handed*
+
+In archery, a recurve bow is one of the main shapes a bow can take, with limbs that curve away from the archer when unstrung. A recurve bow stores more energy and delivers energy more efficiently than the equivalent straight-limbed bow, giving a greater amount of energy and speed to the arrow. A recurve will permit a shorter bow than the simple straight limb bow for given arrow energy, and this form was often preferred by archers in environments where long weapons could be cumbersome, such as in brush and forest terrain, or while on horseback.
+
+### Features
+
+- ***The Lost Art of Archery.*** If you ready an action to fire this weapon, firing it does not require your reaction once the trigger for your readied action is met.
+- ***Bleeding Wounds.*** Once per turn, when you land a successful attack against a target with this weapon, they gain a bleeding wound, with a maximum of three such bleeding wounds per target. At the start of each of the target's turns, the target takes 1d4 slashing damage per bleeding wound. The bleeding wounds remain until the target receives any amount of healing, or the bleeding wounds are treated by using a standard action to make a DC 10 Wisdom (Medicine) check.

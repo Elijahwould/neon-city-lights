@@ -1,0 +1,10 @@
+---
+title: "Ceramiron"
+slug: "armor:ceramiron"
+url: "https://neoncitylights.wikidot.com/armor:ceramiron"
+breadcrumbs: ["HOME.info", "LOOT.info", "Armor", "Ceramiron"]
+tags: ["heavy-armor"]
+---
+*Heavy armor, 5 lb., strength 13, AC = 16, disadvantage on stealth checks*
+
+Ceramiron is an upgrade to polycarbon armor, in that it consists of much the same pieces—several pieces of armor, including a vest, leg and arm guards, gauntlets and a light, visored helmet—but is made with a heavier material that is much better at deflecting bullets and withstanding the shock of impact. It's more than double the price, too, but it still doesn't quite break the bank.

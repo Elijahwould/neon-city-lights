@@ -1,0 +1,56 @@
+---
+title: "Shard"
+slug: "outlaw:shard"
+url: "https://neoncitylights.wikidot.com/outlaw:shard"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Outlaw", "Shard"]
+tags: ["outlaw", "subclass"]
+---
+## "Let’s just say I was in special operations and leave it at that."
+
+"Shard" is the colloquial nickname for an outlaw augmented with covert biokinetic implants. These highly trained operatives are the stealthy counterpart to the more heavily armed ronin Special Operatives. The biokinetic batteries they use allow them to utilize subtle and deadly abilities to devastating effect.
+
+##### Source: Tasha’s Cauldron of Everything (Soulknife)
+
+### Biokinetic Power
+
+Starting at 3rd level, you harbor a wellspring of biokinetic energy within yourself. This energy is represented by your Biokinetic Energy dice, which are each a d6. You have a number of these dice equal to twice your proficiency bonus, and they fuel various biokinetic powers you have, which are detailed below.
+
+Some of your powers expend the Biokinetic Energy die they use, as specified in a power’s description, and you can’t use a power if it requires you to use a die when your dice are all expended. You regain all your expended Biokinetic Energy dice when you finish a long rest. In addition, as a bonus action, you can regain one expended Biokinetic Energy die, but you can’t do so again until you finish a short or long rest.
+
+When you reach certain levels in this class, the size of your Biokinetic Energy dice increases: at 5th level (d8), 11th level (d10), and 17th level (d12).
+
+The powers below use your Biokinetic Energy dice.
+
+- **Biokinetic Knack.** When your training fails you, your biokinetic power can help: if you fail an ability check using a skill or tool with which you have proficiency, you can roll one Biokinetic Energy die and add the number rolled to the check, potentially turning failure into success. You expend the die only if the roll succeeds.
+- **Subvocal Comms.** You can establish wireless mental communication between yourself and others—perfect for quiet infiltration. As an action, choose one or more creatures you can see, up to a number of creatures equal to your proficiency bonus, and then roll one Biokinetic Energy die. For a number of hours equal to the number rolled, the chosen creatures can speak telepathically with you, and you can speak telepathically with them. To send or receive a message (no action required), you and the other creature must be within 1 mile of each other. A creature can’t use this telepathy if it can’t speak any languages, and a creature can end the telepathic connection at any time (no action required). You and the creature don’t need to speak a common language to understand each other. The first time you use this power after each long rest, you don’t expend the Biokinetic Energy die. All other times you use the power, you expend the die.
+
+### Energy Blades
+
+Also at 3rd level, you can manifest your biokinetic power as shimmering blades of biokinetic energy. Whenever you take the Attack action, you can manifest an energy blade from your free hand and make the attack with that blade.
+
+The energy blade is a civilian melee weapon with the finesse and thrown properties. It counts as a tech weapon for overcoming damage resistance and immunity. It has a normal range of 60 feet and no long range, and on a hit, it deals kinetic damage equal to 1d6 plus the ability modifier you used for the attack roll. The blade vanishes immediately after it hits or misses its target.
+
+After you attack with the blade, you can make a melee or ranged weapon attack with a second energy blade as a bonus action on the same turn, provided your other hand is free to create it. The damage die of this bonus attack is 1d4, instead of 1d6.
+
+### Mind Knife
+
+At 9th level, you have the ability to tune your energy blades to a different frequency, allowing them to disrupt a creature’s nervous system without harming their body. When you make an attack with an Energy Blade, you can choose for it to deal software damage rather than kinetic damage. The blade leaves no mark on its target if it deals damage when you use it in this fashion.
+
+### Powerful Blades
+
+Starting at 9th level, your Energy Blades are fully integrated with your biokinetic implants, giving you these powers that use your Biokinetic Energy dice:
+
+- **Blade Blink.** As a bonus action, you manifest one of your Energy Blades, expend one Biokinetic Energy die and roll it, and throw the blade at an unoccupied space you can see, up to a number of feet away equal to 10 times the number rolled. You then teleport to that space, and the blade vanishes.
+- **Homing Strikes.** If you make an attack roll with your Energy Blades and miss the target, you can roll one Biokinetic Energy die and add the number rolled to the attack roll. If this causes the attack to hit, you expend the Biokinetic Energy die.
+
+### Someone Else’s Problem
+
+At 13th level, you can weave a veil of psychic static to mask yourself. As an action, you can become invisible, along with anything you are wearing or carrying, for 1 hour or until you dismiss this effect (no action required). This invisibility ends immediately after you deal damage to a creature, or you force a creature to make a saving throw.
+
+Once you use this feature, you can’t do so again until you finish a long rest, unless you expend a Biokinetic Energy die to use this feature again.
+
+### Focused Totality
+
+When you reach 17th level, you can sweep your Energy Blade directly through a creature’s central nervous system. When you use your Energy Blades to deal Sneak Attack damage to a creature, you can force that target to make a Wisdom saving throw (DC equal to 8 + your proficiency bonus + your Dexterity modifier). If the save fails, the target is stunned for 1 minute. The stunned target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+Once you use this feature, you can’t do so again until you finish a long rest, unless you expend three Biokinetic Energy dice to use it again.

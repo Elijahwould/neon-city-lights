@@ -1,0 +1,78 @@
+---
+title: "Speed Demon"
+slug: "ronin:speed-demon"
+url: "https://neoncitylights.wikidot.com/ronin:speed-demon"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Ronin", "Speed Demon"]
+tags: ["ronin", "subclass"]
+---
+## "Speed kills, with presence of mind… speed kills, if you know what I mean."
+
+Within the past ten years in Neon City, there have been rumors of a drug re-surfacing back on the black market, one that was once forgotten, relegated simply to corpo elitists. The drug, named *Aion*—after the ancient Hellenistic deity of Time—alters the user's perception to such a degree that they can see things at ten times the speed of a normal human. Extended use and training with it might allow someone to see at nearly a hundred times faster. Dodging bullets, and in some instances even swatting them back. While the corporate elite never bothered to go this far, a select few had… other plans.
+
+In the dark, a program was being held, and people with nowhere else to go—junkies, addicts, orphans, the injured and the crippled—all at the ripe age of eighteen, were hired and whisked away to undergo said training. Anyone could undertake this training, truth be told, and purchase the necessary augments themselves, though the program made things easier, more consistent… and more noticeable. A set of spinal injectors, which slowly worm their way deeper and deeper into their host's body, a set of muscular reinforcements, and a special, tailor-made augment… and you're ready for combat. [Speed kills](/speed-kills).
+
+##### Source: [Spheres of Power 5E (Guardian)](https://www.drivethrurpg.com/product/347139/Spheres-of-Power-5e?affiliate_id=549120), Neon City NightsThanks to Yash#5305 for his creation! Also, thanks to Celica#1988 for helping with balancing and other tweaks, and reny#8234 for cleaning up wording!
+
+### Action Before Thought
+
+Starting at 3rd level, your enhancements allow your body to move faster than thought. When you would be hit be an attack roll, you can use your reaction to immediately move 5 feet, without triggering opportunity attacks, as long as you do not end this movement further from the target than when you began it. If the triggering attack was a ranged attack, you can choose to stay stationary. When you complete this movement, roll 1d6. On a roll of 4 or higher, the triggering attack instead misses you. On a 3 or lower, you gain resistance to the damage of the triggering attack.
+
+You may use this ability an amount of times equal to your Constitution modifier, and you regain all expended uses when you finish a long rest.
+
+### Hyper-Speed Augmentation
+
+Additionally at 3rd level, the enhancements that allow your body to move faster manifest minimum activation benefits. Your movement speed is increased by 5 feet. Your movement speed further increases by 10 feet at 11th level, and by 15 feet at 18th level.
+
+In addition, choose one of the following augmentations, chosen when you gain this subclass at 3rd level.
+
+- **DR4G-0N Slash.** As a bonus action, you may prepare yourself for a deadly strike, bracing your weapon, and focusing. When you take the Attack action this turn, immediately before you roll your attack(s), you move up to 15 feet in a line in a direction of your choosing, moving through the space of and striking every enemy in your path. Make an attack roll against any enemy you intercept with this movement, dealing your base damage to each enemy hit. At 11th level, add 1d8 thunder damage to each enemy hit. This damage increases to 2d8 per enemy at 14th level, and 3d8 per enemy at 17th level.
+
+- **Head-Hunter's Riposte.** When Action Before Thought causes you to gain resistance to the triggering attack, you can expend an additional use of Head-Hunter's Riposte to treat it as if it had caused the triggering attack to miss and continue with the effect as normal. When Action Before Thought causes an attack against you to miss, you can make an attack against the creature that made the triggering attack as part of the same reaction. This attack is considered an attack of opportunity. If the triggering attack was a ranged attack, you make your attack roll with the weapon you are holding as normal but roll damage against the target with the damage roll of the weapon it attacked with.
+
+- **1A1D0 Killing Field.** As an action, you can extend your hyper-sensitive awareness to an area around you, making it deadly for trespassers. This area is an area around you equal to your melee weapon reach +10 feet. Whenever a creature moves into, out of, or through this area, you can, if you are able to make reactions, move up to your speed to bring that target into your reach and make an opportunity attack against them, known as a field attack. Your total movement before the start of your next turn cannot exceed your movement speed.
+  - You gain 1 additional opportunity attack every level that you would otherwise receive an extra attack from the Ronin's Extra Attack feature. Any opportunity attacks made with this feature do not require spending your reaction, though they still count as a reaction for all other purposes.
+  - Field attacks never deal sneak attack damage, and you are limited to only one opportunity attack per turn, which means you cannot attack the same target with multiple opportunity attacks during their movement, no matter how much or how often they move through your killing field or out of your reach.
+
+You may use this ability an amount of times equal to your Proficiency bonus, and you regain all expended uses when you finish a long rest. If you have exhausted your uses, you may take a level of [mental exhaustion, or stress](/con:exhaustion), to activate the ability instead. If you cannot take more levels of mental exhaustion, you cannot activate this feature at all.
+
+### Chemically-Induced Precognition
+
+Starting at 7th level, you have advantage on initiative rolls. In addition, you are immune to being surprised while conscious.
+
+### Improved Augmentation
+
+Also starting at 7th level, your chosen Hyper-Speed Augmentation gains new abilities.
+
+- **DR4G-0N Slash.** When using this feature, you can instead move up to 20 feet in any shape you choose, instead of a line. You can only hit an individual enemy once with each use of this ability.
+
+- **Head-Hunter's Riposte.** Whenever you deal damage with an attack made as part of Head-Hunter's Riposte, add thunder damage to the roll equal to your Ronin level.
+
+- **1A1D0 Killing Field.** When a hostile creature within the area of your field attempts to cast a tech, you may make an opportunity attack against that creature. This attack is resolved before the completion of the tech, and any damage dealt forces the creature to make a Constitution saving throw as if attempting to hold concentration, the spell failing if the creature fails, with the creature losing the tech slot.
+
+### Warp Dancer
+
+Starting at 10th level, when you cause an attack to miss you with the Action Before Thought feature, you can use Action Before Thought against the next attack made against you, without spending your reaction or a use of the feature. When causing an attack to miss in this way, you can still make a Head-Hunter's Riposte. This effect remains in effect, triggered by itself, until an attack misses you as a result of anything other than the Action Before Thought feature or the Action Before Thought feature fails to cause an attack to miss.
+
+### Stimulant Overdrive
+
+Starting at 15th level, you can use your stimulant injectors to push your body to it's limits. You may cast the [overdrive](/tech:overdrive) tech as a free action, targeting yourself. It can still be dissipated as normal, but you do not suffer the lethargy effects from the effect ending.
+
+Alternatively, if you have exhausted your uses of your Hyper-speed Augmentation, you may expend your Stimulant Overdrive to recover 1d4+1 uses of that feature.
+
+Once you use this feature, you cannot use it again until you finish a long rest.
+
+### Superior Augmentation
+
+Also starting at 15th level, your chosen Hyper-Speed Augmentation gains new abilities.
+
+- **DR4G-0N Slash.** Whenever the movement of this feature would move you through the space of a creature, you can move an additional 5 feet.
+
+- **Head-Hunter's Riposte.** Additional uses of your Head-Hunter's Riposte made as part of the Warp Dancer feature do not require you to expend uses of your Hyper-Speed Augmentation.
+
+- **1A1D0 Killing Field.** If a creature ends their turn within your field, it provokes an attack of opportunity, even if it otherwise wouldn't have provoked one. Attacks of opportunity made with this feature deal an additional 1d8 thunder damage.
+
+### Stimulant Rampage
+
+Starting at 18th level, as soon as you strike an enemy down, you can use that moment to unleash hell upon your enemies.
+
+Whenever you reduce a creature to 0 hit points with an attack, you may choose to enter an accelerated state of mind, pumping your mind full of stimulants. You can immediately move up to 15 feet towards another creature and make an attack against it. Each time you do this on the same turn, you take 1d4 software damage, taking an additional 1d4 software damage for each subsequent use. This damage cannot be prevented in any way, and it ignores immunity and resistances. If the amount of dice rolled to determine the damage taken from activating your ability would exceed your proficiency modifier, you take a level of mental exhaustion, or stress. Each time you gain a die of damage past your proficiency modifier, this occurs again. If you cannot take more levels of mental exhaustion, you cannot use this feature.

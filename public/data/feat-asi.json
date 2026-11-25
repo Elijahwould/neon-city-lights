@@ -1,0 +1,195 @@
+{
+  "feat:actor": {
+    "amount": 1,
+    "choices": [
+      "cha"
+    ]
+  },
+  "feat:code-cracker": {
+    "amount": 1,
+    "choices": [
+      "int"
+    ]
+  },
+  "feat:cqc-firearm-training": {
+    "amount": 1,
+    "choices": [
+      "dex"
+    ]
+  },
+  "feat:crusher": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "con"
+    ]
+  },
+  "feat:deadly-marksmanship": {
+    "amount": 1,
+    "choices": [
+      "dex"
+    ]
+  },
+  "feat:demolitions-expert": {
+    "amount": 1,
+    "choices": [
+      "dex"
+    ]
+  },
+  "feat:detective": {
+    "amount": 1,
+    "choices": [
+      "int"
+    ]
+  },
+  "feat:durable": {
+    "amount": 1,
+    "choices": [
+      "con"
+    ]
+  },
+  "feat:engram-addict": {
+    "amount": 1,
+    "choices": [
+      "int",
+      "wis",
+      "cha"
+    ]
+  },
+  "feat:ghetto-go-getter": {
+    "amount": 1,
+    "choices": [
+      "int",
+      "wis",
+      "cha"
+    ]
+  },
+  "feat:heavily-armored": {
+    "amount": 1,
+    "choices": [
+      "str"
+    ]
+  },
+  "feat:heavy-armor-master": {
+    "amount": 1,
+    "choices": [
+      "str"
+    ]
+  },
+  "feat:helping-hand-hacker": {
+    "amount": 1,
+    "choices": [
+      "int",
+      "wis",
+      "cha"
+    ]
+  },
+  "feat:home-cook": {
+    "amount": 1,
+    "choices": [
+      "con",
+      "wis"
+    ]
+  },
+  "feat:hyper-internal-clock": {
+    "amount": 1,
+    "choices": [
+      "int",
+      "wis"
+    ]
+  },
+  "feat:jock": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  },
+  "feat:lightly-armored": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  },
+  "feat:mind-freak": {
+    "amount": 1,
+    "choices": [
+      "int",
+      "wis",
+      "cha"
+    ]
+  },
+  "feat:moderately-armored": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  },
+  "feat:nightclub-brawler": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "con"
+    ]
+  },
+  "feat:observant": {
+    "amount": 1,
+    "choices": [
+      "int",
+      "wis"
+    ]
+  },
+  "feat:penetration-tester": {
+    "amount": 1,
+    "choices": [
+      "dex"
+    ]
+  },
+  "feat:piercer": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  },
+  "feat:ranged-expert": {
+    "amount": 1,
+    "choices": [
+      "dex"
+    ]
+  },
+  "feat:skill-expert": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex",
+      "con",
+      "int",
+      "wis",
+      "cha"
+    ]
+  },
+  "feat:slasher": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  },
+  "feat:thrown-arms-master": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  },
+  "feat:weapon-master": {
+    "amount": 1,
+    "choices": [
+      "str",
+      "dex"
+    ]
+  }
+}

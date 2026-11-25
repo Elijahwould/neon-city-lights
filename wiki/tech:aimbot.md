@@ -1,0 +1,22 @@
+---
+title: "Aimbot"
+slug: "tech:aimbot"
+url: "https://neoncitylights.wikidot.com/tech:aimbot"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Aimbot"]
+tags: ["influencer", "observation", "sourcecoder", "streamer", "tech", "techwizard", "trick"]
+---
+##### Source: Player's Handbook (True Strike)
+
+*Observation trick*
+
+**Casting Time:** 1 action
+
+**Range:** 30 feet
+
+**Components:** S
+
+**Duration:** Concentration, up to 1 round
+
+You point a finger at a target in range. Your smart vision grants you a brief insight into the target's defenses. On your next turn, you gain advantage on your first attack roll against the target, provided that this tech hasn't ended.
+
+***Tech Lists.*** [Influencer](/techs:influencer), [Source Coder](/techs:sourcecoder), [Streamer](/techs:streamer), [Techwizard](/techs:techwizard)

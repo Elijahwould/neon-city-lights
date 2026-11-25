@@ -1,0 +1,135 @@
+---
+title: "Sequence Breaches"
+slug: "pretender:sequence-breaches"
+url: "https://neoncitylights.wikidot.com/pretender:sequence-breaches"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Pretender", "Sequence Breaches"]
+tags: ["pretender"]
+---
+If a sequence breach has prerequisites, you must meet them to learn the sequence of biotech. You can learn a sequence at the same time that you meet its prerequisites. A level prerequisite refers to your level in the pretender class, not your overall character level.
+
+## seqBreach:\> Bioadmin Access
+
+**Source: Quote's BH Revised (Mind Drinker)**
+
+***Prerequisite: 15th level, Mask of the Sipping Strain***
+
+As a bonus action, you can target a creature you can see within 30 feet of you. The target must make an Intelligence saving throw against your Nanophage DC, with disadvantage if you have ever healed as a result of dealing damage to them. On a failure, you claim their mind behind a hemolocked paywall, dealing 4d6 software damage, and you learn the target's surface emotions and thoughts. On a successful save, the target takes only half as much damage, and you only learn the target's general emotional state.
+
+**>Cannibalize** The software damage dealt increases to 6d6, and you immediately learn whether the creature has any damage immunities, resistances, or vulnerabilities and what they are.
+
+## seqBreach:\> Cross-Platform Pain
+
+**Source: Blood Hunter 2022 (Exposure)**
+
+When a creature you can see within 30 feet of you takes damage from an attack or tech, you can use your reaction to make their nanotechnical resilliences stimulus agnostic. Until the end of the target's next turn, it loses resistance to all the damage types dealt by the triggering attack or tech (including the triggering effect).
+
+**>Cannibalize** The target instead loses invulnerability to the damage types of the triggering attack or tech, but has resistance to those damage types until the end of its next turn.
+
+## seqBreach:\> Density Phantasm
+
+**Source: Quote's BH Revised (Morphing)**
+
+***Prerequisite: 15th level, Mask of the Genome Freak***
+
+As a bonus action, you make sweeping changes to your whole, seamlessly uniting nanophage with fleshweave, choosing one of the following forms:
+
+- **Minimal Phantasm.** Your size becomes Small, unless you were smaller, you gain advantage on Dexterity checks, your speed increases by 5 feet, and once per turn, you can deal an additional roll of Nanophage Potency with a ranged weapon attack.
+- **Maximum Phantasm.** Your size becomes Large, unless you were larger, you gain advantage on Strength checks, your reach increases by 5 feet, and once per turn, you can deal an additional roll of Nanophage Potency with a melee weapon attack.
+
+This density shift lasts for 1 minute, after which you gain one level of exhaustion.
+
+**>Cannibalize** You gain temporary hit points equal to 1d10 + your pretender level, and may deal your additional Nanophage Potency roll of damage twice per turn.
+
+## seqBreach:\> Feral Instinct-Shift
+
+**Source: Quote's BH Revised (Pack Master)**
+
+***Prerequisite: 15th level, Mask of the Snarling Beast***
+
+As a bonus action, you shatter the DNA-tailored shackles of civility within your allies with a snarl. Each allied creature within 30 feet of you that can hear you gains temporary hit points equal to 1/2 your pretender level + your Constitution modifier. Additionally, they gain a +2 bonus to weapon damage rolls for the next minute, or until you use this sequence breach again, at which point all benefits, including temporary hit points, end.
+
+**>Cannibalize** The range of this breach increases to 60 feet, and allied creatures affected by this breach have advantage on attacks against a creature chipped by your Retributive Monitor Chip.
+
+## seqBreach:\> Force-Schedule Update
+
+**Source: Blood Hunter 2022 (Exorcist)**
+
+***Prerequisite: 15th level, Mask of the Risen Servo***
+
+As a bonus action, you choose one creature you can see within 30 feet of you that is charmed, frightened, possessed, stunned, or virally infected. The target creature is no longer charmed, frightened, possessed, stunned, or virally infected, and any reduction to their maximum hit points or ability scores is undone.
+
+**>Cannibalize** The creature that charmed, frightened, possessed, stunned, virally infected, or reduced the maximum hit points or ability score(s) of the target of your updating-breach takes 8d6 software damage and must succeed on a Wisdom saving throw or be stunned until the end of your next turn.
+
+## seqBreach:\> Inflammatory Apoptosis
+
+**Source: Blood Hunter 2022 (Bloated Agony)**
+
+As a bonus action, you fast-track the chemical lifeline of a creature that you can see within 30 feet of you, causing its skin and batteries to swell with stress as nanites crash. For the duration, the creature has disadvantage on Strength checks and Dexterity checks, and takes 1d8 entropic damage if it makes more than one attack during its turn.
+
+**>Cannibalize** This sequence lasts for 1 minute. The breached creature can make a Constitution saving throw at the end of each of its turns, ending the sequence on itself on a success.
+
+## seqBreach:\> Mirror Neuron Rider
+
+**Source: Quote's BH Revised (Shared Suffering)**
+
+As a bonus action, you can connect to a creature within 30 feet of you, duplicate your nanotechnical stress responses onto their nanite colony. The next time you take damage, the breached creature takes an amount of entropic damage equal to half the damage you took, to a maximum of twice your pretender level. The sequence then ends.
+
+**>Cannibalize** This sequence lasts for 1 minute, and does not end until the duration ends, or until the breached creature succeeds on a Constitution saving throw made at the end of each of its turns.
+
+## seqBreach:\> Optical Fracture
+
+**Source: Blood Hunter 2022 (Eyeless)**
+
+When a creature you can see within 30 feet of you makes an attack, you can use your reaction to roll your Nanophage Potency and subtract the number rolled from the creature's attack roll, splintering the lens of its eyes or cameras. You can choose to use this feature after the creature’s roll, but before the fixer determines whether the attack hits or misses. The creature is immune to this breach if it is immune to the blinded condition.
+
+**>Cannibalize** You apply this sequence to all the creature’s attack rolls until the end of the creature’s turn. You roll separately for each affected attack.
+
+## seqBreach:\> Pulsing Anti-Sync
+
+**Source: Blood Hunter 2022 (Anxious)**
+
+As a bonus action, you implant a rhythm into the veins or circuits of a creature within 30 feet of you, beating in line with their vitality before growing erratic, giving them dreadful palpitations. Until the end of your next turn, Intimidation checks made against the breached creature have advantage.
+
+**>Cannibalize** The next Wisdom saving throw the breached creature makes before this sequence ends has disadvantage.
+
+## seqBreach:\> Restrictive Anchor
+
+**Source: Blood Hunter 2022 (Binding)**
+
+As a bonus action, you attempt to physically anchor the nanites of creature one size category larger than you or smaller you can see within 30 feet of you, which must make a Strength saving throw. On a failure, the breached creature’s speed is reduced to 0 and it can’t use reactions until the end of your next turn.
+
+**>Cannibalize** This sequence lasts for 1 minute and can affect any creature regardless of size. The breached creature can repeat the saving throw at the end of each of its turns, ending the sequence on itself on a success.
+
+## seqBreach:\> Rigging Mortis
+
+**Source: Blood Hunter 2022 (Fallen Puppet)**
+
+When a creature you can see within 30 feet of you drops to 0 hit points, you can use your reaction to redirect the departing surge of life into a final, rote, hostility. The creature immediately makes one weapon attack against a target of your choice within its range.
+
+**>Cannibalize** You can first cause the breached creature to move up to half its speed, and you grant a bonus to its attack roll equal to your Nanophage modifier (minimum of +1).
+
+## seqBreach:\> Somatadvertisement
+
+**Source: Blood Hunter 2022 (Soul Eater)**
+
+***Prerequisite: 15th level, Mask of the PACT Shill***
+
+When a creature that leaves behind a body on death is reduced to 0 hit points within 30 feet of you, you can use your reaction to dessecrate their remains into a billboard for your sponsor mommy. Until the end of your next turn, you make attacks with advantage and you have resistance to all damage.
+
+**>Cannibalize** Additionally, you regain an expended gifted tech tech slot. Once you’ve cannibalized this sequence breach, you must finish a long rest before you can cannibalize it again.
+
+## seqBreach:\> Synaptic Dampening
+
+**Source: Blood Hunter 2022 (Muddled Mind)**
+
+As a bonus action, you ground the electrical impulses of the mind in a creature that you can see within 30 feet of you that is concentrating on a tech or other concentration demanding feature. That creature has disadvantage on the next Constitution saving throw it makes to maintain concentration before the end of your next turn.
+
+**>Cannibalize** The breached creature has disadvantage on all Constitution saving throws made to maintain concentration until the end of your next turn.
+
+## seqBreach:\> Target Bias
+
+**Source: Blood Hunter 2022 (Marked)**
+
+As a bonus action, you target a creature that you can see within 30 feet of you. Until the end of your turn, whenever you hit the breached creature with a weapon for which you have an active lethal error, you roll an additional die of Nanophage Potency when determining the extra damage from the error.
+
+**>Cannibalize** The next attack roll you make against the target before the end of your turn has advantage.

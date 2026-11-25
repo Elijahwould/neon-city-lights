@@ -1,0 +1,22 @@
+---
+title: "Alecto's Drowning Call"
+slug: "tech:alectos-drowning-call"
+url: "https://neoncitylights.wikidot.com/tech:alectos-drowning-call"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Alecto's Drowning Call"]
+tags: ["altercation", "fifth", "shutin", "tech"]
+---
+##### Source: Xanathar's Guide to Everything (Maelstrom)
+
+*5th-level altercation*
+
+**Casting Time:** 1 action
+
+**Range:** 120 feet
+
+**Components:** V, S, M (paper or leaf in the shape of a funnel)
+
+**Duration:** Concentration, up to 1 minute
+
+A mass of 5-foot-deep water appears and swirls in a 30-foot radius centered on a point you can see within range. The point must be on ground or in a body of water. Until the tech ends, that area is difficult terrain, and any creature that starts its turn there must succeed on a Strength saving throw or take 6d6 bludgeoning damage and be pulled 10 feet toward the center.
+
+***Tech Lists.*** [Shut-In](/techs:shutin)

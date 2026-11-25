@@ -1,0 +1,60 @@
+---
+title: "Drone Rigger"
+slug: "auditor:drone-rigger"
+url: "https://neoncitylights.wikidot.com/auditor:drone-rigger"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Auditor", "Drone Rigger"]
+tags: ["auditor", "subclass"]
+---
+## “Man’s best friend has evolved with the times.”
+
+The use of drones is fairly common in many professions across the New World. Indeed, almost all Observation techs are based on the use of drones. Riggers take their mastery of drones to a whole new level, treating them not just as devices but as partners in battle. They craft bespoke projectors and personally program their drone’s behavior protocols, allowing them to act and react with a speed and precision unheard of in off-the-shelf models.
+
+##### Source: Fizban's Treasury of Dragons (Drakewarden)
+
+### Drone Pilot
+
+At 3rd level, the bond you become an expert in the minor techs that go into drone repair and maintenance. You learn the *[quick fix](/tech:quick-fix)* and *[nanotech twiddling](/tech:nanotech-twiddling)* tricks. These are auditor techs for you, but do not count against your number of techs known.
+
+### Drone Companion
+
+At 3rd level, as an action, you can release your drone from its digital form and allow it to take physical shape as a hardlight construct. It appears in an unoccupied space of your choice within 30 feet of you.
+
+The drone is friendly to you and your companions, and it obeys your commands. See its game statistics in the accompanying Drone Companion stat block, which uses your proficiency bonus (PB) in several places. Whenever you summon the drone, choose a damage type listed in its Surge Resonance trait. You can determine the cosmetic characteristics of the drone, such as its color, its appearance, or any visible effect of its Surge Resonance; your choice has no effect on its game statistics.
+
+In combat, the drone shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are [Incapacitated](/con:incapacitated), the drone can take any action of its choice, not just Dodge.
+
+The drone remains until it is reduced to 0 hit points, until you use this feature to summon the drone again, or until you die. Anything the drone was wearing or carrying is left behind when the drone vanishes.
+
+Once you summon the drone, you can’t do so again until you finish a long rest, unless you expend a tech slot of 1st level or higher to summon it.
+
+*Drone Companion · *Small machine* · **Armor Class:** 14 + PB (natural armor) · **Hit Points:** 5 + five times your auditor level (the drone has a number of hit dice [d10s] equal to your auditor level) · **Speed:** 40 ft. · STR — DEX — CON — INT — WIS — CHA · 16 (+3) — 12 (+1) — 15 (+2) — 8 (−1) — 14 (+2) — 8 (−1) · **Saving Throws:** Dex +1 plus PB, Wis +2 plus PB · **Damage Immunities:** determined by the drone's Surge Resonance trait · **Senses:** darkvision 60 ft., passive Perception 12 · **Languages:** Draconic · **Challenge:** **Proficiency Bonus (PB)** equals your bonus · **Surge Resonance.** When you summon the drone, choose a damage type: acid, cold, fire, lightning, or poison. The chosen type determines the drone’s damage immunity and the damage of its Infused Strikes trait. · Actions · **Stab.** *Melee Weapon Attack:* +3 plus PB to hit, reach 5 ft., one target. Hit: 1d6 plus PB piercing damage. · **Gunfire.** *Ranged Weapon Attack:* +1 plus PB to hit, range 30/120 ft., one target. Hit: 1d8 plus PB piercing damage.*
+
+| Reactions |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| **Infused Strikes.** When another creature within 30 feet of the drake that it can see hits a target with a weapon attack, the drake infuses the strike with its essence, causing the target to take an extra 1d6 damage of the type determined by its Surge Resonance. |  |  |  |  |  |
+
+### Improved Drone
+
+At 7th level, your constant tinkering and upgrades pay off in significant improvements to your drone. When you summon your drone, it gains a flying speed equal to its walking speed.
+
+In addition, while your drone is summoned, you and the drone gain the following benefits:
+
+- **Drone Mount.** The drone grows to Medium size. You can use the drone as a mount if your size is Medium or smaller. While you are riding your drone, it can’t use the flying speed of this feature.
+- **High-Tech.** The drone’s Stab and Gunfire attacks deal an extra 1d6 damage of the type chosen for the drone’s Surge Resonance and count as tech weapons.
+- **Resistance.** You gain resistance to the damage type chosen for the drone’s Surge Resonance.
+
+### Drone Blast
+
+At 11th level, as an action, you can cause your drone to produce a 30-foot cone of damaging energy. Choose acid, cold, fire, lightning, or poison damage (your choice doesn’t have to match your drone’s Surge Resonance). Each creature in the cone must make a Dexterity saving throw against your tech save DC, taking 8d6 damage on a failed save, or half as much damage on a successful one.
+
+This damage increases to 10d6 when you reach 15th level in this class.
+
+Once you use this feature, you can’t do so again until you finish a long rest, unless you expend a tech slot of 3rd level or higher to use it again.
+
+### Ultimate Drone
+
+At 15th level, your drone reaches the pinnacle of its power. While your drone is summoned, it gains the following benefits:
+
+- **Empowered Attacks.** The drone’s Stab and Gunfire attacks deal an extra 1d6 damage of the type chosen for its Surge Resonance (for a total of 2d6 extra damage).
+- **Large Drone.** The drone grows to Large size. When you ride your drone, it is no longer prohibited from using its flying speed.
+- **Reflexive Resistance.** When either you or the drone takes damage while you’re within 30 feet of each other, you can use your reaction to give yourself or the drone resistance to that instance of damage. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.

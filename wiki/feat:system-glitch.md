@@ -1,0 +1,18 @@
+---
+title: "System Glitch"
+slug: "feat:system-glitch"
+url: "https://neoncitylights.wikidot.com/feat:system-glitch"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Feats", "System Glitch"]
+tags: ["feat"]
+---
+##### Source: Neon City NightsShort and sweet; thanks to reny#8234!
+
+*Prerequisite: Proficiency with microlab*
+
+Your talents have allowed you to directly tamper with your own nanite colony, reimplementing deprecated offensive programs. As a result, you gain one Nanophage Die, which is a d4 (this die is added to any Nanophage Die you have from another source, and matches the highest die size of any other source. Otherwise, it becomes a d8 at 16th level). This die is used to fuel features which call for a Nanophage Die. A Nanophage Die is expended when used, and reduces your current hit points by an amount equal to its roll if it is rolled. You regain your expended Nanophage Die when you finish a long rest. You gain one of the following benefits, chosen when you gain this feat:
+
+- You learn one Lethal Error option of your choice from the Pretender class, using your nanophage die size from this feat as your nanophage potency. If the Lethal Error has a prerequisite, you can choose that Lethal Error only if you’re a Pretender and only if you meet the prerequisite.
+
+- You learn one Sequence Breach option of your choice from the Pretender class, the saving throw DC equals 8 + your proficiency bonus + your Intelligence or Wisdom modifier (your choice). If the Sequence Breach has a prerequisite, you can choose that Sequence Breach only if you’re a Pretender and only if you meet the prerequisite.
+
+Whenever you gain a level, you can replace the Lethal Error or Sequence Breach with another one from the Pretender class.

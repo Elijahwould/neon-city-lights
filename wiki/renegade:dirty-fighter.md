@@ -1,0 +1,47 @@
+---
+title: "Path of the Dirty Fighter"
+slug: "renegade:dirty-fighter"
+url: "https://neoncitylights.wikidot.com/renegade:dirty-fighter"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Renegade", "Path of the Dirty Fighter"]
+tags: ["renegade", "subclass"]
+---
+## “Clean fighting will get you nowhere but dead, and fast. Take every cheap shot, every low blow, absolutely kick people when they’re down—and maybe you’ll be the one who walks away.”
+
+Some people fight fair. Renegades who follow this path prefer to win. They bite, scratch, pull hair, kick crotches, gouge eyes, and use copious amounts of pocket sand if it gets them the win. Body modifications to gain hidden weapons, secret capabilities, and cheap tricks of all sorts are common for such renegades. Dirty fighters look shockingly normal until they hype up—then it’s all crazy claws, rending mandibles, and crotch guns.
+
+##### Source: Tasha’s Cauldron of Everything (Beast)
+
+### Hidden Weapons
+
+Starting at 3rd level, when you get hype, you can unveil your hidden weapon modifications. Until the hype ends, you manifest a natural weapon. This weapon counts as a civilian melee weapon for you, and you add your Strength modifier to attack and damage rolls with the weapon as normal.
+
+Choose one of the following hidden weapons to manifest each time you get hype:
+
+- **Bite.** Your teeth become sharp and your jaw has more power than an industrial press. This bite deals 1d8 piercing damage. Once per turn when you damage a creature with this bite, if you currently have less than your maximum number of hit points, you regain hit points equal to your proficiency bonus.
+- **Claws.** Each of your hands grows claws or claw-like blades which you can use as a weapon if that hand is not otherwise occupied. These claws deal 1d6 slashing damage. Once per turn when you make a claw attack as part of the Attack action, you can make one additional claw attack as part of the same action.
+- **Tentacle.** You grow a scorpion-like tail or a barbed tentacle from… somewhere. This weapon deals 1d8 piercing damage and has the reach property. If a creature you can see within 10 feet of you hits you with an attack, you can use your reaction to roll a d8 and add the number rolled to your AC, potentially causing the attack to miss you as you lash out with your new appendage. This increase to AC only lasts until the result of the attack is resolved.
+
+### Hidden Mods
+
+Your process of surreptitiously upgrading yourself continues at 6th level. Your natural weapons gained from your Hidden Weapons feature count as tech weapons for purposes of overcoming resistance and immunity.
+
+Additionally, you have a number of hidden internal upgrades that help you adapt to your surroundings. When you finish a short or long rest, choose one of the following benefits, which lasts until your next short or long rest.
+
+- **Aquatic Adaptation.** You gain a swimming speed equal to your walking speed, and you can breathe underwater.
+- **Climbing Adaptation.** You gain a climbing speed equal to your walking speed, and you can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.
+- **Jumping Adaptation.** When you jump, once per turn, you can make a Strength (Athletics) check and extend your jump by a number of feet equal to the check’s total.
+
+### Infectious Hype
+
+Starting at 10th level, when you hit a creature with your natural weapons while you are hype, you can fill the target with an overpowering rage, lust, frustration, or similar wild passion. The target must succeed on a Wisdom saving throw (DC 8 + your Constitution modifier + your proficiency bonus) or suffer one of the following effects (your choice):
+
+- **Lash Out.** The target must use its reaction to make a melee attack against another creature of your choice that you can see and which the target can reach with its attack.
+- **Go Nuts.** The target takes 2d12 software damage.
+
+You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+### Gang Bang
+
+Beginning at 14th level, you master the art of the gang bang, gaining strength from others even as they gain strength from you. When you get hype, you can choose a number of willing creatures you can see within 30 feet of you equal to your Constitution modifier (minimum 1). You gain 5 temporary hit points for each creature that accepts your gift of hype. Until your hype ends, the chosen creatures can roll a bonus d6 of damage on one successful attack each turn.
+
+You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.

@@ -1,0 +1,26 @@
+---
+title: "Digital Binding"
+slug: "tech:digital-binding"
+url: "https://neoncitylights.wikidot.com/tech:digital-binding"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Digital Binding"]
+tags: ["fifth", "influencer", "ordinator", "protection", "shutin", "streamer", "tech", "techwizard"]
+---
+##### Source: Player's Handbook (Planar Binding)
+
+*5th-level protection*
+
+**Casting Time:** 1 hour
+
+**Range:** 60 feet
+
+**Components:** V, S, M (a system override jumpdrive worth at least $$100,000, which the tech consumes)
+
+**Duration:** 24 hours
+
+With this tech, you attempt to bind a AI, a surge, a spam, or a virus to your service. The creature must be within range for the entire casting of the tech. (Typically, the creature is first summoned into the center of an inverted *[net filter](/tech:net-filter)* in order to keep it trapped while this tech is cast.) At the completion of the casting, the target must make a Charisma saving throw. On a failed save, it is bound to serve you for the duration. If the creature was summoned or created by another tech, that tech’s duration is extended to match the duration of this tech.
+
+A bound creature must follow your instructions to the best of its ability. You might command the creature to accompany you on an adventure, to guard a location, or to deliver a message. The creature obeys the letter of your instructions, but if the creature is hostile to you, it strives to twist your words to achieve its own objectives. If the creature carries out your instructions completely before the tech ends, it travels to you to report this fact if you are on the same plane of existence. If you are on a different plane of existence, it returns to the place where you bound it and remains there until the tech ends.
+
+***At Higher Levels.*** When you cast this tech using a tech slot of a higher level, the duration increases to 10 days with a 6th-level slot, 30 days with a 7th-level slot, 180 days with an 8th-level slot, or 1 year and 1 day with a 9th-level tech slot.
+
+***Tech Lists.*** [Influencer](/techs:influencer), [Ordinator](/techs:ordinator), [Shut-In](/techs:shutin), [Streamer](/techs:streamer), [Techwizard](/techs:techwizard)

@@ -1,0 +1,22 @@
+---
+title: "Hardlight +1 Bleeding Edge Armaments Blade/Blaster (BEA:B/B)"
+slug: "highend-weapons:hardlight-1"
+url: "https://neoncitylights.wikidot.com/highend-weapons:hardlight-1"
+breadcrumbs: ["HOME.info", "LOOT.info", "High End Weapons", "Hardlight +1 Bleeding Edge Armaments Blade/Blaster (BEA:B/B)"]
+tags: ["2m", "highend-weapons"]
+---
+##### Source: Neon City Nights
+
+*Weapon (any melee or ranged weapon), rare (requires installation)*
+
+**Specs:** Variable, $$1,500,000
+
+This weapon is little more than its basest components, grips, and a field generator designed to shape and maintain the photomass that is projected. You gain a +1 bonus to the attack rolls of this weapon, and it deals an extra 1d8 neon damage on a hit.
+
+You can use a bonus action to catalyze the chemical components of the weapon’s photomass, causing it to illuminate. This illumination sheds bright light in a 20-foot radius and dim light for an additional 20 feet. This light counts as UV light. Within this light, all creatures take a penalty to their stealth checks equal to this weapon's rarity bonus, lose the benefits of invisibility if the weapon is at least very rare, and are visible even on the etherealnet if the weapon is legendary.
+
+As an action, you can edit the concentration of nanites controlling the photomass field of the blade, altering its hardlight density, making the weapon weigh anywhere from half as much to twice as much as the weapon’s base weight.
+
+***Blades.*** A blade is any melee BEA:B/B. Whenever you roll a 20 on your attack roll with a blade, each creature of your choice within 5 feet of the target takes 5 damage of the type dealt by a rare BEA:B/B, 10 damage of the type dealt by a very rare BEA:B/B, and 15 damage of the type dealt by a legendary BEA:B/B.
+
+***Blasters.*** A blaster is any ranged BEA:B/B. Whenever you make an attack roll with a blaster, the ammunition supplies itself from a collection of near-surging nanites. You may still provide your own ammo to benefit from the bonuses of specific ammo, and it is consumed as normal.

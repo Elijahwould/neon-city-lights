@@ -1,0 +1,18 @@
+---
+title: "Supercharged Bug Zapper"
+slug: "peripheral:supercharged-bug-zapper"
+url: "https://neoncitylights.wikidot.com/peripheral:supercharged-bug-zapper"
+breadcrumbs: ["HOME.info", "LOOT.info", "Peripherals", "Supercharged Bug Zapper"]
+tags: ["3m", "peripherals"]
+---
+##### Source: Dungeon Master's Guide (Wand of Lightning Bolts)
+
+*Peripheral, rare (requires installation by a techcaster)*
+
+**Specs:** 1 lb., $$2,800,000
+
+For the greatest inventions and advances in the sciences, are driven by the most mundane of needs. Perhaps some techcaster **REALLY** hated insects. Perhaps a Corporate Executive threw a couple dozen million credits into a vanity project. Whatever the reason, you now hold this piece of fine engineering within your hands.
+
+This handheld Electrical Discharge Insect Control System in the shape of a railgun (because it's designers had good taste) has 7 charges. While holding it, you can use an action to expend 1 or more of its charges to cast the [Arc Cannon](/tech:arc-cannon) tech (save DC 15) from it. For 1 charge, you cast the 3rd-level version of the tech. You can increase the tech slot level by one for each additional charge you expend.
+
+The 'railgun' regains 1d6 + 1 expended charges daily at dawn. If you expend the its last charge, roll a d20. On a 1, its potential difference subtuner overloads and the item is destroyed.

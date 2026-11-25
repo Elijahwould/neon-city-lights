@@ -1,0 +1,55 @@
+---
+title: "The Astrologist Complex"
+slug: "shutin:astrologist"
+url: "https://neoncitylights.wikidot.com/shutin:astrologist"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Shut-In", "The Astrologist Complex"]
+tags: ["shutin", "subclass"]
+---
+## "By the alignment of the Moon, I'll punish you!"
+
+Healing crystals, essential oils, star maps, homeopathic medicines, and lots of beads. These are the treasured trinkets of the Astrologian Shut-In, their personal sub-realms purpose coded to align their chakras and maintain their feng-shi. Despite all this obvious bollocks, Astrologian Shut-Ins make for wonderful and effective healing and support teammates and are a boon to any party that can stand their bullshit.
+
+##### Source: Tasha's Cauldron of Everything (Circle of the Stars)
+
+### Chart the Heavens
+
+At 2nd level, you've created a star chart as part of your endless collection of alternative medicine. It is a Tiny object and can serve as a techcasting focus for your Shut-In techs. You determine and describe its form.
+
+While holding this map, you have these benefits:
+
+- You know the *[guiding code](/tech:guiding-code)* trick.
+- You have the *[light'em up](/tech:light-em-up)* tech prepared. It counts as a Shut-In tech for you, and it doesn't count against the number of techs you can have prepared.
+- You can cast *[light'em up](/tech:light-em-up)* without expending a tech slot. You can do so a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+If you lose the map, you can perform a 1-hour ceremony to create a replacement. This ceremony can be performed during a short or long rest, and it destroys the previous map.
+
+### Cosmic Form
+
+At 2nd level, you gain the ability to harness the alleged power of horoscopes to alter your form. As a bonus action, you can expend a use of your Goo Shape feature to take on a glowing, cosmic form, rather than transforming into a beast.
+
+While in your cosmic form, you retain your game statistics, but your body becomes luminous; your joints glimmer like stars, and glowing lines connect them as on a star chart. This form sheds bright light in a 10-foot radius and dim light for an additional 10 feet. The form lasts for 10 minutes. It ends early if you dismiss it (no action required), are incapacitated, die, or use this feature again.
+
+Whenever you assume your cosmic form, choose which of the following constellations glimmers on your body; your choice gives you certain benefits while in the form:
+
+- **Gunslinger.** A constellation of a gunslinger appears on you. When you activate this form, and as a bonus action on your subsequent turns while it lasts, you can make a ranged tech attack, firing a luminous gun shot that targets one creature within 60 feet of you. On a hit, the attack deals neon damage equal to 1d8 + your Wisdom modifier.
+- **Thermos.** A constellation of a life-giving thermos appears on you. Whenever you cast a tech using a tech slot that restores hit points to a creature, you or another creature within 30 feet of you can regain hit points equal to 1d8 + your Wisdom modifier.
+- **Kaiju.** A constellation of a wise Kaiju appears on you. When you make an Intelligence or a Wisdom check or a Constitution saving throw to maintain concentration on a tech, you can treat a roll of 9 or lower on the d20 as a 10.
+
+### Augury of the Stars
+
+When you reach 6th level, you learn to use your star map to divine the will of the cosmos. Whenever you finish a long rest, you can consult your Star Map for omens. When you do so, roll a die. Until you finish your next long rest, you gain access to a special reaction based on whether you rolled an even or an odd number on the die:
+
+- **Weal (even).** Whenever a creature you can see within 30 feet of you is about to make an attack roll, a saving throw, or an ability check, you can use your reaction to roll a d6 and add the number rolled to the total.
+- **Woe (odd).** Whenever a creature you can see within 30 feet of you is about to make an attack roll, a saving throw, or an ability check, you can use your reaction to roll a d6 and subtract the number rolled from the total.
+
+You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+### The Shifting Expanse
+
+At 10th level, the constellations of your Cosmic Form improve. The 1d8 of the Gunslinger and the Thermos becomes 2d8, and while the Kaiju is active, you have a flying speed of 20 feet and can hover.
+
+Moreover, at the start of each of your turns while in your Starry Form, you can change which constellation glimmers on your body.
+
+### Galactic Being
+
+At 14th level, while in your Cosmic Form, you become partially incorporeal, giving you resistance to bludgeoning, piercing, and slashing damage.

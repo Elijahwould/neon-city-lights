@@ -1,0 +1,10 @@
+---
+title: "Newtonium"
+slug: "armor:newtonium"
+url: "https://neoncitylights.wikidot.com/armor:newtonium"
+breadcrumbs: ["HOME.info", "LOOT.info", "Armor", "Newtonium"]
+tags: ["medium-armor"]
+---
+*Medium armor, 4 lb., AC = 14 + Dex modifier (max 2)*
+
+Newtonium armor is manufactured by weaving together highly advanced polycarbon threads into a standard synthweave base, and then adding carefully placed newtonium-reinforced plates in key vital areas. The result is a little harder to hide under plainsclothes, perhaps, but it's surprisingly light for its weight class, very quiet, and offers great protection. It's also about as much money as a regular runner starts with—this kind of protection doesn't come cheap.

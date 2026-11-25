@@ -1,0 +1,468 @@
+{
+  "pages": 1501,
+  "catalog": 1495,
+  "excluded": [
+    "foe:020-amirani",
+    "foe:050-hermesian",
+    "foeinfo-ai",
+    "foeinfo-humanoid",
+    "foes:ai",
+    "foes:netsucker"
+  ],
+  "counts": {
+    "armor": 13,
+    "armor-mod": 3,
+    "burner": 6,
+    "class": 15,
+    "condition": 21,
+    "consumable": 11,
+    "corporation": 40,
+    "cybernetic": 19,
+    "feat": 74,
+    "foe": 5,
+    "gear": 105,
+    "gizmo": 44,
+    "highend-armor": 16,
+    "highend-weapon": 57,
+    "keyring": 23,
+    "legend": 16,
+    "lineage": 19,
+    "location": 33,
+    "lore": 23,
+    "npc": 35,
+    "organization": 18,
+    "other": 28,
+    "peripheral": 37,
+    "rules": 31,
+    "subclass": 150,
+    "tech": 528,
+    "techlist": 19,
+    "upbringing": 46,
+    "vehicle": 9,
+    "vehicle-mod": 7,
+    "weapon": 38,
+    "weapon-mod": 6
+  },
+  "classes": [
+    {
+      "id": "auditor",
+      "hitDie": 10,
+      "saves": [
+        "str",
+        "dex"
+      ],
+      "skills": 3,
+      "caster": "known",
+      "ability": "wis",
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": 4
+    },
+    {
+      "id": "brawler",
+      "hitDie": 8,
+      "saves": [
+        "str",
+        "dex"
+      ],
+      "skills": 2,
+      "caster": "none",
+      "ability": null,
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "enforcer",
+      "hitDie": 10,
+      "saves": [
+        "wis",
+        "cha"
+      ],
+      "skills": 2,
+      "caster": "prepared",
+      "ability": "cha",
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "influencer",
+      "hitDie": 8,
+      "saves": [
+        "dex",
+        "cha"
+      ],
+      "skills": 3,
+      "caster": "known",
+      "ability": "cha",
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 3,
+      "known5": 8
+    },
+    {
+      "id": "mechanist",
+      "hitDie": 8,
+      "saves": [
+        "con",
+        "int"
+      ],
+      "skills": 2,
+      "caster": "prepared",
+      "ability": "int",
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 2,
+      "known5": null
+    },
+    {
+      "id": "ordinator",
+      "hitDie": 8,
+      "saves": [
+        "wis",
+        "cha"
+      ],
+      "skills": 2,
+      "caster": "prepared",
+      "ability": "wis",
+      "subclass": 1,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 4,
+      "known5": null
+    },
+    {
+      "id": "outlaw",
+      "hitDie": 8,
+      "saves": [
+        "dex",
+        "int"
+      ],
+      "skills": 4,
+      "caster": "none",
+      "ability": null,
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "pretender",
+      "hitDie": 10,
+      "saves": [
+        "dex",
+        "int"
+      ],
+      "skills": 3,
+      "caster": "none",
+      "ability": null,
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "renegade",
+      "hitDie": 12,
+      "saves": [
+        "str",
+        "con"
+      ],
+      "skills": 2,
+      "caster": "none",
+      "ability": null,
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "ronin",
+      "hitDie": 10,
+      "saves": [
+        "str",
+        "con"
+      ],
+      "skills": 2,
+      "caster": "none",
+      "ability": null,
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "shutin",
+      "hitDie": 8,
+      "saves": [
+        "int",
+        "wis"
+      ],
+      "skills": 2,
+      "caster": "prepared",
+      "ability": "wis",
+      "subclass": 2,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 3,
+      "known5": null
+    },
+    {
+      "id": "sourcecoder",
+      "hitDie": 6,
+      "saves": [
+        "con",
+        "cha"
+      ],
+      "skills": 2,
+      "caster": "known",
+      "ability": "cha",
+      "subclass": 1,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 5,
+      "known5": 6
+    },
+    {
+      "id": "streamer",
+      "hitDie": 8,
+      "saves": [
+        "wis",
+        "cha"
+      ],
+      "skills": 2,
+      "caster": "known",
+      "ability": "cha",
+      "subclass": 1,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 3,
+      "known5": 6
+    },
+    {
+      "id": "streetfighter",
+      "hitDie": 8,
+      "saves": [
+        "str",
+        "con"
+      ],
+      "skills": 2,
+      "caster": "none",
+      "ability": null,
+      "subclass": 3,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": null,
+      "known5": null
+    },
+    {
+      "id": "techwizard",
+      "hitDie": 6,
+      "saves": [
+        "int",
+        "wis"
+      ],
+      "skills": 2,
+      "caster": "prepared",
+      "ability": "int",
+      "subclass": 2,
+      "levels": 20,
+      "pb5": 3,
+      "slots5": [
+        4,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tricks5": 4,
+      "known5": null
+    }
+  ],
+  "weapons": 38,
+  "armor": 13,
+  "cybernetics": 19,
+  "gear": 89,
+  "techsMissingLevel": [],
+  "techsMissingList": [],
+  "partial": [],
+  "warnings": [
+    "excluded placeholder: foe:020-amirani",
+    "excluded placeholder: foe:050-hermesian",
+    "excluded placeholder: foeinfo-ai",
+    "excluded placeholder: foeinfo-humanoid",
+    "excluded placeholder: foes:ai",
+    "excluded placeholder: foes:netsucker"
+  ]
+}

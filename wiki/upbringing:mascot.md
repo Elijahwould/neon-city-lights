@@ -1,0 +1,24 @@
+---
+title: "Mascot"
+slug: "upbringing:mascot"
+url: "https://neoncitylights.wikidot.com/upbringing:mascot"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Upbringing", "Mascot"]
+tags: ["upbringing"]
+---
+##### Source: [Carbon Pink](https://slimwiki.com/carbon-pink/upbringings)
+
+You are a member of a silent brotherhood of men and women that are paid to dress up in poorly ventilated, incessantly padded and slightly terrifying mascot costumes, allegedly to attract customers to a storefront but more often to scare them away. The flyers you give out have an idealized version of whatever hideous creature your costume is supposed to represent, and your dances are carefully choreographed to expend as little energy as possible. Fuck this.
+
+- **Skill Proficiencies.** Acrobatics, Performance
+- **Tool Proficiencies.** First aid kit, Disguise kit
+- **Equipment.** Mascots start their careers with the following equipment:
+  - A padded mascot costume of your own description
+  - Keys to a locker in a public locker room
+  - A first aid kit
+  - A disguise kit
+
+### Feature: Pratfall
+
+Mascots are a special form of clown and have mastered the art of falling funny.
+
+When you are struck by a blow that might knock you back or knock you prone, you can take half damage, but are thrown an extra five feet and must fall prone. Anyone who sees the effect must make a Wisdom saving throw (DC equals to your Performance check) or spend their next action laughing (they may still use move actions and bonus actions). Once you've used this feature, you can't use it again until you finish a short or long rest.

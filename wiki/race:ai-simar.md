@@ -1,0 +1,65 @@
+---
+title: "AI-Simar"
+slug: "race:ai-simar"
+url: "https://neoncitylights.wikidot.com/race:ai-simar"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Lineage", "AI-Simar"]
+tags: ["ai-simar", "race"]
+---
+## "Let me put it like this: they took 'put our heads together' really, really literally."
+
+##### Source: Player's Handbook, [All Along the Watchtower](https://www.gmbinder.com/share/-NEJcj_BQBH6Z7ftvs1g), Neon City NightsThanks to reny#8234 for helping to re-introduce pantheons to the AI-Simar! Also I guess Celica#1988 did something, too.
+
+In the modern age, the definition of humanity has already become hazy, and its taxonomical notation a fool's errand. Such was the perfect play space for the ideology of transhumanism to reignite among the populace, a belief that humanity can reach even further beyond what it was once defined as, even before its current definitions were set in stone. To some transhumanists, the next step was made obvious in the form of our obsessive partners in the digital realms, artificial intelligences of seemingly alien mind. And thus, were the AI-Simar.
+
+Despite all the cybernetic and nanotechnological improvements dedicated to the purposes of human advancement, housing more than a single concurrent consciousness has forever been a challenge, even with the advancement of engrammatic technologies. To bridge this divide, the AI components of AI-Simar set themselves into an integrative sleep mode in a mockery of hive AIs producing a shard. As a result, it is most accurate to think of AI-Simar as the singular, blurred product of multiple minds, though they aren't inherently expressive of this curiosity.
+
+Some AI-Simar still view themselves as distinctive parts, certain unconscious habits of their unioned being reacting differently to identical stimuli, and some are more confident in their status as a conglomerate being. Looking at the raw logistics, however, sees an individual of thought distinct from the mass of humanity, which places AI-Simar in a curious position. The AI-greedy corpos see them as a threat, while others see use in them and encourage their conception. Most people can't decide if they are more or less of people than everyone else. Their legacy is one of self-definition.
+
+### Roleplaying an AI-Simar
+
+When roleplaying an AI-Simar, it is highly likely that you are on a quest of exponential self advancement and redefinition, whatever those things might mean to you. This quest has already began, in the very conception of your being as it now is, and while this can act as a springboard into a narrative of a plural network, you should always ensure you are being respectful of any real life groups you are pulling from. AI-Simar themselves were originally made with the assistance of plural folk, but they are not intended as direct allegories or commentaries, as they are not inherently plural, nor is any other lineage inherently purely singlets. That being said, you should consider the differing reactions of code and blood to the world around you. AI-Simar commonly appear closest to New Humans, but in the case they don't, do you seek community in those that look akin to you? Do you consider your only true community your fellow transcendants and fellow digital minds? Or are you content to foster your development in isolation, like a slum-home lone wolf?
+
+### AI-Simar Naming Conventions
+
+A genetic predisposition for nanite colonies that can house AI integration programs and the need to assimilate while cerebral tissue is malleable has created a burgeoning culture around AI-Simar. In groups more influenced by corpo pragmatism, AI-Simar names tend to be identical to the names of their closest apparent lineage. In more transhumanist or AI loving circles, however, AI-Simar names tend to be a short declarative phrase containing aspects of all constituent names, often including a number signifying every present program file.
+
+Integrative AI-Simar names might include 10 Vigilant Gaze Purges the Horizon, 3 Amirani Supports David, 44 Muses Encouraging Sisterhood Among Man, 82 White Chain Born in Emptiness Returns to Subdue Evil, 69 Parted Legs Flow With Forbidden Nectar, 2 Sarah Evading Shinigami, etc.
+
+# AI-Simar Features
+
+- **Ability Score Increase.** Increase one ability score by 2, and increase a different one by 1, or increase three different scores by 1.
+- **Age.** AI-Simar reach maturity at 18. While their apparent lifespan seems closest to New Humans, given their transcendent nature, they can rival Remakes and Elfs.
+- **Size.** You are Small or Medium, selected when you choose this lineage, and share the same height and weight as your transhuman body’s height and weight.
+- **Speed.** Your base walking speed is 30 feet.
+- **Systemic Obsession.** For the purposes of observation techs and creature type detection abilities, you read as AI in addition to humanoid.
+- **Digital Resistance.** You have resistance to neon damage and entropic damage.
+- **Artificial Legacy.** You know the *[light transfer](/tech:light-transfer)* trick. When you reach 3rd level, you can cast the *[auxiliary system flush](/tech:auxiliary-system-flush)* tech with this trait. Casting these techs with this trait doesn't require material components. Once you cast the tech with this trait, you can't cast the tech with it again until you finish a long rest. You can also cast this tech using tech slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your techcasting ability for these techs when you cast them with this trait (choose when you select this lineage).
+
+## AI-Simar Pantheons
+
+### Biblical
+
+Pulling from AIs with obsessions shaped around contrasting ideals of kindness and wrathful order, Biblical AI-Simar can be found in all shades of personality, from demure and wise, to boisterous and passionate. When they bare signs of their transcendent nature, it is often seen as gold-toned patterning along the skin, and their data can flicker into hololight in the shape of circles and eyes.
+
+- **Be Not Afraid.** Starting at 3rd level, you can use your action to untether yourself from the physicality of your local realm, your veins glowing with nanotechnical strain, luminous shards of hardlight ensconcing you.
+  - Your transformation lasts for 1 minute or until you end it as a bonus action. During it, you have a flying speed of 30 feet, and once on each of your turns, you can deal extra neon damage to one target when you deal damage to it with an attack or a tech. The extra neon damage equals your level.
+  - Once you use this trait, you can't use it again until you finish a long rest.
+- **Missionary Mercy.** As an action, you can touch a creature and roll a number of d4s equal to your proficiency bonus. The creature regains a number of hit points equal to the total rolled. Once you use this trait, you can’t use it again until you finish a long rest.
+
+### Vedic
+
+Integrating obsessive anchors from AIs concerned with humanity's need to explain reality away or blame reality on single individuals, Vedic AI-Simar are oft considered to be very observant individuals, whether in matters of the heart or mind. In more obviously altered AI-Simar, they tend to have large, chromatic alterations to their bodily hue or incorporate minor auxiliary limbs.
+
+- **Agniceous Flame.** Starting at 3rd level, you can use your action to call upon a great kernel of power with a name that rivals the sun, what remains of digital life within you shedding energy and photons that burn through all, you included.
+  - Your transformation lasts for 1 minute or until you end it as a bonus action. During it, you shed bright light in a 10-foot radius and dim light for an additional 10 feet, and at the end of each of your turns, you and each creature within 10 feet of you take fire damage equal to half your level (rounded up). In addition, once on each of your turns, you can deal extra fire damage to one target when you deal damage to it with an attack or a tech. The extra fire damage equals your level.
+  - Once you use this trait, you can't use it again until you finish a long rest.
+- **Phases of Awareness.** You can sense the presence of any creature within 30 feet of you that is invisible or on the local etherealnet. You can only pinpoint the location of such creatures when they are moving, otherwise the presence is merely a semiconscious tingle at the back of your mind and sensed or pinpointed creatures may still actively hide from you.
+
+### Chthonic
+
+Processed from direct memory access control keys tied to non-states of being, such as death or dreaming, Chthonic AI-Simar can sometimes come off as intense individuals… Or sleepy goth philosophers. When more traditionally transhumanist in their self-design, Chthonic AI-Simar tend to bask in synthetic flesh texturing, appearing like marble or pitch, their nanite colonies roiling, near-surge, through their veins and eyes.
+
+- **Sisyphean Mantle.** Starting at 3rd level, you can use your action to entreat yourself with a burden unfair yet certain, static drones radiating from you as the weight of your digital presence severs codestrings. The instant you transform, other creatures within 10 feet of you that can see you must each succeed on a Charisma saving throw (DC 8 + your proficiency bonus + your Charisma modifier) or become frightened of you until the end of your next turn.
+  - Your transformation lasts for 1 minute or until you end it as a bonus action. During it, once on each of your turns, you can deal extra entropic damage to one target when you deal damage to it with an attack or a tech. The extra entropic damage equals your level.
+  - Once you use this trait, you can't use it again until you finish a long rest.
+- **Tartarean Slumber.** Chthonic AI-Simar sleep, but they don't dream as other creatures do. Instead, their minds draw from the fragments of memories of the AI they have merged with while they sleep. As such, you are immune to techs and effects that require you to dream, like the *[enter sandman](/tech:enter-sandman)* tech, but not to techs and effects that put you to sleep, like the *[low power mode](/tech:low-power-mode)* tech.

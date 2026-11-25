@@ -1,0 +1,46 @@
+---
+title: "Channel of the Idol"
+slug: "influencer:idol"
+url: "https://neoncitylights.wikidot.com/influencer:idol"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Influencer", "Channel of the Idol"]
+tags: ["influencer", "subclass"]
+---
+## “Don’t forget to vote on which position I’m in for my next video! I’ll be doing a drawing from everyone who votes, and one lucky fan will get to co-star with me in my monthly livestream!”
+
+Idols are all about performance. This is usually a musical performance of some kind—playing an instrument, singing, or live-mixing samples—but it can just as easily be dance, acrobatics, or camshows. Anything that puts the idol and their talent front and center is fair game. Idols use their personal presence, magnetism, and raw charisma to delight and captivate others. Corporate idols focus test their performances, looking to be as many things to as many different people as possible, while underground idols aggressively pursue their individual style—and to hell with what anyone thinks of them (except their audience, of course).
+
+##### Source: Xanathar's Guide to Everything (College of Glamour)
+
+### Pulse-Pounding Performance
+
+When you join the Channel of the Idol at 3rd level, you gain the ability to imbue your allies with vigor and speed.
+
+As a bonus action, you can expend one of your uses of Influencer Inspiration to make a quick performance that grants a number of creatures that you can see and that can see you within 60 feet equal to your Charisma modifier (minimum 1) 5 temporary hit points. When a creature gains these temporary hit points, it can immediately use its reaction move up to its speed without provoking opportunity attacks.
+
+The number of temporary hit points increases when you reach certain levels in this class, increasing to 8 at 5th level, 11 at 10th level, and 14 at 15th level.
+
+### Enthralling Performance
+
+Starting at 3rd level, you can charge your performance with seductive, captivating power.
+
+If you perform for at least 1 minute, you can attempt to inspire wonder in your audience by singing, reciting a poem, or dancing. At the end of the performance, choose a number of humanoids within 60 feet of you who watched and listened to all of it, up to a number equal to your Charisma modifier (minimum 1). Each target must succeed on a Wisdom saving throw against your tech save DC or be [Charmed](/con:charmed) by you. While charmed in this way, the target idolizes you, speaks glowingly of you to anyone who speaks to them, and hinders anyone who opposes you, avoiding violence unless they were already inclined to fight on your behalf. This effect ends on a target after 1 hour, if they take any damage, if you attack them, or if they witness you attacking or damaging any of their allies.
+
+If a target succeeds on its saving throw, the target has no hint that you tried to charm it.
+
+Once you use this feature, you can’t use it again until you finish a short or long rest.
+
+### Majestic Performance
+
+At 6th level, you gain the ability to project a forceful persona that makes others want to serve you. As a bonus action, you use the *[command prompt](http://neoncitylights.wikidot.com/tech:command-prompt)* tech without expending a tech slot, and you take on an attitude of unearthly majesty for 1 minute or until your concentration ends (as if you were concentrating on a tech). During this time, you can cast *[command prompt](http://neoncitylights.wikidot.com/tech:command-prompt)* as a bonus action on each of your turns, without expending a tech slot.
+
+Any creature charmed by you automatically fails its saving throw against this feature.
+
+Once you use this feature, you can’t use it again until you finish a long rest.
+
+### Unbreakable Majesty
+
+At 14th level, your appearance permanently gains a larger-than-life aspect that makes you look more lovely and fierce.
+
+In addition, as a bonus action, you can assume a majestic persona for 1 minute or until you are incapacitated. For the duration, whenever any creature tries to attack you for the first time on a turn, the attacker must make a Charisma saving throw against your tech save DC. On a failed save, it can’t attack you on this turn, and it must choose a new target for its attack or the attack is wasted. On a successful save, it can attack you on this turn, but it has disadvantage on any saving throw it makes against your techs on your next turn.
+
+Once you assume this majestic persona, you can’t do so again until you finish a short or long rest.

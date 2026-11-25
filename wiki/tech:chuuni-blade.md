@@ -1,0 +1,26 @@
+---
+title: "Chuuni Blade"
+slug: "tech:chuuni-blade"
+url: "https://neoncitylights.wikidot.com/tech:chuuni-blade"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Chuuni Blade"]
+tags: ["deception", "second", "sourcecoder", "streamer", "tech", "techwizard"]
+---
+##### Source: Xanathar's Guide to Everything (Shadow Blade)
+
+*2nd-level deception*
+
+**Casting Time:** 1 bonus action
+
+**Range:** Self
+
+**Components:** V, S, M (a cringey eyepatch)
+
+**Duration:** Concentration, up to 1 minute
+
+Your whole body erupts with corruptive energy, your hand shaking, you can no longer contain your inner power! You clutch your eye, stating the words "No, my power, I can't contain it!" as your verbal and somatic components for this tech. You put on an eyepatch and weave together threads of data to create a sword of solidified energy in your hand. In the event that you do not have a physical eyepatch on you, a hardlight one materializes on your face. This "magic" sword (which in truth, is your OC's blade) lasts until the tech ends. It counts as a simple melee weapon with which you are proficient. It deals 2d8 software damage on a hit and has the finesse, light, and thrown properties (range 20/60). In addition, when you use the sword to attack a target that is in dim light or darkness, you make the attack roll with advantage, as the power of darkness and edge fuel your battle lust.
+
+If you drop the weapon or throw it, it dissipates at the end of the turn. Thereafter, while the tech persists, you can use a bonus action to cause the sword to reappear in your hand.
+
+***At Higher Levels.*** When you cast this tech using a 3rd- or 4th-level tech slot, the damage increases to 3d8. When you cast it using a 5th- or 6th-level tech slot, the damage increases to 4d8. When you cast it using a tech slot of 7th level or higher, the damage increases to 5d8.
+
+***Tech Lists.*** [Source Coder](/techs:sourcecoder), [Streamer](/techs:streamer), [Techwizard](/techs:techwizard)

@@ -1,0 +1,20 @@
+---
+title: "Tech Conductor Pole"
+slug: "peripheral:tech-conductor-pole"
+url: "https://neoncitylights.wikidot.com/peripheral:tech-conductor-pole"
+breadcrumbs: ["HOME.info", "LOOT.info", "Peripherals", "Tech Conductor Pole"]
+tags: ["6m", "peripherals"]
+---
+##### Source: Dungeon Master's Guide (Rod of Absorption)
+
+*Peripheral, very rare (requires installation)*
+
+**Specs:** 2 lbs., $$5,000,000
+
+While holding this pole, you can use your reaction to absorb a tech that is targeting only you and not with an area of effect. The absorbed tech's effect is canceled, and the tech's energy - not the tech itself - is stored in the rod. The energy has the same level as the tech when it was cast. The pole can absorb and store up to 50 levels of energy over the course of its existence. Once the rod absorbs 50 levels of energy, it can't absorb more. If you are targeted by a tech that the rod can't store, the rod has no effect on that tech.
+
+When you interlink your systems with the pole, you know how many levels of energy the pole has absorbed over the course of its existence, and how many levels of tech energy it currently has stored.
+
+If you are a techcaster holding the rod, you can convert energy stored in it into tech slots to cast techs you have prepared or know. You can create tech slots only of a level equal to or lower than your own tech slots, up to a maximum of 5th level. You use the stored levels in place of your slots, but otherwise cast the tech as normal. For example, you can use 3 levels stored in the rod as a 3rd-level tech slot.
+
+A newly found rod has 1d10 levels of tech energy stored in it already. A rod that can no longer absorb tech energy and has no energy remaining becomes nontechnical.

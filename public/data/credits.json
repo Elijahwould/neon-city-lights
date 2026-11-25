@@ -1,0 +1,195 @@
+{
+  "carbonPink": [
+    {
+      "name": "Rapscallion",
+      "role": "Art, lore, races"
+    },
+    {
+      "name": "Kai Mirah",
+      "role": "Unique mechanics and techs, balancing"
+    },
+    {
+      "name": "Blackwingedheaven",
+      "role": "Original class and equipment write-ups"
+    },
+    {
+      "name": "Hetty",
+      "role": "Lore, creatures, formatting and original Wiki maintenance"
+    },
+    {
+      "name": "PeenusPeepl",
+      "role": "Techs, loot and balancing"
+    },
+    {
+      "name": "Natalie Porter Bridges",
+      "role": "Write-ups for the Auditor class"
+    },
+    {
+      "name": "Acorn Gamer",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "Nyanbinary",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "Takan Twins",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "King Cas",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "Tylon the Ninja",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "Pets in Winter",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "Spotlight Stageright",
+      "role": "Additional loot, techs, creatures, proofreading"
+    },
+    {
+      "name": "vex_xed",
+      "role": "Additional loot, techs, creatures, proofreading"
+    }
+  ],
+  "source": "wiki/carbon-pink.md",
+  "wikiContributors": [
+    {
+      "name": "reny#8234",
+      "pages": [
+        "loot:executioner-lethal-legacy",
+        "pretender:fleshweave-maxims",
+        "pretender:pact-shill",
+        "pretender:risen-servo",
+        "pretender:sipping-strain",
+        "pretender:snarling-beast",
+        "race:ai-simar",
+        "race:artificiate"
+      ],
+      "pageCount": 19
+    },
+    {
+      "name": "Celica#1988",
+      "pages": [
+        "feat:demolitions-expert",
+        "feat:grappler",
+        "feat:nightclub-brawler",
+        "feats",
+        "loot:executioner-lethal-legacy",
+        "race:jerboan",
+        "race:thulian",
+        "ronin:warlord"
+      ],
+      "pageCount": 9
+    },
+    {
+      "name": "Casters & Co.#6381",
+      "pages": [
+        "deleted:race:geo",
+        "feat:hacker-wannabe",
+        "race:elf"
+      ],
+      "pageCount": 3
+    },
+    {
+      "name": "ActFast231#8365",
+      "pages": [
+        "upbringing:larper",
+        "upbringing:ripperdoc"
+      ],
+      "pageCount": 2
+    },
+    {
+      "name": "lanayla#4358",
+      "pages": [
+        "upbringing:driver",
+        "upbringing:swamplander"
+      ],
+      "pageCount": 2
+    },
+    {
+      "name": "MirrajSpellturner#8857",
+      "pages": [
+        "bergs",
+        "server-banks"
+      ],
+      "pageCount": 2
+    },
+    {
+      "name": "Quote_Traveler#1387",
+      "pages": [
+        "pretender",
+        "pretender:genome-freak"
+      ],
+      "pageCount": 2
+    },
+    {
+      "name": "@jessicashtebs",
+      "pages": [
+        "upbringing:military-contractor"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "@PikaVoca",
+      "pages": [
+        "brawler:surging-strike"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "Assorted Beanie#0512",
+      "pages": [
+        "streetfighter"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "Gabby#6361",
+      "pages": [
+        "humanity"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "Jenny Jinxy#5892",
+      "pages": [
+        "feat:hyper-internal-clock"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "JessicaShtebs",
+      "pages": [
+        "streetfighter"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "Phase#0009",
+      "pages": [
+        "sector:sub-zone"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "Yash#5305",
+      "pages": [
+        "ronin:speed-demon"
+      ],
+      "pageCount": 1
+    },
+    {
+      "name": "Zamorakas#4142",
+      "pages": [
+        "race:orcc"
+      ],
+      "pageCount": 1
+    }
+  ]
+}

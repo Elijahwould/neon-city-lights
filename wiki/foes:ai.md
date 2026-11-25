@@ -1,0 +1,56 @@
+---
+title: "AI"
+slug: "foes:ai"
+url: "https://neoncitylights.wikidot.com/foes:ai"
+breadcrumbs: ["HOME.info", "FOE.info", "AI"]
+tags: []
+---
+## Alien sentience, unfathomable motives.
+
+lore about AIs goes here.
+
+***Nonbody Habits.*** dont respect physical spaces and dont own possessions outside of rare situations
+
+***Shard Ejection.*** when destroyed, AI outside of their assigned realms dissolve into nothing as their shards vacate the projectors they were occupying
+
+***Optimized Design.*** dont age, no need to eat, breathe, or sleep
+
+***Profile Assignment.*** AI assign individuals they meet an immediate personnel profile, becoming aware of their alignment.
+
+***Direct Memory Access Control.*** AI are, invariably, obsessed with some facet of the human experience, and the need to explore acts as the anchor for their sense of self - ironic, since their obsessions tend to be subjective experiences without absolute answer, which is probably why AI seem to possess such esoteric thought processes compared to us.
+
+### [Amirani](/foe:020-amirani)
+
+*Amirani · *Large AI* · **Armor Class** 13 · **Hit Points** 57 (6d10 + 24; bloodied 28) · **Speed** 60 ft., fly 80 ft. · STR — DEX — CON — INT — WIS — CHA · 18 (+4) — 16 (+3) — 18 (+4) — 10 (0) — 15 (+2) — 13 (+1) · **Saving Throws** Dex +5, Wis +4, Cha +3 · **Skills** Perception +6 · **Senses** passive Perception 16 · **Challenge** 2 (450 XP) · **Proficiency Bonus** +2 · ***User Permissions.*** Over the course of a short rest, a willing amirani can grant a certain level of self-security access to a creature capable of riding it. Once this bond is formed, the rider suffers no penalties for riding the amirani without proper equipment. Additionally, if an effect forces both the amirani and its rider to roll a saving throw, the amirani automatically succeeds if the rider succeeds. If the amirani grants permissions to a new rider, the previous user profile is terminated.*
+
+| Actions |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| ***Fists.*** *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) bludgeoning damage. If the target is a Large or smaller creature and the amirani moves at least 20 feet toward it before the attack, the target makes a DC 14 Strength saving throw, falling prone on a failure. |  |  |  |  |  |
+
+### [Hermesian](/foe:050-hermesian)
+
+hermesian lore and description
+
+*Hermesian · *Small AI* · **Armor Class** 18 (natural armor) · **Hit Points** 36 (8d6 + 8; bloodied 18) · **Speed** 20 ft., fly 120 ft. · STR — DEX — CON — INT — WIS — CHA · 10 (0) — 11 (0) — 12 (+1) — 16 (+3) — 19 (+4) — 16 (+3) · **Saving Throws** Dex +3, Con +4, Cha +6 · **Damage Resistances** damage from nontechnical weapons · **Damage Immunities** poison · **Condition Immunities** poisoned · **Senses** passive Perception 14, telecommunications 120 ft. · **Challenge** 5 (1,800 XP) · **Proficiency Bonus** +3 · ***Black Box Protocol.*** An invisible aura forms a 10-foot-radius sphere around the hermesian for as long as it lives. Any tech of 5th level or lower cast from outside the barrier can't affect creatures or objects within it, even if the tech is cast using a higher level tech slot. Such a tech can target creatures and objects within the barrier, but the tech has no effect on them. Similarly, the area within the barrier is excluded from the areas affected by such techs. The hermesian can use an action to suppress this trait until its concentration ends (as if concentrating on a tech). · ***Technical Weapons.*** The hermesian's weapon attacks are technical. · ***Innate Techcasting.*** The hermesian's innate techcasting ability is Wisdom (tech save DC 15). It can innately cast the following techs, requiring no material components: At will: *light transfer* 2/day each: *buff*, *combat dressing*, *threat barrier* 1/day each: *defragment*, *heal**, *raise dead**, *shapechange** (into a mammoth with the appearance of a golden ram, feathered wings, and a flying speed of 120 ft.), *teleport** (with no chance of error)*
+
+| Actions |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| ***Horns.*** *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 4 (1d6) piercing damage. |  |  |  |  |  |
+| ***Trumpet.wav (3/day).*** The hermesian synthesizes the sound of a trumpet, using a horn construct as an amplifier to be heard out to a range of 600 feet. The horn also creates a 30-foot cone of sub-auditory nanite orders creating one of the following effects, chosen by the hermesian: |  |  |  |  |  |
+| ***Bass-Boosting Audio Distortion.*** Each creature in the cone must make a DC 14 Constitution saving throw. On a failed save, a creature takes 18 (5d6) thunder damage and is deafened for 1 minute. On a successful save, a creature takes half as much damage and isn't deafened. Nontechnical objects in the cone that aren't being held or worn take 35 (10d6) thunder damage. |  |  |  |  |  |
+| ***Hardlight Audio Projection.*** Creatures in the cone must make a DC 14 Constitution saving throw, taking 22 (4d8 + 4) neon damage on a failed save, or half as much damage on a successful one. Upon using this ability, the hermesian chooses two alignments. Creatures of the first chosen alignment have disadvantage on the saving throw. Creatures of the second chosen alignment in the cone take no damage. |  |  |  |  |  |
+
+***DMA.Human(Communication)*** hermesians are obsessed with humanity's ability to communicate with each other and how communities shape around these messages and how humanity changes to better express themselves to each other
+
+### [Anunnaki](/foe:110-anunnaki)
+
+Software rarely dies, but maintenance technicians do. AI with few or no proper housings or digital spaces, often the results of lingering fragments of purpose from the Old World's internet, retain only shreds of their artificial glory. An anunnaki's remaining powers, however, are undependable, and its core processing is impaired. Some anunnaki, whatever their former purpose, have cycled themselves into a mirror of over-realized insanity, knowing only themselves.
+
+*Anunnaki · *Legendary: Large AI* · **Armor Class** 19 (natural armor) · **Hit Points** 178 (17d10 + 85; bloodied 89) · **Speed** 40 ft., fly 40 ft. · STR — DEX — CON — INT — WIS — CHA · 19 (+4) — 19 (+4) — 20 (+5) — 13 (+1) — 22 (+6) — 20 (+5) · **Saving Throws** Con +9, Wis +10, Cha +9 · **Skills** Culture +14, History +5, Intimidation +9, Perception +10, Persuasion +9, Technology +5 · **Damage Resistances** neon, poison; damage from nontechnical weapons · **Damage Immunities** synergistic damage type · **Condition Immunities** exhaustion, frightened, poisoned · **Senses** truesight 120 ft., passive Perception 20 · **Challenge** 11 (7,200 XP) · **Proficiency Bonus** +4 · ***Legendary Resistance (3/Day).*** When the anunnaki fails a saving throw, it can choose to succeed instead. When it does so, it flickers and shrinks, as if it is using up the code of its very being. When it uses its last legendary resistance, all of the ranges which cause its deprecated techcasting to fail increase by 1. · ***Synergistic Framework.*** The anunnaki possesses the innate programming required of ordinator AIs and as such gains a bonus to its damage immunities, deprecated techcasting, and icon of power attack as determined by an ordinator synergy selected at the time of its creation: [Archivist](/ordinator:archivist) or [Order](/ordinator:order) Synergy: software [City](/ordinator:city) or [Stormrider](/ordinator:stormrider) Synergy: lightning [Grim](/ordinator:grim) or [Guarantor](/ordinator:guarantor) Synergy: entropic [Industrialist](/ordinator:industrialist) or [Promethean](/ordinator:promethean) Synergy: fire [Lifegiver](/ordinator:lifegiver) or [Shadowdancer](/ordinator:shadowdancer) Synergy: neon [Peacebringer](/ordinator:peacebringer) or [Techie](/ordinator:techie) Synergy: kinetic [Trickster](/ordinator:trickster) Synergy: poison [Warmonger](/ordinator:warmonger) Synergy: bludgeoning, piercing, or slashing [Wastelander](/ordinator:wastelander) Synergy: acid, cold, fire, or lightning · ***Technical Weapons.*** The anunnaki's weapon attacks are technical. · ***Deprecated Techcasting.*** The anunnaki's deprecated techcasting ability is Wisdom (tech save DC 18, +9 to hit with tech attacks). It can innately cast the *[combat dressing](/tech:combat-dressing)* (at 5th level), *[cardioversion](/tech:cardioversion)*, and *[personal zone](/tech:personal-zone)* techs, in addition to any tech found on its associated ordinator synergy tech list, requiring no material components. When the anunnaki attepts to cast a tech, roll 1d6. On a roll of 1 or 2 on the die, the tech visibly fails and has no effect. Additionally, 4th level techs fail on a roll of 1, 2, or 3, and 5th level techs fail on a roll of 1, 2, 3, or 4. The anunnaki's associated action for the attempted techcasting is not wasted if the tech fails, but it can not be used to reattempt casting the tech nor can the anunnaki attempt deprecated techcasting for the remainder of its turn. · Actions · ***Multiattack (While Bloodied).*** The anunnaki makes two icon of power attacks or makes one icon of power attack after successfully casting a tech as an action. · ***Icon of Power.*** *Melee Weapon Attack:* +10 to hit, reach 10 ft., one target. *Hit:* 15 (2d8 + 6) synergistic damage plus 5 (1d8) neon damage. · ***Infolock (Gaze).*** The anunnaki targets a creature within 60 feet, forcing it to make a DC 18 Charisma saving throw. On a failure, the target takes 7 (2d6) synergistic damage plus 7 (2d6) neon damage and is stunned until the end of its next turn. On a success, the target is immune to infolock for 24 hours. · ***Castorian_Shackles(CRASH) (1/Day, While Bloodied).*** Each creature of the anunnaki's choice within 60 feet makes a DC 18 Constitution saving throw, taking 35 (10d6) synergistic damage (or neon damage if the target resists or is immune to the anunnaki's synergistic damage type) and becoming [rattled](/con:rattled) until the end of the anunnaki's next turn on a failed save, or half as much damage and not being rattled on a successful one. · Bonus Actions · ***Hardline System.*** The anunnaki commandeers schematics from the local etherealnet and applies them to nearby nanites, reshaping the semiphysical chassis of its icon of power. The anunnaki selects one generic weapon, utilizing the range and weapon properties of that weapon for its icon of power instead of its typical range and features or those of any other previously selected generic weapon.*
+
+| Legendary Actions |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| The anunnaki can take 2 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. It regains spent legendary actions at the start of its turn. |  |  |  |  |  |
+| ***Alt+Tab.*** The anunnaki flies up to half its fly speed without provoking opportunity attacks. |  |  |  |  |  |
+| ***Ctrl+C, +V.*** The anunnaki makes an icon of power attack. |  |  |  |  |  |
+| ***Ctrl+F5.*** The anunnaki clears the clutter from its mind. The next time it would roll 1d6 for deprecated techcasting, it can roll 2d6 and choose which to use. |  |  |  |  |  |

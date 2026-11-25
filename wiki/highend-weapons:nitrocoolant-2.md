@@ -1,0 +1,24 @@
+---
+title: "Nitrocoolant +2 Bleeding Edge Armaments Blade/Blaster (BEA:B/B)"
+slug: "highend-weapons:nitrocoolant-2"
+url: "https://neoncitylights.wikidot.com/highend-weapons:nitrocoolant-2"
+breadcrumbs: ["Nitrocoolant +2 Bleeding Edge Armaments Blade/Blaster (BEA:B/B)"]
+tags: ["3m", "highend-weapons"]
+---
+##### Source: Neon City Nights
+
+*Weapon (any melee or ranged weapon), very rare, (requires installation)*
+
+**Specs:** Variable, $$3,000,000
+
+This weapon integrates an advanced series of fans and pressurized pipe-cords containing superchilled aerosol cold enough to stymie the click of death. You gain a +2 bonus to the attack rolls of this weapon, and it deals an extra 2d8 cold damage on a hit.
+
+While you hold this weapon, you have resistance to fire damage. Additionally, a number of times per round equal to this weapon’s rarity bonus, when you hit a target with this weapon and deal any amount of cold damage to it, its speed is reduced by 10 feet, to a maximum of 5 foot movement speed.
+
+When you draw this weapon, you can choose to have it release a spray of nitrocoolant, causing it to produce dim light for 10 feet for 10 minutes. Everything within the light of this dim chill is cooled in a positive way, ex; overheating terminals cease overheating, nontechnical flames are snuffed. This property can be used no more than once per hour.
+
+***Blades.*** A blade is any melee BEA:B/B. Whenever you roll a 20 on your attack roll with a blade, each creature of your choice within 5 feet of the target takes 5 damage of the type dealt by a rare BEA:B/B, 10 damage of the type dealt by a very rare BEA:B/B, and 15 damage of the type dealt by a legendary BEA:B/B.
+
+***Blasters.*** A blaster is any ranged BEA:B/B. Whenever you make an attack roll with a blaster, the ammunition supplies itself from a collection of near-surging nanites. You may still provide your own ammo to benefit from the bonuses of specific ammo, and it is consumed as normal.
+
+「For their simplicity, nitrocoolant blades/blasters are one of the most common BEA:B/Bs around. Food, electronics, and shipping companies all around find the positive chill of aerosol a significant aid to their daily practice, outlaw hackers and the Reliquary’s busybodies find equal use for coolant against firewalls, and no one could be a better fit than the cold-hearted generosity of TonchCorp.」

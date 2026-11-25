@@ -1,0 +1,69 @@
+---
+title: "Orcc"
+slug: "race:orcc"
+url: "https://neoncitylights.wikidot.com/race:orcc"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Lineage", "Orcc"]
+tags: ["orcc", "race"]
+---
+## "Brutish savages…? You've clearly played too many traditional fantasy role-playing games."
+
+##### Source: Player's Handbook, [All Along the Watchtower](https://www.gmbinder.com/share/-NEJcj_BQBH6Z7ftvs1g), Carbon Pink Hub #homebrewThanks to Zamorakas#4142, whose original lore we used as a springboard to expand on for this lineage!, Neon City NightsThanks to reny#8234 for her hard work on the revamp! Also, Celica#1988 contributed, maybe.
+
+Orccs are the resulting extension of the G.O.B.B.O. project into the O.R.C.C. project, a divergence dedicated to shifting the physiological changes of the Gobbo to interface with the three hardiest floral groups Organic Rainforest, Carnivorous, and Conifer. By the time Orccs were being produced, so too were the foundations of what would be Neon City, their role being less to replace nature and thrive without it, but to endure the resurgence of the natural world, and bridge the divide that now existed between Earth and her people.
+
+While Orccs do not possess all of the self-sustaining photosynthetic gifts of their equally floralborn Gobbo kin, they bare many a physical gift that allows to forge their own self-sufficiency. Diverse DNA samples ranging from fungi and trees make them hearty and resilient, different carnivorous plants make them fierce, and the occasional instance of animal-based samples makes them amazing hunters in conjunction with the strength granted by their bark-adjacent skin. These advantages are well-suited to their homes in the rainforests and tropical coasts far south of even Gobbo Beach, in places like the Velásquez Rainforest Stand.
+
+Owing in part due to the highly differential expression of their DNA and in part due to the potential hostilities of mother nature trading back the scars left on her, Orccs find themselves with one of the highest varied lifespans. Finding more purpose in active reparations than hedonism, the simple lifestyle focuses of their shorter brethren has merged with this timeless awareness of making the most of every individual day for every future one to come into something of a curious and friendly noble bearing.
+
+### Roleplaying an Orcc
+
+When roleplaying an Orcc, you should first figure out why you reside in Neon City, as few Orccs are native to the city proper and those that are will oft be regarded with a curious eye. It is important to know that Orcc enclaves place very little value on displays of personal glory, be it in martial strength or academic excellence, as they all mostly assume others, and especially each other, to be strong, smart, and competent. Their values idolize more community-minded efforts, so might you find yourself in Neon City to seek aid for your family in a time of rough harvest? Or a software-based incursion of the old machines that support your home's relative harmony with its surroundings? Perhaps you are an individual who has difficulty relating to experiences beyond their own and do seek personal glory, or perhaps you have merely been struck with a sudden wanderlust, seeking your justification as you travel?
+
+### Orcc Names
+
+Orccs, like Gobbos, still consider themselves fundamentally human and tend towards human-like names and family names. As overt displays of glory aren't common, Orccs tend to work signifiers of personal accomplishments that they believe others would be benefited to know about into their names.
+
+Orcc names might be something akin to Ronnie Reuel-Kingsley, Michio Haru PhD, Filia Masatova, Esq., Prof. Caridad Parton, Hon. Phawta Chaiyasing, Dr. Porto Pernambucano, Pierre-Luc Aucoin, etc.
+
+# Orcc Features
+
+- **Ability Score Increase.** Increase one ability score by 2, and increase a different one by 1, or increase three different scores by 1.
+- **Age.** Orccs reach maturity at 18. Near every Orcc lives to at least 50, but the strange concoction of their DNA makes each day further a mystery. Some are as brief as day blooms, others as long-lived as redwoods.
+- **Size.** Your size is Medium. Orccs tend to be slightly taller on average than humans, with a height ranging from 5 to 8 feet tall.
+- **Speed.** Your base walking speed is 30 feet.
+- **Photoautotrophy.** While lacking the full photosynthesis that would grant them the extreme ease of life felt by their Gobbo cousins, Orccs retain some semblance of photosynthetic gifts. Choose one of the following options when you select this lineage:
+  - **Low-Lightvision.** You can see in dim light within 30 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only muted shades of yellow-gray.
+  - **Bioluminescence.** As a bonus action, you can prompt chemical reactions to occur within your skin like some fungi, glowing bright light for 10 feet and dim light for an additional 20 feet. You continue to glow until you take a bonus action to cease the reactions.
+  - **Stapelian Fumes.** Once per turn, when a creature within 5 feet of you damages you with an attack or tech, you can release a putrid whiff of carrion; as long as the creature is not Hacked or a Machine, it is immediately forced 5 feet away from you, unless such movement would force them into obvious danger. You can use this trait a number of times equal to your proficiency bonus, regaining all uses on a long rest.
+- **Bark-Like Hide.** When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest.
+- **Community Gardens.** You gain proficiency in one of the following skills of your choice; Animal Handling, History, Insight, Medicine, or Survival.
+- **Built Like a Tree.** You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+
+## Organic Rainforest Carnivorous Conifer Bioclassifications
+
+### Austral Wormwood
+
+In the early stages of the Great Collapse, a few leveler heads prevailed, and thought it best to put their last efforts into archiving and preserving viable samples of flora and fauna. A number of these storage sites have become the retro-style, forested hearts of many Austral Wormwood Orcc enclaves. Their nearness to Neon City proper make them the default image for many Orccs in the city; large, kind yet odd, and the most community driven of Orccs.
+
+- **Persevering Ideals.** You gain proficiency in the Culture skill.
+- **Encourage Growth.** You can use this trait to take the Help action as a bonus action, and you can do so a number of times equal to your proficiency bonus. You regain all expended uses when you finish a long rest. Starting at 3rd level, choose one of the following options when you take the Help action with this trait:
+  - **Bolstering Encouragement.** You and the creature you help each gain a number of temporary hit points equal to 1d6 + your proficiency bonus.
+  - **Guiding Encouragement.** You and the creature you help each increase your walking speeds by 10 feet until the start of your next turn.
+  - **Engaging Encouragement.** Until the start of your next turn, the first time the creature you help hits a target with an attack roll, that target has disadvantage on the next attack roll it makes within the next minute.
+- **Never Go Without.** You gain proficiency in one of the following tools of your choice; Armorer's Tools, Artist's Supplies, Builder's Tools, Cook's Utensils, Microbrewing Kit, Tailor's Tools, or Weaponsmith's Tools. As part of a short rest, you can scrounge, makeshift, and barter together anything you would need to put together an approximation of a tool you are proficient with. Such makeshift tools cannot be sold, and only survive the stress of three uses before ceasing to function.
+
+### Tropical Palm
+
+Calling the coast and the churning waves beyond their home, the Tropical Palm Orccs make up the ranks of sea salt farmers, relic recovery divers, and even your occasional pirate crew. The larger, ocean-sun tanned, Orccs are originally thought to be ferrymen, delivering messages and supplies the long way around Neon City to avoid prying eyes or profiteering companies, this false image of stinginess leading to most city-goers to erroneously know Tropical Palm Orccs as "seaweeds" or "sea cows."
+
+- **Scrap Pirate.** You gain proficiency in the Technology skill.
+- **Crashing Wave.** As a bonus action, you can move up to your speed toward an enemy of your choice that you can see or hear, and must end this move closer to the enemy than you started. Immediately after taking this bonus action and moving at least 20 feet in a straight line, you gain advantage on your next melee weapon attack against the enemy you moved towards.
+- **Well-Trained Sea Legs.** You can hold your breath up to ten minutes at a time and gain a swimming speed equal to two-thirds your base walking speed.
+
+### Swamp Truffle
+
+Found in the furthest fertile wetlands from the city proper, isolated for miles if not for the scant community of other hermits, the smaller but wider Swamp Truffle Orcc comes in a variety of dimmer shades of cool colors. Swamp Truffle Orccs prescribe to a belief of self-sufficiency, often wild game and megaflora hunters rather than the enclaves' farmers. They aren't ones to turn away those who mightn't be skilled with hunting, however, willing to share of their own and help teach them.
+
+- **Herbalistic Hermit.** You gain proficiency in the Nature skill.
+- **Isolated Step.** As a bonus action, you can technically turn invisible until the start of your next turn or until you attack, make a damage roll, or force someone to make a saving throw. Once you use this trait, you can't use it again until you finish a short or long rest.
+- **Exotic Extracts Expert.** By spending one minute observing a substance or a piece of illicit adventuring gear, or by observing its effects on a creature or object effected by it as a reaction, you can identify the effects of the substance or illicit. As a bonus action, you can touch a creature under the effects of a substance or illicit you have identified and immediately grant them a new save against the effect. If the effect did not grant a save, the target is granted a Constitution saving throw with a DC equal to 8 + their Proficiency modifier + 1 for each rarity the substance is above common. You can use the bonus action granted by this trait a number of times equal to your proficiency bonus, regaining all uses on a long rest.

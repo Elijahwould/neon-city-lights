@@ -1,0 +1,16 @@
+---
+title: "Verbum Ultima"
+slug: "highend-weapons:verbum-ultima"
+url: "https://neoncitylights.wikidot.com/highend-weapons:verbum-ultima"
+breadcrumbs: ["HOME.info", "LOOT.info", "High End Weapons", "Verbum Ultima"]
+tags: ["6m", "highend-weapons"]
+---
+##### Source: Neon City Nights
+
+*Weapon ([longsword](/weapon:longsword)), legendary (requires installation)*
+
+**Specs:** 3 lb., $$4,500,000
+
+[Insert Lore Here]
+
+You gain a +3 bonus to attack and damage rolls made with this sword. In addition, while you hold the sword, you can use your reaction to make one melee attack with it against any creature in your reach that deals damage to you. You have advantage on the attack roll, and any damage dealt with this special attack ignores any damage immunity or resistance the target has.

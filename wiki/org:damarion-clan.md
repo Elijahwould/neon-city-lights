@@ -1,0 +1,70 @@
+---
+title: "The Damarion Clan"
+slug: "org:damarion-clan"
+url: "https://neoncitylights.wikidot.com/org:damarion-clan"
+breadcrumbs: ["HOME.info", "WORLD.info", "Organizations", "The Damarion Clan"]
+tags: ["damarion", "major", "organization"]
+---
+**Corporation Name.** The Damarion Clan
+
+**Leader.** "Gold"
+
+**Organization Type.** Clan
+
+**Years in existence.** Claims to be 1,600+
+
+**Goals.** Hunting, Assassination, Espionage
+
+**Creed.** *"Kill first, die last. Fear none, slay all."*
+
+**Impact.** Major
+
+The Damarion Clan was a family that dates far back into history, rumored as far back as the times of the Relic Wars (Or so some members of the clan claim). They viewed themselves as hunters, undertaking jobs and operations globally. They were known for their brutal efficiency and amorality; willing to do any task asked of them by their employers no matter how grotesque or inhumane. With the rise of Neon City, much of their work became more localized and would mark their steady decline. As centuries went on, much of their ancient equipment began to fall into disrepair or simply missing as parts and means to both fix and replace this technology grew scarce.
+
+This would force many of the clan to venture from outside the city limits in search of relics of the old world to bolster their reliquary with, reserving it for only the most vaunted members of the Damarion clan. However, over time, their archaic and sometimes brutal ways began dwindling their numbers even further, leaving their matriarch to begin modernizing the clan from a noble house to a more modern corporation.
+
+For a better image, the matriarch began to limit their working with the likes of more morally dubious individuals and tried to take on a more noble approach to their work as contracted mercenaries. This of course, would cause friction among the more senior members of the clan who believed this to be weakening their clan and tarnishing the infamy they had procured from centuries ago. It is unsure as to who ignited the flame but ultimately, the Clan erupted into civil war, culling those who held to the modern ideals and values of the clan before seemingly vanishing to the deserts far east.
+
+For the good part of many modern centuries, their names were all but forgotten; consumed by the tides of history and irrelevancy.
+
+### The Clan Today
+
+In recent years, they have begun to make a small resurgence as contract workers. Rarely are they seen working with any that aren’t corpos, if only due to the fact that they are the only ones with the pocketbooks big enough to contract them. However, certain underground elements may be able to employ them for the right purposes and with the right means. What their true goals for returning to the city are is unknown but what is known is that they are looking to bolster their ranks once more with any who can share in their views and the thrill of the hunt.
+
+### Ranking System
+
+For any familiar with the old tongue they speak, one will notice the premiere members of the family are named after colors. While they recruit those willing to do the dirtiest of deeds and go the distance for any job, only those that have either proved themselves or are of actual Damarion blood earn these titles.
+
+These members are known as *The Gilded*, with each of them possessing powerful equipment and technology at their disposal from the clan’s reliquary.
+
+### Associated Figures
+
+The following figures are known to have an association with the Damarion clan—whether living or dead.
+
+- [Blanc Damarion](/npc:blanc-damarion)
+- [Diamant Damarion](/npc:diamant-damarion)
+- [Dorée Damarion](/npc:doree-damarion)
+- [Laiton Damarion](/npc:laiton-damarion)
+- [Noire Damarion](/npc:noire-damarion)
+
+### The Burnished
+
+These are typically the "Face" of the Damarion clan. Those that are often hired for average security contracts or hits. The Burnished are members of the Damarion clan who are not born of blood but have gained notoriety and reputation within the clan’s eye. These are freelance runners who have proven themselves worthwhile to work for the clan’s goals. (Whatever those may truly be). The elite among the rank and file can often be denoted by their unique armor and equipment, utilizing suits of sleek brass and silver-colored uniforms and armor.
+
+The grunts of the Damarion clan can be found almost anywhere doing any job where conflict may arise; be it as security escorts or hitmen. Burnished often serve as team leaders whenever a Gilded clan member is not around.
+
+These specialized combatants do not possess proper names in of themselves, instead vying for the chance to acquire one from the standing members of the clan’s upper echelons. The exact numbers of these nameless elites is unknown but the mess they leave behind in their wake serves as the calling card for these remorseless murderers.
+
+### The Tawdry
+
+The lowest rung of the clan. While there is believed to be ranking within this ladder, those who are not Burnished or Gilded are simply referred to as Tawdry by their higher ups. These are those who enlist in the most basic of the Damarion Clan’s services. They are the rank and file that serve only to sift the chaff from the wheat. Often used as cannon fodder for assignments, they work alongside Burnished to complete rudimentary tasks or operations that may require…disposable assets. These individuals tend to be those looking to make names for themselves or those that are pulled in by the promises of power, freedom and wealth that the clan provides to their elites.
+
+Tawdry tend to be equipped only with the bare essentials by the clan themselves, simply uniforms to denote their allegiance while the rest is gear brought by the individuals themselves. As such, their appearances tend to vary. The only true notifying mark being their badges which come in the form of platinum cogs with a D in the center that's been etched in brass.
+
+**Owner.** lanayla#4358
+
+**Creator.** lanayla#4358
+
+**Fixer Use.** Restricted; please request permission from the owner if using the org for a game.
+
+**CEO Use.** Closed.

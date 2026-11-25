@@ -1,0 +1,230 @@
+---
+title: "Peripherals"
+slug: "peripherals"
+url: "https://neoncitylights.wikidot.com/peripherals"
+breadcrumbs: ["HOME.info", "LOOT.info", "Peripherals"]
+tags: []
+---
+## List of Peripherals
+
+| Name | Cost | Installation | Description | Purchaseable |
+| --- | --- | --- | --- | --- |
+| [Anomaly Detection Dongle](/peripheral:anomaly-detection-dongle) | $$90,000 | No | Beep, Beep, Beep. | Yes |
+| [Bliss Co. Pleasuring Rod](/peripheral:bliss-co-pleasuring-rod) | $$200,000 | Yes | Slimey, too. | Yes |
+| [Herpetological Aid](/peripheral:herpetological-aid) | $$100,000 | Yes | Do not bring this onto an aerial vehicle. | Yes |
+| [Instalock Motion Detector](/peripheral:instalock-motion-detector) | $$90,000 | Yes | Something's moving on the- | Yes |
+| [Micro Seeker Projector](/peripheral:micro-seeker-projector) | $$250,000 | No | Brrrrrtttt- | Yes |
+| [RNGesus Brand On-The-Go Casino](/peripheral:rngesus-casino) | $$500,000 | Yes | RNGesus, guide thy hand. | Yes |
+| [ROID™ Channeling Unit +1](/peripheral:roid-channeling-unit-1) | $$180,000 | Yes | - | Yes |
+| [Security Analysis Dongle](/peripheral:security-analysis-dongle) | $$90,000 | No | Minesweeper, but for loot! | Yes |
+| [Skin Dessicating Bonkstick](/peripheral:skin-dessicating-bonkstick) | $$120,000 | Yes | NOOOOOOO! MY SKINCARE COUPOOOOOOOOOOONS!!! | Yes |
+| [Snekcaller](/peripheral:snekcaller) | $$420,000 | Yes | The snake is called Snek. | Yes |
+| [Sticky Stuff Spitter](/peripheral:sticky-stuff-spitter) | $$400,000 | Yes | There's a joke in here but i'm too polite to say it. | Yes |
+| [WOD Relative Quantum Position Stick](/peripheral:wod-relative-quantum-position-stick) | $$125,000 | No | Can be used for Kinetic Bombardment, but don't let the Runners know that. | Yes |
+
+| Name | Cost | Installation | Description | Purchaseable |
+| --- | --- | --- | --- | --- |
+| [Blinged-out Pimp Cane](/peripheral:blinged-out-pimp-cane) | $$700,000 | Yes | Behold, my swag. | Yes |
+| [Compact IV Drip](/peripheral:compact-iv-drip) | $$550,000 | Yes | Whoever holds this is a gem, a precious treasure. Protect them, with your lives. | Yes |
+| [Escape Artist's Nightmare](/peripheral:escape-artists-nightmare) | $$750,000 | Yes | You can escape this trap, but you can't escape this tech. | Yes |
+| [GoPro-on-a-stick](/peripheral:gopro-on-a-stick) | $$1,000,000 | Yes | It is a stick. Some say it is 'of Truth', whatever that means. | Yes |
+| [Jeet Kun Do Bo-Staff](/peripheral:jeet-kun-do-bo-staff) | $$800,000 | Yes | Fear not the techcaster who casts 10,000 techs once, but the techcaster who casts emergency barrier 10,000 times. | Yes |
+| [Katze's Scepter](/peripheral:katzes-scepter) | $$550,000 | Yes | Hail to the Queen, baby. | Yes |
+| [Roid™ Channeling Unit +2](/peripheral:roid-channeling-unit-2) | $$900,000 | Yes | - | Yes |
+| [Taxman's Badge](/peripheral:taxmans-badge) | $$850,000 | Yes | The IRS is long dead. Long live the Taxman. | Yes |
+
+| Name | Cost | Installation | Description | Purchaseable |
+| --- | --- | --- | --- | --- |
+| [Endothermic Staff](/peripheral:endothermic-staff) | $$1,600,000 | Yes | Some say that the Exothermic Staff is cooler. | Yes |
+| [Exothermic Staff](/peripheral:exothermic-staff) | $$1,600,000 | Yes | Some say that the Endothermic Staff is cooler. | Yes |
+| [Reformatter](/peripheral:reformatter) | $$1,300,000 | Yes | Turn a Wukong, into the Wukong they always knew they could be. | Yes |
+| [Stick of the Vibe Check +1](/peripheral:stick-of-the-vibe-check-1) | $$1,500,000 | Yes | A very cool stick. Can be, as the name implies, used to vibe check someone. | Yes |
+| [Tesla AMP Conductor](/peripheral:tesla-amp-conductor) | $$1,600,000 | Yes | Shocking! | Yes |
+
+| Name | Cost | Installation | Description | Purchaseable |
+| --- | --- | --- | --- | --- |
+| [BioSys Override Laser Pointer](/peripheral:biosys-override-laser-pointer) | $$2,500,000 | Yes | Just like a presentation, only this time you present people for the slaughter. | Yes |
+| [Blastmaster 9000](/peripheral:blastmaster-9000) | $$2,800,000 | Yes | A wise man once said: Fireball isn't a question, it's an answer, and it's always 'Yes'. | Yes |
+| [Roid™ Channeling Unit +3](/peripheral:roid-channeling-unit-3) | $$3,000,000 | Yes | - | Yes |
+| [Stick of the Vibe Check +2](/peripheral:stick-of-the-vibe-check-2) | $$3,000,000 | Yes | An even cooler stick. Can absolutely be used to vibe check someone. | Yes |
+| [Supercharged Bug Zapper](/peripheral:supercharged-bug-zapper) | $$2,800,000 | Yes | "LOOK at THE blitzing LOOP of THIS PLANET TO SEARCH A WAY, ONLY MY RAILGUN CAN SHOOT IT without delay." | Yes |
+
+| Name | Cost | Installation | Description | Purchaseable |
+| --- | --- | --- | --- | --- |
+| [Anti-Horni "Bat"](/peripheral:anti-horni-bat) | $$4,800,000 | Yes | If one blow is insufficient, apply more. Repeat. | Yes |
+| [Shut-In's Backscratcher](/peripheral:shutins-backscratcher) | $$5,000,000 | Yes | First owned by a mute pyromaniac in a fireproof suit. | Yes |
+| [Stick of the Vibe Check +3](/peripheral:stick-of-the-vibe-check-3) | $$6,000,000 | Yes | A stick that is considered cool amongst a rare chosen few sticks that are cool. Vibe checking someone with it is, simply *is*. | Yes |
+| [Tech Conductor Pole](/peripheral:tech-conductor-pole) | $$5,000,000 | Yes | In a sense, this is a memory repository. Those whom you struggle against, those you smile with, and you yourself. Who knows what legacy will be added to it? | Yes |
+
+| Name | Cost | Installation | Description | Purchaseable |
+| --- | --- | --- | --- | --- |
+| [Alexandrite Superconductor](/peripheral:alexandrite-superconductor) | $$10,000,000 | Yes | 'A' bleeding edge of progress. | Yes |
+| [Chief Executive's Luxury Resort Invitation Card](/peripheral:chief-executives-luxury-resort-invitation-card) | $$9,000,000 | Yes | You've won the rat race. Why are you still here? What more do you need to accomplish? What drives you so? | Yes |
+| [The Kaiser's Fist](/peripheral:the-kaisers-fist) | $$6,400,000 | Yes | 501 is the magic number. | Yes |
+
+### [Anomaly Detection Dongle](/peripheral:anomaly-detection-dongle)
+
+##### Source: Dungeon Master's Guide (Wand of Magic Detection)
+
+*Peripheral, uncommon*
+
+**Specs:** 1 lb., $$90,000
+
+This plug-in dongle has 3 charges. While holding it, you can expend 1 charge as an action to cast the *[anomaly detector](/tech:anomaly-detector)* tech from it. The dongle regains 1d3 expended charges daily at dawn.
+
+### [Bliss Co. Pleasuring Rod](/peripheral:bliss-co-pleasuring-rod)
+
+##### Source: Dungeon Master's Guide (Tentacle Rod)
+
+*Peripheral, rare (requires installation)*
+
+**Specs:** 1 lb., $$200,000
+
+Made by the Undercity ELFs, this rod is a technical weapon that ends in three rubbery tentacles. While holding the rod, you can use an action to direct each tentacle to attack a creature you can see within 15 feet of you. Each tentacle makes a melee attack roll with a +9 bonus. On a hit, the tentacle deals 1d6 bludgeoning damage. If you hit a target with all three tentacles, it must make a DC 15 Constitution saving throw. On a failure, the creature's speed is halved, it has disadvantage on Dexterity saving throws, and it can't use reactions for 1 minute. Moreover, on each of its turns, it can take either an action or a bonus action, but not both. At the end of each of its turns, it can repeat the saving throw, ending the effect on itself on a success.
+
+### [Herpetological Aid](/peripheral:herpetological-aid)
+
+##### Source: Dungeon Master's Guide (Staff of the Adder)
+
+*Peripheral, uncommon (requires installation by an [ordinator](/ordinator), [shut-in](/shutin), or [streamer](/streamer))*
+
+**Specs:** 1 lb., $$100,000
+
+You can use a bonus action to speak this staff's activation word and make the head of the staff become that of an animate nanotech snake loaded with poison injectors for 1 minute. By using another bonus action to speak the command word again, you return the staff to its normal inanimate form.
+
+You can make a melee attack using the snake head, which has a reach of 5 feet. Your proficiency bonus applies to the attack roll. On a hit, the target takes 1d6 piercing damage and must succeed on a DC 15 Constitution saving throw or take 3d6 poison damage.
+
+The snake head can be attacked while it is animate. It has an Armor Class of 15 and 20 hit points. If the head drops to 0 hit points, the staff is destroyed. As long as it's not destroyed, the staff regains all lost hit points when it reverts to its inanimate form.
+
+### [Instalock Motion Detector](/peripheral:instalock-motion-detector)
+
+##### Source: Dungeon Master's Guide (Wand of Enemy Detection)
+
+*Peripheral, rare (requires installation)*
+
+**Specs:** 1 lb., $$90,000
+
+This scanner has 7 charges. While holding it, you can use an action and expend 1 charge to speak its activation word. For the next minute, you know the direction of the nearest creature hostile to you within 60 feet, but not its distance from you. The scanner can sense the presence of hostile creatures that are on the [Dark Web](/tech:etherealnetwork), [invisible](/con:invisible), disguised, or hidden, as well as those in plain sight. The effect ends if you stop holding the scanner.
+
+The scanner regains 1d6 + 1 expended charges daily at dawn. If you expend the scanner's last charge, roll a d20. On a 1, the scanner undergoes a catastrophic short-circuit and is destroyed.
+
+### [Micro Seeker Projector](/peripheral:micro-seeker-projector)
+
+##### Source: Dungeon Master's Guide (Wand of Magic Missiles)
+
+*Peripheral, uncommon*
+
+**Specs:** 1 lb., $$250,000
+
+This projector that goes 'pew-pew' has 7 charges. While holding it, you can use an action to expend 1 or more of its charges to cast the [Micro Seeker](/tech:micro-seeker) tech from it. For 1 charge, you cast the 1st-level version of the tech. You can increases the tech slot level by one for each additional charge you expend.
+
+The projector regains 1d6 + 1 expended charges daily at dawn. If you expend the projector's last charge, roll a d20. On a 1, the projector crumbles into ashes and is destroyed.
+
+### [RNGesus Brand On-The-Go Casino](/peripheral:rngesus-casino)
+
+##### Source: Dungeon Master's Guide (Wand of Wonder)
+
+*Peripheral, rare (requires installation by a techcaster)*
+
+**Specs:** 1 lb., $$500,000
+
+This handheld slot machine has 7 charges. While holding it, you can use an action to expend 1 of its charges and choose a target within 120 feet of you. The target can be a creature, an object, or a point in space. Roll d100 and consult the following table to discover what happens.
+
+If the effect causes you to cast a tech from the slot machine, the spell's save DC is 15. If the spell normally has a range expressed in feet, its range becomes 120 feet if it isn't already.
+
+If an effect covers an area, you must center the spell on and include the target. If an effect has multiple possible subjects, the DM randomly determines which ones are affected.
+
+The wand regains 1d6 + 1 expended charges daily at dawn. If you expend the wand's last charge, roll a d20. On a 1, the wand crumbles into dust and is destroyed.
+
+| d100 | Effect |
+| --- | --- |
+| 01-05 | You cast [Lag](/tech:lag). |
+| 06-10 | You cast [Hitscan](/tech:hitscan). |
+| 11-15 | You are stunned until the start of your next turn, believing something awesome just happened. |
+| 16-20 | You cast [Aeroblast](/tech:aeroblast). |
+| 21-25 | You cast [Neurotap](/tech:neurotap) on the target you chose. If you didn't target a creature, you instead take 1d6 psychic damage. |
+| 26-30 | You cast [Aerosol Stink Spray](/tech:aerosol-stink-sprau). |
+| 31-33 | Heavy rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn. |
+| 34-36 | An animal appears in the unoccupied space nearest the target. The animal isn't under your control and acts as it normally would. Roll a d100 to determine which animal appears. On a 01-25, a rhinoceros appears; on a 26-50, an elephant appears; and on a 51-100, a rat appears. See the Monster Manual for the animal's statistics. |
+| 37-46 | You cast [Arc Cannon](/tech:arc-cannon). |
+| 47-49 | A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. The butterflies remain for 10 minutes. |
+| 50-53 | You enlarge the target as if you had cast Enlarge/Reduce. If the target can't be affected by that spell or if you didn't target a creature, you become the target. |
+| 54-58 | You cast Darkness. |
+| 59-62 | Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgrown for 1 minute. |
+| 63- 65 | An object of the DM's choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension. |
+| 66-69 | You shrink yourself as if you had cast [Digital Resizing](/tech:digital-resizing) on yourself. |
+| 70- 79 | You cast [Incendiary Blast](/tech:incendiary-blast). |
+| 80-84 | You cast [Physical Cloaking](/tech:physical-cloaking) on yourself. |
+| 85-87 | Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point. Unless they are picked off, the leaves turn brown and fall off after 24 hours. |
+| 88- 90 | A stream of 1d4 x 10 credit chits, each worth $$100, shoots from the slot machine's tip in a line 30 feet long and 5 feet wide. Each chit deals 1 bludgeoning damage, and the total damage of the chits is divided equally among all creatures in the line. |
+| 91-95 | A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. |
+| 96-97 | The target's skin turns bright blue for 1d10 days. If you chose a point in space, the creature nearest to that point is affected. |
+| 98-00 | If you targeted a creature, it must make a DC 15 Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn , becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the [Primary System Flush](/tech:primary-system-flush) tech or similar technical effects. |
+
+### [ROID™ Channeling Unit +1](/peripheral:roid-channeling-unit-1)
+
+##### Source: Dungeon Master's Guide (Wand of the War Mage +1)
+
+*Peripheral, uncommon (requires installation by a techcaster)*
+
+**Specs:** 1 lb., $$180,000
+
+While holding this techcasting foci, you gain a +1 bonus to tech attack rolls. In addition, you ignore half cover when making a tech attack.
+
+### [Security Analysis Dongle](/peripheral:security-analysis-dongle)
+
+##### Source: Dungeon Master's Guide (Wand of Enemy Detection)
+
+*Peripheral, uncommon*
+
+**Specs:** 1 lb., $$90,000
+
+This plug-in dongle has 3 charges. While holding it, you can use an action to expend 1 of its charges, and if a secret door or trap is within 30 feet of you, the dongle pulses with a small dim light and points at the one nearest to you. The dongle regains 1d3 expended charges daily at dawn.
+
+### [Skin Dessicating Bonkstick](/peripheral:skin-dessicating-bonkstick)
+
+##### Source: Dungeon Master's Guide (Staff of Withering)
+
+*Peripheral, rare (requires installation by an [ordinator](/ordinator), [shut-in](/shutin), or [streamer](/streamer))*
+
+**Specs:** 4 lbs., $$120,000
+
+The Bonkstick has 3 charges and regains 1d3 expended charges daily at dawn.
+
+The Bonkstick can be wielded as a technical [quarterstaff](/weapon:quarterstaff). On a hit, it deals damage as a normal quarterstaff, and you can expend 1 charge to deal an extra 2d10 entropic damage to the target. In addition, the target must succeed on a DC 15 Constitution saving throw or have disadvantage for 1 hour on any ability check or saving throw that uses Strength or Constitution.
+
+### [Snekcaller](/peripheral:snekcaller)
+
+##### Source: Dungeon Master's Guide (Staff of the Python)
+
+*Peripheral, uncommon (requires installation by an [ordinator](/ordinator), [shut-in](/shutin) or [streamer](/streamer))*
+
+**Specs:** 1 lb., $$420,000
+
+You can use an action to speak this staff's command word and throw the staff on the ground within 10 feet of you. The staff becomes a giant constrictor snake (see the Monster Manual for statistics) under your control and acts on its own initiative count. By using a bonus action to speak the command word again, you return the staff to its normal form in a space formerly occupied by the snake.
+
+On your turn, you can mentally command the snake if it is within 60 feet of you and you aren't incapacitated. You decide what action the snake takes and where it moves during its next turn, or you can issue it a general command, such as to attack your enemies or guard a location.
+
+If the snake is reduced to 0 hit points, it dies and reverts to its staff form. The staff then shatters and is destroyed. If the snake reverts to staff form before losing all its hit points, it regains all of them.
+
+### [Sticky Stuff Spitter](/peripheral:sticky-stuff-spitter)
+
+##### Source: Dungeon Master's Guide (Wand of Web)
+
+*Peripheral, uncommon (requires installation by a techcaster)*
+
+**Specs:** 1 lb., $$400,000
+
+This… wand, has 7 charges. While holding it, you can use an action to expend 1 of its charges to cast the [Sticky Stuff](/tech:sticky-stuff) tech (save DC 15) from it.
+
+The wand regains 1d6 + 1 expended charges daily at dawn. If you expend the wand's last charge, roll a d20. On a 1, the wand spontaneously implodes and is destroyed.
+
+### [WOD Relative Quantum Position Stick](/peripheral:wod-relative-quantum-position-stick)
+
+##### Source: Dungeon Master's Guide (Immovable Rod)
+
+*Peripheral, uncommon*
+
+**Specs:** 1 lb., $$125,000
+
+The bane of IRL speedrunners, this stick (more a rod) has a button on one end. You can use an action to press the button, which causes the rod to become technically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn't move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success.

@@ -1,0 +1,32 @@
+---
+title: "Shylyss \"The Ara-Ara Arsonist\" Arnou"
+slug: "legend:shylyss"
+url: "https://neoncitylights.wikidot.com/legend:shylyss"
+breadcrumbs: ["HOME.info", "WORLD.info", "Street Legends", "Shylyss \"The Ara-Ara Arsonist\" Arnou"]
+tags: ["pc", "street-legend"]
+---
+![Shylyss Arnou (by Yukiame13)](https://neoncitylights.wdfiles.com/local--files/legend:shylyss/ShylyssFront.png)
+
+**Name.** Shylyss "The Ara-Ara Arsonist" Arnou
+
+**Lineage.** Splicer (Human w/ Cybernetics)
+
+**Age.** 25
+
+**Height and Weight.** 5'9", 147 lbs
+
+**Pronouns.** she/her
+
+**Classes/Subclasses.** Ronin (Biker) 20
+
+**Features.** Comms array that looks like rabbit ears, worn ceramiron sabatons
+
+**Status.** Alive
+
+Shylyss Arnou originally came to Neon City from a life out in the wastes. Getting by on repairing wandering and broken-down caravans, a series of circumstances forced her to abandon her otherwise quiet life away from the city and seek out a new start… After arriving in Neon City, the cybernetic-spliced biker quickly found work as a mechanic before delving into the world of street-juking. A particularly interesting job led to a seduction and tryst of Alexander Fairisles, one of the Fairisles' Beverage Company's middling executives. Many months of carefully worded phrases have led Shylyss to possessing a large sum. Easily enough to sustain herself and her family out in the wastes. But that wasn't enough. Not for security nor for her liking. She had a taste of power, and she hungered for more.
+
+Her trusty hoverbike, known as "The Shrike", has literally carried her through many Gigs. From a raid on a wasteland outpost full of gangers to evading NCPD officers to storming an experimental facility. Over time, her combat style, sadistic affinity for pyromancy, and rabbit-ear-esque communications array led her to being given multiple monikers. The Burning Bunny. The Ara-Ara Arsonist. Danger Bun. Hot Cross Bun by a few of the more dirty-minded crowds. As her wealth grew, so did her strength, and so too did her grim body count. It would take some time, but after weeks of drinking binges, flings with random strangers in the Red Light District, and a conversation with a pregnant ex-NCPD officer, Shylyss knew just what to do. She said she'd carve out a home here and with her prowess and money, that was exactly what she planned to do: a gang built for the misfits of the [Red Light District](/district:red-light-district) and for herself, where her fire can warm and not burn.
+
+*"I live for my crewmates. I'll die for our crusade." — Shylyss Arnou*
+
+**Player.** @shylyssarnou

@@ -1,0 +1,61 @@
+---
+title: "Channel of the Spiritualist"
+slug: "influencer:spiritualist"
+url: "https://neoncitylights.wikidot.com/influencer:spiritualist"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Class", "Influencer", "Channel of the Spiritualist"]
+tags: ["influencer", "subclass"]
+---
+## “Hey there, demons. It’s me, ya boi.”
+
+From crystal gazers to apocalyptic prophets, the New World has no shortage of people who look backward to an age of superstition and mythology. Similarly, there is no shortage of people willing to feed into those backward beliefs to gain a following or turn a profit. Spiritualists delve into the undercity and the wastelands looking for ghosts and cryptids, hold livestreamed seances, and generally peddle every flavor of weirdness—often multiple contradictory flavors. While there are no such thing as ghosts or demons (as far as anyone knows for sure), spiritualists excel at making it seem like such things are real, perhaps even going so far as to believe it themselves.
+
+##### Source: Van Richten's Guide to Ravenloft (Spirits)
+
+### Guiding Whispers
+
+At 3rd level, you can reach out to “the spirits” to guide you and others. You learn the *[hovering helping hand](/tech:hovering-helping-hand)* trick, which doesn’t count against the number of influencer tricks you know. For you, it has a range of 60 feet when you cast it.
+
+### Spiritual Focus
+
+At 3rd level, you employ tools that aid you in channeling spirits, be they historical figures or fictional archetypes. You can use any sufficiently spooky object as a techcasting focus for your influencer techs, such as a weird book, a crystal ball, a tarot deck, or the like.
+
+Starting at 6th level, when you cast an influencer tech that deals damage or restores hit points through the Spiritual Focus, roll a d6, and you gain a bonus to one damage or healing roll of the tech equal to the number rolled.
+
+### Creepy Pasta
+
+At 3rd level, you can spin a spooky story that has just enough elements of the truth to leave people unnerved. While you are holding your Spiritual Focus, you can use a bonus action to expend one use of your Influencer Inspiration and roll on the Creepy Pasta table using your Influencer Inspiration die to determine the story your audience wants to hear. You retain the story in mind until you bestow the creepy pasta’s effect or you finish a short or long rest.
+
+You can use an action to choose one creature you can see within 30 feet of you (this can be you) to be the target of the story’s effect. Once you do so, you can’t bestow the story’s effect again until you roll it again.
+
+You can retain only one of these stories in mind at a time, and rolling on the Creepy Pasta table immediately ends the effect of the previous tale.
+
+If the tale requires a saving throw, the DC equals your tech save DC.
+
+*Creepy Pasta Stories*
+
+| Bardic Insp. Die | Tale Told Through You |
+| --- | --- |
+| 1 | **Abandoned by the Mouse.** For the next 10 minutes, whenever the target makes an Intelligence, a Wisdom, or a Charisma check, the target can roll an extra die immediately after rolling the d20 and add the extra die’s number to the check. The extra die is the same type as your Influencer Inspiration die. |
+| 2 | **Jeff the Killer.** You make a melee tech attack against the target. On a hit, the target takes kinetic damage equal to two rolls of your Influencer Inspiration die + your Charisma modifier. |
+| 3 | **Smile Dog.** The target and another creature of its choice it can see within 5 feet of it gains temporary hit points equal to a roll of your Influencer Inspiration die + your Charisma modifier. |
+| 4 | **Ted the Caver.** The target can immediately use its reaction to teleport up to 30 feet to an unoccupied space it can see. When the target teleports, it can choose a number of creatures it can see within 30 feet of it up to your Charisma modifier (minimum of 0) to immediately use the same reaction. |
+| 5 | **Man Door Hand Hook Car Door.** For 1 minute, any creature that hits the target with a melee attack takes kinetic damage equal to a roll of your Influencer Inspiration die. |
+| 6 | **The Rake.** The target gains temporary hit points equal to a roll of your Influencer Inspiration die + your influencer level. While it has these temporary hit points, the target’s walking speed increases by 10 feet and it gains a +1 bonus to its AC. |
+| 7 | **Sleep Experiment.** The target must succeed on a Wisdom saving throw or take software damage equal to two rolls of your Influencer Inspiration die, and the target is incapacitated until the end of its next turn. |
+| 8 | **The Expressionless.** The target becomes invisible until the end of its next turn or until it hits a creature with an attack. If it hits a creature with an attack during this invisibility, the creature it hits takes entropic damage equal to a roll of your Influencer Inspiration die and is frightened of the target until the end of the frightened creature’s next turn. |
+| 9 | **Siren Head.** Each creature of the target’s choice it can see within 30 feet of it must make a Strength saving throw. On a failed save, a creature takes thunder damage equal to three rolls of your Influencer Inspiration die and is knocked prone. A creature that succeeds on its saving throw takes half as much damage and isn’t knocked prone. |
+| 10 | **Fire Lookout.** The target spews fire from the mouth in a 30-foot cone. Each creature in that area must make a Dexterity saving throw, taking fire damage equal to four rolls of your Influencer Inspiration die on a failed save, or half as much damage on a successful one. |
+| 11 | **Suicidemouse.avi.** The target regains hit points equal to two rolls of your Influencer Inspiration die + your Charisma modifier, and you end one condition from the following list affecting the target: blinded, deafened, paralyzed, petrified, or poisoned. |
+| 12 | **Z̶̫̭͘ä̶̱͓́ḷ̷͎̔͑ǵ̴̫̍͜o̷͉̊̎.** You invoke an incomprehensible fable about an otherworldly being. The target must succeed on an Intelligence saving throw or take software damage equal to three rolls of your Influencer Inspiration die and be stunned until the end of its next turn. |
+
+### Spirit Session
+
+At 6th level, your ability to interpret subtle informational cues provide you with seemingly supernatural insights. You can conduct an hour-long ritual “channeling spirits” (which can be done during a short or long rest) using your Spiritual Focus and browsing the internet. You can conduct the ritual with a number of willing creatures equal to your proficiency bonus (including yourself). At the end of the ritual, you temporarily learn one tech of your choice from any class.
+
+The tech you choose must be of a level equal to the number of creatures that conducted the ritual or less, the tech must of a level you can cast, and it must be in the discipline of [Observation](http://neoncitylights.wikidot.com/techs:observation) or [Biochemistry](http://neoncitylights.wikidot.com/techs:biochemistry). The chosen tech counts as an influencer tech for you but doesn’t count against the number of influencer techs you know.
+
+Once you perform the ritual, you can’t do so again until you start a long rest, and you know the chosen tech until you start a long rest.
+
+### Weird Tales
+
+At 14th level, you now have the ability to nudge your audience toward certain spooky stories. Whenever you roll on the Creepy Pasta table, you can roll the die twice and choose which of the two effects to bestow. If you roll the same number on both dice, you can ignore the number and choose any effect on the table.

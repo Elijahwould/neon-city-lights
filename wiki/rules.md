@@ -1,0 +1,51 @@
+---
+title: "Server Rules"
+slug: "rules"
+url: "https://neoncitylights.wikidot.com/rules"
+breadcrumbs: ["HOME.info", "START.info", "Server Rules"]
+tags: ["rules"]
+---
+Before you join our server and start playing, you should become acquainted with the ground rules. These are intended to keep both you and other players safe and happy, and we have a set of both General Rules for behavior in the server, as well as specific Rules of Play that dictate how you can join games and play.
+
+# General Rules
+
+The following are the set of general rules for players to follow regarding their behavior in the server. We reserve the right to remove any player that is disruptive to the server's overall experience!
+
+1. **Follow the Guidelines.** Follow the [Discord Community Guidelines](https://discord.com/guidelines). Due to the nature of the server, all channels are basically considered NSFW, despite several of them being safe. If a room is not tagged properly, please let us know so that we can update it.
+2. **Follow the Terms of Service.** We do not allow any content that goes contrary to [Discord's Terms of Service](https://discord.com/terms).
+3. **Be Respectful.** Be excellent to each other. Being nice is free: when possible, always err on the side of being kind. When someone seriously asking you to stop or saying no to your request, please stop doing it if it makes them uncomfortable. If you are still pushing it despite them requesting you to stop, it will result in an immediate infraction. We work hard to keep this community fun and wholesome. Please do your part by being respectful and encouraging.
+4. **If An Admin Talks, Listen.** If a member of the admin team gets involved, please do not make their job more difficult than it needs to be. We are here to play and have fun, just like you are.
+5. **Keep Sensitive Topics to a Minimum.** While Cyberpunk as a setting is by its very nature politically charged, we prefer you keep your RL political and religious chats to DMs out of consideration for other users.
+6. **Don't Kink Shame.** Question due to curiosity about a kink is okay. Using questioning as an excuse to berate a kink is not. It's weird to kink shame people in a kinky server.
+7. **No Abhorrent Content.** We have zero tolerance for bigotry (including racism, ableism, transphobia, homophobia, etc.), of any kind, nor do we tolerate underage content. This includes playing characters that "are of age" while looking underage, regardless of the method achieved for that. Posting content that breaks this rule is grounds for an immediate ban.
+8. **Do Not Harrass Others.** We do not allow for the harassment of anyone on this server, whether in DMs or on the server proper. We take claims of harassment very seriously, and each claim will be treated with the severity it demands. Respect people's boundaries.
+9. **This Server Is Not A Crisis Center.** We understand you may need help, and while many of us would love to be there for you, we are not trained or equipped to do so, and sharing your crisis here could very well trigger one in others. If you are having a crisis and need help, please contact a crisis center or talk to people you trust in private, rather than using this server as an outlet. If you see someone who may need help, please DM them and keep the discussion off the server.
+10. **Ask First.** Before you engage in RP with other people, please make sure to obtain their consent—for both RP and ERP. Forcing your character on others without the consent of all participants involved is harassment. Respect people's boundaries.
+11. **Keep It (Relatively) Clean.** While this is an NSFW TTRPG server, and as such many interactions here will be NSFW by nature, we request you keep your NSFW content to channels clearly marked and tagged as NSFW, particularly when it comes to art. It should be safe for a person to check the server in public on their phone if they do not visit NSFW-specific channels.
+12. **Don't Spam.** There are several places and ways where we may allow you to ping roles to find RP or to request help. Please do not ping the "Looking for RP" or "Looking for ERP" roles more than once every 12 hours in their respective roleplay channels.
+13. **Credit the Artists.** Any art that is posted as an embedded file must include the name of the artist/author. You can avoid this by linking to a properly sourced location. Examples include, in order of preference: the original artist's posting on Twitter, Pixiv, DeviantArt, etc. or a posting to an imageboard that has said credits included as part of the tags.
+
+# Rules of Play
+
+The following are the set of rules for players to follow regarding actually playing the game: making characters available for play, character advancement, fixers posting jobs, etc.
+
+1. **Set Your Roles.** You must set your roles and have a character sheet ready and prepared to send to any fixer before you can play on Neon City Nights. Check the #roles channel!
+2. **Character Approval.** Your character must have a character introduction posted in #character-introductions to be playable, and you should have a sheet posted alongside with it and ready for review!
+  - For character sheets, we recommend one of the GSheets or DiceCloud.
+3. **Character Job Joining Limits.** You may only have one character in a job at a time. If a job goes on pause, you may join one additional one so long as both jobs do not run simultaneously.
+4. **Leveling Up.** When a character finishes a job, if you do not have any other pending jobs to finish, you must immediately apply any MP gained to the character and level it up appropriately. You **cannot join any other jobs** until you do this!
+  - Apply your MP by going to the #rank-advancement channel and posting there, using one of the provided templates. This lets the administrative look up your progress in the rare case of a question or dispute about your character's progress.
+5. **Rewards From Multiple Jobs.** When a character finishes one job, but still has another pending job to complete, **you cannot apply MP or credits from rewards to that character** until you complete **all** jobs your character is on. If you are waiting to apply MP or credits, your character cannot apply to any other jobs, even if a job is paused.
+6. **Leaving Paused Games.** If a game has to be paused and you cannot make the rescheduled time, you may request to be removed from the job. Depending on time played, you may be entitled to partial rewards—discuss this with your fixer!
+7. **Player vs Player Interactions.** There is no non-consensual PvP in this server. Competitive or aggressive actions must have the consent of all parties involved in OOC; if one of the parties does not agree, you must resolve the situation in a different matter. Fixers and Admins are available to resolve conflicts if need be, and a Full Fixer, Trusted Fixer or member of the admin team must be present for any situation that involves PvP.
+8. **No Metagaming.** Do not use information your character doesn't have to inform your character's actions. This includes things you may have learned from outside the game, information from another scene your character did not participate in and that hasn't been related to you in-character, or info that another character was given, but not to you, etc. This list is not exhaustive, and many other situations may be metagaming. If you are not sure, ask.
+
+## Rules Regarding Fixers
+
+Some rules specifically apply to fixers, and one's interactions with them.
+
+1. **Important Job Information.** Fixers posting a job **must** include the following in their job posting using the [proper format](/fixerinfo): **content warnings** for the job, **time estimated** that a job will run, **LL rating** of the job (so people don't sign up for a job they didn't bargain for).
+2. **Enforced Job Lead-In Times.** When announcing a job, fixers must give ample notice (minimum 1h30m) before the start of game time, and must pick players either by hand, via random selection, or via priority (ie. pick the players who have waited the longest to play first). No more jobs can be run as "first come first serve" that start when the first X players sign up without explicit consent from the admins as this creates situations where many potential players are unfairly punished for not being around for the sign-up sheet to drop.
+3. **In-Game Disagreements on Rulings.** If you have a mounting disagreement with a fixer, save it until after the game. If a fixer asks you to continue the game and move on, then drop it.
+  - If you are a fixer and are having trouble with a problem player, you can reach out to one of the admins for assistance with mediation on the subject.
+  - If you are a player and you think you are being treated unusually unfairly by the fixer (beyond just bad luck with the roll of the dice or running into the consequences of your own actions), you can reach out to one of the admins for assistance.

@@ -1,0 +1,13 @@
+---
+title: "Ghetto Go-Getter"
+slug: "feat:ghetto-go-getter"
+url: "https://neoncitylights.wikidot.com/feat:ghetto-go-getter"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Feats", "Ghetto Go-Getter"]
+tags: ["feat", "half-feat"]
+---
+##### Source: Tasha's Cauldron of Everything (Shadow Touched)
+
+Your time in the Undercity has changed you, granting you the following benefits:
+
+- Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.
+- You learn the [physical cloaking](/tech:physical-cloaking) tech and one 1st-level tech of your choice. The 1st-level tech must be from the Deception or Biochemistry school of technology. You can cast each of these techs without expending a tech slot. Once you cast either of these techs in this way, you can't cast that tech in this way again until you finish a long rest. You can also cast these techs using tech slots you have of the appropriate level. The techs' techcasting ability is the ability increased by this feat.

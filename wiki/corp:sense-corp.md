@@ -1,0 +1,34 @@
+---
+title: "Sense Corp"
+slug: "corp:sense-corp"
+url: "https://neoncitylights.wikidot.com/corp:sense-corp"
+breadcrumbs: ["HOME.info", "WORLD.info", "Corporations", "Sense Corp"]
+tags: ["corporation", "major"]
+---
+**Corporation Name.** Sense Corp.
+
+**CEO.** Grey Turner
+
+**Years in business.** ~300+
+
+**Industry.** Sense Tanks
+
+**Motto.** *"The only place where it makes Sense to trust your senses."*
+
+**Impact.** Major
+
+One if the oldest megacorporations, Sense Corp broached into the market as soon as relics of the old world were found and studied. Sense Tanks were historically used for medical purposes, allowing patients to be pumped full of medication and suspending them until they could be reanimated all while keeping their consciousness in a virtual world. The king of Tammom, a civilization long obsolete after the relic wars saw another use for these tanks, using them to allow their pilots to pilot drone aircraft from afar in a state of perfect attentiveness, all of which could be further enhanced with attention enhancing drugs being pumped into the tanks.
+
+Long after the fall of the nation, one of its citizens patented the technology and once again gave it a new purpose in times of peace: entertainment. The sense tanks produced by Sense Corp let clients delve into virtual reality for days, months or years, all while regulating their bodies' vitals and—if the client wills it—introducing reaction or pleasure enhancing drugs to enhance the client's performance in games… or making their virtual hookup all the more pleasurable.
+
+Although the technology has long since become a household product, they still have dedicated clinics with the newest models available to scratch that ever-increasing itch for new sensations. Their clientele is veritably addicted to their wares, and they have a monopoly of technology that lets non-techwizards interact with VR environments, making them a force to be reckoned with.
+
+Their current CEO has been funding research on alternative uses for sense tanks, looking to build an army for themselves…
+
+**Owner.** *Unclaimed*
+
+**Creator.** evelpete#5619
+
+**Fixer Use.** Restricted; please request permission from the lore team if using the CEO for a game.
+
+**CEO Use.** Restricted; please request permission from the lore team if using the CEO for a game.

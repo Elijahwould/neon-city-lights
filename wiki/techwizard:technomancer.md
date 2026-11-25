@@ -1,0 +1,39 @@
+---
+title: "Technomancer"
+slug: "techwizard:technomancer"
+url: "https://neoncitylights.wikidot.com/techwizard:technomancer"
+breadcrumbs: ["Technomancer"]
+tags: ["subclass", "techwizard"]
+---
+## “Can’t a guy raise a family in peace around here?”
+
+Few techwizards are more beloved and feared than technomancers. Though their specialty is in medical and biochemical technology, they are far more than mere physicians. A technomancer’s greatest foe is death—and they will stop at nothing to defeat that foe. The earliest breakthroughs in technomancy gave mankind the ability to roll back the reaper’s hand, resurrecting the dead by reconstructing their thought engrams from stored data, but misfires in the field also led to the creation of the hacked, damned souls whose implants keep their rotting corpses functioning long after the death of their mind. Most technomancers have a love/hate relationship with the hacked; hacked represent the greatest failing of their specialty, but they’re just so damned useful.
+
+##### Source: Player's Handbook (School of Necromancy)
+
+### Biochemistry Expert
+
+Beginning when you select this specialty at 2nd level, the cash and time you must spend to copy a Biochemistry tech into your cyberdeck is halved.
+
+### Orgone Harvest
+
+At 2nd level, you gain the ability to reap leftover bio-energy from creatures you kill with your techs. Once per turn when you kill one or more creatures with a tech of 1st level or higher, you regain hit points equal to twice the tech’s level, or three times its level if the tech belongs to the Biochemistry specialty. You don’t gain this benefit for killing machines or hacked.
+
+### Hacked Thralls
+
+At 6th level, you add the activate husk tech to your cyberdeck if it is not there already. When you cast activate husk, you can target one additional corpse, creating another tech husk or hollow chassis, as appropriate.
+
+Whenever you create a hacked using a Biochemistry tech, it has additional benefits:
+
+- The creature’s hit point maximum is increased by an amount equal to your techwizard level.
+- The creature adds your proficiency bonus to its weapon damage rolls.
+
+### Entropic Shield
+
+Beginning at 10th level, you have resistance to entropic damage, and your hit point maximum can’t be reduced. Your grasp of Biochemistry technology prevents your own health from withering.
+
+### Command Override
+
+Starting at 14th level, you can use your tech to bring hacked under your control, even those you did not create. As an action, you can choose one hacked that you can see within 60 feet of you. That creature must make a Charisma saving throw against your techwizard tech save DC. If it succeeds, you can’t use this feature on it again. If it fails, it becomes friendly to you and obeys your commands until you use this feature again.
+
+Intelligent hacked are harder to control in this way. If the target has an Intelligence of 8 or higher, it has advantage on the saving throw. If it fails the saving throw and has an Intelligence of 12 or higher, it can repeat the saving throw at the end of every hour until it succeeds and breaks free.

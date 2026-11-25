@@ -1,0 +1,26 @@
+---
+title: "Dark Hole"
+slug: "tech:dark-hole"
+url: "https://neoncitylights.wikidot.com/tech:dark-hole"
+breadcrumbs: ["HOME.info", "RUNNER.info", "Techs", "Dark Hole"]
+tags: ["altercation", "eighth", "tech", "techwizard"]
+---
+##### Source: Explorer's Guide to Wildemount (Dark Star)
+
+*8th-level altercation (Singularity)*
+
+**Casting Time:** 1 action
+
+**Range:** 150 feet
+
+**Components:** V, S, M (a shard of onyx and a drop of the caster's blood, both of which the tech consumes)
+
+**Duration:** Concentration, up to 1 minute
+
+This tech creates a sphere centered on a point you choose within range. The sphere can have a radius of up to 40 feet. The area within this sphere is filled with technical darkness and crushing gravitational force.
+
+For the duration, the tech's area is difficult terrain. A creature with darkvision can't see through the technical darkness, and nontechnical light can't illuminate it. No sound can be created within or pass through the area. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are deafened while entirely inside it. Casting a tech that includes a verbal component is impossible there.
+
+Any creature that enters the tech's area for the first time on a turn or starts its turn there must make a Constitution saving throw. The creature takes 8d10 kinetic damage on a failed save or half as much damage on a successful save. A creature reduced to 0 hit points by this damage is disintegrated. A disintegrated creature and everything it is wearing and carrying, except high end items, are reduced to a pile of fine gray dust.
+
+***Tech Lists.*** [Techwizard](/techs:techwizard)
