@@ -9,7 +9,7 @@
         "Finding the payment offered by a client insufficient, the disgruntled Wukong simply whistled in response. Moments later, a hulking mechanical canine bursts through a nearby window, pouncing on the client. As he uses all his effort to dislodge the beast\u2019s teeth from his arm, its owner calmly approaches, grasping a dagger in their prehensile tail."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/auditor.jpg",
       "credit": null
     },
     "auditor:dark-stalker": {
@@ -85,7 +85,7 @@
         "Moving in utter silence, a black-clad wukong crawls along the outside of a corp exec\u2019s penthouse. He pauses on the balcony outside the kleptocrat\u2019s bedroom, pulling a knife from its sheath as he contemplates how vulnerable people are while they sleep."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/brawler.jpg",
       "credit": null
     },
     "brawler:asura": {
@@ -212,7 +212,7 @@
         "With his trenchcoat billowing from the rooftop winds, an elf wordlessly stays his colleagues and steps forward to deliver the first blow of the battle."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/enforcer.jpg",
       "credit": null
     },
     "enforcer:anarchist": {
@@ -320,7 +320,7 @@
         "A gobbo works in a dimly lit workshop, her exact location hidden by the multiple firewalls and VPNs she uses during her streams. As she uses commercial-grade 3D printers to build military-grade weapons, she lectures on exactly how to use them to best effect against the corporations."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/influencer.jpg",
       "credit": null
     },
     "influencer:activist": {
@@ -404,7 +404,7 @@
         "A splicer grunts as he hastily yanks his unconscious Jerboan friend into cover, narrowly dodging a hail of bullets. He fumbles in his bag for a moment, before pulling out a shifting vial of oily fluid. Tipping her head back and unsealing the container, he jams it into her mouth. Her wounds immediately begin to knit together and moments later her eyes snap open with a gasp."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/mechanist.jpg",
       "credit": null
     },
     "mechanist:armorer": {
@@ -458,7 +458,7 @@
         "Beseeching the aid of his internal A.I, a Remake leads the charge into the fray of disheartened bandits."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/ordinator.jpg",
       "credit": null
     },
     "ordinator:archivist": {
@@ -598,7 +598,7 @@
         "Suppressing a giggle, a gobbo uses her implants to warp space around the guard\u2019s belt, pulling his ID card from its lanyard and floating it to her waiting hand. In a moment, the cell door is open, and she and her companions are free to make their escape."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/outlaw.jpg",
       "credit": null
     },
     "outlaw:assassin": {
@@ -750,7 +750,7 @@
         "A gobbo in daisy duke shorts snarls at the corp-serving scum in front of her. She smashes her augmented fists together, letting the adrenaline rush turn the world red as she prepares to turn them all into pork paste."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/renegade.jpg",
       "credit": null
     },
     "renegade:bouncer": {
@@ -834,7 +834,7 @@
         "A nayaling smiles at the hovering camera drone, waving to their adoring fans before spitting out a mouthful of blood. They circle for advantage, trying to get on the knife-wielding hobo\u2019s blind side. The hobo offers no such niceties, though, screaming in meth-induced rage before charging."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/ronin.jpg",
       "credit": null
     },
     "ronin:biker": {
@@ -966,7 +966,7 @@
         "Giving his favorite holographic pet one last cuddle, a wukong launches a digital bear into the fray, aiding and inspiring his allies to continue the fight."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/shutin.jpg",
       "credit": null
     },
     "shutin:astrologist": {
@@ -1034,7 +1034,7 @@
         "Crouching behind an overturned dumpster, a wukong points their finger at a charging mutant. A blast of kinetic energy rips through the air to strike the horrific creature. They duck back behind cover, unaware that their erratic code has turned their fur bright blue."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/sourcecoder.jpg",
       "credit": null
     },
     "sourcecoder:arc-caster": {
@@ -1126,7 +1126,7 @@
         "Shifting their attention between the cyberspace world of virtual reality and the real world surrounding them, a wild-eyed nayaling begins running the script that will open the ancient vault to the excitement of an untold number of home viewers."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/streamer.jpg",
       "credit": null
     },
     "streamer:charity-foundation": {
@@ -1373,7 +1373,7 @@
         "Crouching on cracked tiles in an ancient ruin of the Old World, a wukong feeds as much information as he can gather into his predictive algorithm. The program tells him that the left path has a ninety-five percent chance of being clear of traps. Good enough."
       ],
       "blurb": null,
-      "image": null,
+      "image": "/art/techwizard.jpg",
       "credit": null
     },
     "techwizard:it-generalist": {
@@ -1407,7 +1407,7 @@
       "origin": null,
       "examples": [],
       "blurb": "Artificiates are androids that have broken through the limiters of their artificial intelligence through unknown circumstances to gain sentience. Formerly used to perform a variety of tasks, some artificiates harbor resentment for their previous robotic usage, while others approach their new lease of life with curiosity and excitement.",
-      "image": null,
+      "image": "/art/race-artificiate.jpg",
       "credit": null
     },
     "race:core": {
@@ -1431,7 +1431,7 @@
       "origin": null,
       "examples": [],
       "blurb": "In an effort to maintain their nepotistic control over the New World, corporations bankrolled the Extension of Life Functions program, a gene-editing project dedicated to keeping corporate directors, board members and vital employees alive for as long as possible, maintaining the status quo indefinitely. Executive Elfs are the direct descendants of the origi",
-      "image": null,
+      "image": "/art/race-elf.jpg",
       "credit": null
     },
     "race:gobbo": {
@@ -1439,7 +1439,7 @@
       "origin": null,
       "examples": [],
       "blurb": "Gobbos are the result of the G.O.B.B.O. project, a last-ditch experiment by Old World scientists to develop a type of human capable of Generating Oxygen By Biosynthesizing Oxides.",
-      "image": null,
+      "image": "/art/race-gobbo.jpg",
       "credit": null
     },
     "race:hardlight-core": {
@@ -1455,7 +1455,7 @@
       "origin": null,
       "examples": [],
       "blurb": "The last four hundred years have changed humanity. The loss of old world knowledge has made humanity curious and inquisitive, advances in technology and medicine has made them daring risk takers and Corporate overlordship has erased any notions of blind patriotism.",
-      "image": null,
+      "image": "/art/race-human.jpg",
       "credit": null
     },
     "race:jerboan": {
@@ -1479,7 +1479,7 @@
       "origin": null,
       "examples": [],
       "blurb": "Similar to Gobbos, Nayalings are a last-ditch experiment by Old World scientists to improve the human species for the rapidly changing climate, but unlike Gobbos, Nayalings were bred to out-live and conquer the rest of humanity under the extreme weather conditions that were rocking the world in the ages after the Great Collapse. Not only were Nayalings devel",
-      "image": null,
+      "image": "/art/race-nayaling.jpg",
       "credit": null
     },
     "race:netnibbler": {
@@ -1511,7 +1511,7 @@
       "origin": null,
       "examples": [],
       "blurb": "Remakes are fully robotic shells housing a digitized human consciousness, either to continue working after the death of their original body, or to enjoy an everlasting retirement. Depending on the package purchased, Remakes can be a vague collection of distant memories encapsulated in a heavy duty high load laborer, a raw personality implanted in a tactile a",
-      "image": null,
+      "image": "/art/race-remake.jpg",
       "credit": null
     },
     "race:splicer": {
