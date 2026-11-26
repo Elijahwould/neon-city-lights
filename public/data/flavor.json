@@ -311,6 +311,14 @@
       "image": null,
       "credit": null
     },
+    "enforcer:voided-clause": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
     "influencer": {
       "book": "Player's Handbook",
       "origin": null,
@@ -1374,6 +1382,102 @@
       ],
       "blurb": null,
       "image": "/art/techwizard.jpg",
+      "credit": null
+    },
+    "techwizard:bulwark": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:code-monkey": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:fabricator": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:insurance-adjustor": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:marketing-campaigner": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:master-blaster": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:nanotechnician": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:sentai-savior": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:singularity-technician": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:stasis-technician": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:surveillance-specialist": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
+      "credit": null
+    },
+    "techwizard:technomancer": {
+      "book": "Carbon Pink",
+      "origin": null,
+      "examples": [],
+      "blurb": null,
+      "image": null,
       "credit": null
     },
     "techwizard:it-generalist": {
