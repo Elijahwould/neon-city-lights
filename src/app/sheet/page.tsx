@@ -7,9 +7,9 @@ import { AsiPicker } from "@/components/asi-picker";
 import { TechSheet } from "@/components/tech-sheet";
 import { Button, Select, TextInput } from "@/components/ui";
 import { characterAsText } from "@/lib/avrae-sheet";
-import { createSheetInDrive, downloadFilledSheet } from "@/lib/gsheet";
+import { createGoogleSheet, downloadFilledSheet } from "@/lib/gsheet";
 import { gearBalance, gearLedger, startingMoney } from "@/lib/creation";
-import { GOOGLE_SHEET_LABEL, GOOGLE_SHEET_URL } from "@/lib/config";
+import { GOOGLE_CLIENT_ID, GOOGLE_SHEET_LABEL, GOOGLE_SHEET_URL } from "@/lib/config";
 import { ABILITIES, ABILITY_NAME, type Ability, type Character, type Rules } from "@/lib/types";
 import { loadRules } from "@/lib/data";
 import { weaponDamageTypes, weaponIsVersatile } from "@/lib/grants";
@@ -84,20 +84,20 @@ function SheetInner() {
   const [pendingStyle, setPendingStyle] = useState("");
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
   const [sheetNote, setSheetNote] = useState<string | null>(null);
-  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
+  const [sheetUrl, setSheetUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState("");
   const [featureBook, setFeatureBook] = useState<Record<string, { text?: string; level?: number | null; source?: string }>>({});
   const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
   const [openFeatures, setOpenFeatures] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    if (!googleClientId || document.querySelector("script[data-gsi]")) return;
+    if (document.querySelector("script[data-gsi]")) return;
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     script.async = true;
     script.dataset.gsi = "true";
     document.head.appendChild(script);
-  }, [googleClientId]);
+  }, []);
 
   useEffect(() => {
     loadRules().then(setRules).catch((err: Error) => setError(err.message));
@@ -164,8 +164,21 @@ function SheetInner() {
         <Button variant="ghost" onClick={() => window.print()}>Print / PDF</Button>
         <Button variant="ghost" onClick={() => downloadCharacter(character)}>Export JSON</Button>
         <Button variant="ghost" onClick={() => { const text = characterAsText(character, derived); navigator.clipboard.writeText(text).then(() => setCopied("Copied the sheet as text and JSON.")).catch(() => setCopied(text)); }}>Copy as text</Button>
-        <Button variant="ghost" onClick={() => downloadFilledSheet(character, rules, derived).then((unmapped) => setSheetNote(unmapped.length ? `Downloaded. Not filled: ${unmapped.join(" ")}` : "Downloaded the Google Sheet.")).catch((err: Error) => setSheetNote(err.message))}>Download Google Sheet</Button>
-        {googleClientId && <Button variant="ghost" onClick={() => createSheetInDrive(googleClientId, character, rules, derived).catch((err: Error) => setSheetNote(err.message))}>Create in my Google Drive</Button>}
+        <Button onClick={() => {
+          const pending = window.open("", "_blank");
+          setSheetNote("Creating the Google Sheet…");
+          setSheetUrl(null);
+          createGoogleSheet(character, rules, derived, GOOGLE_CLIENT_ID).then((result) => {
+            if (pending) pending.location.href = result.url;
+            setSheetUrl(result.url);
+            const missed = result.unmapped.length ? ` Not filled: ${result.unmapped.join(" ")}` : "";
+            setSheetNote(pending ? `Opened the new Google Sheet.${missed}` : `The browser blocked the new tab. Use the link below.${missed}`);
+          }).catch((err: Error) => {
+            pending?.close();
+            setSheetNote(err.message);
+          });
+        }}>Create Google Sheet</Button>
+        <Button variant="ghost" onClick={() => downloadFilledSheet(character, rules, derived).then((unmapped) => setSheetNote(unmapped.length ? `Downloaded the Excel file. Not filled: ${unmapped.join(" ")}` : "Downloaded the Excel file.")).catch((err: Error) => setSheetNote(err.message))}>Download Excel (.xlsx)</Button>
         <Button variant="ghost" onClick={copyShare}>Copy share link</Button>
         <Button onClick={() => { setGainClass(entries[0]?.id ?? ""); setLevelOpen(true); }}>Level up</Button>
         {GOOGLE_SHEET_URL && (
@@ -175,6 +188,7 @@ function SheetInner() {
       </div>
       {share && <p className="no-print break-all text-xs text-cyan">{share}</p>}
       {copied && <pre className="no-print max-h-40 overflow-auto whitespace-pre-wrap text-xs text-muted">{copied}</pre>}
+      {sheetUrl && <p className="no-print text-sm">Your sheet: <a className="text-cyan underline" href={sheetUrl} target="_blank" rel="noopener noreferrer">{sheetUrl}</a></p>}
       {sheetNote && <p className="no-print text-sm text-muted">{sheetNote}</p>}
 
       <article className="paper">
