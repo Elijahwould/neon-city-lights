@@ -679,6 +679,17 @@ check("scout grants nature and survival", cellValue(classInfo, "Q75"), "Choose 2
 check("new human increase is one +2 or two +1s", cellValue(lineageInfo, "F7"), "Increase one score by 2, or two different scores by 1 (str, dex, con, int, wis, cha)");
 check("new human language is an old world language", cellValue(lineageInfo, "X7"), "Common, 1 Language (Old World)");
 
+const voided = findSubclass(rules, "enforcer:voided-clause");
+check("voided clause is a selectable enforcer subclass", voided?.classId, "enforcer");
+check("voided clause grants thermal backlash at 3rd", voided?.grantedTechs.find((block) => block.level === 3)?.techIds, ["tech:thermal-backlash"]);
+const voidedRunner = runner({ classId: "enforcer", subclassId: "enforcer:voided-clause", level: 5, classLevels: [{ id: "enforcer", level: 5, subclassId: "enforcer:voided-clause" }] });
+const voidedGrants = collectGrantedTechs(rules, voidedRunner).map((note) => note.id);
+check("voided clause grants its catalog techs by 5th", voidedGrants.includes("tech:thermal-backlash") && voidedGrants.includes("tech:nanofog"), true);
+check("voided clause holds organic dissolution until 13th", voidedGrants.includes("tech:organic-dissolution"), false);
+const sheetInfo = XLSX.read(readFileSync("public/data/ncl-gsheet-v2.1-original.xlsx"), { cellFormula: true }).Sheets["Class Info"];
+check("the sheet template names voided clause", sheetInfo.E172?.v, "Voided Clause");
+check("techwizard specialties stay selectable", ["bulwark","code-monkey","fabricator","insurance-adjustor","marketing-campaigner","master-blaster","nanotechnician","sentai-savior","singularity-technician","stasis-technician","surveillance-specialist","technomancer","it-generalist"].every((id) => findSubclass(rules, `techwizard:${id}`)?.classId === "techwizard"), true);
+
 if (failed) {
   console.error(`${failed} failed`);
   process.exit(1);
