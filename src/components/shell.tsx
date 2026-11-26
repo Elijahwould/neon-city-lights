@@ -38,6 +38,10 @@ export function Shell({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-6xl px-4 py-6 pb-28 md:pb-10">{children}</main>
       <footer className="no-print mx-auto max-w-6xl px-4 pb-28 text-xs text-muted md:pb-8">
         Companion by Ru1n · unofficial fan tool · <Link href="/credits/" className="text-cyan">Credits</Link>
+        {" · "}
+        <Link href="/privacy/" className="text-cyan">Privacy</Link>
+        {" · "}
+        <Link href="/terms/" className="text-cyan">Terms</Link>
       </footer>
       <nav className="no-print fixed inset-x-0 bottom-0 z-40 grid h-14 grid-cols-5 border-t border-cyan/30 bg-black/95 text-center text-[10px] md:hidden">
         {links.map((link) => (

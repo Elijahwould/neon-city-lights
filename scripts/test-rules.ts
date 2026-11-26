@@ -5,7 +5,8 @@ import { builderIntent, draftHasWork } from "../src/lib/draft";
 import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, gearBalance, gearCatalog, gearLedger, grantEquipment, itemsNamedIn, startingMoney, xpForLevel } from "../src/lib/creation";
 import { unfilledLineageChoices } from "../src/lib/traits";
-import { fillNclWorkbook } from "../src/lib/gsheet";
+import { fillNclWorkbook, sheetValueWrites } from "../src/lib/gsheet";
+import { writeValuesIntoXlsx } from "../src/lib/xlsx-values";
 import { sheetAttackName } from "../src/lib/grants";
 import * as XLSX from "xlsx";
 import { readFileSync } from "node:fs";
@@ -533,6 +534,27 @@ check("the strength base score is written", mainSheet.C16?.v, 16);
 check("athletics is marked proficient", mainSheet.H28?.v, 1);
 check("the sheet keeps every template tab", filled.book.SheetNames.join(","), template.SheetNames.join(","));
 check("age has no runner field", filled.unmapped.some((line) => line.startsWith("Age")), true);
+
+const originalBytes = new Uint8Array(readFileSync("public/data/ncl-gsheet-v2.1-original.xlsx"));
+const originalBook = XLSX.read(originalBytes, { type: "array", cellFormula: true });
+const mapped = sheetValueWrites(originalBook, filledRunner, rules, filledDerived);
+const formulaCells = new Set<string>();
+for (const name of originalBook.SheetNames) {
+  const sheet = originalBook.Sheets[name];
+  for (const addr of Object.keys(sheet)) {
+    if (sheet[addr]?.f) formulaCells.add(`${name}!${addr}`);
+  }
+}
+check("the mapping writes the character name", mapped.writes.some((write) => write.range === "'v2.1'!C6" && write.value === "Vex Kade"), true);
+check("the mapping writes the strength score", mapped.writes.some((write) => write.range === "'v2.1'!C16" && write.value === 16), true);
+check("the mapping writes the class", mapped.writes.some((write) => write.range === "'v2.1'!T5" && String(write.value).includes("Enforcer")), true);
+check("the mapping writes athletics", mapped.writes.some((write) => write.range === "'v2.1'!H28" && write.value === 1), true);
+check("the mapping never targets a formula cell", mapped.writes.every((write) => !formulaCells.has(write.range.replace(/^'([^']+)'!/, "$1!"))), true);
+const patched = writeValuesIntoXlsx(originalBytes, mapped.cells);
+const patchedBook = XLSX.read(patched.bytes, { type: "array", cellFormula: true, cellStyles: true });
+check("the excel file keeps the level formula", Boolean(patchedBook.Sheets["v2.1"].AL6?.f), true);
+check("the excel file keeps the name cell's style", Boolean(patchedBook.Sheets["v2.1"].C6?.s), true);
+check("the excel file contains the runner name", patchedBook.Sheets["v2.1"].C6?.v, "Vex Kade");
 
 const stalker = derive(runner({ classId: "auditor", subclassId: "auditor:dark-stalker", level: 3, baseScores: scores }), rules);
 check("dark stalker adds wisdom to initiative", stalker.initiative, 3);

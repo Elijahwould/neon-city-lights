@@ -4,6 +4,21 @@ import type { Derived } from "./character";
 import { findClass, findSubclass } from "./character";
 import { sheetAttackName } from "./grants";
 import { gearBalance, gearLedger, startingMoney } from "./creation";
+import { GOOGLE_CLIENT_ID, GOOGLE_DRIVE_SCOPE } from "./config";
+import { writeValuesIntoXlsx, type CellWrite } from "./xlsx-values";
+
+export type { CellWrite };
+
+export interface SheetValueWrite {
+  range: string;
+  value: string | number;
+}
+
+interface WriteSink {
+  writes: CellWrite[];
+  unmapped: string[];
+  formula: Set<string>;
+}
 
 const SCORE_INPUT: Record<Ability, string> = { str: "C16", dex: "C21", con: "C26", int: "C31", wis: "C36", cha: "C41" };
 const BONUS_INPUT: Record<Ability, string> = { str: "D16", dex: "D21", con: "D26", int: "D31", wis: "D36", cha: "D41" };
@@ -88,7 +103,20 @@ function closest(wanted: string, options: string[]) {
   return contained[0] ?? null;
 }
 
-function put(sheet: XLSX.WorkSheet, addr: string, value: string | number) {
+function formulaKey(sheetName: string, addr: string) {
+  return `${sheetName}!${addr}`;
+}
+
+function put(sink: WriteSink, sheetName: string, addr: string, value: string | number) {
+  if (sink.formula.has(formulaKey(sheetName, addr))) {
+    sink.unmapped.push(`Cell ${addr} on ${sheetName} is a formula, so it was left alone`);
+    return false;
+  }
+  sink.writes.push({ sheet: sheetName, cell: addr, value });
+  return true;
+}
+
+function applyWrite(sheet: XLSX.WorkSheet, addr: string, value: string | number) {
   const current = sheet[addr];
   if (current?.f) return false;
   sheet[addr] = { ...(current ?? {}), t: typeof value === "number" ? "n" : "s", v: value };
@@ -109,36 +137,52 @@ function levelOf(start: number) {
   return 9;
 }
 
-function writeSpells(main: XLSX.WorkSheet, extra: XLSX.WorkSheet, spells: { name: string; level: number; prepared: boolean }[], unmapped: string[]) {
+function writeSpells(sink: WriteSink, spells: { name: string; level: number; prepared: boolean }[]) {
   const buckets: { name: string; prepared: boolean }[][] = Array.from({ length: 10 }, () => []);
   for (const spell of spells) buckets[Math.min(9, spell.level)]?.push(spell);
-  const write = (sheet: XLSX.WorkSheet, ranges: typeof SPELL_RANGES) => {
+  const write = (sheetName: string, ranges: typeof SPELL_RANGES) => {
     for (const [nameCol, prepCol, start, end] of ranges) {
       const bucket = buckets[levelOf(start)];
       for (let row = start; row <= end && bucket?.length; row += 1) {
         const spell = bucket.shift();
         if (!spell) break;
-        if (!put(sheet, `${nameCol}${row}`, spell.name)) unmapped.push(`Tech name cell ${nameCol}${row} is a formula`);
-        if (prepCol) put(sheet, `${prepCol}${row}`, spell.prepared ? 1 : 0);
+        put(sink, sheetName, `${nameCol}${row}`, spell.name);
+        if (prepCol) put(sink, sheetName, `${prepCol}${row}`, spell.prepared ? 1 : 0);
       }
     }
   };
-  write(main, SPELL_RANGES);
-  write(extra, EXTRA_RANGES);
+  write("v2.1", SPELL_RANGES);
+  write("Additional", EXTRA_RANGES);
   const leftover = buckets.reduce((sum, bucket) => sum + bucket.length, 0);
-  if (leftover) unmapped.push(`${leftover} techs did not fit in the template's tech rows`);
+  if (leftover) sink.unmapped.push(`${leftover} techs did not fit in the template's tech rows`);
 }
 
-/** Fill the NCL GSheet v2.1 template. Formulas are left in place. */
-export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, rules: Rules, derived: Derived) {
+function rangeFor(write: CellWrite) {
+  return `'${write.sheet.replace(/'/g, "''")}'!${write.cell}`;
+}
+
+function collectFormulas(book: XLSX.WorkBook) {
+  const formula = new Set<string>();
+  for (const name of book.SheetNames) {
+    const sheet = book.Sheets[name];
+    if (!sheet) continue;
+    for (const addr of Object.keys(sheet)) {
+      if (sheet[addr]?.f) formula.add(formulaKey(name, addr));
+    }
+  }
+  return formula;
+}
+
+/** The cells a runner fills. Formula cells are omitted. */
+export function sheetValueWrites(template: XLSX.WorkBook, character: Character, rules: Rules, derived: Derived) {
   const book = template;
   const main = book.Sheets["v2.1"];
   const extra = book.Sheets.Additional;
   const inventory = book.Sheets.Inventory;
-  const unmapped = [...SHEET_UNMAPPED];
+  const sink: WriteSink = { writes: [], unmapped: [...SHEET_UNMAPPED], formula: collectFormulas(book) };
   if (!main || !extra || !inventory) {
-    unmapped.push("The template is missing the v2.1, Additional, or Inventory tab");
-    return { book, unmapped };
+    sink.unmapped.push("The template is missing the v2.1, Additional, or Inventory tab");
+    return { writes: [] as SheetValueWrite[], cells: [] as CellWrite[], unmapped: sink.unmapped };
   }
   const classNames = column(book.Sheets["Class Info"], "B", 7, 180);
   const subclassNames = column(book.Sheets["Class Info"], "E", 7, 180);
@@ -146,67 +190,67 @@ export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, r
   const weaponNames = column(book.Sheets["Attack Info"], "B", 7, 200);
   const armorNames = column(book.Sheets["Gear Info"], "B", 7, 40);
 
-  put(main, "C6", character.name || "Unnamed");
+  put(sink, "v2.1", "C6", character.name || "Unnamed");
   const classes = character.classLevels.length ? character.classLevels : character.classId ? [{ id: character.classId, level: character.level, subclassId: character.subclassId }] : [];
   const classText = classes.map((entry) => {
     const cls = findClass(rules, entry.id);
     const sub = findSubclass(rules, entry.subclassId);
     const className = closest(cls?.name ?? entry.id, classNames);
     const subclassName = sub ? closest(sub.name, subclassNames) : null;
-    if (!className) unmapped.push(`Class ${cls?.name ?? entry.id} is not on the Class Info tab`);
-    if (sub && !subclassName) unmapped.push(`Subclass ${sub.name} is not on the Class Info tab`);
+    if (!className) sink.unmapped.push(`Class ${cls?.name ?? entry.id} is not on the Class Info tab`);
+    if (sub && !subclassName) sink.unmapped.push(`Subclass ${sub.name} is not on the Class Info tab`);
     return [subclassName, className ?? cls?.name ?? entry.id, entry.level].filter(Boolean).join(" ");
   }).join(" ");
-  put(main, "T5", classText);
+  put(sink, "v2.1", "T5", classText);
 
   const lineage = rules.lineages.find((item) => item.id === character.lineageId);
   const lineageWanted = [lineage?.name, character.sublineage && lineage ? `${lineage.name} (${character.sublineage})` : ""].filter((name): name is string => Boolean(name));
   const lineageName = lineageWanted.map((name) => closest(name, lineageNames)).find((name): name is string => Boolean(name)) ?? null;
-  if (lineage && !lineageName) unmapped.push(`Lineage ${lineage.name}${character.sublineage ? ` (${character.sublineage})` : ""} is not on the Lineage Info tab`);
-  if (lineageName) put(main, "T7", lineageName);
+  if (lineage && !lineageName) sink.unmapped.push(`Lineage ${lineage.name}${character.sublineage ? ` (${character.sublineage})` : ""} is not on the Lineage Info tab`);
+  if (lineageName) put(sink, "v2.1", "T7", lineageName);
 
   const upbringing = rules.upbringings.find((item) => item.id === character.upbringingId);
-  if (upbringing) put(main, "AJ11", upbringing.name);
-  put(main, "AE7", character.level >= 5 ? character.mpEarned : 0);
+  if (upbringing) put(sink, "v2.1", "AJ11", upbringing.name);
+  put(sink, "v2.1", "AE7", character.level >= 5 ? character.mpEarned : 0);
 
   for (const ability of ABILITIES) {
-    put(main, SCORE_INPUT[ability], character.baseScores[ability] ?? 10);
+    put(sink, "v2.1", SCORE_INPUT[ability], character.baseScores[ability] ?? 10);
     const lineageBonus = (character.lineageAsi[ability] ?? 0) + (character.subAsi[ability] ?? 0);
     const classBonus = character.asiPicks.reduce((sum, pick) => sum + (pick.abilities?.[ability] ?? 0), 0);
-    if (lineageBonus + classBonus) put(main, BONUS_INPUT[ability], lineageBonus + classBonus);
+    if (lineageBonus + classBonus) put(sink, "v2.1", BONUS_INPUT[ability], lineageBonus + classBonus);
   }
 
   for (const skill of derived.skills) {
     const row = SKILL_ROW[skill.name.toLowerCase()];
     if (!row) {
-      unmapped.push(`Skill ${skill.name} has no row on the template`);
+      sink.unmapped.push(`Skill ${skill.name} has no row on the template`);
       continue;
     }
-    put(main, `H${row}`, skill.expertise ? "e" : skill.proficient ? 1 : 0);
+    put(sink, "v2.1", `H${row}`, skill.expertise ? "e" : skill.proficient ? 1 : 0);
   }
-  put(main, "H11", character.inspiration ? 1 : 0);
+  put(sink, "v2.1", "H11", character.inspiration ? 1 : 0);
 
   const armor = rules.armor.find((item) => item.id === character.armorId);
   if (armor) {
     const name = closest(armor.name, armorNames);
-    if (name) put(main, "AC45", name);
-    else unmapped.push(`Armor ${armor.name} is not on the Gear Info tab`);
+    if (name) put(sink, "v2.1", "AC45", name);
+    else sink.unmapped.push(`Armor ${armor.name} is not on the Gear Info tab`);
   }
-  if (character.shield) put(main, "AC46", closest("Shield", armorNames) ?? "Shield");
+  if (character.shield) put(sink, "v2.1", "AC46", closest("Shield", armorNames) ?? "Shield");
 
   character.weapons.slice(0, 5).forEach((weapon, index) => {
     const item = rules.weapons.find((row) => row.id === weapon.id);
     const wanted = item ? sheetAttackName(item, weapon) : weapon.id;
     const name = closest(wanted, weaponNames);
-    if (item && !name) unmapped.push(`Weapon ${wanted} is not on the Attack Info tab`);
-    put(main, `R${32 + index}`, name ?? wanted);
+    if (item && !name) sink.unmapped.push(`Weapon ${wanted} is not on the Attack Info tab`);
+    put(sink, "v2.1", `R${32 + index}`, name ?? wanted);
   });
-  if (character.weapons.length > 5) unmapped.push(`${character.weapons.length - 5} weapons past the five main attack rows were not copied there`);
+  if (character.weapons.length > 5) sink.unmapped.push(`${character.weapons.length - 5} weapons past the five main attack rows were not copied there`);
 
   const caster = classes.map((entry) => findClass(rules, entry.id)).find((cls) => cls && (cls.caster !== "none" || cls.techAbility));
   if (caster) {
     const name = closest(caster.name, classNames);
-    if (name) put(main, "C91", name);
+    if (name) put(sink, "v2.1", "C91", name);
   }
 
   const spells = [...character.techs, ...derived.grantedTechIds].filter((id, index, list) => list.indexOf(id) === index).map((id) => {
@@ -215,7 +259,7 @@ export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, r
     const prepared = derived.deckMax > 0 ? inBook : !character.prepared.length || inBook;
     return { name: tech?.name ?? id, level: tech?.trick || !tech?.level ? 0 : tech.level, prepared };
   });
-  writeSpells(main, extra, spells, unmapped);
+  writeSpells(sink, spells);
 
   const features = [
     ...character.fightingStyles.map((style) => `Fighting Style: ${style}`),
@@ -225,20 +269,20 @@ export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, r
     derived.movement,
     ...derived.initiativeNotes.map((note) => `Initiative: ${note}`),
   ];
-  features.slice(0, 26).forEach((feature, index) => put(main, `C${59 + index}`, feature));
-  if (features.length > 26) unmapped.push(`${features.length - 26} features past row 84`);
+  features.slice(0, 26).forEach((feature, index) => put(sink, "v2.1", `C${59 + index}`, feature));
+  if (features.length > 26) sink.unmapped.push(`${features.length - 26} features past row 84`);
 
-  character.languages.forEach((language, index) => put(main, `R${45 + index}`, language));
-  if (character.personality) put(main, "AE16", character.personality);
-  if (character.ideals) put(main, "AE20", character.ideals);
-  if (character.bonds) put(main, "AE24", character.bonds);
-  if (character.flaws) put(main, "AE29", character.flaws);
-  if (character.alignment) put(main, "AF28", character.alignment);
+  character.languages.forEach((language, index) => put(sink, "v2.1", `R${45 + index}`, language));
+  if (character.personality) put(sink, "v2.1", "AE16", character.personality);
+  if (character.ideals) put(sink, "v2.1", "AE20", character.ideals);
+  if (character.bonds) put(sink, "v2.1", "AE24", character.bonds);
+  if (character.flaws) put(sink, "v2.1", "AE29", character.flaws);
+  if (character.alignment) put(sink, "v2.1", "AF28", character.alignment);
   const story = [character.concept, character.biography].filter(Boolean).join("\n");
-  if (story) put(main, "R165", story);
+  if (story) put(sink, "v2.1", "R165", story);
 
   const balance = gearBalance(startingMoney(character.level).credits, gearLedger(character, rules));
-  put(inventory, "D3", balance);
+  put(sink, "Inventory", "D3", balance);
   const rows = [
     ...character.weapons.map((weapon) => ({ name: rules.weapons.find((item) => item.id === weapon.id)?.name ?? weapon.id, qty: 1, source: weapon.source || "" })),
     ...(armor ? [{ name: armor.name, qty: 1, source: character.armorSource || "" }] : []),
@@ -246,48 +290,141 @@ export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, r
   ];
   rows.slice(0, 70).forEach((item, index) => {
     const row = 3 + index;
-    put(inventory, `I${row}`, item.qty);
-    put(inventory, `J${row}`, item.source ? `${item.name} (${item.source})` : item.name);
+    put(sink, "Inventory", `I${row}`, item.qty);
+    put(sink, "Inventory", `J${row}`, item.source ? `${item.name} (${item.source})` : item.name);
   });
-  if (rows.length > 70) unmapped.push(`${rows.length - 70} inventory rows past the template`);
+  if (rows.length > 70) sink.unmapped.push(`${rows.length - 70} inventory rows past the template`);
 
-  return { book, unmapped };
+  const writes = sink.writes.map((write) => ({ range: rangeFor(write), value: safeValue(write.value) }));
+  return { writes, cells: sink.writes, unmapped: sink.unmapped };
 }
 
+function safeValue(value: string | number) {
+  if (typeof value === "string" && /^[=+]/.test(value)) return `'${value}`;
+  return value;
+}
+
+/** Fill a workbook in memory. Formulas are left in place. */
+export function fillNclWorkbook(template: XLSX.WorkBook, character: Character, rules: Rules, derived: Derived) {
+  const { cells, unmapped } = sheetValueWrites(template, character, rules, derived);
+  for (const write of cells) {
+    const sheet = template.Sheets[write.sheet];
+    if (sheet) applyWrite(sheet, write.cell, write.value);
+  }
+  return { book: template, unmapped, writes: cells.map((write) => ({ range: rangeFor(write), value: safeValue(write.value) })) };
+}
+
+function bytesToArrayBuffer(bytes: Uint8Array) {
+  return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
+}
+
+async function loadOriginalTemplate() {
+  const response = await fetch("/data/ncl-gsheet-v2.1-original.xlsx");
+  if (!response.ok) throw new Error("The original sheet template did not load.");
+  return new Uint8Array(await response.arrayBuffer());
+}
+
+/** Download an .xlsx built from the original template bytes, so styles stay put. */
 export async function downloadFilledSheet(character: Character, rules: Rules, derived: Derived) {
-  const response = await fetch("/data/ncl-gsheet-v2.1.xlsx");
-  if (!response.ok) throw new Error("The sheet template did not load.");
-  const template = XLSX.read(await response.arrayBuffer(), { type: "array", cellFormula: true });
-  const { book, unmapped } = fillNclWorkbook(template, character, rules, derived);
-  const filename = `${(character.name || "runner").replace(/[^\w\-]+/g, "-")}-ncl-sheet.xlsx`;
-  XLSX.writeFile(book, filename);
+  const bytes = await loadOriginalTemplate();
+  const template = XLSX.read(bytes, { type: "array", cellFormula: true });
+  const { cells, unmapped } = sheetValueWrites(template, character, rules, derived);
+  const patched = writeValuesIntoXlsx(bytes, cells);
+  const blob = new Blob([bytesToArrayBuffer(patched.bytes)], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `${(character.name || "runner").replace(/[^\w\-]+/g, "-")}-ncl.xlsx`;
+  link.click();
+  URL.revokeObjectURL(link.href);
   return unmapped;
 }
 
-/** Optional. Only runs when a public OAuth client id was baked in at build time. */
-export async function createSheetInDrive(clientId: string, character: Character, rules: Rules, derived: Derived) {
-  const response = await fetch("/data/ncl-gsheet-v2.1.xlsx");
-  const template = XLSX.read(await response.arrayBuffer(), { type: "array", cellFormula: true });
-  const { book } = fillNclWorkbook(template, character, rules, derived);
-  const bytes = XLSX.write(book, { type: "array", bookType: "xlsx" }) as ArrayBuffer;
-  const token = await new Promise<string>((resolve, reject) => {
-    const client = (window as unknown as { google?: { accounts: { oauth2: { initTokenClient: (options: unknown) => { requestAccessToken: () => void } } } } }).google?.accounts.oauth2.initTokenClient({
-      client_id: clientId,
-      scope: "https://www.googleapis.com/auth/drive.file",
-      callback: (result: { access_token?: string; error?: string }) => result.access_token ? resolve(result.access_token) : reject(new Error(result.error || "Google did not return a token")),
-    });
-    client?.requestAccessToken();
+interface GoogleTokenClient {
+  requestAccessToken: () => void;
+}
+
+function loadGoogleIdentity(): Promise<void> {
+  const google = (window as unknown as { google?: { accounts?: { oauth2?: unknown } } }).google;
+  if (google?.accounts?.oauth2) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>("script[data-gsi]");
+    const script = existing ?? document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.dataset.gsi = "true";
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Google sign-in did not load. Check the connection and try again."));
+    if (!existing) document.head.appendChild(script);
   });
-  const metadata = { name: `${character.name || "Runner"} NCL sheet`, mimeType: "application/vnd.google-apps.spreadsheet" };
-  const body = new FormData();
-  body.append("metadata", new Blob([JSON.stringify(metadata)], { type: "application/json" }));
-  body.append("file", new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
-  const created = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
+}
+
+function requestDriveToken(clientId: string) {
+  return new Promise<string>((resolve, reject) => {
+    const oauth = (window as unknown as {
+      google?: {
+        accounts: {
+          oauth2: {
+            initTokenClient: (options: unknown) => GoogleTokenClient;
+          };
+        };
+      };
+    }).google?.accounts.oauth2;
+    if (!oauth) {
+      reject(new Error("Google sign-in did not load. Check the connection and try again."));
+      return;
+    }
+    const client = oauth.initTokenClient({
+      client_id: clientId,
+      scope: GOOGLE_DRIVE_SCOPE,
+      callback: (result: { access_token?: string; error?: string; error_description?: string }) => {
+        if (result.access_token) resolve(result.access_token);
+        else if (result.error === "access_denied" || result.error === "popup_closed") reject(new Error("Google sign-in was cancelled."));
+        else reject(new Error(result.error_description || result.error || "Google did not return a token."));
+      },
+      error_callback: (error: { type?: string }) => {
+        if (error.type === "popup_failed_to_open") reject(new Error("The Google sign-in window was blocked. Allow popups for this site, then try again."));
+        else reject(new Error("Google sign-in was cancelled."));
+      },
+    });
+    client.requestAccessToken();
+  });
+}
+
+async function uploadOriginalTemplate(token: string, name: string, bytes: Uint8Array) {
+  const boundary = `ncl-${crypto.randomUUID()}`;
+  const metadata = JSON.stringify({ name, mimeType: "application/vnd.google-apps.spreadsheet" });
+  const head = `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${metadata}\r\n--${boundary}\r\nContent-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\r\n\r\n`;
+  const tail = `\r\n--${boundary}--`;
+  const body = new Blob([head, bytesToArrayBuffer(bytes), tail]);
+  const created = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,webViewLink", {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": `multipart/related; boundary=${boundary}` },
     body,
   });
   if (!created.ok) throw new Error("Google Drive did not accept the sheet.");
-  const file = await created.json() as { id: string };
-  window.open(`https://docs.google.com/spreadsheets/d/${file.id}/edit`, "_blank", "noopener");
+  return created.json() as Promise<{ id: string; webViewLink?: string }>;
+}
+
+/** Create a native Google Sheet from the unmodified template, then fill value cells. */
+export async function createGoogleSheet(character: Character, rules: Rules, derived: Derived, clientId = GOOGLE_CLIENT_ID) {
+  await loadGoogleIdentity();
+  const token = await requestDriveToken(clientId);
+  const bytes = await loadOriginalTemplate();
+  const template = XLSX.read(bytes, { type: "array", cellFormula: true });
+  const { writes, unmapped } = sheetValueWrites(template, character, rules, derived);
+  const file = await uploadOriginalTemplate(token, `${character.name || "Runner"} NCL sheet`, bytes);
+  const url = file.webViewLink || `https://docs.google.com/spreadsheets/d/${file.id}/edit`;
+  const filled = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${file.id}/values:batchUpdate`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      valueInputOption: "USER_ENTERED",
+      data: writes.map((write) => ({ range: write.range, values: [[write.value]] })),
+    }),
+  });
+  if (!filled.ok) {
+    const detail = await filled.text().catch(() => "");
+    throw new Error(`The sheet was created, but the character cells were not written. Open it and try again. ${url} ${detail}`.trim());
+  }
+  return { url, unmapped };
 }
