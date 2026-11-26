@@ -7,7 +7,7 @@ import { AsiPicker } from "@/components/asi-picker";
 import { TechSheet } from "@/components/tech-sheet";
 import { Button, Select, TextInput } from "@/components/ui";
 import { characterAsText } from "@/lib/avrae-sheet";
-import { createGoogleSheet, downloadFilledSheet } from "@/lib/gsheet";
+import { createGoogleSheet, downloadFilledSheet, shareGoogleSheet } from "@/lib/gsheet";
 import { gearBalance, gearLedger, startingMoney } from "@/lib/creation";
 import { GOOGLE_CLIENT_ID, GOOGLE_SHEET_LABEL, GOOGLE_SHEET_URL } from "@/lib/config";
 import { ABILITIES, ABILITY_NAME, type Ability, type Character, type Rules } from "@/lib/types";
@@ -85,6 +85,9 @@ function SheetInner() {
   const [featAsi, setFeatAsi] = useState<Record<string, { amount: number; choices: Ability[] }>>({});
   const [sheetNote, setSheetNote] = useState<string | null>(null);
   const [sheetUrl, setSheetUrl] = useState<string | null>(null);
+  const [sheetEmail, setSheetEmail] = useState<string | null>(null);
+  const [sheetFileId, setSheetFileId] = useState<string | null>(null);
+  const [shareEmail, setShareEmail] = useState("");
   const [copied, setCopied] = useState("");
   const [featureBook, setFeatureBook] = useState<Record<string, { text?: string; level?: number | null; source?: string }>>({});
   const [techText, setTechText] = useState<Record<string, { summary: string; effect: string }>>({});
@@ -168,9 +171,13 @@ function SheetInner() {
           const pending = window.open("", "_blank");
           setSheetNote("Creating the Google Sheet…");
           setSheetUrl(null);
+          setSheetEmail(null);
+          setSheetFileId(null);
           createGoogleSheet(character, rules, derived, GOOGLE_CLIENT_ID).then((result) => {
             if (pending) pending.location.href = result.url;
             setSheetUrl(result.url);
+            setSheetEmail(result.email);
+            setSheetFileId(result.fileId);
             const missed = result.unmapped.length ? ` Not filled: ${result.unmapped.join(" ")}` : "";
             setSheetNote(pending ? `Opened the new Google Sheet.${missed}` : `The browser blocked the new tab. Use the link below.${missed}`);
           }).catch((err: Error) => {
@@ -188,7 +195,24 @@ function SheetInner() {
       </div>
       {share && <p className="no-print break-all text-xs text-cyan">{share}</p>}
       {copied && <pre className="no-print max-h-40 overflow-auto whitespace-pre-wrap text-xs text-muted">{copied}</pre>}
-      {sheetUrl && <p className="no-print text-sm">Your sheet: <a className="text-cyan underline" href={sheetUrl} target="_blank" rel="noopener noreferrer">{sheetUrl}</a></p>}
+      {sheetUrl && sheetEmail && (
+        <div className="no-print space-y-2 text-sm">
+          <p>Saved to {sheetEmail}</p>
+          <p>Your sheet: <a className="break-all text-cyan underline" href={sheetUrl} target="_blank" rel="noopener noreferrer">{sheetUrl}</a></p>
+          <p className="text-muted">If Google says you need access, switch to {sheetEmail} in the Google account menu.</p>
+          {sheetFileId && (
+            <form className="flex flex-wrap items-center gap-2" onSubmit={(event) => {
+              event.preventDefault();
+              shareGoogleSheet(sheetFileId, shareEmail, GOOGLE_CLIENT_ID)
+                .then(() => setSheetNote(`Shared with ${shareEmail.trim()} as a writer.`))
+                .catch((err: Error) => setSheetNote(err.message));
+            }}>
+              <span className="block w-full max-w-xs"><TextInput type="email" required placeholder="Share with another email" value={shareEmail} onChange={(event) => setShareEmail(event.target.value)} /></span>
+              <Button variant="ghost" type="submit">Share</Button>
+            </form>
+          )}
+        </div>
+      )}
       {sheetNote && <p className="no-print text-sm text-muted">{sheetNote}</p>}
 
       <article className="paper">

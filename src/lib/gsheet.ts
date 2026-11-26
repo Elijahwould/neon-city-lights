@@ -358,7 +358,35 @@ function loadGoogleIdentity(): Promise<void> {
   });
 }
 
-function requestDriveToken(clientId: string) {
+const GOOGLE_EMAIL_KEY = "ncl.google.email";
+const GOOGLE_CONSENT_KEY = "ncl.google.consented";
+
+function rememberedGoogleAccount() {
+  try {
+    return {
+      email: localStorage.getItem(GOOGLE_EMAIL_KEY) || "",
+      consented: localStorage.getItem(GOOGLE_CONSENT_KEY) === "1",
+    };
+  } catch {
+    return { email: "", consented: false };
+  }
+}
+
+function rememberGoogleConsent() {
+  try { localStorage.setItem(GOOGLE_CONSENT_KEY, "1"); } catch { /* private mode */ }
+}
+
+function rememberGoogleEmail(email: string) {
+  try { localStorage.setItem(GOOGLE_EMAIL_KEY, email); } catch { /* private mode */ }
+  rememberGoogleConsent();
+}
+
+/** Open the sheet as the account that owns it, not the browser's default Google user. */
+export function sheetEditUrl(fileId: string, email: string) {
+  return `https://docs.google.com/spreadsheets/d/${fileId}/edit?authuser=${encodeURIComponent(email)}`;
+}
+
+function requestDriveToken(clientId: string, forceConsent = false) {
   return new Promise<string>((resolve, reject) => {
     const oauth = (window as unknown as {
       google?: {
@@ -373,19 +401,34 @@ function requestDriveToken(clientId: string) {
       reject(new Error("Google sign-in did not load. Check the connection and try again."));
       return;
     }
-    const client = oauth.initTokenClient({
+    const remembered = rememberedGoogleAccount();
+    const options: Record<string, unknown> = {
       client_id: clientId,
       scope: GOOGLE_DRIVE_SCOPE,
       callback: (result: { access_token?: string; error?: string; error_description?: string }) => {
-        if (result.access_token) resolve(result.access_token);
-        else if (result.error === "access_denied" || result.error === "popup_closed") reject(new Error("Google sign-in was cancelled."));
+        if (result.access_token) {
+          rememberGoogleConsent();
+          resolve(result.access_token);
+          return;
+        }
+        if (!forceConsent && (result.error === "interaction_required" || result.error === "consent_required")) {
+          requestDriveToken(clientId, true).then(resolve, reject);
+          return;
+        }
+        if (result.error === "access_denied" || result.error === "popup_closed") reject(new Error("Google sign-in was cancelled."));
         else reject(new Error(result.error_description || result.error || "Google did not return a token."));
       },
       error_callback: (error: { type?: string }) => {
         if (error.type === "popup_failed_to_open") reject(new Error("The Google sign-in window was blocked. Allow popups for this site, then try again."));
         else reject(new Error("Google sign-in was cancelled."));
       },
-    });
+    };
+    if (remembered.email) {
+      options.hint = remembered.email;
+      options.login_hint = remembered.email;
+    }
+    if (remembered.consented && !forceConsent) options.prompt = "";
+    const client = oauth.initTokenClient(options);
     client.requestAccessToken();
   });
 }
@@ -405,6 +448,24 @@ async function uploadOriginalTemplate(token: string, name: string, bytes: Uint8A
   return created.json() as Promise<{ id: string; webViewLink?: string }>;
 }
 
+async function driveAccountEmail(token: string, fileId: string) {
+  const file = await fetch(`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(fileId)}?fields=${encodeURIComponent("owners(emailAddress)")}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (file.ok) {
+    const body = await file.json() as { owners?: { emailAddress?: string }[] };
+    const email = body.owners?.find((owner) => owner.emailAddress)?.emailAddress;
+    if (email) return email;
+  }
+  const about = await fetch(`https://www.googleapis.com/drive/v3/about?fields=${encodeURIComponent("user(emailAddress)")}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!about.ok) throw new Error("Google created the sheet, but did not say which account owns it.");
+  const body = await about.json() as { user?: { emailAddress?: string } };
+  if (!body.user?.emailAddress) throw new Error("Google created the sheet, but did not say which account owns it.");
+  return body.user.emailAddress;
+}
+
 /** Create a native Google Sheet from the unmodified template, then fill value cells. */
 export async function createGoogleSheet(character: Character, rules: Rules, derived: Derived, clientId = GOOGLE_CLIENT_ID) {
   await loadGoogleIdentity();
@@ -413,7 +474,9 @@ export async function createGoogleSheet(character: Character, rules: Rules, deri
   const template = XLSX.read(bytes, { type: "array", cellFormula: true });
   const { writes, unmapped } = sheetValueWrites(template, character, rules, derived);
   const file = await uploadOriginalTemplate(token, `${character.name || "Runner"} NCL sheet`, bytes);
-  const url = file.webViewLink || `https://docs.google.com/spreadsheets/d/${file.id}/edit`;
+  const email = await driveAccountEmail(token, file.id);
+  rememberGoogleEmail(email);
+  const url = sheetEditUrl(file.id, email);
   const filled = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${file.id}/values:batchUpdate`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -424,7 +487,21 @@ export async function createGoogleSheet(character: Character, rules: Rules, deri
   });
   if (!filled.ok) {
     const detail = await filled.text().catch(() => "");
-    throw new Error(`The sheet was created, but the character cells were not written. Open it and try again. ${url} ${detail}`.trim());
+    throw new Error(`The sheet was created in ${email}, but the character cells were not written. ${url} ${detail}`.trim());
   }
-  return { url, unmapped };
+  return { url, unmapped, email, fileId: file.id };
+}
+
+/** Grant writer access on a sheet this app created. drive.file covers that file. */
+export async function shareGoogleSheet(fileId: string, email: string, clientId = GOOGLE_CLIENT_ID) {
+  const address = email.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)) throw new Error("Enter an email address.");
+  await loadGoogleIdentity();
+  const token = await requestDriveToken(clientId);
+  const response = await fetch(`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(fileId)}/permissions`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ role: "writer", type: "user", emailAddress: address }),
+  });
+  if (!response.ok) throw new Error("Google did not share the sheet. Check the email and try again.");
 }

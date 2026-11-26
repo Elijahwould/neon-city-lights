@@ -5,7 +5,7 @@ import { builderIntent, draftHasWork } from "../src/lib/draft";
 import flavor from "../public/data/flavor.json";
 import { chosenEquipment, equipmentLines, gearBalance, gearCatalog, gearLedger, grantEquipment, itemsNamedIn, startingMoney, xpForLevel } from "../src/lib/creation";
 import { unfilledLineageChoices } from "../src/lib/traits";
-import { fillNclWorkbook, sheetValueWrites } from "../src/lib/gsheet";
+import { fillNclWorkbook, sheetEditUrl, sheetValueWrites } from "../src/lib/gsheet";
 import { writeValuesIntoXlsx } from "../src/lib/xlsx-values";
 import { sheetAttackName } from "../src/lib/grants";
 import * as XLSX from "xlsx";
@@ -555,6 +555,7 @@ const patchedBook = XLSX.read(patched.bytes, { type: "array", cellFormula: true,
 check("the excel file keeps the level formula", Boolean(patchedBook.Sheets["v2.1"].AL6?.f), true);
 check("the excel file keeps the name cell's style", Boolean(patchedBook.Sheets["v2.1"].C6?.s), true);
 check("the excel file contains the runner name", patchedBook.Sheets["v2.1"].C6?.v, "Vex Kade");
+check("the sheet link names the owning Google account", sheetEditUrl("abc", "runner@example.com"), "https://docs.google.com/spreadsheets/d/abc/edit?authuser=runner%40example.com");
 
 const stalker = derive(runner({ classId: "auditor", subclassId: "auditor:dark-stalker", level: 3, baseScores: scores }), rules);
 check("dark stalker adds wisdom to initiative", stalker.initiative, 3);
